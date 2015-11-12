@@ -278,17 +278,19 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::extractPlane(pcl::Point
 	//	j++;
 	//}
 
-	/*for (size_t i = 0; i < inliers->indices.size(); ++i){
+	for (size_t i = 0; i < inliers->indices.size(); ++i){
 		inputPointCloud->points[inliers->indices[i]].r = 255;
-		inputPointCloud->points[inliers->indices[i]].g = 255;
-		inputPointCloud->points[inliers->indices[i]].b = 255;
-		}*/
+		inputPointCloud->points[inliers->indices[i]].g = 0;
+		inputPointCloud->points[inliers->indices[i]].b = 0;
+		}
+	//filtered = inputPointCloud;
 
 	pcl::ExtractIndices<pcl::PointXYZRGB> extract;
-	extract.setInputCloud(inputPointCloud);
+	extract.setInputCloud(inputPointCloud/*filtered*/);
 	extract.setIndices(inliers);
 	extract.setNegative(negative);
 	extract.filter(*filtered);
+	
 
 	cout << "after Extract Plane => " << filtered->size() << endl;
 	return filtered;
