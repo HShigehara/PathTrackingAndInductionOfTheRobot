@@ -91,6 +91,16 @@ int main()
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
 		PointCloudMethod pcm(false,false,false,false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
+
+		//画像用(仮)
+		Mat image_copy;
+		Mat foreground_image;
+
+
+
+
+
+
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
 
@@ -146,6 +156,11 @@ int main()
 
 			//Kinect処理・画像処理
 			kinect.drawRGBImage(image); //RGBカメラの処理
+
+			//image_copy = image.clone();
+			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
+			imgproc.showImage("foreground", imgproc.foreGroundMask_image);
+
 
 			//歪み補正後の画像に対して処理を行うようにする
 			//undistort(image, undistort_img, sys.internalCameraParam, sys.distortionCoefficients, Mat()); //歪み補正後の画像で上書き(c54)

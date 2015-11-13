@@ -314,15 +314,10 @@ void ImageProcessing::drawCenterPoint(Mat& image, Point3ius averageCoordinate/*,
  * @param Mat image
  * @return Mat foreGroundMask
  */
-Mat ImageProcessing::backGroundSubstraction(/*Mat& image*/)
+Mat ImageProcessing::backGroundSubstraction(Mat& input_image)
 {
-	BackgroundSubtractorMOG2 backGroundSubstractor;
 	Mat foreGroundMask, output;
-
-	backGroundSubstractor(image, foreGroundMask);
-
-	bitwise_and(image, image, output, foreGroundMask);
-
-	//imshow("TEST", foreGroundMask);
+	backGroundSubstractor(input_image, foreGroundMask);
+	bitwise_and(input_image, input_image, output, foreGroundMask);
 	return foreGroundMask;
 }

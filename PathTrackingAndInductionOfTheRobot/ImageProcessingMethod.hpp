@@ -29,6 +29,10 @@ private:
 	int _vmin = vmin;
 	int _vmax = vmax;
 
+	BackgroundSubtractorMOG2 backGroundSubstractor; //!<背景差分処理用(c66)
+	//BackgroundSubtractorMOG backGroundSubstractor; //!<背景差分処理用(c66)
+
+
 public:
 	ImageProcessing(); //!<コンストラクタ
 	~ImageProcessing(); //!<デストラクタ
@@ -50,7 +54,7 @@ public:
 	Mat mTrim_img;
 
 	//中間発表以降，背景差分処理により動体を検出する(c66)
-	Mat backGroundSubstraction(/*Mat& image*/); //!<背景差分処理により前景画像を取得する(c66)
+	Mat backGroundSubstraction(Mat& input_image); //!<背景差分処理により前景画像を取得する(c66)
 	Mat foreGroundMask_image; //!<前景画像(c66)
 };
 
