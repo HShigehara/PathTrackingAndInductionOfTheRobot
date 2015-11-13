@@ -308,3 +308,21 @@ void ImageProcessing::drawCenterPoint(Mat& image, Point3ius averageCoordinate/*,
 
 	return;
 }
+
+/*!
+ * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理により前景画像を取得する(c66)
+ * @param Mat image
+ * @return Mat foreGroundMask
+ */
+Mat ImageProcessing::backGroundSubstraction(/*Mat& image*/)
+{
+	BackgroundSubtractorMOG2 backGroundSubstractor;
+	Mat foreGroundMask, output;
+
+	backGroundSubstractor(image, foreGroundMask);
+
+	bitwise_and(image, image, output, foreGroundMask);
+
+	//imshow("TEST", foreGroundMask);
+	return foreGroundMask;
+}

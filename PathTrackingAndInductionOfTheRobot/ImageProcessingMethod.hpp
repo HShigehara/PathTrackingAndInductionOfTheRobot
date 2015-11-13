@@ -45,11 +45,13 @@ public:
 	Mat binarizationImage(Mat& gray_img); //!<抽出した画像の二値化(c19)
 	Mat OpeningImage(Mat& bin_img); //!<抽出して二値化した画像に対してオープニング処理(同じ数だけ縮小→膨張)を行う(c19)
 	void trackingObject(Mat& hsv_img); //!<対象を追跡する(c26)
-
-
 	void drawCenterPoint(Mat& image, Point3ius averageCoordinate/*, const string* mainWindowName*/); //!<計算した平均座標を画面上に表示する(c45)
 
 	Mat mTrim_img;
+
+	//中間発表以降，背景差分処理により動体を検出する(c66)
+	Mat backGroundSubstraction(/*Mat& image*/); //!<背景差分処理により前景画像を取得する(c66)
+	Mat foreGroundMask_image; //!<前景画像(c66)
 };
 
 /* インクルードガードの終了 */

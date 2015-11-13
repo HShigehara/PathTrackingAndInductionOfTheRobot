@@ -152,6 +152,9 @@ int main()
 			//imshow(winname, undistort_img); //歪み補正後の画像を確認する用
 			//image = undistort_img.clone(); //歪み補正した画像に対して処理を行うようにコピー．(歪み補正の画像を利用しない場合はコメントアウト)(c54)
 
+			//imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(/*image*/);
+			//imgproc.showImage("foreground", imgproc.foreGroundMask_image);
+
 			//画像を表示
 			//imshow(mainWindowName, image);
 			//imgproc.showImage("RGB(TEST)", image);
@@ -259,13 +262,13 @@ int main()
 
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
-			//kinect.key = waitKey(1);
-			//if (kinect.key == 'q'){ //計測終了
+			kinect.key = waitKey(1);
+			/*if (kinect.key == 'q'){ //計測終了
 				//sys.outputAllData(&outputDataName, outputData, countDataNum);
 				//routedraw.plot3D(outputDataName); //(c4)
-				//destroyAllWindows();
-				//break;
-			//}
+				destroyAllWindows();
+				break;
+			}*/
 			//else if (kinect.key == 'r'){ //再計測するときに前のファイルを削除しておく(c31)
 				//destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 				//sys.removeDirectory();
@@ -275,6 +278,7 @@ int main()
 
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
+		destroyAllWindows(); //PCL画面上で'q'キーが入力されたらOpenCVのウインドウを閉じる(c66)
 	}
 
 	catch (exception& ex){ //例外処理
