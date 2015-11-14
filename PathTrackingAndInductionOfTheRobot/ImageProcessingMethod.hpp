@@ -54,6 +54,12 @@ public:
 
 	//中間発表以降，背景差分処理により動体を検出する(c66)
 	Mat backGroundSubstraction(Mat& input_image); //!<背景差分処理により前景画像を取得する(c66)
+	Mat now_image; //!<背景画像(c67)
+	Mat before_image; //
+	Mat diff_image;
+	Mat diffGray_image;
+	Mat diffBin_image;
+	bool FlagDiff;
 	Mat foreGroundMask_image; //!<前景画像(c66)
 	Mat foreGroundMask_binimage;
 };

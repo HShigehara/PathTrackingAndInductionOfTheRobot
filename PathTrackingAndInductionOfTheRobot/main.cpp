@@ -92,15 +92,6 @@ int main()
 		PointCloudMethod pcm(false,false,false,false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
 
-		//画像用(仮)
-		Mat image_copy;
-		Mat foreground_image;
-
-
-
-
-
-
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
 
@@ -155,62 +146,73 @@ int main()
 			::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 
 			//Kinect処理・画像処理
-			kinect.drawRGBImage(image); //RGBカメラの処理
+			//kinect.drawRGBImage(image); //RGBカメラの処理
+			imgproc.now_image = kinect.drawRGBImage(image); //RGBカメラの処理
 
-			//image_copy = image.clone();
-			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
-			imgproc.showImage("foreground", imgproc.foreGroundMask_image);
 
+
+			//MOG2による背景差分
+			//imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
+			//imgproc.showImage("foreground", imgproc.foreGroundMask_image);
 			//(c67)
-			threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
-			imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
+			//threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
+			//imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
 
 			//歪み補正後の画像に対して処理を行うようにする
 			//undistort(image, undistort_img, sys.internalCameraParam, sys.distortionCoefficients, Mat()); //歪み補正後の画像で上書き(c54)
 			//imshow(winname, undistort_img); //歪み補正後の画像を確認する用
 			//image = undistort_img.clone(); //歪み補正した画像に対して処理を行うようにコピー．(歪み補正の画像を利用しない場合はコメントアウト)(c54)
 
-			//imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(/*image*/);
-			//imgproc.showImage("foreground", imgproc.foreGroundMask_image);
-
 			//画像を表示
 			//imshow(mainWindowName, image);
 			//imgproc.showImage("RGB(TEST)", image);
 
-			//ポイントクラウドの取得(c57)
-			pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMask_binimage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
-			cout << "==============================================================" << endl;
-			cout << "Original PointCloud Size => " << pcm.cloud->size() << endl;
+			if (imgproc.FlagDiff == true){ //差分画像が取得されていれば点群を取得する(c67)
+				//自作背景差分
+				absdiff(imgproc.now_image, imgproc.before_image, imgproc.diff_image);
+				cvtColor(imgproc.diff_image, imgproc.diffGray_image, CV_BGR2GRAY);
+				threshold(imgproc.diffGray_image, imgproc.diffBin_image, 0, 255, THRESH_BINARY | THRESH_OTSU);
+				imgproc.before_image = imgproc.now_image.clone();
+				imgproc.showImage("diff image", imgproc.diffBin_image);
 
-			//PCLの処理
-			if (pcm.FlagRemoveOutlier == true){
-				//外れ値除去(c59)
-				//cloud = pcm.passThroughFilter(cloud); //Kinectから取得した初期の外れ値を除去(c60)
-				//cloud = pcm.removeOutlier(cloud); //統計的な外れ値除去(c60)
-				//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
+				//ポイントクラウドの取得(c57)
+				pcm.cloud = kinect.getPointCloud(/*depth_image*//*imgproc.foreGroundMask_binimage*/imgproc.diffBin_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
+				cout << "==============================================================" << endl;
+				cout << "Original PointCloud Size => " << pcm.cloud->size() << endl;
+
+				//PCLの処理
+				if (pcm.FlagRemoveOutlier == true){
+					//外れ値除去(c59)
+					//cloud = pcm.passThroughFilter(cloud); //Kinectから取得した初期の外れ値を除去(c60)
+					//cloud = pcm.removeOutlier(cloud); //統計的な外れ値除去(c60)
+					//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
+				}
+
+				if (pcm.FlagDownsampling == true){
+					//ダウンサンプリング処理(c59)
+					pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.002, 0.0002, 0.0002); //Default=all 0.003
+					//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				}
+
+				if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){
+					//スムージング処理(c60)
+					pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.008); //0.002 < radius < ◯．小さいほど除去される
+				}
+
+				if (pcm.FlagExtractPlane == true){
+					//平面検出(c61)
+					pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.03, false); //Default=0.03(前処理なしの場合)
+				}
+
+				cout << "==============================================================" << endl;
+
+				pcm.viewer->showCloud(pcm.cloud);
 			}
-
-			if (pcm.FlagDownsampling == true){
-				//ダウンサンプリング処理(c59)
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.002, 0.0002, 0.0002); //Default=all 0.003
-				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+			else{
+				imgproc.before_image = imgproc.now_image.clone();
+				imgproc.FlagDiff = true;
 			}
-
-			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){
-				//スムージング処理(c60)
-				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.008); //0.002 < radius < ◯．小さいほど除去される
-			}
-
-			if (pcm.FlagExtractPlane == true){
-				//平面検出(c61)
-				pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.03, false); //Default=0.03(前処理なしの場合)
-			}
-
-			cout << "==============================================================" << endl;
-
-			pcm.viewer->showCloud(pcm.cloud);
-
 			//imgproc.showImage("DEPTH(TEST)", depth_image);
 
 

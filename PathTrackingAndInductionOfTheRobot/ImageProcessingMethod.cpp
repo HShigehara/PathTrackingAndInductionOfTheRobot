@@ -18,6 +18,7 @@
 ImageProcessing::ImageProcessing()
 {
 	//コンストラクタは今のところなし
+	FlagDiff = false;
 }
 
 /*!
