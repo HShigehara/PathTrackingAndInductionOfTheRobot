@@ -215,8 +215,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 		points->width = width;
 		points->height = height;
 
-		Mat_image = Mat(height, width, CV_8UC1, Scalar(0)); //距離画像の準備
-
 		//距離カメラのフレームデータを取得
 		NUI_IMAGE_FRAME depthFrame = { 0 };
 		ERROR_CHECK(kinect->NuiImageStreamGetNextFrame(depthStreamHandle, 0, &depthFrame));
@@ -237,25 +235,42 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0, &colorX, &colorY);
 
 			// 距離画像作成
-			Mat_image.at<UCHAR>(colorY, colorX) = distance / 8192.0 * 255.0;
+			//Mat_image.at<UCHAR>(colorY, colorX) = distance / 8192.0 * 255.0;
 
 			// ポイントクラウド
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
-			pcl::PointXYZRGB point;
-			point.x = real.x;
-			point.y = real.y;
-			point.z = real.z; //PCLは右手系で表現されるため-をつけている
-			
-			//テクスチャ
-			Vec4b color = image.at<Vec4b>(colorY, colorX);
-			point.r = color[2];
-			point.g = color[1];
-			point.b = color[0];
 
-			points->push_back(point);
+			//取得した2値化された前景画像の中で白のピクセルがあれば(動いていると検出されていたら)(c67))
+			if (Mat_image.at<int>(depthY,depthX) != 0){
+				pcl::PointXYZRGB point;
+
+				point.x = real.x;
+				point.y = real.y;
+				point.z = real.z;
+
+				//テクスチャ
+				Vec4b color = image.at<Vec4b>(colorY, colorX);
+
+				point.r = color[2];
+				point.g = color[1];
+				point.b = color[0];
+				points->push_back(point);
+
+			}
+			/*else{
+				point.x = 0;
+				point.y = 0;
+				point.z = 0;
+				//point.rgb = 255;
+				
+				//point.data = NAN;
+				point.r = NAN;
+				point.g = NAN;
+				point.b = NAN;
+			}*/
+
 		}
 		cloud = points;
-
 		//フレームデータを開放する(c58)
 		ERROR_CHECK(kinect->NuiImageStreamReleaseFrame(depthStreamHandle, &depthFrame));
 	}
