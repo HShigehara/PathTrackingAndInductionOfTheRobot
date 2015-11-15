@@ -147,7 +147,7 @@ int main()
 
 			//Kinect処理・画像処理
 			//kinect.drawRGBImage(image); //RGBカメラの処理
-			imgproc.now_image = kinect.drawRGBImage(image); //RGBカメラの処理
+			imgproc.currentImage = kinect.drawRGBImage(image); //RGBカメラの処理
 
 
 
@@ -168,15 +168,11 @@ int main()
 			//imgproc.showImage("RGB(TEST)", image);
 
 			if (imgproc.FlagDiff == true){ //差分画像が取得されていれば点群を取得する(c67)
-				//自作背景差分
-				absdiff(imgproc.now_image, imgproc.before_image, imgproc.diff_image);
-				cvtColor(imgproc.diff_image, imgproc.diffGray_image, CV_BGR2GRAY);
-				threshold(imgproc.diffGray_image, imgproc.diffBin_image, 0, 255, THRESH_BINARY | THRESH_OTSU);
-				imgproc.before_image = imgproc.now_image.clone();
-				imgproc.showImage("diff image", imgproc.diffBin_image);
+				imgproc.backGroundSubstraction(imgproc.beforeImage, imgproc.currentImage); //背景差分処理(c68)
+				imgproc.beforeImage = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
 
 				//ポイントクラウドの取得(c57)
-				pcm.cloud = kinect.getPointCloud(/*depth_image*//*imgproc.foreGroundMask_binimage*/imgproc.diffBin_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+				pcm.cloud = kinect.getPointCloud(/*depth_image*//*imgproc.foreGroundMask_binimage*/imgproc.diffBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 				cout << "==============================================================" << endl;
 				cout << "Original PointCloud Size => " << pcm.cloud->size() << endl;
@@ -210,7 +206,7 @@ int main()
 				pcm.viewer->showCloud(pcm.cloud);
 			}
 			else{
-				imgproc.before_image = imgproc.now_image.clone();
+				imgproc.beforeImage = imgproc.currentImage.clone();
 				imgproc.FlagDiff = true;
 			}
 			//imgproc.showImage("DEPTH(TEST)", depth_image);

@@ -322,3 +322,19 @@ Mat ImageProcessing::backGroundSubstraction(Mat& input_image)
 	bitwise_and(input_image, input_image, output, foreGroundMask);
 	return foreGroundMask;
 }
+
+/*!
+ * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理を行うメソッド(c68)
+ * @param Mat beforeImage, Mat currentImage
+ * @return Mat diffBinImage
+ */
+Mat ImageProcessing::backGroundSubstraction(Mat& before_image, Mat& current_image)
+{
+	Mat diffImage; //差分画像(c67)
+	Mat diffGrayImage; //差分画像のグレースケール画像(c67)
+	
+	absdiff(current_image, before_image, diffImage); //差分画像を取得
+	cvtColor(diffImage, diffGrayImage, CV_BGR2GRAY); //差分画像のグレースケール画像を取得
+	threshold(diffGrayImage, diffBinImage, 0, 255, THRESH_BINARY | THRESH_OTSU); //差分画像の二値画像を取得
+	return diffBinImage;
+}
