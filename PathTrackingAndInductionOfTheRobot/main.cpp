@@ -80,6 +80,9 @@ int main()
 	Mat mOpening_img; //!<オープニングを行った画像から距離を抽出する(c24).オープニング処理を行うには必要*/
 	Mat mExtractedBlack_img; //!<オープニング後の二値画像から抽出された黒い座標を格納している変数(c40)
 
+
+	Mat diff_binimage;
+
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
 
@@ -152,10 +155,10 @@ int main()
 
 
 			//MOG2による背景差分
-			//imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
+			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
 			//imgproc.showImage("foreground", imgproc.foreGroundMask_image);
 			//(c67)
-			//threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
+			threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
 			//imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
 
 			//歪み補正後の画像に対して処理を行うようにする
@@ -167,12 +170,12 @@ int main()
 			//imshow(mainWindowName, image);
 			//imgproc.showImage("RGB(TEST)", image);
 
-			if (imgproc.FlagDiff == true){ //差分画像が取得されていれば点群を取得する(c67)
-				imgproc.backGroundSubstraction(imgproc.beforeImage, imgproc.currentImage); //背景差分処理(c68)
-				imgproc.beforeImage = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
+			//if (imgproc.FlagDiff == true){ //差分画像が取得されていれば点群を取得する(c67)
+				//imgproc.diffBinImage = imgproc.backGroundSubstraction(imgproc.beforeImage, imgproc.currentImage); //背景差分処理(c68)
+				//imgproc.beforeImage = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
 
 				//ポイントクラウドの取得(c57)
-				pcm.cloud = kinect.getPointCloud(/*depth_image*//*imgproc.foreGroundMask_binimage*/imgproc.diffBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+				pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMask_binimage/*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 				cout << "==============================================================" << endl;
 				cout << "Original PointCloud Size => " << pcm.cloud->size() << endl;
@@ -204,11 +207,12 @@ int main()
 				cout << "==============================================================" << endl;
 
 				pcm.viewer->showCloud(pcm.cloud);
-			}
+			/*}
 			else{
 				imgproc.beforeImage = imgproc.currentImage.clone();
 				imgproc.FlagDiff = true;
-			}
+			}*/
+
 			//imgproc.showImage("DEPTH(TEST)", depth_image);
 
 
