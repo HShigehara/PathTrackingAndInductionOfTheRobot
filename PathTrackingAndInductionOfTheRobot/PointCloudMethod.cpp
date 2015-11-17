@@ -94,12 +94,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::passThroughFilter(pcl::
 	cout << "before PassThroughFilter => " << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルター後用のポイントクラウド
-	pcl::PassThrough<pcl::PointXYZRGB> pt;
-	pt.setInputCloud(inputPointCloud);
-	pt.setFilterFieldName("z");
-	pt.setFilterLimits(0, 30);
-	pt.filter(*filtered);
-
+	pcl::PassThrough<pcl::PointXYZRGB> pass;
+	pass.setInputCloud(inputPointCloud);
+	pass.setFilterFieldName("z");
+	pass.setFilterLimitsNegative(true); //setFilterLimits(float min, float max)で指定した範囲以外を削除(c69)
+	pass.setFilterLimits(0.3, 40.0);
+	pass.filter(*filtered);
 	
 	cout << "after PassThroughFilter => " << filtered->size() << endl;
 	return filtered;

@@ -241,7 +241,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 
 			//取得した2値化された前景画像の中で白のピクセルがあれば(動いていると検出されていたら)(c67))
-			if (Mat_image.at<int>(depthY,depthX) != 0){
+			//if (Mat_image.at<int>(depthY,depthX) != 0){
 				pcl::PointXYZRGB point;
 
 				point.x = real.x;
@@ -256,7 +256,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 				point.b = color[0];
 				points->push_back(point);
 
-			}
+			//}
 			/*else{
 				point.x = 0;
 				point.y = 0;

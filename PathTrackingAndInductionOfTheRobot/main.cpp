@@ -155,11 +155,10 @@ int main()
 
 
 			//MOG2による背景差分
-			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(image/*_copy*/);
-			//imgproc.showImage("foreground", imgproc.foreGroundMask_image);
-			//(c67)
+			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(/*image*/imgproc.currentImage);
+			imgproc.showImage("foreground", imgproc.foreGroundMask_image);
 			threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
-			//imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
+			imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
 
 			//歪み補正後の画像に対して処理を行うようにする
 			//undistort(image, undistort_img, sys.internalCameraParam, sys.distortionCoefficients, Mat()); //歪み補正後の画像で上書き(c54)
@@ -172,7 +171,7 @@ int main()
 
 			//if (imgproc.FlagDiff == true){ //差分画像が取得されていれば点群を取得する(c67)
 				//imgproc.diffBinImage = imgproc.backGroundSubstraction(imgproc.beforeImage, imgproc.currentImage); //背景差分処理(c68)
-				//imgproc.beforeImage = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
+				//imgproc.beforeImageB = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
 
 				//ポイントクラウドの取得(c57)
 				pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMask_binimage/*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
@@ -183,7 +182,7 @@ int main()
 				//PCLの処理
 				if (pcm.FlagRemoveOutlier == true){
 					//外れ値除去(c59)
-					//cloud = pcm.passThroughFilter(cloud); //Kinectから取得した初期の外れ値を除去(c60)
+					pcm.cloud = pcm.passThroughFilter(pcm.cloud); //Kinectから取得した初期の外れ値を除去(c60)
 					//cloud = pcm.removeOutlier(cloud); //統計的な外れ値除去(c60)
 					//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 				}
