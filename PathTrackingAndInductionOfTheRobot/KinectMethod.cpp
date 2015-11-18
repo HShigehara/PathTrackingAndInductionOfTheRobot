@@ -244,7 +244,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			// ポイントクラウド
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 			
-			if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //(c70)
+			//if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //(c70)
+			if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //(c70)
 			//取得した2値化された前景画像の中で白のピクセルがあれば(動いていると検出されていたら)(c67))
 				pcl::PointXYZRGB point;
 

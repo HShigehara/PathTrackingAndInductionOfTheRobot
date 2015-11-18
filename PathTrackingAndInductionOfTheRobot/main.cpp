@@ -157,8 +157,8 @@ int main()
 			//MOG2による背景差分
 			imgproc.foreGroundMask_image = imgproc.backGroundSubstraction(/*image*/imgproc.currentImage);
 			imgproc.showImage("foreground", imgproc.foreGroundMask_image);
-			threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
-			imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
+			//threshold(imgproc.foreGroundMask_image, imgproc.foreGroundMask_binimage, 0, 255, THRESH_BINARY | THRESH_OTSU); //取得した差分画像を2値化(c67)
+			//imgproc.showImage("foreground bin", imgproc.foreGroundMask_binimage);
 
 			//歪み補正後の画像に対して処理を行うようにする
 			//undistort(image, undistort_img, sys.internalCameraParam, sys.distortionCoefficients, Mat()); //歪み補正後の画像で上書き(c54)
@@ -174,7 +174,7 @@ int main()
 				//imgproc.beforeImageB = imgproc.currentImage.clone(); //現フレームを前フレームとする(c68)
 
 				//ポイントクラウドの取得(c57)
-				pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMask_binimage/*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+				pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMask_image/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 				cout << "==============================================================" << endl;
 				cout << "Original PointCloud Size => " << pcm.cloud->size() << endl;
