@@ -25,13 +25,13 @@ PointCloudMethod::PointCloudMethod()
  * @param bool flag_removeOutlier, bool flag_downsampling, bool flag_MLS, bool flag_extractPlane
  * @return なし
  */
-PointCloudMethod::PointCloudMethod(bool flag_RO, bool flag_DS, bool flag_MLS, bool flag_EP)
+PointCloudMethod::PointCloudMethod(bool flagRemoveOutlier, bool flagDownsampling, bool flagMLS, bool flagExtractPlane)
 {
 	//コンストラクタ
-	FlagRemoveOutlier = flag_RO;
-	FlagDownsampling = flag_DS;
-	FlagMLS = flag_MLS;
-	FlagExtractPlane = flag_EP;
+	FlagRemoveOutlier = flagRemoveOutlier;
+	FlagDownsampling = flagDownsampling;
+	FlagMLS = flagMLS;
+	FlagExtractPlane = flagExtractPlane;
 }
 
 /*!
@@ -65,23 +65,19 @@ void PointCloudMethod::initializePointCloudViewer(string cloudViewerName)
  */
 void PointCloudMethod::flagChecker()
 {
-	if (GetAsyncKeyState('V')){
-		//cout << "Vが入力されたので、外れ値除去処理のフラグを反転" << endl;
+	if (GetAsyncKeyState('V')){ //Vが入力されたので、外れ値除去処理のフラグを反転
 		FlagRemoveOutlier = !FlagRemoveOutlier;
 	}
-	if (GetAsyncKeyState('B')){
-		//cout << "Bが入力されたので、ダウンサンプリング処理のフラグを反転" << endl;
+	if (GetAsyncKeyState('B')){	//Bが入力されたので、ダウンサンプリング処理のフラグを反転
 		FlagDownsampling = !FlagDownsampling;
 	}
-	if (/*flag_downsampling == true && */GetAsyncKeyState('N')){
-		//cout << "Nが入力されたので、MLS処理のフラグを反転" << endl;
+	if (GetAsyncKeyState('N')){  //Nが入力されたので、MLS処理のフラグを反転
 		FlagMLS = !FlagMLS;
 	}
-	if (GetAsyncKeyState('M')){
-		//cout << "Mが入力されたので、平面検出のフラグを反転" << endl;
+	if (GetAsyncKeyState('M')){	//Mが入力されたので、平面検出のフラグを反転
 		FlagExtractPlane = !FlagExtractPlane;
 	}
-	cout << "外れ値 => " << FlagRemoveOutlier << " ダウンサンプリング => " << FlagDownsampling << " MLS => " << FlagMLS << " 平面検出 => " << FlagExtractPlane << endl;
+	cout << "外れ値(V) => " << FlagRemoveOutlier << " ダウンサンプリング(B) => " << FlagDownsampling << " MLS(N) => " << FlagMLS << " 平面検出(M) => " << FlagExtractPlane << endl;
 	return;
 }
 /*!
@@ -91,7 +87,7 @@ void PointCloudMethod::flagChecker()
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::passThroughFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
-	cout << "before PassThroughFilter => " << inputPointCloud->size() << endl;
+	cout << "before\tPassThroughFilter\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルター後用のポイントクラウド
 	pcl::PassThrough<pcl::PointXYZRGB> pass;
@@ -101,7 +97,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::passThroughFilter(pcl::
 	pass.setFilterLimits(0.3, 40.0);
 	pass.filter(*filtered);
 	
-	cout << "after PassThroughFilter => " << filtered->size() << endl;
+	cout << "after\tPassThroughFilter\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
 
@@ -112,7 +108,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::passThroughFilter(pcl::
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::removeOutlier(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
-	cout << "before Remove Outlier => " << inputPointCloud->size() << endl;
+	cout << "before\tRemove Outlier\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルタリング後用のポイントクラウドを宣言
 	pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> fl;
@@ -124,7 +120,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::removeOutlier(pcl::Poin
 	cout << "TEST" << endl;
 	fl.filter(*filtered);
 
-	cout << "after Remove Outlier => " << filtered->size() << endl;
+	cout << "after\tRemove Outlier\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
 
@@ -135,19 +131,17 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::removeOutlier(pcl::Poin
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::radiusOutlierRemoval(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
-	cout << "before RadiusOutlierRemoval => " << inputPointCloud->size() << endl;
+	cout << "before\tRadiusOutlierRemoval\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルタリング後用のポイントクラウドを宣言
 	pcl::RadiusOutlierRemoval<pcl::PointXYZRGB> ror;
 
 	ror.setInputCloud(inputPointCloud);
-	cout << "before RadiusOutlierRemoval => " << inputPointCloud->size() << endl;
-
 	ror.setRadiusSearch(0.8);
 	ror.setMinNeighborsInRadius(2);
 	ror.filter(*filtered);
 
-	cout << "after RadiusOutlierRemoval => " << filtered->size() << endl;
+	cout << "after\tRadiusOutlierRemoval\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
 
@@ -158,7 +152,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::radiusOutlierRemoval(pc
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::downSamplingUsingVoxelGridFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, float leafSizeX, float leafSizeY, float leafSizeZ)
 {
-	cout << "before Voxel Grid Filter => " << inputPointCloud->size() << endl;
+	cout << "before\tVoxel Grid Filter\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルタリング後用のポイントクラウドを宣言
 	pcl::VoxelGrid<pcl::PointXYZRGB> vg;
@@ -171,8 +165,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::downSamplingUsingVoxelG
 	vg.filter(*filtered);
 
 	//ポイントクラウドをしっかり保持できているかサイズを確認
-	//cout << "inputSIZE => " << inputPointCloud->size() << endl; //入力したポイントクラウドのサイズ
-	cout << "after Voxel Grid Filter => " << filtered->size() << endl; //出力されるポイントクラウドのサイズ
+	cout << "after\tVoxel Grid Filter\t=>\t" << filtered->size() << endl; //出力されるポイントクラウドのサイズ
 	return filtered;
 }
 
@@ -183,7 +176,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::downSamplingUsingVoxelG
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLeastSquare(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool compute_normals, bool polynomial_fit, double radius)
 {
-	cout << "before MLS => " << inputPointCloud->size() << endl;
+	cout << "before\tMLS\t\t\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>()); //フィルタリング処理後用のポイントクラウド
 	pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>()); //KdTreeの作成
@@ -199,7 +192,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
 	//mls.process(mls_points); //出力
 	mls.process(*filtered); // 出力
 
-	cout << "after MLS => " << filtered->size() << endl;
+	cout << "after\tMLS\t\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
 
@@ -210,7 +203,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
 {
-	cout << "before Extract Plane => " << inputPointCloud->size() << endl;
+	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>());
 	pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
@@ -278,11 +271,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::extractPlane(pcl::Point
 	//	j++;
 	//}
 
-	for (size_t i = 0; i < inliers->indices.size(); ++i){
+	/*for (size_t i = 0; i < inliers->indices.size(); ++i){
 		inputPointCloud->points[inliers->indices[i]].r = 255;
 		inputPointCloud->points[inliers->indices[i]].g = 0;
 		inputPointCloud->points[inliers->indices[i]].b = 0;
-		}
+		}*/
 	//filtered = inputPointCloud;
 
 	pcl::ExtractIndices<pcl::PointXYZRGB> extract;
@@ -292,6 +285,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::extractPlane(pcl::Point
 	extract.filter(*filtered);
 	
 
-	cout << "after Extract Plane => " << filtered->size() << endl;
+	cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }

@@ -18,7 +18,6 @@
 ImageProcessing::ImageProcessing()
 {
 	//コンストラクタは今のところなし
-	FlagDiff = false;
 }
 
 /*!
@@ -33,7 +32,7 @@ ImageProcessing::~ImageProcessing()
 
 /*!
 * @brief メソッドImageProcessing::showImage().cv::Matを表示
-* @param windowName,input_image
+* @param char* windowName, Mat& input_image
 * @return なし
 */
 void ImageProcessing::showImage(char* windowName, Mat& input_image)
@@ -45,10 +44,10 @@ void ImageProcessing::showImage(char* windowName, Mat& input_image)
 
 /*!
 * @brief メソッドImageProcessing::showTogetherImage().2つのcv::Matを1つのウインドウに表示
-* @param image1,image2
+* @param Mat& image1, Mat& image2
 * @return なし
 */
-void ImageProcessing::showTogetherImage(Mat& image1, Mat& image2)
+void ImageProcessing::showImageTogether(Mat& image1, Mat& image2)
 {
 	//ウインドウ名と合成画像を定義
 	char* windowName = "処理結果";
@@ -69,10 +68,10 @@ void ImageProcessing::showTogetherImage(Mat& image1, Mat& image2)
 
 /*!
 * @brief メソッドImageProcessing::showTogetherImage().3つのcv::Matを1つのウインドウに表示
-* @param image1,image2,image3
+* @param Mat& image1, Mat& image2, Mat& image3
 * @return なし
 */
-void ImageProcessing::showTogetherImage(Mat& image1, Mat& image2, Mat& image3)
+void ImageProcessing::showImageTogether(Mat& image1, Mat& image2, Mat& image3)
 {
 	//ウインドウ名と合成画像を定義
 	char* windowName = "処理結果";
@@ -95,57 +94,57 @@ void ImageProcessing::showTogetherImage(Mat& image1, Mat& image2, Mat& image3)
 
 /*!
  * @brief メソッドImageProcessing::convertRGB2HSV().RGB画像をHSVに変換する
- * @param input_image
- * @return hsvimg
+ * @param Mat& inputImage
+ * @return Mat hsvImage
  */
-Mat ImageProcessing::convertRGB2HSV(Mat& input_image)
+Mat ImageProcessing::convertRGB2HSV(Mat& inputImage)
 {
-	Mat smoothimg; //!<フィルタ処理時に利用する変数(c17)
-	Mat hsvimg; //!<HSV画像格納用変数(c17)
-	medianBlur(input_image, smoothimg, 7); //メディアンフィルタで平滑化．(初期値7)
-	cvtColor(smoothimg, hsvimg, CV_BGR2HSV); //HSVに変換
-	return (hsvimg);
+	Mat smoothImage; //!<フィルタ処理時に利用する変数(c17)
+	Mat hsvImage; //!<HSV画像格納用変数(c17)
+	medianBlur(inputImage, smoothImage, 7); //メディアンフィルタで平滑化．(初期値7)
+	cvtColor(smoothImage, hsvImage, CV_BGR2HSV); //HSVに変換
+	return (hsvImage);
 }
 
 /*!
-* @brief メソッドImageProcessing::colorExtraction().HSV画像から特定の色(青)を抽出して，白黒の画像を生成する
-* @param input_hsvimg
-* @return hsvceimg
+* @brief メソッドImageProcessing::extractColor().HSV画像から特定の色(青)を抽出して，白黒の画像を生成する
+* @param Mat& inputHsvImage
+* @return Mat hsvCEImage
 */
-Mat ImageProcessing::extractColor(Mat& input_hsvimg)
+Mat ImageProcessing::extractColor(Mat& inputHsvImage)
 {
-	Mat hsvceimg; //!<色抽出後の画像
+	Mat hsvCEImage; //!<色抽出後の画像
 
-	hsvceimg = Mat(Size(input_hsvimg.cols, input_hsvimg.rows), CV_8UC3); //HSV抽出後用の定義.imageと同じ幅と高さにし,3チャンネルにする
-	//hsv_ceimg = Scalar(0, 0, 0); //背景を黒で初期化
-	hsvceimg = Scalar(255, 255, 255); //背景を白で初期化
+	hsvCEImage = Mat(Size(inputHsvImage.cols, inputHsvImage.rows), CV_8UC3); //HSV抽出後用の定義.imageと同じ幅と高さにし,3チャンネルにする
+	//hsvCEImage = Scalar(0, 0, 0); //背景を黒で初期化
+	hsvCEImage = Scalar(255, 255, 255); //背景を白で初期化
 
 	//(c3)
-	for (int y = 1; y < input_hsvimg.rows; y++)
+	for (int y = 1; y < inputHsvImage.rows; y++)
 	{
-		for (int x = 1; x < input_hsvimg.cols; x++){
-			int px = input_hsvimg.step*y + (x * 3);
-			//if (input_hsvimg.data[px] >= 110 && input_hsvimg.data[px] <= 123 && input_hsvimg.data[px + 1] >= 80 && input_hsvimg.data[px + 2] >= 40){ //結構いい感じ(青いボール)
-			if (input_hsvimg.data[px] >= 110 && input_hsvimg.data[px] <= 120 && input_hsvimg.data[px + 1] >= 80 && input_hsvimg.data[px + 2] >= 45){ //結構いい感じ(青いボール)
+		for (int x = 1; x < inputHsvImage.cols; x++){
+			int px = inputHsvImage.step*y + (x * 3);
+			//if (inputHsvImage.data[px] >= 110 && inputHsvImage.data[px] <= 123 && inputHsvImage.data[px + 1] >= 80 && inputHsvImage.data[px + 2] >= 40){ //結構いい感じ(青いボール)
+			if (inputHsvImage.data[px] >= 110 && inputHsvImage.data[px] <= 120 && inputHsvImage.data[px + 1] >= 80 && inputHsvImage.data[px + 2] >= 45){ //結構いい感じ(青いボール)
 				//抽出された色をわかりやすい色に変更する(オレンジは[px]=0;[px+1]=150;)
-				hsvceimg.data[px] = 0;
-				hsvceimg.data[px + 1] = 0;
-				hsvceimg.data[px + 2] = 255;
+				hsvCEImage.data[px] = 0;
+				hsvCEImage.data[px + 1] = 0;
+				hsvCEImage.data[px + 2] = 255;
 			}
 		}
 	}
-	//imshow("TEST", hsvceimg);
-	return (hsvceimg);
+	//imshow("TEST", hsvCEImage);
+	return (hsvCEImage);
 }
 
 /*!
 * @brief メソッドImageProcessing::getCoordinate().座標を抽出するメソッド
-* @param input_binimg
-* @return extblackimage
+* @param Mat& inputBinImage
+* @return Mat extblackimage
 */
-Mat ImageProcessing::getCoordinate(Mat& input_binimg)
+Mat ImageProcessing::getCoordinate(Mat& inputBinImage)
 {
-	Mat extblackimg;
+	Mat extractBlackImage;
 	//(c33)
 	for (int i = 0; i < /*ALLPIXEL*/extractedNum; i++){
 		extCoordinate[i].x = 0;
@@ -155,19 +154,19 @@ Mat ImageProcessing::getCoordinate(Mat& input_binimg)
 	}
 	extractedNum = 0; //(c6)1フレームごとに抽出されたピクセルをカウントするためのextractedNumを初期化
 
-	extblackimg = Mat(Size(input_binimg.cols, input_binimg.rows), CV_8UC1); //
-	//extblackimg = Scalar(0, 0, 0); //背景を黒で初期化
-	extblackimg = Scalar(255, 255, 255); //背景を白で初期化
+	extractBlackImage = Mat(Size(inputBinImage.cols, inputBinImage.rows), CV_8UC1); //
+	//extractBlackImage = Scalar(0, 0, 0); //背景を黒で初期化
+	extractBlackImage = Scalar(255, 255, 255); //背景を白で初期化
 
 	//(c3)
 	//取得する座標データを間引く．for(◯,◯<△,◯++)をfor(◯,◯<△,◯+=増分にする)(c48)
-	for (int y = 1; y < input_binimg.rows; y+=1)
+	for (int y = 1; y < inputBinImage.rows; y+=1)
 	{
-		for (int x = 1; x < input_binimg.cols; x+=1){
-			int px = input_binimg.step * y + x;
-			if (input_binimg.data[px] ==  0){ //結構いい感じ(青いボール)
+		for (int x = 1; x < inputBinImage.cols; x+=1){
+			int px = inputBinImage.step * y + x;
+			if (inputBinImage.data[px] ==  0){ //結構いい感じ(青いボール)
 				//抽出された色をわかりやすい色に変更する(オレンジは[px]=0;[px+1]=150;)
-				extblackimg.data[px] = 0;
+				extractBlackImage.data[px] = 0;
 
 				//(c6)．抽出した画像に対して座標を取得する場合には利用する．(c24)ではオープニング処理の後に座標を取得したいのでコメントアウト
 				extractedPointOneDim[extractedNum] = (trackWindow.x + x - 1) + WIDTH * (trackWindow.y + y - 1) - WIDTH; //抽出された(x,y)を1次元の値に変換
@@ -178,63 +177,60 @@ Mat ImageProcessing::getCoordinate(Mat& input_binimg)
 			}
 		}
 	}
-	return (extblackimg);
+	return (extractBlackImage);
 }
 
 /*!
-* @brief メソッドImageProcessing::grayscaleImage().抽出した画像をグレースケールに変換する
-* @param cv::Mat& hsv_ceimg
-* @return grayimg
+* @brief メソッドImageProcessing::getGrayscaleImage().抽出した画像をグレースケールに変換する
+* @param Mat& cv::Mat& hsv_ceimg
+* @return Mat grayImage
 */
-Mat ImageProcessing::grayscaleImage(Mat& hsv_ceimg)
+Mat ImageProcessing::getGrayscaleImage(Mat& hsvCEImage)
 {
-	Mat grayimg;
-	cvtColor(hsv_ceimg, grayimg, CV_RGB2GRAY); //抽出した画像をグレースケールにする
-	//showImage("GrayImage", grayimg); //確認用(c40)
-	return (grayimg);
+	Mat grayImage;
+	cvtColor(hsvCEImage, grayImage, CV_RGB2GRAY); //抽出した画像をグレースケールにする
+	return (grayImage);
 }
 
 /*!
 * @brief メソッドImageProcessing::binarizationImage().特定の色を抽出した画像に対して二値化処理を行う
-* @param gray_img
-* @return binimg
+* @param Mat& grayImage
+* @return Mat binImage
 */
-Mat ImageProcessing::binarizationImage(Mat& gray_img)
+Mat ImageProcessing::getBinImage(Mat& grayImage)
 {
-	Mat binimg;
-	cv::threshold(gray_img, binimg, 0, 255, THRESH_BINARY | THRESH_OTSU); //グレースケールの画像を二値化する
-	//showImage("BinarizationImage", binimg); //確認用(c40)
-	return (binimg);
+	Mat binImage;
+	cv::threshold(grayImage, binImage, 0, 255, THRESH_BINARY | THRESH_OTSU); //グレースケールの画像を二値化する
+	return (binImage);
 }
 
 /*!
 * @brief メソッドImageProcessing::OpeningImage().特定の色を抽出して二値化した画像に対してオープニング処理を行う
-* @param bin_img
-* @return openingimg
+* @param Mat& binImage
+* @return Mat openingimg
 */
-Mat ImageProcessing::OpeningImage(Mat& bin_img)
+Mat ImageProcessing::OpeningImage(Mat& binImage)
 {
-	Mat openingimg;
-	morphologyEx(bin_img, openingimg, MORPH_OPEN, Mat(), Point(-1, -1), 2); //オープニング(縮小→膨張)処理
-	//showImage("MorphologyEX", openingimg); //確認用(c40)
-	return (openingimg);
+	Mat openingImage;
+	morphologyEx(binImage, openingImage, MORPH_OPEN, Mat(), Point(-1, -1), 2); //オープニング(縮小→膨張)処理
+	return (openingImage);
 }
 
 /*!
 * @brief メソッドImageProcessing::trackObject().対象を追跡するメソッド(c26)
-* @param Mat& hsv_img
+* @param Mat& hsvImage
 * @return なし
 */
-void ImageProcessing::trackingObject(Mat& hsv_img)
+void ImageProcessing::trackingObject(Mat& hsvImage)
 {
 	if (trackObject)
 	{
-		inRange(hsv_img, Scalar(0, smin, MIN(_vmin, _vmax)), Scalar(180, 256, MAX(_vmin, _vmax)), mask);
+		inRange(hsvImage, Scalar(0, smin, MIN(_vmin, _vmax)), Scalar(180, 256, MAX(_vmin, _vmax)), mask);
 
 		//Hueの抽出
 		int ch[] = { 0, 0 };
-		hue.create(hsv_img.size(), hsv_img.depth());
-		mixChannels(&hsv_img, 1, &hue, 1, ch, 1);
+		hue.create(hsvImage.size(), hsvImage.depth());
+		mixChannels(&hsvImage, 1, &hue, 1, ch, 1);
 
 		//矩形領域の選択
 		if (trackObject < 0)
@@ -293,48 +289,60 @@ void ImageProcessing::trackingObject(Mat& hsv_img)
 
 /*!
 * @brief メソッドImageProcessing::drawCenterPoint().中心座標を描画するメソッド(c26)
-* @param なし
+* @param Mat& inputOriginalImage, Point3ius averageCoordinate
 * @return なし
 */
-void ImageProcessing::drawCenterPoint(Mat& image, Point3ius averageCoordinate/*, const string* mainWindowName*/)
+void ImageProcessing::drawCenterPoint(Mat& inputOriginalImage, Point3ius averageCoordinate/*, const string* mainWindowName*/)
 {
 	//Mat mAveragePoint; //平均座標を描画する変数(c45)
 
 	//mAveragePoint = image.clone();
 
 	//circle(mAveragePoint, Point2i(averageCoordinate.x, averageCoordinate.y), 1, Scalar(0, 0, 255), 2, CV_AA);
-	circle(image, Point2i(averageCoordinate.x, averageCoordinate.y), 1, Scalar(0, 0, 255), 2, CV_AA);
-	//imshow(mainWindowName, mAveragePoint);
-	//imshow(mainWindowName, image);
+	circle(inputOriginalImage, Point2i(averageCoordinate.x, averageCoordinate.y), 1, Scalar(0, 0, 255), 2, CV_AA);
 
 	return;
 }
 
 /*!
- * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理により前景画像を取得する(c66)
- * @param Mat image
- * @return Mat foreGroundMask
- */
-Mat ImageProcessing::backGroundSubstraction(Mat& input_image)
+* @brief ImageProcessing::loadInternalCameraParam().カメラキャリブレーションによって得られたカメラパラメータを適用するメソッド(c54)
+* @param char* cameraParamFile
+* @return なし
+*/
+void ImageProcessing::loadInternalCameraParameter(char* cameraParamFile)
 {
-	Mat foreGroundMask, output;
-	backGroundSubstractor(input_image, foreGroundMask);
-	bitwise_and(input_image, input_image, output, foreGroundMask);
-	return foreGroundMask;
+	//xmlファイルの読み込み
+	FileStorage fs(cameraParamFile, FileStorage::READ); //読み込みモード
+	//内部パラメータの読み込み
+	fs["camera_matrix"] >> internalCameraParam; //内部パラメータを読み込む
+	fs["distortion_coefficients"] >> distortionCoefficients; //歪み係数を読み込む
+
+	return;
 }
 
 /*!
- * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理を行うメソッド(c68)
- * @param Mat beforeImage, Mat currentImage
- * @return Mat diffBinImage
+ * @brief メソッドImageProcessing::getUndistortionImage()．キャリブレーションデータを用いてKinectから取得した画像を補正する
+ * @param Mat& inputOriginalImage
+ * @return Mat undistortionImage
  */
-Mat ImageProcessing::backGroundSubstraction(Mat& before_image, Mat& current_image)
+Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 {
-	Mat diffImage; //差分画像(c67)
-	Mat diffGrayImage; //差分画像のグレースケール画像(c67)
+	Mat undistotionImage;
+
+	undistort(inputOriginalImage, undistotionImage, internalCameraParam, distortionCoefficients, Mat());
 	
-	absdiff(current_image, before_image, diffImage); //差分画像を取得
-	cvtColor(diffImage, diffGrayImage, CV_BGR2GRAY); //差分画像のグレースケール画像を取得
-	threshold(diffGrayImage, diffBinImage, 0, 255, THRESH_BINARY | THRESH_OTSU); //差分画像の二値画像を取得
-	return diffBinImage;
+	return undistotionImage;
+}
+
+/*!
+ * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理により前景画像を取得する(c66)
+ * @param Mat& image
+ * @return Mat foreGroundMaskImage
+ */
+Mat ImageProcessing::backGroundSubstraction(Mat& inputImage)
+{
+	Mat foreGroundMaskImage, output;
+	backGroundSubstractor(inputImage, foreGroundMaskImage);
+	bitwise_and(inputImage, inputImage, output, foreGroundMaskImage);
+	return foreGroundMaskImage;
 }

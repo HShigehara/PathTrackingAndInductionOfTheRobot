@@ -22,7 +22,7 @@ private:
 
 public:
 	PointCloudMethod(); //コンストラクタ
-	PointCloudMethod(bool flag_RO, bool flag_DS, bool flag_MLS, bool flag_EP); //コンストラクタ(c64)
+	PointCloudMethod(bool flagRemoveOutlier, bool flagSownsampling, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
 	~PointCloudMethod(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudViewerName);

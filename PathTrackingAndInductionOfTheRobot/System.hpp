@@ -19,20 +19,20 @@ class System
 private:
 	char fullPathName[NOC]; //!<フルパスを取得(c38)
 	
+	//タイマー系の変数(c65)
 	bool FlagStartTimer; //!<スタート用のタイマーが実行されたかのフラグ.初期値はfalse(c65)
 	bool FlagEndTimer; //!<終了用のタイマーが実行されたかのフラグ.諸お基地はfalse(c65) 
-
-
-	//タイマー系の変数(c65)
 	int64 start; //スタート時のタイマー変数
 	double f;
 	int64 end; //終了時のタイマー変数
 	double time; //!<処理時間の結果
 	double fps; //!<フレームレート
+	//double sumTime; //!<処理の合計時間
 
 public:
 	System();
 	~System();
+
 	void startMessage(); //!<プログラム開始時のメッセージを表示(c26)
 	void endMessage(int cNum); //!<プログラム終了時のメッセージを表示(c38)
 	void endMessage(); //!<プログラム終了時のメッセージを表示(c63)
@@ -44,14 +44,14 @@ public:
 
 	void makeDirectory(); //ディレクトリの作成
 	void removeDirectory(/*int cNum*/); //!<取得したデータが不要だった場合ディレクトリを削除する
+	
 	int alternatives(); //!<数字の入力をチェックする
+	
 	void openDirectory(); //!<ディレクトリを開く(c38)
+	
 	void outputAllData(const string* outputDataName, outputData* outputData, int countDataNum); //!<データをファイルに書き出すメソッド(c41)
-	void loadInternalCameraParameter(char* cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
+	
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
-
-	Mat internalCameraParam; //!<カメラキャリブレーションによって得られた内部パラメータ行列(c54)
-	Mat distortionCoefficients; //!<カメラキャリブレーションによって得られた歪み係数行列(c54)
 };
 
 #endif /* __SYSTEM_HPP__ */

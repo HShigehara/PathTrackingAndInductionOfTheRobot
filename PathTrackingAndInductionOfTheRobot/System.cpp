@@ -278,25 +278,9 @@ void System::outputAllData(const string* outputDataName, outputData* outputData,
 }
 
 /*!
-* @brief System::loadInternalCameraParam().カメラキャリブレーションによって得られたカメラパラメータを適用するメソッド(c54)
-* @param cameraParamFile
-* @return なし
-*/
-void System::loadInternalCameraParameter(char* cameraParamFile)
-{
-	//xmlファイルの読み込み
-	FileStorage fs(cameraParamFile, FileStorage::READ); //読み込みモード
-	//内部パラメータの読み込み
-	fs["camera_matrix"] >> internalCameraParam; //内部パラメータを読み込む
-	fs["distortion_coefficients"] >> distortionCoefficients; //歪み係数を読み込む
-
-	return;
-}
-
-/*!
 * @brief System::outputVideo().動作確認用に動画を出力するメソッド
 * @param cameraParamFile
-* @return なし
+* @return VideoWriter writer
 */
 VideoWriter System::outputVideo(const string* outputVideoName)
 {

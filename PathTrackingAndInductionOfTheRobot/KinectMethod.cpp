@@ -179,10 +179,10 @@ Point3ius Kinect::getAverageCoordinate(Mat& image) //(c31)
 
 /*!
 * @brief メソッドKinect::coordinateTransform.座標の変換を行うメソッド(c10)
-* @param なし
-* @return なし
+* @param Point3ius averageCoordinate
+* @return Vector4 rp
 */
-/*void*/Vector4 Kinect::getLocalPosition(Point3ius averageCoordinate)
+Vector4 Kinect::getLocalPosition(Point3ius averageCoordinate)
 {
 	Vector4 rp; //realPoint格納用の変数(c38)
 	Vector4 worldCoordinate; //ワールド座標系(c38)
@@ -196,9 +196,9 @@ Point3ius Kinect::getAverageCoordinate(Mat& image) //(c31)
 	worldCoordinate.z = 0.0;
 
 	worldCoordinate = NuiTransformDepthImageToSkeleton((long)averageCoordinate.x, (long)averageCoordinate.y, (USHORT)averageCoordinate.z, NUI_IMAGE_RESOLUTION_640x480);
-	rp.x = (float)(worldCoordinate.x *1000.0f);
-	rp.y = (float)(worldCoordinate.y *1000.0f);
-	rp.z = (float)(worldCoordinate.z *1000.0f);
+	rp.x = (float)(worldCoordinate.x * 1000.0f);
+	rp.y = (float)(worldCoordinate.y * 1000.0f);
+	rp.z = (float)(worldCoordinate.z * 1000.0f);
 
 	return rp;
 }
@@ -211,7 +211,6 @@ Point3ius Kinect::getAverageCoordinate(Mat& image) //(c31)
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 {
 	try{
-		//imshow("test", Mat_image);
 		pcl::PointCloud<pcl::PointXYZRGB>::Ptr points(new pcl::PointCloud<pcl::PointXYZRGB>()); //ポイントクラウド保存用(c57)
 		points->width = width;
 		points->height = height;
@@ -226,13 +225,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 
 		USHORT* depth = (USHORT*)depthData.pBits;
 		for (int i = 0; i < (depthData.size / sizeof(USHORT)); ++i){
-			
+
 			USHORT distance = ::NuiDepthPixelToDepth(depth[i]);
 			LONG depthX = i % width;
 			LONG depthY = i / width;
 			LONG colorX = depthX;
 			LONG colorY = depthY;
-
 
 			// 距離カメラの座標を、RGBカメラの座標に変換する
 			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0, &colorX, &colorY);
@@ -240,42 +238,24 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			// 距離画像作成
 			//Mat_image.at<UCHAR>(colorY, colorX) = distance / 8192.0 * 255.0;
 
-
-			// ポイントクラウド
+			//点群取得処理．渡された差分画像に応じて条件を入れ替える
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
-			
-			//if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //(c70)
-			if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //(c70)
-			//取得した2値化された前景画像の中で白のピクセルがあれば(動いていると検出されていたら)(c67))
-				pcl::PointXYZRGB point;
+			//if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //二値画像に対して点群を抽出する際はこっち(白色の点群を抽出)(c70)
+			if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //グレースケール画像に対して点群を抽出する際はこっち(黒以外の点群を抽出)(c70)
+				pcl::PointXYZRGB point; //点群用の変数を確保
+				point.x = real.x; //ポイントクラウドのx座標を格納
+				point.y = real.y; //ポイントクラウドのy座標を格納
+				point.z = real.z; //ポイントクラウドのz座標を格納
 
-				point.x = real.x;
-				point.y = real.y;
-				point.z = real.z;
-
-				//テクスチャ
-				Vec4b color = image.at<Vec4b>(colorY, colorX);
-
-				point.r = color[2];
-				point.g = color[1];
-				point.b = color[0];
-				points->push_back(point);
-
+				//テクスチャ(その座標の色を格納していく)
+				Vec4b color = image.at<Vec4b>(colorY, colorX); //色格納用の変数
+				point.r = color[2]; //赤要素
+				point.g = color[1]; //緑要素
+				point.b = color[0]; //青要素
+				points->push_back(point); //点群を出力
 			}
-			/*else{
-				point.x = 0;
-				point.y = 0;
-				point.z = 0;
-				//point.rgb = 255;
-				
-				//point.data = NAN;
-				point.r = NAN;
-				point.g = NAN;
-				point.b = NAN;
-			}*/
-
 		}
-		cloud = points;
+		cloud = points; //点群をコピー
 		//フレームデータを開放する(c58)
 		ERROR_CHECK(kinect->NuiImageStreamReleaseFrame(depthStreamHandle, &depthFrame));
 	}
