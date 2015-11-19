@@ -211,7 +211,6 @@ Point3ius Kinect::getAverageCoordinate(Mat& image) //(c31)
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 {
 	try{
-		//imshow("test", Mat_image);
 		pcl::PointCloud<pcl::PointXYZRGB>::Ptr points(new pcl::PointCloud<pcl::PointXYZRGB>()); //ポイントクラウド保存用(c57)
 		points->width = width;
 		points->height = height;
@@ -226,13 +225,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 
 		USHORT* depth = (USHORT*)depthData.pBits;
 		for (int i = 0; i < (depthData.size / sizeof(USHORT)); ++i){
-			
 			USHORT distance = ::NuiDepthPixelToDepth(depth[i]);
 			LONG depthX = i % width;
 			LONG depthY = i / width;
 			LONG colorX = depthX;
 			LONG colorY = depthY;
-
 
 			// 距離カメラの座標を、RGBカメラの座標に変換する
 			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0, &colorX, &colorY);
@@ -240,12 +237,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			// 距離画像作成
 			//Mat_image.at<UCHAR>(colorY, colorX) = distance / 8192.0 * 255.0;
 
-
 			// ポイントクラウド
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 			
-			//if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //(c70)
-			if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //(c70)
+			if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //(c70)
+			//if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //(c70)
 			//取得した2値化された前景画像の中で白のピクセルがあれば(動いていると検出されていたら)(c67))
 				pcl::PointXYZRGB point;
 
