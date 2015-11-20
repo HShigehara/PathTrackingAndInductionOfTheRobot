@@ -93,6 +93,8 @@ int main()
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
 		PointCloudMethod pcm(false, false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
+		//pcl::visualization::PCLVisualizer visualizer("3D Viewer");
+		//visualizer.setBackgroundColor(0, 0, 0);
 
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
@@ -188,6 +190,14 @@ int main()
 
 			cout << "======================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud);
+
+
+			//visualizer.addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "3dCloud");
+			//visualizer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "3dCloud");
+			//visualizer.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pcm.cloud, normals, 10, 0.05, "normals");
+			//visualizer.addCoordinateSystem(1.0);
+			//visualizer.initCameraParameters();
+			//visualizer.spinOnce();
 
 			//メインの処理(c26)(c30)
 			//if (mouseFlag == true){ //mouseFlagがtrueであれば=マウスのボタンが上に上がったら

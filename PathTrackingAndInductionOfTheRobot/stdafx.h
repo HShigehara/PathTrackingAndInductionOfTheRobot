@@ -42,6 +42,7 @@ using namespace cv; //!<名前空間
 #include <pcl\point_cloud.h>
 #include <pcl\io\io.h>
 #include <pcl\io\pcd_io.h> //.pcd出力用
+#include <pcl\common\common_headers.h>
 #include <pcl\visualization\cloud_viewer.h>
 #include <pcl\visualization\pcl_visualizer.h>
 #include <pcl\filters\passthrough.h> //Kinectから取得した初期の外れ値を削除
@@ -63,6 +64,10 @@ using namespace cv; //!<名前空間
 #include <boost\thread\thread.hpp>
 
 #include <pcl\PCLPointField.h>
+
+//#include "PCLAdapter.h"
+
+
 
 /* 定義 */
 //マクロ
