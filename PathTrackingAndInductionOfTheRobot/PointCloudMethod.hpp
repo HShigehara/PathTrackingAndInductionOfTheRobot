@@ -22,7 +22,7 @@ private:
 
 public:
 	PointCloudMethod(); //コンストラクタ
-	PointCloudMethod(bool flagRemoveOutlier, bool flagSownsampling, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
+	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
 	~PointCloudMethod(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudViewerName);
@@ -48,8 +48,9 @@ public:
 	pcl::visualization::CloudViewer *viewer;
 
 	//各点群処理を行うか否かのフラグ変数(c64)
-	bool FlagRemoveOutlier;
+	bool FlagPassThrough;
 	bool FlagDownsampling;
+	bool FlagStatisticalOutlierRemoval;
 	bool FlagMLS;
 	bool FlagExtractPlane;
 };

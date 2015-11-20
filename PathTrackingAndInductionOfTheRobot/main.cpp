@@ -91,7 +91,7 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudMethod pcm(false, false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
 
 		//動画保存用
@@ -128,6 +128,8 @@ int main()
 		//動画を保存(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
+		system("cls"); //コンソール内のスタート表示をリセット(c64)
+
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
@@ -154,19 +156,22 @@ int main()
 			//ポイントクラウドの取得(c57)
 			pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
-			cout << "==============================================================" << endl;
+			cout << "======================================================================" <<  endl;
 			cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
 
 			//PCLの処理
-			if (pcm.FlagRemoveOutlier == true){  //外れ値除去(c59)
+			if (pcm.FlagPassThrough == true){  //外れ値除去(c59)
 				pcm.cloud = pcm.passThroughFilter(pcm.cloud); //Kinectから取得した初期の外れ値を除去(c60)
-				//cloud = pcm.removeOutlier(cloud); //統計的な外れ値除去(c60)
 				//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
 				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.002, 0.0002, 0.0002); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+			}
+
+			if (pcm.FlagStatisticalOutlierRemoval == true){
+				pcm.cloud = pcm.removeOutlier(pcm.cloud); //統計的な外れ値除去(c60)
 			}
 
 			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
@@ -181,7 +186,7 @@ int main()
 				pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.01, false); //Default=0.03(前処理なしの場合)
 			}
 
-			cout << "==============================================================" << endl;
+			cout << "======================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud);
 
 			//メインの処理(c26)(c30)
@@ -238,7 +243,7 @@ int main()
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
-			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps\n" << endl;
+			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
