@@ -194,7 +194,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出(c61)
-				pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.03, false); //Default=0.03(前処理なしの場合)
+				/*pcm.cloud = */pcm.extractPlane(pcm.cloud, true, 0.02, false); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "======================================================================" << endl;

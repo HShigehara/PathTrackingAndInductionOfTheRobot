@@ -41,7 +41,7 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr smoothingUsingMovingLeastSquare(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool compute_normals, bool polynomial_fit, double radius);
 
 	//平面検出
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative);
+	/*pcl::PointCloud<pcl::PointXYZRGB>::Ptr*/void extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative);
 
 	//クラスタリング
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr clusteringPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud); //!<平面検出した点群のクラスタリング(c73)
