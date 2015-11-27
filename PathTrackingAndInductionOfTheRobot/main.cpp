@@ -93,8 +93,15 @@ int main()
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
 		PointCloudMethod pcm(false, false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
-		//pcl::visualization::PCLVisualizer visualizer("3D Viewer");
-		//visualizer.setBackgroundColor(0, 0, 0);
+		////pcl::visualization::PCLVisualizer visualizer("3D Viewer");
+		//boost::shared_ptr<pcl::visualization::PCLVisualizer> visualizer(new pcl::visualization::PCLVisualizer("3D Viewer"));
+		//visualizer->setBackgroundColor(0, 0, 0); //背景色を設定
+		////pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(pcm.cloud);
+		////visualizer->addPointCloud<pcl::PointXYZRGB>(pcm.cloud,rgb, "Point Cloud"); //点群とその名前を登録
+		//visualizer->addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "Point Cloud"); //点群とその名前を登録
+		//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "Point Cloud");
+		//visualizer->addCoordinateSystem(1.0);
+		//visualizer->initCameraParameters();
 
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
@@ -130,7 +137,7 @@ int main()
 		//動画を保存(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
-		system("cls"); //コンソール内のスタート表示をリセット(c64)
+		//system("cls"); //コンソール内のスタート表示をリセット(c64)
 
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
@@ -144,6 +151,7 @@ int main()
 
 			//Kinect処理・画像処理
 			imgproc.currentImage = kinect.drawRGBImage(image); //RGBカメラの処理
+			imgproc.showImage("Original", imgproc.currentImage); //Kinectから取得した画像を表示
 
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
 			//imgproc.loadInternalCameraParameter(cameraParameterName);
@@ -151,9 +159,9 @@ int main()
 
 			//MOG2による背景差分
 			imgproc.foreGroundMaskImage = imgproc.backGroundSubstraction(imgproc.currentImage);
-			imgproc.showImage("foreground", imgproc.foreGroundMaskImage);
-			//imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
-			//imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
+			imgproc.showImage("Foreground", imgproc.foreGroundMaskImage);
+			imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
+			imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
 			
 			//ポイントクラウドの取得(c57)
 			pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
@@ -191,6 +199,9 @@ int main()
 			cout << "======================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud);
 
+			//visualizer->updatePointCloud(pcm.cloud, "Point Cloud");
+			//visualizer->spinOnce(1);
+			//boost::this_thread::sleep(boost::posix_time::microseconds(1));
 
 			//visualizer.addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "3dCloud");
 			//visualizer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "3dCloud");
@@ -271,7 +282,7 @@ int main()
 			//goto RETRY;
 			//}
 
-			system("cls"); //コンソール内の表示をリセット(c64)
+			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 	}
