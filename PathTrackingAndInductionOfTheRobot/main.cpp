@@ -160,11 +160,12 @@ int main()
 			//MOG2による背景差分
 			imgproc.foreGroundMaskImage = imgproc.backGroundSubstraction(imgproc.currentImage);
 			imgproc.showImage("Foreground", imgproc.foreGroundMaskImage);
-			imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
-			imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
+			//imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
+			//imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
 			
 			//ポイントクラウドの取得(c57)
 			pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 			cout << "======================================================================" <<  endl;
 			cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
@@ -176,7 +177,7 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.002, 0.0002, 0.0002); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 			}
 
@@ -193,7 +194,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出(c61)
-				pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.01, false); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.extractPlane(pcm.cloud, true, 0.03, false); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "======================================================================" << endl;

@@ -200,7 +200,8 @@ Mat ImageProcessing::getGrayscaleImage(Mat& hsvCEImage)
 Mat ImageProcessing::getBinImage(Mat& grayImage)
 {
 	Mat binImage;
-	cv::threshold(grayImage, binImage, 0, 255, THRESH_BINARY | THRESH_OTSU); //グレースケールの画像を二値化する
+	//cv::threshold(grayImage, binImage, 0, 255, THRESH_BINARY | THRESH_OTSU); //グレースケールの画像を二値化する
+	cv::threshold(grayImage, binImage, 30, 255, THRESH_BINARY); //グレースケールの画像を二値化する
 	return (binImage);
 }
 
