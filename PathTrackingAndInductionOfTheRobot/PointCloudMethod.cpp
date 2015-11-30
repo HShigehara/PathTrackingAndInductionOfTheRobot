@@ -204,7 +204,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
  * @param pcl::PointCloud<pcl::PointXYZ>::Ptr inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr outputPointCloud
  */
-/*pcl::PointCloud<pcl::PointXYZRGB>::Ptr*/void PointCloudMethod::extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
@@ -272,12 +272,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
 	int j = 0;
 	//Origin
 	//float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } };
-	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
 	//
 
 	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it)
 	{
-		pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
+		//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
 		for (std::vector<int>::const_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit){
 			//Origin
 			//cloud_cluster->points[*pit].r = colors[j % 6][0];
@@ -298,7 +298,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
 	}
 	//Origin
 	//tester.showCloud(cloud_cluster);
-	//*filtered = *cloud_cluster;
+	pcl::copyPointCloud(*cloud_cluster, *filtered);
 
 	/*
 	//seg.setInputCloud(inputPointCloud->makeShared());
@@ -312,9 +312,5 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
 	//filtered = inputPointCloud;
 	*/
 	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
-	return /*filtered*/;
+	return filtered;
 }
-
-//pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::clusteringPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
-//{
-//}
