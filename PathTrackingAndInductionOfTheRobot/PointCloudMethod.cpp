@@ -233,7 +233,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 
 	seg.setDistanceThreshold(threshold);
 
-	//
 	int i = 0, nr_points = (int)inputPointCloud->points.size();
 	while (inputPointCloud->points.size() > 0.3*nr_points)
 	{
@@ -254,7 +253,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 
 		extract.setNegative(true);
 		extract.filter(*filtered);
-		*inputPointCloud = *filtered;
+		//*inputPointCloud = *filtered;
+		pcl::copyPointCloud(*filtered, *inputPointCloud);
 	}
 
 	pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>);
@@ -270,20 +270,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 	ec.extract(cluster_indices);
 
 	int j = 0;
-	//Origin
-	//float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } };
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
-	//
 
 	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it)
 	{
-		//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
 		for (std::vector<int>::const_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit){
-			//Origin
-			//cloud_cluster->points[*pit].r = colors[j % 6][0];
-			//cloud_cluster->points[*pit].g = colors[j % 6][1];
-			//cloud_cluster->points[*pit].b = colors[j % 6][2];
-			//
 			cloud_cluster->points.push_back(inputPointCloud->points[*pit]);
 		}
 
@@ -296,21 +287,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 		writer.write<pcl::PointXYZRGB>(ss.str(), *cloud_cluster, false);
 		j++;
 	}
-	//Origin
-	//tester.showCloud(cloud_cluster);
 	pcl::copyPointCloud(*cloud_cluster, *filtered);
-
-	/*
-	//seg.setInputCloud(inputPointCloud->makeShared());
-	//seg.segment(*inliers, *coefficients);
-
-	//for (size_t i = 0; i < inliers->indices.size(); ++i){
-	//	inputPointCloud->points[inliers->indices[i]].r = 255;
-	//	inputPointCloud->points[inliers->indices[i]].g = 0;
-	//	inputPointCloud->points[inliers->indices[i]].b = 0;
-	//}
-	//filtered = inputPointCloud;
-	*/
-	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
+	cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
