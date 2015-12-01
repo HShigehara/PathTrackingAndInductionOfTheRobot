@@ -204,7 +204,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
  * @param pcl::PointCloud<pcl::PointXYZ>::Ptr inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr outputPointCloud
  */
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
@@ -249,7 +249,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 
 		extract.setNegative(true);
 		extract.filter(*filtered);
-		//*inputPointCloud = *filtered;
 		pcl::copyPointCloud(*filtered, *inputPointCloud);
 	}
 
@@ -274,12 +273,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 			inputPointCloud->points[*pit].r = colors[j % 6][0];
 			inputPointCloud->points[*pit].g = colors[j % 6][1];
 			inputPointCloud->points[*pit].b = colors[j % 6][2];
-
-
-
 			cloud_cluster->points.push_back(inputPointCloud->points[*pit]);
 		}
-
 		cloud_cluster->width = cloud_cluster->points.size();
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
