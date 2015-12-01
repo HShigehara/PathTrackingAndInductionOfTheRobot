@@ -271,10 +271,16 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 
 	int j = 0;
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
-
+	float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } };
 	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it)
 	{
 		for (std::vector<int>::const_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit){
+			inputPointCloud->points[*pit].r = colors[j % 6][0];
+			inputPointCloud->points[*pit].g = colors[j % 6][1];
+			inputPointCloud->points[*pit].b = colors[j % 6][2];
+
+
+
 			cloud_cluster->points.push_back(inputPointCloud->points[*pit]);
 		}
 
