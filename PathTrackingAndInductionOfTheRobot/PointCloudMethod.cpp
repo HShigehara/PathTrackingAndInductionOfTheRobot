@@ -208,10 +208,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
-	//
-	//pcl::PCDWriter writer;
-	//
-
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_plane(new pcl::PointCloud<pcl::PointXYZRGB>());
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(new pcl::PointCloud<pcl::PointXYZRGB>());
 	pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
@@ -287,10 +283,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr/*void*/ PointCloudMethod::extractPlane(pc
 		cloud_cluster->width = cloud_cluster->points.size();
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
-		//cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size() << " data points." << endl;
-		//std::stringstream ss;
-		//ss << "cloud_cluster_" << j << ".pcd";
-		//writer.write<pcl::PointXYZRGB>(ss.str(), *cloud_cluster, false);
 		j++;
 	}
 	pcl::copyPointCloud(*cloud_cluster, *filtered);
