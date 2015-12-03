@@ -131,6 +131,18 @@ int main()
 
 		//system("cls"); //コンソール内のスタート表示をリセット(c64)
 
+		//Mat mask(cv::Size(640, 480), CV_8UC1, CV_RGB(0, 0, 0));
+		//Point2i centerPoint;
+		//centerPoint.x = 320;
+		//centerPoint.y = 240;
+		//int roiWidth = 30;
+		//int roiHeight = 30;
+		//Rect roi(centerPoint.x - roiWidth, centerPoint.y - roiHeight, roiWidth * 2, roiHeight * 2);
+		//Mat roiImage;
+		//Mat rois = mask(roi);
+		
+
+
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
@@ -143,6 +155,17 @@ int main()
 
 			//Kinect処理・画像処理
 			imgproc.currentImage = kinect.drawRGBImage(image); //RGBカメラの処理
+
+			//
+			//roiImage = imgproc.currentImage(roi);
+			//imgproc.showImage("Roi Image", roiImage);
+			//Mat comb(systhesis,Rect(centerPoint.x - roiWidth, centerPoint.y - roiHeight, roiWidth * 2, roiHeight * 2));
+			//roi.copyTo(backImage,
+			//imgproc.currentImage.copyTo(systhesis);
+			//imgproc.showImage("Roi Back", backImage);
+			//
+
+
 			flip(imgproc.currentImage, flip_image, 1);
 			//imgproc.showImage("Original", imgproc.currentImage); //Kinectから取得した画像を表示
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
@@ -159,6 +182,7 @@ int main()
 			
 			//ポイントクラウドの取得(c57)
 			pcm.cloud = kinect.getPointCloud(imgproc.currentImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			//pcm.cloud = kinect.getPointCloud(roi); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
 			//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)

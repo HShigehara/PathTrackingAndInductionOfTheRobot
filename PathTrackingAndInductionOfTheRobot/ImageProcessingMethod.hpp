@@ -67,6 +67,8 @@ public:
 	Mat foreGroundMaskImage; //!<前景画像(c66)
 	Mat foreGroundMaskBinImage; //!<二値化した前景画像
 	Mat currentImage; //!<背景画像(c67)
+	Mat beforeImage; //!<背景画像(c74)
+	bool FlagGetBGImage; //!<背景を取得したかどうかのフラグ(c74)
 	
 
 };
