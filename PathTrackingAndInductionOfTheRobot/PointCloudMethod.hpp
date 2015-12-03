@@ -42,8 +42,6 @@ public:
 	//平面検出
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative);
 
-	//クラスタリング
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr clusteringPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud); //!<平面検出した点群のクラスタリング(c73)
 	//クラウドビューワー用
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud;
 	pcl::visualization::CloudViewer *viewer;
