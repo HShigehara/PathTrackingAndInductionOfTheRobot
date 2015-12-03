@@ -82,6 +82,8 @@ int main()
 
 	//Mat diff_binimage;
 
+	Mat flip_image; //確認用に反転した画像
+
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
 
@@ -141,15 +143,17 @@ int main()
 
 			//Kinect処理・画像処理
 			imgproc.currentImage = kinect.drawRGBImage(image); //RGBカメラの処理
-			imgproc.showImage("Original", imgproc.currentImage); //Kinectから取得した画像を表示
+			flip(imgproc.currentImage, flip_image, 1);
+			//imgproc.showImage("Original", imgproc.currentImage); //Kinectから取得した画像を表示
+			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
 			//imgproc.loadInternalCameraParameter(cameraParameterName);
 			//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.currentImage);
 
 			//MOG2による背景差分
-			imgproc.foreGroundMaskImage = imgproc.backGroundSubstraction(imgproc.currentImage);
-			imgproc.showImage("Foreground", imgproc.foreGroundMaskImage);
+			//imgproc.foreGroundMaskImage = imgproc.backGroundSubstraction(imgproc.currentImage);
+			//imgproc.showImage("Foreground", imgproc.foreGroundMaskImage);
 			//imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
 			//imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
 			
@@ -170,7 +174,7 @@ int main()
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.01, 0.01, 0.01); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
 			if (pcm.FlagStatisticalOutlierRemoval == true){
@@ -178,15 +182,15 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
-				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
+				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.002); //0.002 < radius < ◯．小さいほど除去される
 
 			}
 			else if (pcm.FlagDownsampling == false && pcm.FlagMLS == true){
 				cout << "MLSを有効にするためには，ダウンサンプリングを有効にしてください" << endl;
 			}
 
-			if (pcm.FlagExtractPlane == true){	//平面検出(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 0.02, false); //Default=0.03(前処理なしの場合)
+			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 0.0009, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "==========================================================================================" << endl;

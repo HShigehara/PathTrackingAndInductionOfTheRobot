@@ -204,7 +204,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
  * @param pcl::PointCloud<pcl::PointXYZ>::Ptr inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr outputPointCloud
  */
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
@@ -242,12 +242,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		pcl::ExtractIndices<pcl::PointXYZRGB> extract;
 		extract.setInputCloud(inputPointCloud);
 		extract.setIndices(inliers);
-		extract.setNegative(false); //true:平面以外を残す．false:平面を残す
+		extract.setNegative(negative1); //true:平面以外を残す．false:平面を残す
 
 		extract.filter(*cloud_plane);
 		//cout << "PointCloud representing the planar component: " << cloud_plane->points.size() << endl; //平面のサイズ
 
-		extract.setNegative(true);
+		extract.setNegative(negative2);
 		extract.filter(*filtered);
 		pcl::copyPointCloud(*filtered, *inputPointCloud);
 	}
@@ -257,17 +257,17 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 
 	std::vector<pcl::PointIndices> cluster_indices;
 	pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
-	ec.setClusterTolerance(0.02);
-	ec.setMinClusterSize(100);
-	ec.setMaxClusterSize(25000);
-	ec.setSearchMethod(tree);
-	ec.setInputCloud(inputPointCloud);
-	ec.extract(cluster_indices);
+	ec.setClusterTolerance(tolerance); //単位[m]
+	ec.setMinClusterSize(minClusterSize); //最小クラスタの値
+	ec.setMaxClusterSize(maxClusterSize); //最大クラスタの値
+	ec.setSearchMethod(tree); //検索手法
+	ec.setInputCloud(inputPointCloud); //点群を入力
+	ec.extract(cluster_indices); //クラスタ情報を出力
 
-	int j = 0;
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>);
-	float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } };
-	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it)
+	int j = 0; //クラスタのカウント
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>); //クラスタに色付後の点群用
+	float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } }; //クラスタに色を付ける用
+	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it) //クラスタを1塊ごとに出力
 	{
 		for (std::vector<int>::const_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit){
 			inputPointCloud->points[*pit].r = colors[j % 6][0];
@@ -278,12 +278,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		cloud_cluster->width = cloud_cluster->points.size();
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
-
-		cout << "Cluster " << j << "\t\t=>\t" << cloud_cluster->size() << endl;
-
-		j++;
+		cout << "Cluster " << j << "\t\t\t=>\t" << cloud_cluster->size() << endl;
+				j++;
 	}
+
 	pcl::copyPointCloud(*cloud_cluster, *filtered);
-	cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
+	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
