@@ -45,24 +45,23 @@ public:
 	Kinect(); //!<コンストラクタ
 	~Kinect(); //!<デストラクタ
 	
-	HANDLE streamEvent; //!<RGB,Depthカメラのフレーム更新イベントを待つためのイベントハンドル
-	int key; //!<ウィンドウ表示のウェイトタイム格納変数
-
-	int actualExtractedNum; //実際に距離が抽出された数(0以外だった数)(c31)
-
 	void initialize(); //!<Kinectの初期化
 	void createInstance(); //!<インスタンスの生成
 
 	Mat drawRGBImage(Mat& image); //!<RGBカメラの処理
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr getPointCloud(Mat& Mat_image); //!<Depthカメラの処理(c57)
 	Point3ius getAverageCoordinate(Mat& image); //!<Depthカメラの処理
-	
-	int getDistance(Mat& image); //!<距離を取得(c49)
+	//int getDistance(Mat& image); //!<距離を取得(c49)
 
 
 	Vector4 getLocalPosition(Point3ius averageCoordinate); //!<(x,y,z)から3次元座標の(X,Y,Z)を計算(c10)
 	
 	void showDepthImage(); //!<距離画像を表示
+
+	HANDLE streamEvent; //!<RGB,Depthカメラのフレーム更新イベントを待つためのイベントハンドル
+	int key; //!<ウィンドウ表示のウェイトタイム格納変数
+
+	int actualExtractedNum; //実際に距離が抽出された数(0以外だった数)(c31)
 };
 
 /* インクルードガードの終了 */

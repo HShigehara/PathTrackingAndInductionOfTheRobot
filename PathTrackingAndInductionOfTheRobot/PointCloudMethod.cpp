@@ -223,8 +223,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 	seg.setModelType(pcl::SACMODEL_PLANE);
 	seg.setMethodType(pcl::SAC_RANSAC);
 
-	//
-	seg.setMaxIterations(100);
+	//クラスタリング
+	seg.setMaxIterations(5); //Default->100
 	//
 
 	seg.setDistanceThreshold(threshold);
@@ -245,7 +245,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		extract.setNegative(false); //true:平面以外を残す．false:平面を残す
 
 		extract.filter(*cloud_plane);
-		cout << "PointCloud representin the planar component: " << cloud_plane->points.size() << " data points." << endl;
+		//cout << "PointCloud representing the planar component: " << cloud_plane->points.size() << endl; //平面のサイズ
 
 		extract.setNegative(true);
 		extract.filter(*filtered);
@@ -278,6 +278,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		cloud_cluster->width = cloud_cluster->points.size();
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
+
+		cout << "Cluster " << j << "\t\t=>\t" << cloud_cluster->size() << endl;
+
 		j++;
 	}
 	pcl::copyPointCloud(*cloud_cluster, *filtered);
