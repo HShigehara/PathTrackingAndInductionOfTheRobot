@@ -28,7 +28,6 @@ public:
 	void initializePointCloudViewer(string cloudViewerName);
 	void flagChecker(); //フラグを判定するメソッド(c64)
 
-
 	//外れ値除去
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr passThroughFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr removeOutlier(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);

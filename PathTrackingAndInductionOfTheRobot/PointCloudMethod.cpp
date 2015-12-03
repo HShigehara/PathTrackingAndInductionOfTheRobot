@@ -242,7 +242,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		pcl::ExtractIndices<pcl::PointXYZRGB> extract;
 		extract.setInputCloud(inputPointCloud);
 		extract.setIndices(inliers);
-		extract.setNegative(false);
+		extract.setNegative(false); //true:平面以外を残す．false:平面を残す
 
 		extract.filter(*cloud_plane);
 		cout << "PointCloud representin the planar component: " << cloud_plane->points.size() << " data points." << endl;

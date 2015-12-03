@@ -93,16 +93,6 @@ int main()
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
 		PointCloudMethod pcm(false, false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
 
-		////pcl::visualization::PCLVisualizer visualizer("3D Viewer");
-		//boost::shared_ptr<pcl::visualization::PCLVisualizer> visualizer(new pcl::visualization::PCLVisualizer("3D Viewer"));
-		//visualizer->setBackgroundColor(0, 0, 0); //背景色を設定
-		////pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(pcm.cloud);
-		////visualizer->addPointCloud<pcl::PointXYZRGB>(pcm.cloud,rgb, "Point Cloud"); //点群とその名前を登録
-		//visualizer->addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "Point Cloud"); //点群とその名前を登録
-		//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "Point Cloud");
-		//visualizer->addCoordinateSystem(1.0);
-		//visualizer->initCameraParameters();
-
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
 
@@ -164,9 +154,9 @@ int main()
 			//imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
 			
 			//ポイントクラウドの取得(c57)
+			pcm.cloud = kinect.getPointCloud(imgproc.currentImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			pcm.cloud = kinect.getPointCloud(imgproc.currentImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 			cout << "======================================================================" <<  endl;
 			cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
@@ -179,7 +169,8 @@ int main()
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.03, 0.03, 0.03); //Default=all 0.003
 			}
 
 			if (pcm.FlagStatisticalOutlierRemoval == true){
@@ -200,17 +191,6 @@ int main()
 
 			cout << "======================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud);
-
-			//visualizer->updatePointCloud(pcm.cloud, "Point Cloud");
-			//visualizer->spinOnce(1);
-			//boost::this_thread::sleep(boost::posix_time::microseconds(1));
-
-			//visualizer.addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "3dCloud");
-			//visualizer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "3dCloud");
-			//visualizer.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pcm.cloud, normals, 10, 0.05, "normals");
-			//visualizer.addCoordinateSystem(1.0);
-			//visualizer.initCameraParameters();
-			//visualizer.spinOnce();
 
 			//メインの処理(c26)(c30)
 			//if (mouseFlag == true){ //mouseFlagがtrueであれば=マウスのボタンが上に上がったら

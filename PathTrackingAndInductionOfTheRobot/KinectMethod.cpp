@@ -235,9 +235,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			// 距離カメラの座標を、RGBカメラの座標に変換する
 			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0, &colorX, &colorY);
 
-			// 距離画像作成
-			//Mat_image.at<UCHAR>(colorY, colorX) = distance / 8192.0 * 255.0;
-
 			//点群取得処理．渡された差分画像に応じて条件を入れ替える
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 			//if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //グレースケール画像に対して点群を抽出する際はこっち(黒以外の点群を抽出)(c70)
