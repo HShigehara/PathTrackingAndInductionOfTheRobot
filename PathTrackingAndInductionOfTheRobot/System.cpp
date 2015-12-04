@@ -90,7 +90,7 @@ void System::countdownTimer(int time_ms)
 		Sleep(1000);
 		time_ms = time_ms - 1000;
 	}
-	cout << "\n\n";
+	cout << "\n";
 	return;
 }
 

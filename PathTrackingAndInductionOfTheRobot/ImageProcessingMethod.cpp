@@ -346,11 +346,16 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	Mat diff_gray_image; //!<背景差分画像(c74)
 	Mat diff_bin_image; //!<背景差分画像の二値画像(c75)
 	Mat median_bin_image; //!<背景差分画像の二値画像を平滑化したもの(c75)
+	Mat opening_image;
+	Mat closing_image;
 
 	cvtColor(current_image, current_gray_image, CV_BGR2GRAY); //現フレームの画像をグレースケールに
 	absdiff(current_gray_image, background_gray_image, diff_gray_image);
 	threshold(diff_gray_image, diff_bin_image, 12, 255, THRESH_BINARY);
 	medianBlur(diff_bin_image, median_bin_image, 7);
+	morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理
 
+	//opening_image = OpeningImage(median_bin_image);
+	showImage("test", closing_image);
 	return median_bin_image;
 }

@@ -132,6 +132,7 @@ int main()
 
 		//背景用に一度撮影(c75)
 		sys.countdownTimer(3000);
+		system("cls");
 		//データの更新を待つ
 		DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
@@ -143,7 +144,7 @@ int main()
 
 		cout << "Process will Start in " << endl;
 		sys.countdownTimer(5000);
-		//system("cls"); //コンソール内のスタート表示をリセット(c64)
+		system("cls"); //コンソール内のスタート表示をリセット(c64)
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
