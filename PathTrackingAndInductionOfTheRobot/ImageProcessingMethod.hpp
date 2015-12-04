@@ -60,11 +60,6 @@ public:
 	Mat undistortionImage; //!<補正後の画像(c71)
 
 	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
-
-	//中間発表以降，背景差分処理により動体を検出する(c66)
-	bool FlagGetBGImage; //!<背景を取得したかどうかのフラグ(c74)
-	
-
 };
 
 /* インクルードガードの終了 */

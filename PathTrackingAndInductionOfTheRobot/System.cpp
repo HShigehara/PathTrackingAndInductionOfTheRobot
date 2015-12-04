@@ -47,7 +47,7 @@ void System::startMessage()
 	cout << "  Moving Least Square \t\t -> \t Press 'b' Key." << endl;
 	cout << "  Extract Plane & Clustering \t -> \t Press 'n' Key." << endl;
 	cout << "==================================================================" << endl;
-	cout << "First, Take a Background Image" << endl;
+	cout << "First, Take a Background Image in " << endl;
 
 	return;
 }
@@ -90,7 +90,7 @@ void System::countdownTimer(int time_ms)
 		Sleep(1000);
 		time_ms = time_ms - 1000;
 	}
-	cout << "\n";
+	cout << "\n\n";
 	return;
 }
 

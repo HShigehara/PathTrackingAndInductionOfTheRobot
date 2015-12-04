@@ -125,14 +125,24 @@ int main()
 
 		//sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
 
-
 		kinect.initialize(); //Kinectの初期化
-		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
 		//動画を保存(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
+		//背景用に一度撮影(c75)
 		sys.countdownTimer(3000);
+		//データの更新を待つ
+		DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
+		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
+		//Kinect処理・画像処理
+		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
+		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
+
+		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
+
+		cout << "Process will Start in " << endl;
+		sys.countdownTimer(5000);
 		//system("cls"); //コンソール内のスタート表示をリセット(c64)
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
@@ -147,65 +157,55 @@ int main()
 			//Kinect処理・画像処理
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
 
-			//背景が取得できたら開始する(c74)
-			if (imgproc.FlagGetBGImage == true){
-				//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
-				//imgproc.loadinternal_cameraparameter(cameraParameterName);
-				//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
-				
-				flip(current_image, flip_image, 1);
-				imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
-				
-				bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
+			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
+			//imgproc.loadinternal_cameraparameter(cameraParameterName);
+			//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
+
+			flip(current_image, flip_image, 1);
+			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
+
+			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 
 
-				//ポイントクラウドの取得(c57)
-				//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-				pcm.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
-				//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-				//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
-				cout << "==========================================================================================" << endl;
-				cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
+			//ポイントクラウドの取得(c57)
+			//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			pcm.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
+			//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
+			cout << "==========================================================================================" << endl;
+			cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
 
-				//PCLの処理
-				if (pcm.FlagPassThrough == true){  //外れ値除去(c59)
-					pcm.cloud = pcm.passThroughFilter(pcm.cloud); //Kinectから取得した初期の外れ値を除去(c60)
-					//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
-				}
-
-				if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-					//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
-					//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
-					pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
-				}
-
-				if (pcm.FlagStatisticalOutlierRemoval == true){
-					pcm.cloud = pcm.removeOutlier(pcm.cloud); //統計的な外れ値除去(c60)
-				}
-
-				if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
-					pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.002); //0.002 < radius < ◯．小さいほど除去される
-
-				}
-				else if (pcm.FlagDownsampling == false && pcm.FlagMLS == true){
-					cout << "MLSを有効にするためには，ダウンサンプリングを有効にしてください" << endl;
-				}
-
-				if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-					pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*/0.0005, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
-				}
-
-				cout << "==========================================================================================" << endl;
-				pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
+			//PCLの処理
+			if (pcm.FlagPassThrough == true){  //外れ値除去(c59)
+				pcm.cloud = pcm.passThroughFilter(pcm.cloud); //Kinectから取得した初期の外れ値を除去(c60)
+				//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
-			else{
-				background_image = current_image;
-				cvtColor(background_image, background_gray_image, CV_BGR2GRAY); //背景画像をグレースケールに
-				cout << "Program Will Start in " << endl;
-				sys.countdownTimer(5000);
-				imgproc.FlagGetBGImage = true;
+
+			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
+				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
+				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
+
+			if (pcm.FlagStatisticalOutlierRemoval == true){
+				pcm.cloud = pcm.removeOutlier(pcm.cloud); //統計的な外れ値除去(c60)
+			}
+
+			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
+				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.002); //0.002 < radius < ◯．小さいほど除去される
+
+			}
+			else if (pcm.FlagDownsampling == false && pcm.FlagMLS == true){
+				cout << "MLSを有効にするためには，ダウンサンプリングを有効にしてください" << endl;
+			}
+
+			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*/0.0005, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
+			}
+
+			cout << "==========================================================================================" << endl;
+			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 
 			//メインの処理(c26)(c30)
 			//if (mouseFlag == true){ //mouseFlagがtrueであれば=マウスのボタンが上に上がったら

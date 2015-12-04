@@ -18,7 +18,6 @@
 ImageProcessing::ImageProcessing()
 {
 	//コンストラクタは今のところなし
-	FlagGetBGImage = false; //(c74)
 }
 
 /*!
