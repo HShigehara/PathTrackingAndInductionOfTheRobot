@@ -80,13 +80,11 @@ int main()
 	//Mat mExtractedBlack_img; //!<オープニング後の二値画像から抽出された黒い座標を格納している変数(c40)
 
 
-	//Mat diff_binimage;
-
 	Mat flip_image; //確認用に反転した画像
-	Mat backimage;
-	Mat backgrayimg;
-	Mat currentgrayimg;
-	Mat medianbinimage;
+	Mat current_image; //現在のフレームの画像(c75)
+	Mat bin_image; //背景差分によって得られた二値画像(c75)
+	Mat background_image; //!<背景画像(c75)
+	Mat background_gray_image;
 
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
@@ -127,26 +125,15 @@ int main()
 
 		//sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
 
+
 		kinect.initialize(); //Kinectの初期化
 		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
 		//動画を保存(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
+		sys.countdownTimer(3000);
 		//system("cls"); //コンソール内のスタート表示をリセット(c64)
-
-		//Mat mask(cv::Size(640, 480), CV_8UC1, CV_RGB(0, 0, 0));
-		//Point2i centerPoint;
-		//centerPoint.x = 320;
-		//centerPoint.y = 240;
-		//int roiWidth = 30;
-		//int roiHeight = 30;
-		//Rect roi(centerPoint.x - roiWidth, centerPoint.y - roiHeight, roiWidth * 2, roiHeight * 2);
-		//Mat roiImage;
-		//Mat rois = mask(roi);
-		
-
-
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q'){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
@@ -158,42 +145,23 @@ int main()
 			::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 
 			//Kinect処理・画像処理
-			imgproc.currentImage = kinect.drawRGBImage(image); //RGBカメラの処理
-
-			//
-			//roiImage = imgproc.currentImage(roi);
-			//imgproc.showImage("Roi Image", roiImage);
-			//Mat comb(systhesis,Rect(centerPoint.x - roiWidth, centerPoint.y - roiHeight, roiWidth * 2, roiHeight * 2));
-			//roi.copyTo(backImage,
-			//imgproc.currentImage.copyTo(systhesis);
-			//imgproc.showImage("Roi Back", backImage);
-			//
-
-
-			flip(imgproc.currentImage, flip_image, 1);
-			//imgproc.showImage("Original", imgproc.currentImage); //Kinectから取得した画像を表示
-			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
-
+			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
 
 			//背景が取得できたら開始する(c74)
 			if (imgproc.FlagGetBGImage == true){
-
-
 				//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
-				//imgproc.loadInternalCameraParameter(cameraParameterName);
-				//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.currentImage);
+				//imgproc.loadinternal_cameraparameter(cameraParameterName);
+				//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
+				
+				flip(current_image, flip_image, 1);
+				imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
+				
+				bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 
-				cvtColor(imgproc.currentImage, currentgrayimg, CV_BGR2GRAY);
-				//absdiff(imgproc.currentImage, imgproc.backGroundImage, imgproc.diffImage);
-				absdiff(currentgrayimg, backgrayimg, imgproc.diffImage);
-				//cvtColor(imgproc.diffImage, imgproc.grayImage, CV_BGR2GRAY);
-				threshold(imgproc.diffImage, imgproc.binImage, 12, 255, THRESH_BINARY);
-				medianBlur(imgproc.binImage, medianbinimage, 7);
-				imgproc.showImage("diff binImage", medianbinimage);
 
 				//ポイントクラウドの取得(c57)
-				//pcm.cloud = kinect.getPointCloud(imgproc.currentImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-				pcm.cloud = kinect.getPointCloud(medianbinimage); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
+				//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+				pcm.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
 				//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
@@ -232,11 +200,9 @@ int main()
 				pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 			}
 			else{
-				//imgproc.backGroundImage = imgproc.currentImage;
-				backimage = imgproc.currentImage;
-				imgproc.showImage("background Image", backimage);
-				cvtColor(backimage, backgrayimg, CV_BGR2GRAY);
-				cout << "Program Start in " << endl;
+				background_image = current_image;
+				cvtColor(background_image, background_gray_image, CV_BGR2GRAY); //背景画像をグレースケールに
+				cout << "Program Will Start in " << endl;
 				sys.countdownTimer(5000);
 				imgproc.FlagGetBGImage = true;
 			}

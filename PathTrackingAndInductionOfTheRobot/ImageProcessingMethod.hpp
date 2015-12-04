@@ -30,8 +30,8 @@ private:
 	int _vmax = vmax;
 
 	//キャリブレーション用のカメラパラメータ(c71)
-	Mat internalCameraParam; //!<カメラ内部パラメータ
-	Mat distortionCoefficients; //!<歪み係数
+	Mat internal_cameraparam; //!<カメラ内部パラメータ
+	Mat distortion_coefficients; //!<歪み係数
 
 public:
 	ImageProcessing(); //!<コンストラクタ
@@ -59,12 +59,9 @@ public:
 	Mat getUndistortionImage(Mat& inputOriginalImage); //!<キャリブレーションデータを用いてKinectから取得した画像を補正する(c71)
 	Mat undistortionImage; //!<補正後の画像(c71)
 
+	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
+
 	//中間発表以降，背景差分処理により動体を検出する(c66)
-	Mat currentImage; //!<背景画像(c67)
-	Mat backGroundImage; //!<背景画像(c74)
-	Mat diffImage; //!<背景差分画像(c74)
-	Mat grayImage; //!<グレースケール画像(c74)
-	Mat binImage; //!<差分画像の二値化画像(c74)
 	bool FlagGetBGImage; //!<背景を取得したかどうかのフラグ(c74)
 	
 

@@ -316,8 +316,8 @@ void ImageProcessing::loadInternalCameraParameter(char* cameraParamFile)
 	//xmlファイルの読み込み
 	FileStorage fs(cameraParamFile, FileStorage::READ); //読み込みモード
 	//内部パラメータの読み込み
-	fs["camera_matrix"] >> internalCameraParam; //内部パラメータを読み込む
-	fs["distortion_coefficients"] >> distortionCoefficients; //歪み係数を読み込む
+	fs["camera_matrix"] >> internal_cameraparam; //内部パラメータを読み込む
+	fs["distortion_coefficients"] >> distortion_coefficients; //歪み係数を読み込む
 
 	return;
 }
@@ -331,7 +331,27 @@ Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 {
 	Mat undistotionImage;
 
-	undistort(inputOriginalImage, undistotionImage, internalCameraParam, distortionCoefficients, Mat());
+	undistort(inputOriginalImage, undistotionImage, internal_cameraparam, distortion_coefficients, Mat());
 	
 	return undistotionImage;
+}
+
+/*!
+ * @brief メソッドImageProcessing::getBackgroundSubstractionBinImage()．背景差分によって得られた二値画像(c75)
+ * @param Mat& current_image, Mat& background_image 
+ * @return Mat median_bin_image
+ */
+Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image)
+{
+	Mat current_gray_image; //!<現在のグレースケール画像(c75)
+	Mat diff_gray_image; //!<背景差分画像(c74)
+	Mat diff_bin_image; //!<背景差分画像の二値画像(c75)
+	Mat median_bin_image; //!<背景差分画像の二値画像を平滑化したもの(c75)
+
+	cvtColor(current_image, current_gray_image, CV_BGR2GRAY); //現フレームの画像をグレースケールに
+	absdiff(current_gray_image, background_gray_image, diff_gray_image);
+	threshold(diff_gray_image, diff_bin_image, 12, 255, THRESH_BINARY);
+	medianBlur(diff_bin_image, median_bin_image, 7);
+
+	return median_bin_image;
 }
