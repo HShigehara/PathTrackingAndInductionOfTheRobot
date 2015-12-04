@@ -192,7 +192,7 @@ int main()
 				//absdiff(imgproc.currentImage, imgproc.backGroundImage, imgproc.diffImage);
 				absdiff(currentgrayimg, backgrayimg, imgproc.diffImage);
 				//cvtColor(imgproc.diffImage, imgproc.grayImage, CV_BGR2GRAY);
-				threshold(imgproc.diffImage, imgproc.binImage, 0, 255, THRESH_BINARY | THRESH_OTSU);
+				threshold(imgproc.diffImage, imgproc.binImage, 15, 255, THRESH_BINARY);
 				imgproc.showImage("diff binImage", imgproc.binImage);
 
 				//ポイントクラウドの取得(c57)
@@ -229,7 +229,7 @@ int main()
 				}
 
 				if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-					pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 0.0009, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
+					pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*/0.0005, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
 				}
 
 				cout << "==========================================================================================" << endl;
