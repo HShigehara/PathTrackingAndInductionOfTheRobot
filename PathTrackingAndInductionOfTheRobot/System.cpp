@@ -12,8 +12,6 @@
 
 /*!
 * @brief System::System().コンストラクタ
-* @param なし
-* @return なし
 */
 System::System()
 {
@@ -24,8 +22,6 @@ System::System()
 
 /*!
 * @brief System::~System().デストラクタ
-* @param なし
-* @return なし
 */
 System::~System()
 {
@@ -34,8 +30,6 @@ System::~System()
 
 /*!
 * @brief System::startMessage().プログラム起動時のメッセージ
-* @param なし
-* @return なし
 */
 void System::startMessage()
 {
@@ -58,10 +52,8 @@ void System::startMessage()
 }
 
 /*!
-* @brief System::endMessage().プログラム終了時のメッセージ
-* @param なし
-* @return なし
-*/
+ * @brief System::endMessage().プログラム終了時のメッセージ
+ */
 void System::endMessage(int cNum)
 {
 	cout << "==================================================================" << endl;
@@ -77,14 +69,26 @@ void System::endMessage(int cNum)
 
 /*!
 * @brief System::endMessage().プログラム終了時のメッセージ
-* @param なし
-* @return なし
 */
 void System::endMessage()
 {
 	cout << "==================================================================" << endl;
 	cout << "Closing the Program...." << endl;
 	cout << "==================================================================" << endl;
+	return;
+}
+
+/*!
+ * @brief メソッドcountdownTimer()．タイマーによるカウントダウン
+ * @param int time_ms 
+ */
+void System::countdownTimer(int time_ms)
+{
+	while (time_ms > 0){
+		cout << time_ms/1000 << " seconds" << "\r";
+		Sleep(1000);
+		time_ms = time_ms - 1000;
+	}
 	return;
 }
 

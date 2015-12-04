@@ -236,17 +236,8 @@ int main()
 				backimage = imgproc.currentImage;
 				imgproc.showImage("background Image", backimage);
 				cvtColor(backimage, backgrayimg, CV_BGR2GRAY);
-				//imgproc.showImage("background Image", imgproc.backGroundImage);
-				cout << "5" << "\r";
-				Sleep(1000); //5秒間待つ
-				cout << "4" << "\r";
-				Sleep(1000); //5秒間待つ
-				cout << "3" << "\r";
-				Sleep(1000); //5秒間待つ
-				cout << "2" << "\r";
-				Sleep(1000); //5秒間待つ
-				cout << "1" << "\r";
-				Sleep(1000); //5秒間待つ
+				cout << "Program Start in " << endl;
+				sys.countdownTimer(5000);
 				imgproc.FlagGetBGImage = true;
 			}
 
