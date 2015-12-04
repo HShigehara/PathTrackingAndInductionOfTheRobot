@@ -36,18 +36,18 @@ void System::startMessage()
 	cout << "==================================================================" << endl;
 	cout << " Starting the Program...." << endl;
 	//cout << " Please Enclose the Object You Want to Track." << endl;
-	cout << " If You Enter a 'q' Key, the Program Terminates. (On the Window.)" << endl;
-	//cout << " If You Enter a 'r' Key, the Program Restart. (On the Window.)" << endl;
+	cout << " If You Enter a 'q' Key, the Program Terminates." << endl;
+	cout << " If You Enter a 'r' Key, the Program Restart." << endl;
 	//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;
 	cout << "\n";
 	cout << " Switching of Point Cloud Processing." << endl;
-	cout << "  PassThroughFilter \t\t -> \t Press 'x' Key." << endl;
+	cout << "  Pass Through Filter \t -> \t Press 'x' Key." << endl;
 	cout << "  Downsampling \t\t\t -> \t Press 'c' Key." << endl;
 	cout << "  Remove Outlier \t\t -> \t Press 'v' Key." << endl;
 	cout << "  Moving Least Square \t\t -> \t Press 'b' Key." << endl;
 	cout << "  Extract Plane & Clustering \t -> \t Press 'n' Key." << endl;
 	cout << "==================================================================" << endl;
-	cout << "First, Take a Background Image in " << endl;
+	cout << "Take a Background Image in " << endl;
 
 	return;
 }
