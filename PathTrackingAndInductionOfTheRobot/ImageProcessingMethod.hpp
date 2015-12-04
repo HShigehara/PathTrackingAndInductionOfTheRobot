@@ -29,8 +29,6 @@ private:
 	int _vmin = vmin;
 	int _vmax = vmax;
 
-	BackgroundSubtractorMOG2 backGroundSubstractor; //!<背景差分処理用(c66)
-
 	//キャリブレーション用のカメラパラメータ(c71)
 	Mat internalCameraParam; //!<カメラ内部パラメータ
 	Mat distortionCoefficients; //!<歪み係数
@@ -62,10 +60,6 @@ public:
 	Mat undistortionImage; //!<補正後の画像(c71)
 
 	//中間発表以降，背景差分処理により動体を検出する(c66)
-	//MOG2による背景差分処理
-	Mat backGroundSubstraction(Mat& inputImage); //!<背景差分処理により前景画像を取得する(c66)
-	Mat foreGroundMaskImage; //!<前景画像(c66)
-	Mat foreGroundMaskBinImage; //!<二値化した前景画像
 	Mat currentImage; //!<背景画像(c67)
 	Mat backGroundImage; //!<背景画像(c74)
 	Mat diffImage; //!<背景差分画像(c74)

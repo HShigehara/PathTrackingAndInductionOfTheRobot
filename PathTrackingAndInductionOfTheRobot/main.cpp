@@ -86,6 +86,7 @@ int main()
 	Mat backimage;
 	Mat backgrayimg;
 	Mat currentgrayimg;
+	Mat medianbinimage;
 
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
@@ -182,22 +183,17 @@ int main()
 				//imgproc.loadInternalCameraParameter(cameraParameterName);
 				//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.currentImage);
 
-				//MOG2による背景差分
-				//imgproc.foreGroundMaskImage = imgproc.backGroundSubstraction(imgproc.currentImage);
-				//imgproc.showImage("Foreground", imgproc.foreGroundMaskImage);
-				//imgproc.foreGroundMaskBinImage = imgproc.getBinImage(imgproc.foreGroundMaskImage);
-				//imgproc.showImage("bin Image", imgproc.foreGroundMaskBinImage);
-
 				cvtColor(imgproc.currentImage, currentgrayimg, CV_BGR2GRAY);
 				//absdiff(imgproc.currentImage, imgproc.backGroundImage, imgproc.diffImage);
 				absdiff(currentgrayimg, backgrayimg, imgproc.diffImage);
 				//cvtColor(imgproc.diffImage, imgproc.grayImage, CV_BGR2GRAY);
-				threshold(imgproc.diffImage, imgproc.binImage, 15, 255, THRESH_BINARY);
-				imgproc.showImage("diff binImage", imgproc.binImage);
+				threshold(imgproc.diffImage, imgproc.binImage, 12, 255, THRESH_BINARY);
+				medianBlur(imgproc.binImage, medianbinimage, 7);
+				imgproc.showImage("diff binImage", medianbinimage);
 
 				//ポイントクラウドの取得(c57)
 				//pcm.cloud = kinect.getPointCloud(imgproc.currentImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-				pcm.cloud = kinect.getPointCloud(imgproc.binImage); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
+				pcm.cloud = kinect.getPointCloud(medianbinimage); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
 				//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 				pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)

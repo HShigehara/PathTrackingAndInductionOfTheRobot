@@ -335,16 +335,3 @@ Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 	
 	return undistotionImage;
 }
-
-/*!
- * @brief メソッドImageProcessing::backGroundSubstraction().背景差分処理により前景画像を取得する(c66)
- * @param Mat& image
- * @return Mat foreGroundMaskImage
- */
-Mat ImageProcessing::backGroundSubstraction(Mat& inputImage)
-{
-	Mat foreGroundMaskImage, output;
-	backGroundSubstractor(inputImage, foreGroundMaskImage);
-	bitwise_and(inputImage, inputImage, output, foreGroundMaskImage);
-	return foreGroundMaskImage;
-}
