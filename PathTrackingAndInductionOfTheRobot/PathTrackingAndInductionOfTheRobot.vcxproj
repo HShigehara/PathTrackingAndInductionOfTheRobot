@@ -86,7 +86,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\Desktop\bgs2\bgslibrary-1.9.2_x86_mfc_gui\package_bgs\FrameDifferenceBGS.cpp" />
     <ClCompile Include="ImageProcessingMethod.cpp" />
     <ClCompile Include="KinectMethod.cpp" />
     <ClCompile Include="LeastSquareMethod.cpp" />
@@ -101,7 +100,6 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\Desktop\bgs2\bgslibrary-1.9.2_x86_mfc_gui\package_bgs\FrameDifferenceBGS.h" />
     <ClInclude Include="3DPathTrackingUsingtheKINECT.hpp" />
     <ClInclude Include="ImageProcessingMethod.hpp" />
     <ClInclude Include="KinectMethod.hpp" />

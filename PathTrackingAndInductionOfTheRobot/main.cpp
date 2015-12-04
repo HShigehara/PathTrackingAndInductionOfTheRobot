@@ -18,7 +18,7 @@
 /* グローバル変数 */
 //画像データ
 Mat image; //!<RGB画像格納用の変数
-Mat depth_image; //!<距離画像格納用の変数(c58)
+//Mat depth_image; //!<距離画像格納用の変数(c58)
 
 char directoryName[NOC]; //!<フォルダ名
 
@@ -280,7 +280,7 @@ int main()
 			//goto RETRY;
 			//}
 
-			//system("cls"); //コンソール内の表示をリセット(c64)
+			system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 	}

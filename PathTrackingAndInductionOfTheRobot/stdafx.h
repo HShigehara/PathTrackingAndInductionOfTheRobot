@@ -34,9 +34,6 @@ using namespace std; //!<名前空間
 #include <opencv2\flann\flann.hpp>
 using namespace cv; //!<名前空間
 
-/* ラベリング処理を行うヘッダを追加(c21) */
-//#include "Labeling.hpp"
-
 /* PCL関連のインクルード */
 #include <pcl\point_types.h>
 #include <pcl\point_cloud.h>

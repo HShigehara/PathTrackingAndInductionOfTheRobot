@@ -28,7 +28,7 @@ typedef struct outputData{ //ファイルに出力するデータ群(c41)
 /* グローバル変数 */
 //画像関係
 extern Mat image; //!<RGB画像格納用の変数
-extern Mat depth_image; //!<距離画像格納用の変数(c58)
+//extern Mat depth_image; //!<距離画像格納用の変数(c58)
 
 //ファイル名関係
 extern char directoryName[NOC]; //!<フォルダ名
