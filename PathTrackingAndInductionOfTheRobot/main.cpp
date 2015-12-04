@@ -54,7 +54,7 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
  */
 int main()
 {
-	//RETRY: //goto文.計測が上手くいかなかったらリセットする用
+	RETRY: //goto文．再計測をやり直す場合
 	//インスタンスの生成
 	System sys; //!<システム的なメソッドをまとめているクラス
 	RouteDrawing routedraw; //!<RouteDrawingクラスのインスタンスを生成
@@ -78,7 +78,6 @@ int main()
 	//Mat mBin_img; //!<抽出した後に二値化した画像を保存する変数(c21)
 	//Mat mOpening_img; //!<オープニングを行った画像から距離を抽出する(c24).オープニング処理を行うには必要*/
 	//Mat mExtractedBlack_img; //!<オープニング後の二値画像から抽出された黒い座標を格納している変数(c40)
-
 
 	Mat flip_image; //確認用に反転した画像
 	Mat current_image; //現在のフレームの画像(c75)
@@ -267,6 +266,13 @@ int main()
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1);
+			if (GetAsyncKeyState('R')){
+				system("cls");
+				destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
+				pcm.viewer->~CloudViewer(); //クラウドビューアーの削除
+				cout << "RETRY" << endl;
+				goto RETRY;
+			}
 			/*if (kinect.key == 'q'){ //計測終了
 				//sys.outputAllData(&outputDataName, outputData, countDataNum);
 				//routedraw.plot3D(outputDataName); //(c4)
@@ -287,7 +293,7 @@ int main()
 
 	catch (exception& ex){ //例外処理
 		cout << ex.what() << endl;
-		//destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
+		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 		//異常終了した時はデータを保存する必要がないので削除
 		//sys.removeDirectory();
 		//cout << "Data Removed." << endl;
