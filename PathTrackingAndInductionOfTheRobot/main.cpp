@@ -137,13 +137,13 @@ int main()
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinect処理・画像処理
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
+		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
 
+		cout << "Process will Start in " << endl; //プログラム本編開始の通知
+		sys.countdownTimer(5000); //5000msカウントダウンする
+		system("cls"); //コンソール内の表示をリセット(c64)
 		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
-
-		cout << "Process will Start in " << endl;
-		sys.countdownTimer(5000);
-		system("cls"); //コンソール内のスタート表示をリセット(c64)
 
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)

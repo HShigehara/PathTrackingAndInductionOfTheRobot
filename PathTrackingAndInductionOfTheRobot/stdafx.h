@@ -23,6 +23,7 @@ using namespace std; //!<名前空間
 
 /* NuiApi.hの前にWindows.hをインクルードする */
 #include <Windows.h>
+#include <mmsystem.h>
 #include <NuiApi.h>
 
 /* OpenCV関連のインクルード */
