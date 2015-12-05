@@ -137,6 +137,7 @@ int main()
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinect処理・画像処理
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
+		imgproc.showImage("背景画像", background_image);
 		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
 
@@ -157,7 +158,7 @@ int main()
 
 			//Kinect処理・画像処理
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
-
+			imgproc.showImage("現画像", current_image);
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
 			//imgproc.loadinternal_cameraparameter(cameraParameterName);
 			//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
