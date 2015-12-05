@@ -137,7 +137,7 @@ int main()
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinect処理・画像処理
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
-		imgproc.showImage("背景画像", background_image);
+		imgproc.showImage("Background Image", background_image);
 		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
 
@@ -158,7 +158,6 @@ int main()
 
 			//Kinect処理・画像処理
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
-			imgproc.showImage("現画像", current_image);
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
 			//imgproc.loadinternal_cameraparameter(cameraParameterName);
 			//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
@@ -167,7 +166,7 @@ int main()
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
-
+			imgproc.showImage("Mask Image", bin_image);
 
 			//ポイントクラウドの取得(c57)
 			//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
@@ -185,9 +184,9 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002, 0.0002, 0.0002); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0003, 0.0003, 0.0003); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
+				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
 			if (pcm.FlagStatisticalOutlierRemoval == true){
@@ -203,7 +202,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*/0.0005, false, true, 0.03, 100, 25000); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*//*0.0005*/0.003, false, true, 0.035, 350, /*25000*/20000); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "==========================================================================================" << endl;

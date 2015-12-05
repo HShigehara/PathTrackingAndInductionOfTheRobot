@@ -224,7 +224,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 	seg.setMethodType(pcl::SAC_RANSAC);
 
 	//クラスタリング
-	seg.setMaxIterations(5); //Default->100
+	seg.setMaxIterations(/*5*/100); //Default->100
 	//
 
 	seg.setDistanceThreshold(threshold);
@@ -279,7 +279,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
 		cout << "Cluster " << j << "\t\t\t=>\t" << cloud_cluster->size() << endl;
-				j++;
+		j++;
 	}
 
 	pcl::copyPointCloud(*cloud_cluster, *filtered);

@@ -352,7 +352,7 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	cvtColor(current_image, current_gray_image, CV_BGR2GRAY); //現フレームの画像をグレースケールに
 	absdiff(current_gray_image, background_gray_image, diff_gray_image); //差分画像取得
 	//showImage("差分画像", diff_gray_image);
-	threshold(diff_gray_image, diff_bin_image, 12, 255, THRESH_BINARY); //二値化
+	threshold(diff_gray_image, diff_bin_image, 13, 255, THRESH_BINARY); //二値化
 	//showImage("二値画像", diff_bin_image);
 	medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去
 	//showImage("平滑化処理後", median_bin_image);
