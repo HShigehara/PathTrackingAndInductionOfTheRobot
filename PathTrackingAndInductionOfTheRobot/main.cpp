@@ -94,7 +94,7 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(false, false, false, false, false); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true); //PointCloudMethodクラスのインスタンスを生成(c57)
 
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
