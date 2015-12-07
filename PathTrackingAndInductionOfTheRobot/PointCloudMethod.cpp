@@ -204,7 +204,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
  * @param pcl::PointCloud<pcl::PointXYZ>::Ptr inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr outputPointCloud
  */
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
@@ -224,7 +224,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 	seg.setMethodType(pcl::SAC_RANSAC);
 
 	//クラスタリング
-	seg.setMaxIterations(/*5*/100); //Default->100
+	seg.setMaxIterations(maxIterations); //Default->100
 	//
 
 	seg.setDistanceThreshold(threshold);

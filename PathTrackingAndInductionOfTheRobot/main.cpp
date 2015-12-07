@@ -194,7 +194,7 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
-				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.002); //0.002 < radius < ◯．小さいほど除去される
+				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
 
 			}
 			else if (pcm.FlagDownsampling == false && pcm.FlagMLS == true){
@@ -202,7 +202,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 0.0001/*0.0009*//*0.0005*//*0.003*/, false, true, 0.035, 350, /*25000*/20000); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1/*3*/, 0.00008/*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.003, /*350*/210, /*25000*//*20000*/1000); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "==========================================================================================" << endl;
