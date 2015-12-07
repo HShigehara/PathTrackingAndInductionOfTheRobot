@@ -41,7 +41,7 @@ void System::startMessage()
 	//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;
 	cout << "\n";
 	cout << " Switching of Point Cloud Processing." << endl;
-	cout << "  Pass Through Filter \t -> \t Press 'x' Key." << endl;
+	cout << "  Pass Through Filter \t\t -> \t Press 'x' Key." << endl;
 	cout << "  Downsampling \t\t\t -> \t Press 'c' Key." << endl;
 	cout << "  Remove Outlier \t\t -> \t Press 'v' Key." << endl;
 	cout << "  Moving Least Square \t\t -> \t Press 'b' Key." << endl;

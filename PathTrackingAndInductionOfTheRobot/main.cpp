@@ -130,7 +130,7 @@ int main()
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
 		//背景用に一度撮影(c75)
-		sys.countdownTimer(3000);
+		sys.countdownTimer(/*3*/2000);
 		system("cls");
 		//データの更新を待つ
 		DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
@@ -142,7 +142,7 @@ int main()
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
 
 		cout << "Process will Start in " << endl; //プログラム本編開始の通知
-		sys.countdownTimer(5000); //5000msカウントダウンする
+		sys.countdownTimer(/*5*/3000); //5000msカウントダウンする
 		system("cls"); //コンソール内の表示をリセット(c64)
 		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
@@ -184,7 +184,7 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0003, 0.0003, 0.0003); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0003f, 0.0003f, 0.0003f); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
@@ -202,7 +202,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, /*0.0009*//*0.0005*/0.003, false, true, 0.035, 350, /*25000*/20000); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 0.0001/*0.0009*//*0.0005*//*0.003*/, false, true, 0.035, 350, /*25000*/20000); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "==========================================================================================" << endl;
