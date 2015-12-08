@@ -184,7 +184,7 @@ int main()
 			}
 
 			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0003f, 0.0003f, 0.0003f); //Default=all 0.003
+				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002f, 0.0002f, 0.0002f); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
@@ -202,7 +202,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1/*3*/, 0.00008/*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.003, /*350*/210, /*25000*//*20000*/1000); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 10, 0.000001/*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.0035, /*350*/210, /*25000*//*20000*/1200); //Default=0.03(前処理なしの場合)
 			}
 
 			cout << "==========================================================================================" << endl;
