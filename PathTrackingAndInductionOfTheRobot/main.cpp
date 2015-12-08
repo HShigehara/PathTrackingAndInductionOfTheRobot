@@ -206,7 +206,7 @@ int main()
 			}
 
 			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 10, 0.000001/*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.0035, /*350*/210, /*25000*//*20000*/1200); //Default=0.03(前処理なしの場合)
+				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
 			/*if (pcm.FlagIcpRegistration == true){
