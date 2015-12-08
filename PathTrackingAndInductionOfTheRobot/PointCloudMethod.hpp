@@ -22,11 +22,13 @@ private:
 
 public:
 	PointCloudMethod(); //コンストラクタ
-	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
+	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane, bool flagIcpRegistration); //コンストラクタ(c64)
 	~PointCloudMethod(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudViewerName);
 	void flagChecker(); //フラグを判定するメソッド(c64)
+
+	void loadPLY(char* ply_filename); //.plyファイルの読み込み
 
 	//外れ値除去
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr passThroughFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
@@ -42,9 +44,12 @@ public:
 	//平面検出とクラスタリング
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize);
 
+	//ICPアルゴリズムによる位置合わせ
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel);
 	//クラウドビューワー用
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud;
 	pcl::visualization::CloudViewer *viewer;
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr model; //.plyファイルの点群(モデル)
 
 	//各点群処理を行うか否かのフラグ変数(c64)
 	bool FlagPassThrough;
@@ -52,6 +57,7 @@ public:
 	bool FlagStatisticalOutlierRemoval;
 	bool FlagMLS;
 	bool FlagExtractPlane;
+	bool FlagIcpRegistration;
 };
 
 /* インクルードガードの終了 */

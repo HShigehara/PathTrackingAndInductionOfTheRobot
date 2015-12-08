@@ -25,7 +25,7 @@ PointCloudMethod::PointCloudMethod()
  * @param bool flag_removeOutlier, bool flag_downsampling, bool flag_MLS, bool flag_extractPlane
  * @return なし
  */
-PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane)
+PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane, bool flagIcpRegistration)
 {
 	//コンストラクタ
 	FlagPassThrough = flagPassThrough;
@@ -33,6 +33,7 @@ PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, 
 	FlagStatisticalOutlierRemoval = flagStatisticalOutlierRemoval;
 	FlagMLS = flagMLS;
 	FlagExtractPlane = flagExtractPlane;
+	FlagIcpRegistration = flagIcpRegistration;
 }
 
 /*!
@@ -59,6 +60,12 @@ void PointCloudMethod::initializePointCloudViewer(string cloudViewerName)
 	return;
 }
 
+void PointCloudMethod::loadPLY(char* ply_filename)
+{
+	pcl::io::loadPLYFile(ply_filename, *model);
+	return;
+}
+
 /*!
  * @brief メソッドPointCloudMethod::flagChecker().PCL処理に関する処理の有無を判定するフラグ変数を反転させるメソッド(c64)
  * @param なし
@@ -80,6 +87,9 @@ void PointCloudMethod::flagChecker()
 	}
 	if (GetAsyncKeyState('N')){	//Mが入力されたので、平面検出のフラグを反転
 		FlagExtractPlane = !FlagExtractPlane;
+	}
+	if (GetAsyncKeyState('M')){
+		FlagIcpRegistration = !FlagIcpRegistration;
 	}
 	cout << "範囲外除去(X) => " << FlagPassThrough << " ダウンサンプリング(C) => " << FlagDownsampling << " 外れ値(V) => " << FlagStatisticalOutlierRemoval << " MLS(B) => " << FlagMLS << " 平面検出(N) => " << FlagExtractPlane << endl;
 	return;
@@ -286,3 +296,29 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
+	
+
+/*pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel)
+{
+	Eigen::Matrix4d transformation_matrix = Eigen::Matrix4d::Identity();
+	double theta = M_PI / 8;
+	transformation_matrix(0, 0) = cos(theta);
+	transformation_matrix(0, 1) = -sin(theta);
+	transformation_matrix(1, 0) = sin(theta);
+	transformation_matrix(1, 1) = cos(theta);
+	//A translation on Z axis(0.4m)
+	transformation_matrix(2, 3) = 0.4;
+
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr final;
+
+	pcl::IterativeClosestPoint<pcl::PointXYZRGB, pcl::PointXYZRGB> icp;
+	icp.setInputSource(inputCloud);
+	icp.setInputTarget(inputModel);
+	icp.align()
+	//icp.setTransformationEpsilon(1e-6);
+	//icp.setMaxCorrespondenceDistance(5.0);
+	//icp.setMaximumIterations(200);
+	//icp.setEuclideanFitnessEpsilon(1.0);
+	//icp.setRANSACOutlierRejectionThreshold(1.0);
+	return final;
+}*/

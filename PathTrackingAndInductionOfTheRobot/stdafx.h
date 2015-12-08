@@ -40,6 +40,7 @@ using namespace cv; //!<名前空間
 #include <pcl\point_cloud.h>
 #include <pcl\io\io.h>
 #include <pcl\io\pcd_io.h> //.pcd出力用
+#include <pcl\io\ply_io.h> //.ply読み込み用
 #include <pcl\common\common_headers.h>
 #include <pcl\visualization\cloud_viewer.h>
 #include <pcl\visualization\pcl_visualizer.h>
@@ -61,6 +62,8 @@ using namespace cv; //!<名前空間
 
 #include <boost\thread\thread.hpp>
 
+//ICPアルゴリズムによる位置合わせ
+#include <pcl\registration\icp.h>
 #include <pcl\PCLPointField.h>
 
 //#include "PCLAdapter.h"

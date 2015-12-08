@@ -94,7 +94,11 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true,false); //PointCloudMethodクラスのインスタンスを生成(c57)
+
+
+		//.plyファイルの読み込み
+		//pcm.loadPLY("20151208_EV3COLOR.ply");
 
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
@@ -205,6 +209,9 @@ int main()
 				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 10, 0.000001/*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.0035, /*350*/210, /*25000*//*20000*/1200); //Default=0.03(前処理なしの場合)
 			}
 
+			/*if (pcm.FlagIcpRegistration == true){
+				pcm.cloud = pcm.cloudRegistration(pcm.cloud, pcm.model);
+			}*/
 			cout << "==========================================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 
