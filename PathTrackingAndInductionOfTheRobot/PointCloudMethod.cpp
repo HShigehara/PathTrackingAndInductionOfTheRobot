@@ -322,3 +322,33 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 	//icp.setRANSACOutlierRejectionThreshold(1.0);
 	return final;
 }*/
+
+Point3f PointCloudMethod::getCentroidCoordinatePointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+{
+	FILE *pointcloud;
+	FILE *centroid;
+	Point3f centroid_coordinate;
+	Point3f sum_pointcloud = 0;
+
+	fopen_s(&pointcloud, "pointcloud.dat", "w");
+	fopen_s(&centroid, "centroid.dat", "w");
+
+	//cout << *inputPointCloud << endl;
+	//summention coordinate. ※inputPointCloud->width = inputPointCloud->size().
+	for (int i = 0; i < inputPointCloud->size(); i++){
+		//cout << i << " : " << "[x, y, z] => [ " << inputPointCloud->points[i].x << ", " << inputPointCloud->points[i].y << ", " << inputPointCloud->points[i].z << " ] " << endl;
+		sum_pointcloud.x = inputPointCloud->points[i].x;
+		sum_pointcloud.y = inputPointCloud->points[i].y;
+		sum_pointcloud.z = inputPointCloud->points[i].z;
+
+		fprintf_s(pointcloud, "%f %f %f\n",sum_pointcloud.x,sum_pointcloud.y,sum_pointcloud.z);
+	}
+	centroid_coordinate.x = sum_pointcloud.x / inputPointCloud->size();
+	centroid_coordinate.y = sum_pointcloud.y / inputPointCloud->size();
+	centroid_coordinate.z = sum_pointcloud.z / inputPointCloud->size();
+	cout << "Centroid" << centroid_coordinate << endl;
+	fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x*1000,centroid_coordinate.y*1000,centroid_coordinate.z*1000);
+	fclose(pointcloud);
+	fclose(centroid);
+	return centroid_coordinate;
+}

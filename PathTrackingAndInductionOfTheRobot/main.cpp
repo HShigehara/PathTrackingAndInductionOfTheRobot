@@ -212,6 +212,8 @@ int main()
 			/*if (pcm.FlagIcpRegistration == true){
 				pcm.cloud = pcm.cloudRegistration(pcm.cloud, pcm.model);
 			}*/
+
+			Point3f data = pcm.getCentroidCoordinatePointCloud(pcm.cloud);
 			cout << "==========================================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 
