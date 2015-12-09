@@ -296,7 +296,7 @@ int main()
 			//goto RETRY;
 			//}
 
-			system("cls"); //コンソール内の表示をリセット(c64)
+			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 	}

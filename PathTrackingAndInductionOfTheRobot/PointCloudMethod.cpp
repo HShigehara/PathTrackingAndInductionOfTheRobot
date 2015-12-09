@@ -276,6 +276,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 
 	int j = 0; //クラスタのカウント
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZRGB>); //クラスタに色付後の点群用
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr max_cluster(new pcl::PointCloud<pcl::PointXYZRGB>); //最大のクラスタを探す(c76)
+	max_cluster = cloud_cluster; //最初のクラスタを最大クラスタとする(c76)
+
 	float colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } }; //クラスタに色を付ける用
 	for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it) //クラスタを1塊ごとに出力
 	{
@@ -285,14 +288,27 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 			inputPointCloud->points[*pit].b = colors[j % 6][2];
 			cloud_cluster->points.push_back(inputPointCloud->points[*pit]);
 		}
+
+		//最大のクラスタを探す．元のmac_clusterより新しいクラスタの方が大きければ新しいクラスタをmax_clusterとする(c76)
+		if (max_cluster->size() < cloud_cluster->size()){
+			pcl::copyPointCloud(*cloud_cluster, *max_cluster);
+		}
+
 		cloud_cluster->width = cloud_cluster->points.size();
 		cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
 		cout << "Cluster " << j << "\t\t\t=>\t" << cloud_cluster->size() << endl;
+
 		j++;
 	}
 
-	pcl::copyPointCloud(*cloud_cluster, *filtered);
+	//int max = cloud_cluster->size();
+	//if (j >= 2){ //クラスタが2個以上あれば一番大きいクラスタを出力
+		
+	//}
+	cout << "cloud_cluster => " << cloud_cluster->size() << ", max_cluster => " << max_cluster->size() << endl;
+	//pcl::copyPointCloud(*cloud_cluster, *filtered); //カラーリングしたクラスタ全てを出力
+	pcl::copyPointCloud(*max_cluster, *filtered); //最大のクラスタのみ出力(c76)
 	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
@@ -325,6 +341,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 
 Point3f PointCloudMethod::getCentroidCoordinatePointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
+	cout << "inputPointCloud => " << inputPointCloud->size() << endl;
 	FILE *pointcloud;
 	FILE *centroid;
 	Point3f centroid_coordinate;
