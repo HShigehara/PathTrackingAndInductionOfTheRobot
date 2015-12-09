@@ -94,7 +94,7 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true,false); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true); //PointCloudMethodクラスのインスタンスを生成(c57)
 
 
 		//.plyファイルの読み込み
@@ -146,7 +146,7 @@ int main()
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
 
 		cout << "Process will Start in " << endl; //プログラム本編開始の通知
-		sys.countdownTimer(/*5*/3000); //5000msカウントダウンする
+		sys.countdownTimer(5000); //5000msカウントダウンする
 		system("cls"); //コンソール内の表示をリセット(c64)
 		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
@@ -209,11 +209,8 @@ int main()
 				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			/*if (pcm.FlagIcpRegistration == true){
-				pcm.cloud = pcm.cloudRegistration(pcm.cloud, pcm.model);
-			}*/
-
-			Point3f data = pcm.getCentroidCoordinatePointCloud(pcm.cloud);
+			Point3f data = pcm.getCentroidCoordinate3d(pcm.cloud);
+			routedraw.outputEV3Route(data);
 			cout << "==========================================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 

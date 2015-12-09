@@ -25,7 +25,7 @@ PointCloudMethod::PointCloudMethod()
  * @param bool flag_removeOutlier, bool flag_downsampling, bool flag_MLS, bool flag_extractPlane
  * @return なし
  */
-PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane, bool flagIcpRegistration)
+PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane)
 {
 	//コンストラクタ
 	FlagPassThrough = flagPassThrough;
@@ -33,7 +33,6 @@ PointCloudMethod::PointCloudMethod(bool flagPassThrough, bool flagDownsampling, 
 	FlagStatisticalOutlierRemoval = flagStatisticalOutlierRemoval;
 	FlagMLS = flagMLS;
 	FlagExtractPlane = flagExtractPlane;
-	FlagIcpRegistration = flagIcpRegistration;
 }
 
 /*!
@@ -88,9 +87,7 @@ void PointCloudMethod::flagChecker()
 	if (GetAsyncKeyState('N')){	//Mが入力されたので、平面検出のフラグを反転
 		FlagExtractPlane = !FlagExtractPlane;
 	}
-	if (GetAsyncKeyState('M')){
-		FlagIcpRegistration = !FlagIcpRegistration;
-	}
+
 	cout << "範囲外除去(X) => " << FlagPassThrough << " ダウンサンプリング(C) => " << FlagDownsampling << " 外れ値(V) => " << FlagStatisticalOutlierRemoval << " MLS(B) => " << FlagMLS << " 平面検出(N) => " << FlagExtractPlane << endl;
 	return;
 }
@@ -173,8 +170,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::downSamplingUsingVoxelG
 	vg.setInputCloud(inputPointCloud);
 	//sor.setLeafSize()でダウンサンプリングの程度を変更
 	vg.setLeafSize(leafSizeX, leafSizeY, leafSizeZ);
-	//vg.setLeafSize(0.003f, 0.003f, 0.003f); //Default
-	//sor.setLeafSize(0.03f, 0.03f, 0.03f); //少ない
 	vg.filter(*filtered);
 
 	//ポイントクラウドをしっかり保持できているかサイズを確認
@@ -211,7 +206,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::smoothingUsingMovingLea
 
 /*!
  * @brief メソッドPointCloudMethod::extractPlane().平面を検出するメソッド
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr inputPointCloud
+ * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr outputPointCloud
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)
@@ -302,70 +297,52 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 		j++;
 	}
 
-	//int max = cloud_cluster->size();
-	//if (j >= 2){ //クラスタが2個以上あれば一番大きいクラスタを出力
-		
-	//}
-	cout << "cloud_cluster => " << cloud_cluster->size() << ", max_cluster => " << max_cluster->size() << endl;
+	//cout << "cloud_cluster => " << cloud_cluster->size() << ", max_cluster => " << max_cluster->size() << endl;
 	//pcl::copyPointCloud(*cloud_cluster, *filtered); //カラーリングしたクラスタ全てを出力
 	pcl::copyPointCloud(*max_cluster, *filtered); //最大のクラスタのみ出力(c76)
 	//cout << "after\tExtract Plane\t\t=>\t" << filtered->size() << endl;
 	return filtered;
 }
-	
 
-/*pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel)
+/*!
+ * @brief メソッドgetCentroidCoordinate
+ * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
+ * @return Point3f centroid
+ */
+Point3f PointCloudMethod::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
-	Eigen::Matrix4d transformation_matrix = Eigen::Matrix4d::Identity();
-	double theta = M_PI / 8;
-	transformation_matrix(0, 0) = cos(theta);
-	transformation_matrix(0, 1) = -sin(theta);
-	transformation_matrix(1, 0) = sin(theta);
-	transformation_matrix(1, 1) = cos(theta);
-	//A translation on Z axis(0.4m)
-	transformation_matrix(2, 3) = 0.4;
+	//cout << "inputPointCloud => " << inputPointCloud->size() << endl; //最大のクラスタを受け取れているか確認(c76)
+	FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
+	FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
+	Point3f centroid_coordinate = 0; //重心座標
+	Point3f sum_pointcloud = 0; //座標の合計
 
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr final;
-
-	pcl::IterativeClosestPoint<pcl::PointXYZRGB, pcl::PointXYZRGB> icp;
-	icp.setInputSource(inputCloud);
-	icp.setInputTarget(inputModel);
-	icp.align()
-	//icp.setTransformationEpsilon(1e-6);
-	//icp.setMaxCorrespondenceDistance(5.0);
-	//icp.setMaximumIterations(200);
-	//icp.setEuclideanFitnessEpsilon(1.0);
-	//icp.setRANSACOutlierRejectionThreshold(1.0);
-	return final;
-}*/
-
-Point3f PointCloudMethod::getCentroidCoordinatePointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
-{
-	cout << "inputPointCloud => " << inputPointCloud->size() << endl;
-	FILE *pointcloud;
-	FILE *centroid;
-	Point3f centroid_coordinate;
-	Point3f sum_pointcloud = 0;
-
-	fopen_s(&pointcloud, "pointcloud.dat", "w");
+	//ファイルオープンgnuplotの確認用
+	fopen_s(&pointcloud, "pointcloud.dat", "w"); //
 	fopen_s(&centroid, "centroid.dat", "w");
 
-	//cout << *inputPointCloud << endl;
-	//summention coordinate. ※inputPointCloud->width = inputPointCloud->size().
+	//summention coordinate. ※inputPointCloud->width == inputPointCloud->size().
 	for (int i = 0; i < inputPointCloud->size(); i++){
 		//cout << i << " : " << "[x, y, z] => [ " << inputPointCloud->points[i].x << ", " << inputPointCloud->points[i].y << ", " << inputPointCloud->points[i].z << " ] " << endl;
-		sum_pointcloud.x = inputPointCloud->points[i].x;
-		sum_pointcloud.y = inputPointCloud->points[i].y;
-		sum_pointcloud.z = inputPointCloud->points[i].z;
-
-		fprintf_s(pointcloud, "%f %f %f\n",sum_pointcloud.x,sum_pointcloud.y,sum_pointcloud.z);
+		fprintf_s(pointcloud, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
+		sum_pointcloud.x = sum_pointcloud.x + inputPointCloud->points[i].x; //点群のx座標を足し合わせていく
+		sum_pointcloud.y = sum_pointcloud.y + inputPointCloud->points[i].y; //点群のy座標を足し合わせていく
+		sum_pointcloud.z = sum_pointcloud.z + inputPointCloud->points[i].z; //点群のz座標を足し合わせていく
+		//cout << i << " : " << "sum_x => " << sum_pointcloud.x << ", sum_y => " << sum_pointcloud.y << ", sum_z => " << sum_pointcloud.z << endl;
+		//cout << sum_pointcloud << endl; //確認用
 	}
-	centroid_coordinate.x = sum_pointcloud.x / inputPointCloud->size();
-	centroid_coordinate.y = sum_pointcloud.y / inputPointCloud->size();
-	centroid_coordinate.z = sum_pointcloud.z / inputPointCloud->size();
-	cout << "Centroid" << centroid_coordinate << endl;
-	fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x*1000,centroid_coordinate.y*1000,centroid_coordinate.z*1000);
+	//cout << "SUM => " << sum_pointcloud << endl; //合計の確認用
+	centroid_coordinate.x = sum_pointcloud.x / inputPointCloud->size(); //x座標の平均(重心)
+	centroid_coordinate.y = sum_pointcloud.y / inputPointCloud->size(); //y座標の平均(重心)
+	centroid_coordinate.z = sum_pointcloud.z / inputPointCloud->size(); //z座標の平均(重心)
+	//cout << "Centroid" << centroid_coordinate << endl; //確認用
+	
+	//平均座標(重心)をファイルに出力(確認用)
+	fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x,centroid_coordinate.y,centroid_coordinate.z);
+
+	//ファイルを閉じる(核に尿)
 	fclose(pointcloud);
 	fclose(centroid);
+
 	return centroid_coordinate;
 }

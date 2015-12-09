@@ -25,6 +25,9 @@ RouteDrawing::RouteDrawing()
 	if ((gpr = _popen("gnuplot", "w")) == NULL){
 		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
 	}
+
+	//(c76)
+	fopen_s(&centroid, "centroid_route.dat", "a"); //重心座標を追記モードで開く
 }
 
 /*!
@@ -40,6 +43,9 @@ RouteDrawing::~RouteDrawing()
 	//fprintf_s(gpr, "unset multiplot\n");
 	fprintf_s(gpr, "quit\n");
 	_pclose(gpr);
+
+	//(c76)
+	fclose(centroid);
 }
 
 /*!
@@ -287,5 +293,15 @@ void RouteDrawing::gnuplotScriptCoG(const string* cogFileName)
 		fprintf_s(gp, "splot \"%s\" using 2:3:4 with linespoints\n", cogFileName); //データをそのままプロット(c40)
 		fclose(gp);
 	//}
+	return;
+}
+
+/*!
+ *
+ *
+ */
+void RouteDrawing::outputEV3Route(Point3f ev3_centroid)
+{
+	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x*1000.0, ev3_centroid.y*1000.0, ev3_centroid.z*1000.0);
 	return;
 }

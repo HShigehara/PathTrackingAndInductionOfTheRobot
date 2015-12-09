@@ -22,7 +22,7 @@ private:
 
 public:
 	PointCloudMethod(); //コンストラクタ
-	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane, bool flagIcpRegistration); //コンストラクタ(c64)
+	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
 	~PointCloudMethod(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudViewerName);
@@ -48,7 +48,7 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel);
 	
 	//点群の重心座標と距離を取得
-	Point3f getCentroidCoordinatePointCloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+	Point3f getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
 	//クラウドビューワー用
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud;
