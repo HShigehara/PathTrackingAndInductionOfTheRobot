@@ -105,7 +105,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::passThroughFilter(pcl::
 	pass.setInputCloud(inputPointCloud);
 	pass.setFilterFieldName("z");
 	pass.setFilterLimitsNegative(true); //setFilterLimits(float min, float max)で指定した範囲以外を削除(c69)
-	pass.setFilterLimits(0.3, 40.0);
+	pass.setFilterLimits(0.3, 10.0);
 	pass.filter(*filtered);
 	
 	cout << "after\tPassThroughFilter\t=>\t" << filtered->size() << endl;
@@ -289,13 +289,15 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudMethod::getExtractPlaneAndClust
 			pcl::copyPointCloud(*cloud_cluster, *max_cluster);
 		}
 
-		cloud_cluster->width = cloud_cluster->points.size();
-		cloud_cluster->height = 1;
+		//cloud_cluster->width = cloud_cluster->points.size();
+		//cloud_cluster->height = 1;
 		cloud_cluster->is_dense = true;
 		cout << "Cluster " << j << "\t\t\t=>\t" << cloud_cluster->size() << endl;
 
 		j++;
 	}
+
+	//cout << "width => " << max_cluster->width << " height => " << max_cluster->height << endl;
 
 	//cout << "cloud_cluster => " << cloud_cluster->size() << ", max_cluster => " << max_cluster->size() << endl;
 	//pcl::copyPointCloud(*cloud_cluster, *filtered); //カラーリングしたクラスタ全てを出力
@@ -345,6 +347,45 @@ Point3f PointCloudMethod::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZR
 	fclose(centroid);
 
 	return centroid_coordinate;
+}
+
+void PointCloudMethod::leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+{
+	//3×3行列 S=[Sxx Sxy Sx;Sxy Syy Sy;Sx Sy inputPointCloud->size()]の初期化
+	double Szz = 0, Sxz = 0, Syz = 0, Sz = 0, Sxx = 0, Sxy = 0, Sx = 0, Syy = 0, Sy = 0;
+	//最小二乗法によって求めたA=[a b c]'の要素の初期化
+	double a = 0, b = 0, c = 0;
+	
+	cout << "input Size => " << inputPointCloud->size() << endl;
+	for (int i = 0; i < inputPointCloud->size(); i++){ //それぞれの要素の計算
+		Szz = Szz + inputPointCloud->points[i].z * inputPointCloud->points[i].z;
+		Sxz = Sxz + inputPointCloud->points[i].x * inputPointCloud->points[i].z;
+		Syz = Syz + inputPointCloud->points[i].y * inputPointCloud->points[i].z;
+		Sz = Sz + inputPointCloud->points[i].z;
+		Sxx = Sxx + inputPointCloud->points[i].x * inputPointCloud->points[i].x;
+		Sxy = Sxy + inputPointCloud->points[i].x * inputPointCloud->points[i].y;
+		Sx = Sx + inputPointCloud->points[i].x;
+		Syy = Syy + inputPointCloud->points[i].y * inputPointCloud->points[i].y;
+		Sy = Sy + inputPointCloud->points[i].y;
+	}
+	
+	cout << "要素　=> \n"
+		<< "Szz => " << Szz
+		<< "Sxz => " << Sxz
+		<< "Syz => " << Syz
+		<< "Sz => " << Sz
+		<< "Sxx => " << Sxx
+		<< "Sxy => " << Sxy
+		<< "Sx => " << Sx
+		<< "Syy => " << Syy
+		<< "Sy => " << Sy
+		<< "Point => " << inputPointCloud->size() << endl;
+
+	Eigen::Matrix3f S;
+	S << Sxx, Sxy, Sx,
+		Sxy, Syy, Sy,
+		Sx, Sy, inputPointCloud->size();
+	cout << "S => " << S << endl;
 }
 
 pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)

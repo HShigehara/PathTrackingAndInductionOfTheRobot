@@ -50,10 +50,13 @@ public:
 	//点群の重心座標と距離を取得
 	Point3f getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
+	//最小二乗法
+	void leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+
 	//法線計算
 	pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 	
-		//クラウドビューワー用
+	//クラウドビューワー用
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud;
 	pcl::visualization::CloudViewer *viewer;
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr model; //.plyファイルの点群(モデル)

@@ -94,7 +94,7 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(/*false*/true, /*false*/true, /*false*/true, false, /*false*/true); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudMethod pcm(/*false*/true, /*false*/true, false/*true*/, false, false/*true*/); //PointCloudMethodクラスのインスタンスを生成(c57)
 
 
 		//.plyファイルの読み込み
@@ -218,10 +218,10 @@ int main()
 
 			Point3f data = pcm.getCentroidCoordinate3d(pcm.cloud);
 			routedraw.outputEV3Route(data);
-
+			//pcm.leastSquareMethod(pcm.cloud);
 			//
-			pcl::PointCloud<pcl::Normal>::Ptr normals;
-			normals = pcm.getSurfaceNormals(pcm.cloud);
+			//pcl::PointCloud<pcl::Normal>::Ptr normals;
+			//normals = pcm.getSurfaceNormals(pcm.cloud);
 			//viewer2.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pcm.cloud, normals, 10, 0.05, "normals");
 			
 			//while (!viewer2.wasStopped())
