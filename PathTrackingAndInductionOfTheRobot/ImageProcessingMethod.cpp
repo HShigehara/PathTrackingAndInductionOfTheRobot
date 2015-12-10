@@ -391,8 +391,21 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	}
 	cout << "y_min => " << y_min << ", y_max => " << y_max << endl;
 
-	y_border = (y_max + y_min) * 0.44;
+	//上限と下限からカットするボーダーを決定する
+	y_border = (y_max + y_min) * 0.47; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
 
+	//上部の切り取り
+	int step;
+	step = 7;
+	for (int y = y_min; y < y_min + step; y++){
+		for (int x = 0; x < input_binimage.cols; x++){
+			if (input_binimage.at<unsigned char>(y, x) == 255){
+				input_binimage.at<unsigned char>(y, x) = 0;
+			}
+		}
+	}
+
+	//下部の切り取り
 	for (int y = y_border; y <= y_max; y++){
 		for (int x = 0; x < input_binimage.cols; x++){
 			if (input_binimage.at<unsigned char>(y, x) == 255){

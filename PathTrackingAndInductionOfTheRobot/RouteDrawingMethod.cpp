@@ -27,7 +27,7 @@ RouteDrawing::RouteDrawing()
 	}
 
 	//(c76)
-	fopen_s(&centroid, "centroid_route.dat", "a"); //重心座標を追記モードで開く
+	fopen_s(&centroid, "centroid_route.dat", "w"); //重心座標を追記モードで開く
 }
 
 /*!

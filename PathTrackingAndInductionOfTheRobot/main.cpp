@@ -179,7 +179,7 @@ int main()
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 			
 			//
-			bin_image = imgproc.getUnitMask(bin_image);
+			//bin_image = imgproc.getUnitMask(bin_image);
 
 			imgproc.showImage("Mask Image", bin_image);
 
