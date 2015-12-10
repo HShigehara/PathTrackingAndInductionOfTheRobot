@@ -346,3 +346,17 @@ Point3f PointCloudMethod::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZR
 
 	return centroid_coordinate;
 }
+
+pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+{
+	pcl::NormalEstimation<pcl::PointXYZRGB, pcl::Normal> ne;
+	ne.setInputCloud(inputPointCloud); //入力された点群の法線を計算する
+	pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>());
+	ne.setSearchMethod(tree);
+	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
+	ne.setRadiusSearch(0.005);
+	ne.compute(*cloud_normals);
+
+	cout << *cloud_normals << endl;
+	return cloud_normals;
+}

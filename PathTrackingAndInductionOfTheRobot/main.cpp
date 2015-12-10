@@ -150,6 +150,13 @@ int main()
 		system("cls"); //コンソール内の表示をリセット(c64)
 		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
+		//
+		/*pcl::visualization::PCLVisualizer viewer2("3D Viewer");
+		viewer2.setBackgroundColor(1.0, 0.5, 1.0);
+		viewer2.addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "input cloud");
+		viewer2.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "input cloud");
+		*///
+
 		while (!pcm.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
@@ -211,6 +218,18 @@ int main()
 
 			Point3f data = pcm.getCentroidCoordinate3d(pcm.cloud);
 			routedraw.outputEV3Route(data);
+
+			//
+			pcl::PointCloud<pcl::Normal>::Ptr normals;
+			normals = pcm.getSurfaceNormals(pcm.cloud);
+			//viewer2.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pcm.cloud, normals, 10, 0.05, "normals");
+			
+			//while (!viewer2.wasStopped())
+			//{
+			//	viewer2.spinOnce(100);
+			//}
+			//
+
 			cout << "==========================================================================================" << endl;
 			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
 
