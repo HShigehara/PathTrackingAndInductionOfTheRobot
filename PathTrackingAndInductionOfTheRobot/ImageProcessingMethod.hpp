@@ -60,6 +60,8 @@ public:
 	Mat undistortionImage; //!<補正後の画像(c71)
 
 	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
+
+	Mat getUnitMask(Mat& input_binimage);
 };
 
 /* インクルードガードの終了 */

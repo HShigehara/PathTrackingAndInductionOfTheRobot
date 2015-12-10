@@ -361,3 +361,46 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	//showImage("穴埋め処理後", closing_image);
 	return closing_image;
 }
+
+Mat ImageProcessing::getUnitMask(Mat& input_binimage)
+{
+	int y_min;
+	int y_border;
+	int y_max;
+
+	bool min_check = false; //y_minが見つかっていないとき
+
+	//yの最大値と最小値の計測
+	y_min = 0;
+	y_max = 0;
+
+	//yの最大値と最小値を探す
+	for (int y = 0; y < input_binimage.rows;y++){
+		for (int x = 0; x < input_binimage.cols;x++){
+			if (input_binimage.at<unsigned char>(y, x) == 255) //白ピクセルなら特定の処理を行う
+			{
+				if (min_check == false){ //y_minがみつかっていなければ．一度しか実行されない
+					y_min = y; //そのときのyを保存
+					min_check = true; //フラグをtrueにする
+				}
+				if (y_max < y){ //現代の最大より新しいyが大きければ
+					y_max = y; //新しいyを最大値とする
+				}
+			}
+		}
+	}
+	cout << "y_min => " << y_min << ", y_max => " << y_max << endl;
+
+	y_border = (y_max + y_min) * 0.44;
+
+	for (int y = y_border; y <= y_max; y++){
+		for (int x = 0; x < input_binimage.cols; x++){
+			if (input_binimage.at<unsigned char>(y, x) == 255){
+				input_binimage.at<unsigned char>(y, x) = 0;
+			}
+		}
+	}
+
+	//showImage("TEST", input_binimage);
+	return input_binimage;
+}

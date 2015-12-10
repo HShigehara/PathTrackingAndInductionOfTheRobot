@@ -177,6 +177,10 @@ int main()
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
+			
+			//
+			bin_image = imgproc.getUnitMask(bin_image);
+
 			imgproc.showImage("Mask Image", bin_image);
 
 			//ポイントクラウドの取得(c57)
