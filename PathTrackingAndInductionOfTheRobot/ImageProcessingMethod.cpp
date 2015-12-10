@@ -364,24 +364,37 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 
 Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 {
+	int x_min;
+	int x_border1;
+	int x_border2;
+	int x_max;
 	int y_min;
 	int y_border;
 	int y_max;
 
-	bool min_check = false; //y_minが見つかっていないとき
+	bool ymin_check = false; //y_minが見つかっていないとき
 
+	//xの最大値と最小値の計測
+	x_min = input_binimage.cols;
+	x_max = 0;
 	//yの最大値と最小値の計測
 	y_min = 0;
 	y_max = 0;
 
-	//yの最大値と最小値を探す
+	//xとyの最大値と最小値を探す
 	for (int y = 0; y < input_binimage.rows;y++){
 		for (int x = 0; x < input_binimage.cols;x++){
 			if (input_binimage.at<unsigned char>(y, x) == 255) //白ピクセルなら特定の処理を行う
 			{
-				if (min_check == false){ //y_minがみつかっていなければ．一度しか実行されない
+				if (x_min > x){
+					x_min = x;
+				}
+				if (x_max < x){
+					x_max = x;
+				}
+				if (ymin_check == false){ //y_minがみつかっていなければ．一度しか実行されない
 					y_min = y; //そのときのyを保存
-					min_check = true; //フラグをtrueにする
+					ymin_check = true; //フラグをtrueにする
 				}
 				if (y_max < y){ //現代の最大より新しいyが大きければ
 					y_max = y; //新しいyを最大値とする
@@ -389,12 +402,31 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 			}
 		}
 	}
-	cout << "y_min => " << y_min << ", y_max => " << y_max << endl;
+	cout << "x_min => " << x_min << ", x_max => " << x_max << ", y_min => " << y_min << ", y_max => " << y_max << endl;
+
+	//x方向の切り取り
+	x_border1 = (x_min + x_max) * /*0.18*/0.17;
+	x_border2 = (x_min + x_max) * /*0.82*/0.83;
+	//左部を白にする
+	for (int y = 0; y < input_binimage.rows; y++){
+		for (int x = x_min; x < x_border1; x++){
+			if (input_binimage.at<unsigned char>(y, x) == 255){
+				input_binimage.at<unsigned char>(y, x) = 0;
+			}
+		}
+	}
+	//右部を白にする
+	for (int y = 0; y < input_binimage.rows; y++){
+		for (int x = x_border2; x < x_max; x++){
+			if (input_binimage.at<unsigned char>(y, x) == 255){
+				input_binimage.at<unsigned char>(y, x) = 0;
+			}
+		}
+	}
 
 	//上限と下限からカットするボーダーを決定する
-	y_border = (y_max + y_min) * 0.47; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
-
-	//上部の切り取り
+	y_border = (y_max + y_min) * /*0.45*/0.47; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
+	//下部を白にする
 	int step;
 	step = 7;
 	for (int y = y_min; y < y_min + step; y++){

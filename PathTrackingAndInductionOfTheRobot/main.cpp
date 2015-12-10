@@ -179,10 +179,10 @@ int main()
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 			
 			//
-			//bin_image = imgproc.getUnitMask(bin_image);
+			bin_image = imgproc.getUnitMask(bin_image);
 
 			imgproc.showImage("Mask Image", bin_image);
-
+			imwrite("binsample.jpg", bin_image);
 			//ポイントクラウドの取得(c57)
 			//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pcm.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
