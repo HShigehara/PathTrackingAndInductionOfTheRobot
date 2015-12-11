@@ -29,6 +29,8 @@ public:
 
 	//最小二乗法
 	Eigen::Vector3f getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+	AttitudeAngle3d calcYawRollPitch(Eigen::Vector3f coefficient_plane);
+
 };
 
 /* インクルードガードの終了 */

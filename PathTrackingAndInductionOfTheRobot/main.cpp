@@ -89,7 +89,8 @@ int main()
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
 
 	//EV3ユニットの平面の係数(c78)
-	Eigen::Vector3f coefficient_plane;
+	Eigen::Vector3f coefficient_plane; //平面の係数
+	AttitudeAngle3d attitude_angle; //姿勢角(c78)
 
 	//メインの処理
 	try{
@@ -224,8 +225,10 @@ int main()
 
 			Point3f centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 			draw.outputEV3Route(centroid);
-
-			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud);
+			
+			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
+			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
+			cout << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			//
 			//pcl::PointCloud<pcl::Normal>::Ptr normals;
 			//normals = pointcloudlibrary.getSurfaceNormals(pointcloudlibrary.cloud);

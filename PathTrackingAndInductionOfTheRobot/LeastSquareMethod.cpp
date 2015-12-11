@@ -117,9 +117,8 @@ Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZR
 	double Szz = 0, Sxz = 0, Syz = 0, Sz = 0, Sxx = 0, Sxy = 0, Sx = 0, Syy = 0, Sy = 0;
 	//最小二乗法によって求めたA=[a b c]'の要素の初期化
 	//double a = 0, b = 0, c = 0;
-
 	//cout << "input Size => " << inputPointCloud->size() << endl;
-	for (int i = 0; i < inputPointCloud->size(); i++){ //それぞれの要素の計算
+	for (int i = 1; i < inputPointCloud->size(); i++){ //それぞれの要素の計算
 		Szz = Szz + inputPointCloud->points[i].z * inputPointCloud->points[i].z;
 		Sxz = Sxz + inputPointCloud->points[i].x * inputPointCloud->points[i].z;
 		Syz = Syz + inputPointCloud->points[i].y * inputPointCloud->points[i].z;
@@ -144,4 +143,24 @@ Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZR
 	//cout << "coefficient_plane => \n" << coefficient_plane << endl;
 
 	return coefficient_plane;
+}
+
+AttitudeAngle3d LeastSquareMethod::calcYawRollPitch(Eigen::Vector3f coefficient_plane)
+{
+	AttitudeAngle3d attitude_angle_rad; //姿勢角(ラジアン)
+	AttitudeAngle3d attitude_angle_deg; //姿勢角(度)
+
+	//ヨー角の計算
+	attitude_angle_rad.yaw = -atan(coefficient_plane.x());
+	attitude_angle_deg.yaw = attitude_angle_rad.yaw / M_PI * 180.0;
+
+	//ロール角の計算
+	attitude_angle_rad.roll = atan2(-coefficient_plane.x(), coefficient_plane.y());
+	attitude_angle_deg.roll = attitude_angle_rad.roll / M_PI * 180.0;
+
+	//ピッチ角の計算
+	attitude_angle_rad.pitch = atan2(1, coefficient_plane.y());
+	attitude_angle_deg.pitch = attitude_angle_rad.pitch / M_PI * 180.0;
+
+	return attitude_angle_deg;
 }

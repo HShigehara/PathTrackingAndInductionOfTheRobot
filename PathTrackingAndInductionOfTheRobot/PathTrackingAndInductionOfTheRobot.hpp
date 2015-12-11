@@ -33,7 +33,13 @@ typedef struct DoF{
 	double yaw; //y軸回転
 	double roll; //z軸回転
 	double pitch; //x軸回転
-}DoF6;
+}DoF6d;
+
+typedef struct AttitudeAngle{
+	double yaw;
+	double roll;
+	double pitch;
+}AttitudeAngle3d;
 
 /* グローバル変数 */
 //画像関係
