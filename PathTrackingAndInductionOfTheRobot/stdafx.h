@@ -78,13 +78,5 @@ using namespace cv; //!<名前空間
 #define NOC 32 //!<Number of Characters．(ファイルの名前を付けるときの文字数制限)
 #define OUTPUTDATA_MAX 10000 //!<出力するデータの上限
 
-//姿勢構造体の定義(c78)
-struct DoF6{
-	double x; //x座標
-	double y; //y座標
-	double z; //z座標
-	double yaw; //y軸回転
-	double roll; //z軸回転
-	double pitch; //x軸回転
-};
+
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください。

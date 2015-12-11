@@ -25,6 +25,16 @@ typedef struct outputData{ //ファイルに出力するデータ群(c41)
 	float z;
 }outputData;
 
+//姿勢構造体の定義(c78)
+typedef struct DoF{
+	double x; //x座標
+	double y; //y座標
+	double z; //z座標
+	double yaw; //y軸回転
+	double roll; //z軸回転
+	double pitch; //x軸回転
+}DoF6;
+
 /* グローバル変数 */
 //画像関係
 extern Mat image; //!<RGB画像格納用の変数
