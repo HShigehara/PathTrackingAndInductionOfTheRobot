@@ -86,7 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ImageProcessingMethod.cpp" />
+    <ClCompile Include="ImageProcessing.cpp" />
     <ClCompile Include="KinectMethod.cpp" />
     <ClCompile Include="LeastSquareMethod.cpp" />
     <ClCompile Include="main.cpp" />
@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3DPathTrackingUsingtheKINECT.hpp" />
-    <ClInclude Include="ImageProcessingMethod.hpp" />
+    <ClInclude Include="ImageProcessing.hpp" />
     <ClInclude Include="KinectMethod.hpp" />
     <ClInclude Include="LeastSquareMethod.hpp" />
     <ClInclude Include="PointCloudLibrary.hpp" />

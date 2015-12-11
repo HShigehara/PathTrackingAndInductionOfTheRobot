@@ -9,7 +9,7 @@
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
 #include "KinectMethod.hpp"
-#include "ImageProcessingMethod.hpp"
+#include "ImageProcessing.hpp"
 #include "Drawing.hpp"
 #include "System.hpp"
 #include "LeastSquareMethod.hpp" //(c49)

@@ -1,5 +1,5 @@
 ﻿/*
-* @file ImageProcessingMethod.hpp 
+* @file ImageProcessing.hpp 
 * @link https://github.com/HShigehara/Masters-Thesis.git 
 * @brief 画像処理関連のクラスのヘッダ
 * @date 2014.12.10
@@ -7,8 +7,8 @@
 */
 
 /* インクルードガード */
-#ifndef __IMAGEPROCESSINGMETHOD_HPP__
-#define __IMAGEPROCESSINGMETHOD_HPP__
+#ifndef __IMAGEPROCESSING_HPP__
+#define __IMAGEPROCESSING_HPP__
 
 /* インクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
@@ -65,4 +65,4 @@ public:
 };
 
 /* インクルードガードの終了 */
-#endif /* __IMAGEpROCESSINGMETHOD_HPP__ */
+#endif /* __IMAGEPROCESSING_HPP__ */

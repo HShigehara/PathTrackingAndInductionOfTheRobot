@@ -1,5 +1,5 @@
 ﻿/*
- * @file ImageProcessingMethod.cpp
+ * @file ImageProcessing.cpp
  * @link https://github.com/HShigehara/Masters-Thesis.git
  * @brief 画像処理を行うためのメソッド群
  * @date 2014.10.17
@@ -8,7 +8,7 @@
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp" //ヘッダファイルのインクルード
-#include "ImageProcessingMethod.hpp"
+#include "ImageProcessing.hpp"
 
 /*!
  * @brief メソッドImageProcessing::ImageProcessing().コンストラクタ
