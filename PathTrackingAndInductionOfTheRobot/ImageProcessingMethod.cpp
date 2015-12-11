@@ -408,7 +408,7 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	x_border1 = (x_min + x_max) * /*0.18*/0.17;
 	x_border2 = (x_min + x_max) * /*0.82*/0.83;
 	//左部を白にする
-	for (int y = 0; y < input_binimage.rows; y++){
+	/*for (int y = 0; y < input_binimage.rows; y++){
 		for (int x = x_min; x < x_border1; x++){
 			if (input_binimage.at<unsigned char>(y, x) == 255){
 				input_binimage.at<unsigned char>(y, x) = 0;
@@ -422,8 +422,8 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 				input_binimage.at<unsigned char>(y, x) = 0;
 			}
 		}
-	}
-
+	}*/
+	//imwrite("before_cut.jpg", input_binimage);
 	//上限と下限からカットするボーダーを決定する
 	y_border = (y_max + y_min) * /*0.45*/0.47; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
 	//下部を白にする

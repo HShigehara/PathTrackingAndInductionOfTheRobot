@@ -369,23 +369,22 @@ void PointCloudMethod::leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr 
 		Sy = Sy + inputPointCloud->points[i].y;
 	}
 	
-	cout << "要素　=> \n"
-		<< "Szz => " << Szz
-		<< "Sxz => " << Sxz
-		<< "Syz => " << Syz
-		<< "Sz => " << Sz
-		<< "Sxx => " << Sxx
-		<< "Sxy => " << Sxy
-		<< "Sx => " << Sx
-		<< "Syy => " << Syy
-		<< "Sy => " << Sy
-		<< "Point => " << inputPointCloud->size() << endl;
-
-	Eigen::Matrix3f S;
-	S << Sxx, Sxy, Sx,
+	Eigen::Matrix3f m1;
+	m1 << Sxx, Sxy, Sx,
 		Sxy, Syy, Sy,
 		Sx, Sy, inputPointCloud->size();
-	cout << "S => " << S << endl;
+	cout << "m1 => \n" << m1 << endl;
+	cout << "m1_inverse => \n" << m1.inverse() << endl;
+
+	Eigen::Vector3f m2;
+	m2 << Sxz, Syz, Sz;
+	cout << "m2 => \n" << m2 << endl;
+
+	Eigen::Vector3f A;
+	A = m1.inverse() * m2;
+	cout << "A => \n" << A << endl;
+	
+	return;
 }
 
 pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)

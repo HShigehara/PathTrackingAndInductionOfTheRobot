@@ -61,5 +61,7 @@ extern const float* phranges;
 extern /*int*/bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
 extern /*int*/bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
+
+
 /* インクルードガードの終了 */
 #endif /* __3DPATHTRACKINGUSINGTHEKINECT_HPP__ */
