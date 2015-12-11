@@ -1,14 +1,14 @@
 ﻿/*
  * @file KinectMethod.hpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @link https://github.com/HShigehara/PathTPATHTRACKINGANDINDUCTIONTHEROBOTrackingAndInductionOfTheRobot.git
  * @brief kinect処理のクラスのヘッダ
  * @date 2014.12.10
  * @author H.Shigehara
  */
 
 /* インクルードガード */
-#ifndef __KINECTMETHOD_HPP__
-#define __KINECTMETHOD_HPP__
+#ifndef __KINECT_HPP__
+#define __KINECT_HPP__
 
 /* インクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
@@ -61,4 +61,4 @@ public:
 };
 
 /* インクルードガードの終了 */
-#endif /* __KINECTMETHOD_HPP__ */
+#endif /* __KINECT_HPP__ */

@@ -87,7 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ImageProcessing.cpp" />
-    <ClCompile Include="KinectMethod.cpp" />
+    <ClCompile Include="Kinect.cpp" />
     <ClCompile Include="LeastSquareMethod.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
@@ -102,7 +102,7 @@
   <ItemGroup>
     <ClInclude Include="PathTrackingAndInductionOfTheRobot.hpp" />
     <ClInclude Include="ImageProcessing.hpp" />
-    <ClInclude Include="KinectMethod.hpp" />
+    <ClInclude Include="Kinect.hpp" />
     <ClInclude Include="LeastSquareMethod.hpp" />
     <ClInclude Include="PointCloudLibrary.hpp" />
     <ClInclude Include="Drawing.hpp" />

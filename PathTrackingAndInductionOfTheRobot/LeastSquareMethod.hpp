@@ -21,7 +21,6 @@ class LeastSquareMethod
 {
 private:
 
-
 public:
 	LeastSquareMethod(); //!<コンストラクタ
 	~LeastSquareMethod(); //!<デストラクタ
@@ -30,7 +29,6 @@ public:
 
 	//最小二乗法
 	Eigen::Vector3f getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
-
 };
 
 /* インクルードガードの終了 */

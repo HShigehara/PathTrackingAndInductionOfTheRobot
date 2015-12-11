@@ -1,5 +1,5 @@
 ﻿/*
- * @file KinectMethod.cpp
+ * @file Kinect.cpp
  * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief Kinectを扱うためのメソッド群
  * @date 2014.10.15
@@ -8,7 +8,7 @@
 
 /* ヘッダファイルのインクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
-#include "KinectMethod.hpp"
+#include "Kinect.hpp"
 
 /*!
  * @brief メソッドKinect::Kinect().コンストラクタ

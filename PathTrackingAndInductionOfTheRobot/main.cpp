@@ -8,7 +8,7 @@
 
 /* ヘッダファイルのインクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
-#include "KinectMethod.hpp"
+#include "Kinect.hpp"
 #include "ImageProcessing.hpp"
 #include "Drawing.hpp"
 #include "System.hpp"
