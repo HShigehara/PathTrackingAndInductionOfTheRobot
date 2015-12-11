@@ -100,7 +100,7 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="3DPathTrackingUsingtheKINECT.hpp" />
+    <ClInclude Include="PathTrackingAndInductionOfTheRobot.hpp" />
     <ClInclude Include="ImageProcessing.hpp" />
     <ClInclude Include="KinectMethod.hpp" />
     <ClInclude Include="LeastSquareMethod.hpp" />

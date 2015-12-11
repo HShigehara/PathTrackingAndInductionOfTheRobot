@@ -12,7 +12,7 @@
 #define __SYSTEM_HPP__
 
 /* ヘッダファイルのインクルード */
-#include "3DPathTrackingUsingtheKINECT.hpp"
+#include "PathTrackingAndInductionOfTheRobot.hpp"
 
 class System
 {

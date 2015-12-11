@@ -1,5 +1,5 @@
 ﻿/*
- * @file 3DPathTrackingUsingtheKINECT.h
+ * @file PathTrackingAndInductionOfTheRobot.h
  * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 距離データを取得し画像として表示するプログラムのヘッダファイル
  * @date 2014.10.15
@@ -7,8 +7,8 @@
  */
 
 /* インクルードガード */
-#ifndef __3DPATHTRACKINGUSINGTHEKINECT_HPP__
-#define __3DPATHTRACKINGUSINGTHEKINECT_HPP__
+#ifndef __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__
+#define __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__
 
 //よく使うヘッダはstdafx.hに
 //構造体
@@ -64,4 +64,4 @@ extern /*int*/bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
 
 /* インクルードガードの終了 */
-#endif /* __3DPATHTRACKINGUSINGTHEKINECT_HPP__ */
+#endif /* __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__ */

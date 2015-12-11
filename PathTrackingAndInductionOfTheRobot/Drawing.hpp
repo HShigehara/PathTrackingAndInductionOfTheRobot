@@ -11,7 +11,7 @@
 #define __DRAWING_HPP__
 
 /* インクルード */
-#include "3DPathTrackingUsingtheKINECT.hpp"
+#include "PathTrackingAndInductionOfTheRobot.hpp"
 
 /*!
 * @class Drawing

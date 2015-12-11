@@ -11,7 +11,7 @@
 #define __POINTCLOUDLIBRARY_HPP__
 
 /* インクルード */
-#include "3DPathTrackingUsingtheKINECT.hpp"
+#include "PathTrackingAndInductionOfTheRobot.hpp"
 
 /*!
 * @class PointCloudLibrary

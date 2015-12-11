@@ -11,7 +11,7 @@
 #define __LEASTSQUAREMETHOD_HPP__
 
 /* インクルード */
-#include "3DPathTrackingUsingtheKINECT.hpp"
+#include "PathTrackingAndInductionOfTheRobot.hpp"
 
 /*!
 * @class LeastSquareMethod

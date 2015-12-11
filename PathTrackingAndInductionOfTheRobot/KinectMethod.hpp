@@ -11,7 +11,7 @@
 #define __KINECTMETHOD_HPP__
 
 /* インクルード */
-#include "3DPathTrackingUsingtheKINECT.hpp"
+#include "PathTrackingAndInductionOfTheRobot.hpp"
 
 /*! @brief エラーチェック */
 #define ERROR_CHECK(ret)\
