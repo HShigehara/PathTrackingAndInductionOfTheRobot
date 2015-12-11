@@ -1,5 +1,5 @@
 ﻿/*
-* @file PointCloudMethod.hpp
+* @file PointCloudLibrary.hpp
 * @link https://github.com/HShigehara/Masters-Thesis.git
 * @brief PCL関連の処理を行うクラスのヘッダ
 * @date 2015.10.30
@@ -7,23 +7,23 @@
 */
 
 /* インクルードガード */
-#ifndef __POINTCLOUDMETHOD_HPP__
-#define __POINTCLOUDMETHOD_HPP__
+#ifndef __POINTCLOUDLIBRARY_HPP__
+#define __POINTCLOUDLIBRARY_HPP__
 
 /* インクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
 
 /*!
-* @class PointCloudMethod
+* @class PointCloudLibrary
 * @brief 点群処理を行うクラス
 */
-class PointCloudMethod{
+class PointCloudLibrary{
 private:
 
 public:
-	PointCloudMethod(); //コンストラクタ
-	PointCloudMethod(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
-	~PointCloudMethod(); //デストラクタ
+	PointCloudLibrary(); //コンストラクタ
+	PointCloudLibrary(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
+	~PointCloudLibrary(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudViewerName);
 	void flagChecker(); //フラグを判定するメソッド(c64)
@@ -71,4 +71,4 @@ public:
 };
 
 /* インクルードガードの終了 */
-#endif /* __POINTCLOUDMETHOD_HPP__ */
+#endif /* __POINTCLOUDLIBRARY_HPP__ */

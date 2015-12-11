@@ -91,7 +91,7 @@
     <ClCompile Include="LeastSquareMethod.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="PointCloudMethod.cpp" />
+    <ClCompile Include="PointCloudLibrary.cpp" />
     <ClCompile Include="DrawingMethod.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -104,7 +104,7 @@
     <ClInclude Include="ImageProcessingMethod.hpp" />
     <ClInclude Include="KinectMethod.hpp" />
     <ClInclude Include="LeastSquareMethod.hpp" />
-    <ClInclude Include="PointCloudMethod.hpp" />
+    <ClInclude Include="PointCloudLibrary.hpp" />
     <ClInclude Include="DrawingMethod.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System.hpp" />

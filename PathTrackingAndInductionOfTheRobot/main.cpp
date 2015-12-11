@@ -13,7 +13,7 @@
 #include "DrawingMethod.hpp"
 #include "System.hpp"
 #include "LeastSquareMethod.hpp" //(c49)
-#include "PointCloudMethod.hpp" //ポイントクラウド処理のヘッダを追加(c57)
+#include "PointCloudLibrary.hpp" //ポイントクラウド処理のヘッダを追加(c57)
 
 /* グローバル変数 */
 //画像データ
@@ -97,11 +97,11 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudMethod pcm(/*false*/true, /*false*/true, false/*true*/, false, false/*true*/); //PointCloudMethodクラスのインスタンスを生成(c57)
+		PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, false/*true*/, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
 
 
 		//.plyファイルの読み込み
-		//pcm.loadPLY("20151208_EV3COLOR.ply");
+		//pointcloudlibrary.loadPLY("20151208_EV3COLOR.ply");
 
 		//動画保存用
 		//VideoWriter writer; //動画保存用 
@@ -151,16 +151,16 @@ int main()
 		cout << "Process will Start in " << endl; //プログラム本編開始の通知
 		sys.countdownTimer(5000); //5000msカウントダウンする
 		system("cls"); //コンソール内の表示をリセット(c64)
-		pcm.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
+		pointcloudlibrary.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
 
 		//
 		/*pcl::visualization::PCLVisualizer viewer2("3D Viewer");
 		viewer2.setBackgroundColor(1.0, 0.5, 1.0);
-		viewer2.addPointCloud<pcl::PointXYZRGB>(pcm.cloud, "input cloud");
+		viewer2.addPointCloud<pcl::PointXYZRGB>(pointcloudlibrary.cloud, "input cloud");
 		viewer2.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "input cloud");
 		*///
 
-		while (!pcm.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
+		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
@@ -186,50 +186,50 @@ int main()
 			imgproc.showImage("Mask Image", bin_image);
 
 			//ポイントクラウドの取得(c57)
-			//pcm.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			pcm.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
-			//pcm.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			//pcm.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			pcm.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
+			//pointcloudlibrary.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			pointcloudlibrary.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
+			//pointcloudlibrary.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			//pointcloudlibrary.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
+			pointcloudlibrary.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 			cout << "==========================================================================================" << endl;
-			cout << "Original PointCloud Size\t=>\t" << pcm.cloud->size() << endl;
+			cout << "Original PointCloud Size\t=>\t" << pointcloudlibrary.cloud->size() << endl;
 
 			//PCLの処理
-			if (pcm.FlagPassThrough == true){  //外れ値除去(c59)
-				pcm.cloud = pcm.passThroughFilter(pcm.cloud); //Kinectから取得した初期の外れ値を除去(c60)
-				//cloud = pcm.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
+			if (pointcloudlibrary.FlagPassThrough == true){  //外れ値除去(c59)
+				pointcloudlibrary.cloud = pointcloudlibrary.passThroughFilter(pointcloudlibrary.cloud); //Kinectから取得した初期の外れ値を除去(c60)
+				//cloud = pointcloudlibrary.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
 
-			if (pcm.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.0002f, 0.0002f, 0.0002f); //Default=all 0.003
-				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
-				//pcm.cloud = pcm.downSamplingUsingVoxelGridFilter(pcm.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
+			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.0002f, 0.0002f, 0.0002f); //Default=all 0.003
+				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
-			if (pcm.FlagStatisticalOutlierRemoval == true){
-				pcm.cloud = pcm.removeOutlier(pcm.cloud); //統計的な外れ値除去(c60)
+			if (pointcloudlibrary.FlagStatisticalOutlierRemoval == true){
+				pointcloudlibrary.cloud = pointcloudlibrary.removeOutlier(pointcloudlibrary.cloud); //統計的な外れ値除去(c60)
 			}
 
-			if (pcm.FlagDownsampling == true && pcm.FlagMLS == true){  //スムージング処理(c60)
-				pcm.cloud = pcm.smoothingUsingMovingLeastSquare(pcm.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
+			if (pointcloudlibrary.FlagDownsampling == true && pointcloudlibrary.FlagMLS == true){  //スムージング処理(c60)
+				pointcloudlibrary.cloud = pointcloudlibrary.smoothingUsingMovingLeastSquare(pointcloudlibrary.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
 
 			}
-			else if (pcm.FlagDownsampling == false && pcm.FlagMLS == true){
+			else if (pointcloudlibrary.FlagDownsampling == false && pointcloudlibrary.FlagMLS == true){
 				cout << "MLSを有効にするためには，ダウンサンプリングを有効にしてください" << endl;
 			}
 
-			if (pcm.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
-				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
+			if (pointcloudlibrary.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
+				pointcloudlibrary.cloud = pointcloudlibrary.getExtractPlaneAndClustering(pointcloudlibrary.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			Point3f centroid = pcm.getCentroidCoordinate3d(pcm.cloud);
+			Point3f centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 			draw.outputEV3Route(centroid);
 
-			coefficient_plane = lsm.getCoefficient(pcm.cloud);
+			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud);
 			//
 			//pcl::PointCloud<pcl::Normal>::Ptr normals;
-			//normals = pcm.getSurfaceNormals(pcm.cloud);
-			//viewer2.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pcm.cloud, normals, 10, 0.05, "normals");
+			//normals = pointcloudlibrary.getSurfaceNormals(pointcloudlibrary.cloud);
+			//viewer2.addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(pointcloudlibrary.cloud, normals, 10, 0.05, "normals");
 			
 			//while (!viewer2.wasStopped())
 			//{
@@ -238,7 +238,7 @@ int main()
 			//
 
 			cout << "==========================================================================================" << endl;
-			pcm.viewer->showCloud(pcm.cloud); //処理後の点群を表示
+			pointcloudlibrary.viewer->showCloud(pointcloudlibrary.cloud); //処理後の点群を表示
 
 			//メインの処理(c26)(c30)
 			//if (mouseFlag == true){ //mouseFlagがtrueであれば=マウスのボタンが上に上がったら
@@ -302,7 +302,7 @@ int main()
 			if (GetAsyncKeyState('R')){
 				system("cls");
 				destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
-				pcm.viewer->~CloudViewer(); //クラウドビューアーの削除
+				pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
