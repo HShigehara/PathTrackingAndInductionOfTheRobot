@@ -33,13 +33,13 @@
     <ClCompile Include="PointCloudMethod.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="RouteDrawingMethod.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="System.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="RouteDrawingMethod.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

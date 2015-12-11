@@ -105,3 +105,43 @@ void LeastSquareMethod::getSphereData(int actualExtractedNum)
 
 	return;
 }
+
+Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+{
+	Eigen::Vector3f coefficient_plane(0.0, 0.0, 0.0);
+	Eigen::Matrix3f m1;
+	m1.Zero();
+	Eigen::Vector3f m2(0.0, 0.0, 0.0);
+
+	//3×3行列 S=[Sxx Sxy Sx;Sxy Syy Sy;Sx Sy inputPointCloud->size()]の初期化
+	double Szz = 0, Sxz = 0, Syz = 0, Sz = 0, Sxx = 0, Sxy = 0, Sx = 0, Syy = 0, Sy = 0;
+	//最小二乗法によって求めたA=[a b c]'の要素の初期化
+	//double a = 0, b = 0, c = 0;
+
+	//cout << "input Size => " << inputPointCloud->size() << endl;
+	for (int i = 0; i < inputPointCloud->size(); i++){ //それぞれの要素の計算
+		Szz = Szz + inputPointCloud->points[i].z * inputPointCloud->points[i].z;
+		Sxz = Sxz + inputPointCloud->points[i].x * inputPointCloud->points[i].z;
+		Syz = Syz + inputPointCloud->points[i].y * inputPointCloud->points[i].z;
+		Sz = Sz + inputPointCloud->points[i].z;
+		Sxx = Sxx + inputPointCloud->points[i].x * inputPointCloud->points[i].x;
+		Sxy = Sxy + inputPointCloud->points[i].x * inputPointCloud->points[i].y;
+		Sx = Sx + inputPointCloud->points[i].x;
+		Syy = Syy + inputPointCloud->points[i].y * inputPointCloud->points[i].y;
+		Sy = Sy + inputPointCloud->points[i].y;
+	}
+
+	m1 << Sxx, Sxy, Sx,
+		Sxy, Syy, Sy,
+		Sx, Sy, inputPointCloud->size();
+	//cout << "m1 => \n" << m1 << endl;
+	//cout << "m1_inverse => \n" << m1.inverse() << endl;
+
+	m2 << Sxz, Syz, Sz;
+	//cout << "m2 => \n" << m2 << endl;
+
+	coefficient_plane = m1.inverse() * m2;
+	//cout << "coefficient_plane => \n" << coefficient_plane << endl;
+
+	return coefficient_plane;
+}

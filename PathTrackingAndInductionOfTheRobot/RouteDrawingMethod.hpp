@@ -26,6 +26,7 @@ private:
 	int plotMode = 1; //!<gnuplotのスクリプトをファイルに出力する際に，計測する対象の状況に応じて値の範囲を変更する.中心固定用(1)，縦移動用(2)，横移動用(3)(c46)，自動縮尺(4)(c47)
 
 	FILE *centroid; //!<重心座標用のファイル出力ストリーム(c76)
+	FILE *splot_ev3unit; //!<EV3のユニット用(gnuplot)(c78)
 
 public:
 	RouteDrawing(); //!<コンストラクタ
@@ -36,6 +37,8 @@ public:
 	void gnuplotScriptCoG(const string* cogFileName); //!<球の重心座標をプロットするメソッド(c52)
 
 	void outputEV3Route(Point3f ev3_centroid); //!<EV3の重心を渡したらファイルに出力するメソッド(c76)
+
+	void RouteDrawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
 };
 
 /* インクルードガードの終了 */

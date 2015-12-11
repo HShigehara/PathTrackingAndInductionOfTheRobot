@@ -51,7 +51,7 @@ public:
 	Point3f getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
 	//最小二乗法
-	void leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+	Eigen::Vector3f leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
 	//法線計算
 	pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);

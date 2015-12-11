@@ -27,6 +27,10 @@ public:
 	~LeastSquareMethod(); //!<デストラクタ
 
 	void getSphereData(int actualExtractedNum); //!<最小二乗法によって求めた球の情報を取得するメソッド
+
+	//最小二乗法
+	Eigen::Vector3f getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+
 };
 
 /* インクルードガードの終了 */

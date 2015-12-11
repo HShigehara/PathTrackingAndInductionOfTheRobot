@@ -27,7 +27,7 @@ RouteDrawing::RouteDrawing()
 	}
 
 	//(c76)
-	fopen_s(&centroid, "centroid_route.dat", "w"); //重心座標を追記モードで開く
+	fopen_s(&centroid, "data/centroid_route.dat", "w"); //重心座標を追記モードで開く
 }
 
 /*!
@@ -46,6 +46,7 @@ RouteDrawing::~RouteDrawing()
 
 	//(c76)
 	fclose(centroid);
+
 }
 
 /*!
@@ -304,4 +305,28 @@ void RouteDrawing::outputEV3Route(Point3f ev3_centroid)
 {
 	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x*1000.0, ev3_centroid.y*1000.0, ev3_centroid.z*1000.0);
 	return;
+}
+
+/*!
+ * @brief メソッドRouteDrawing::gnuplotScriptEV3Unit()．EV3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78)
+ */
+void RouteDrawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
+{
+	FILE *fp; //ファイルストリームを開く
+	fopen_s(&fp, "data/splot_ev3.plt", "w"); //ファイルを開く
+
+	//(c78)
+	if ((splot_ev3unit = _popen("gnuplot", "w")) == NULL){
+		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
+	}
+
+	fprintf_s(fp, "set xlabel \"X-axis\"\n");
+	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
+	fprintf_s(fp, "set zlabel \"Z-axis\"\n");
+	fprintf_s(fp, "set title \"PointCloud Plane(LSM) Centroid\"\n");
+	fprintf_s(fp, "splot \"centroid.dat\" pointsize 5,%f*x+%f*y+%f,\"pointcloud.dat\" every 7\n",coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z());
+
+	//(c78)
+	_pclose(splot_ev3unit);
+	fclose(fp);
 }

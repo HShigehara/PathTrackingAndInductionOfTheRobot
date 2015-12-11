@@ -88,6 +88,9 @@ int main()
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
 
+	//EV3ユニットの平面の係数(c78)
+	Eigen::Vector3f coefficient_plane;
+
 	//メインの処理
 	try{
 		sys.startMessage(); //プログラム開始時のメッセージを表示
@@ -219,9 +222,10 @@ int main()
 				pcm.cloud = pcm.getExtractPlaneAndClustering(pcm.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			Point3f data = pcm.getCentroidCoordinate3d(pcm.cloud);
-			routedraw.outputEV3Route(data);
-			pcm.leastSquareMethod(pcm.cloud);
+			Point3f centroid = pcm.getCentroidCoordinate3d(pcm.cloud);
+			routedraw.outputEV3Route(centroid);
+
+			coefficient_plane = lsm.getCoefficient(pcm.cloud);
 			//
 			//pcl::PointCloud<pcl::Normal>::Ptr normals;
 			//normals = pcm.getSurfaceNormals(pcm.cloud);
@@ -318,6 +322,10 @@ int main()
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
+
+
+		routedraw.gnuplotScriptEV3Unit(coefficient_plane);
+
 	}
 
 	catch (exception& ex){ //例外処理
@@ -342,7 +350,7 @@ int main()
 	//}
 
 	//sys.endMessage(checkNum);
-	sys.endMessage();
 
+	sys.endMessage();
 	return 0;
 }
