@@ -1,5 +1,5 @@
 ﻿/*
-* @file RouteDrawingMethod.hpp 
+* @file DrawingMethod.hpp 
 * @link https://github.com/HShigehara/Masters-Thesis.git
 * @brief gnuplot処理関連のクラスのヘッダ
 * @date 2014.12.10
@@ -7,17 +7,17 @@
 */
 
 /* インクルードガード */
-#ifndef __ROUTEDRAWINGMETHOD_HPP__
-#define __ROUTEDRAWINGMETHOD_HPP__
+#ifndef __DRAWINGMETHOD_HPP__
+#define __DRAWINGMETHOD_HPP__
 
 /* インクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
 
 /*!
-* @class RouteDrawing
+* @class Drawing
 * @brief 経路描画用のクラス
 */
-class RouteDrawing
+class Drawing
 {
 private:
 	FILE *gnuplot; //プロット用
@@ -29,8 +29,8 @@ private:
 	FILE *splot_ev3unit; //!<EV3のユニット用(gnuplot)(c78)
 
 public:
-	RouteDrawing(); //!<コンストラクタ
-	~RouteDrawing(); //!<デストラクタ
+	Drawing(); //!<コンストラクタ
+	~Drawing(); //!<デストラクタ
 	void plot3D(const string* outputDataName); //!<3D座標ファイルをプロットするメソッド
 	void gnuplotScript(const string* dataFileName); //
 	void plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_MAX]); //リアルタイムでgnuplotに出力(c43)
@@ -38,8 +38,8 @@ public:
 
 	void outputEV3Route(Point3f ev3_centroid); //!<EV3の重心を渡したらファイルに出力するメソッド(c76)
 
-	void RouteDrawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
+	void gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
 };
 
 /* インクルードガードの終了 */
-#endif /* __ROUTEDRAWINGMETHOD_HPP__ */
+#endif /* __DRAWINGMETHOD_HPP__ */

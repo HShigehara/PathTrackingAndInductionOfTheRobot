@@ -10,7 +10,7 @@
 #include "3DPathTrackingUsingtheKINECT.hpp"
 #include "KinectMethod.hpp"
 #include "ImageProcessingMethod.hpp"
-#include "RouteDrawingMethod.hpp"
+#include "DrawingMethod.hpp"
 #include "System.hpp"
 #include "LeastSquareMethod.hpp" //(c49)
 #include "PointCloudMethod.hpp" //ポイントクラウド処理のヘッダを追加(c57)
@@ -57,7 +57,7 @@ int main()
 	RETRY: //goto文．再計測をやり直す場合
 	//インスタンスの生成
 	System sys; //!<システム的なメソッドをまとめているクラス
-	RouteDrawing routedraw; //!<RouteDrawingクラスのインスタンスを生成
+	Drawing draw; //!<drawingクラスのインスタンスを生成
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
 
 	//変数の宣言
@@ -223,7 +223,7 @@ int main()
 			}
 
 			Point3f centroid = pcm.getCentroidCoordinate3d(pcm.cloud);
-			routedraw.outputEV3Route(centroid);
+			draw.outputEV3Route(centroid);
 
 			coefficient_plane = lsm.getCoefficient(pcm.cloud);
 			//
@@ -280,7 +280,7 @@ int main()
 
 				//抽出されたデータを表示
 				//cout << "X => " << realPoint.x << "\tY => " << realPoint.y << "\tZ => " << realPoint.z << endl;
-				//routedraw.plot3DRealTime(countDataNum, outputData); //位置をリアルタイムでプロットする(c43)
+				//draw.plot3DRealTime(countDataNum, outputData); //位置をリアルタイムでプロットする(c43)
 				countDataNum++; //出力されたデータ数をカウントする(c41)
 				}
 				else{ //座標が抽出されていないとき．オープニング処理を行っているときは白か黒の二値画像なのでここにくることはない(c41)
@@ -308,7 +308,7 @@ int main()
 			}
 			/*if (kinect.key == 'q'){ //計測終了
 				//sys.outputAllData(&outputDataName, outputData, countDataNum);
-				//routedraw.plot3D(outputDataName); //(c4)
+				//draw.plot3D(outputDataName); //(c4)
 				destroyAllWindows();
 				break;
 				}*/
@@ -324,7 +324,7 @@ int main()
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 
 
-		routedraw.gnuplotScriptEV3Unit(coefficient_plane);
+		draw.gnuplotScriptEV3Unit(coefficient_plane);
 
 	}
 
@@ -345,8 +345,8 @@ int main()
 	//sys.removeDirectory(/*checkNum*/); //ディレクトリを削除するかどうか
 	//}
 	//else{ //保存するとき
-	//routedraw.gnuplotScript(/*checkNum, */&outputDataName); //後で3D座標をプロットする用のgnuplotスクリプトを作るかどうか
-	//routedraw.gnuplotScriptCoG(/*checkNum, */&centerofgravityDataName); //後で重心座標をプロットする用のgnuplotスクリプトを作るかどうか(c52)
+	//draw.gnuplotScript(/*checkNum, */&outputDataName); //後で3D座標をプロットする用のgnuplotスクリプトを作るかどうか
+	//draw.gnuplotScriptCoG(/*checkNum, */&centerofgravityDataName); //後で重心座標をプロットする用のgnuplotスクリプトを作るかどうか(c52)
 	//}
 
 	//sys.endMessage(checkNum);

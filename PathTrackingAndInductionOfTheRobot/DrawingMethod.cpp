@@ -1,5 +1,5 @@
 ﻿/*
- * @file RouteDrawingMethod.cpp
+ * @file DrawingMethod.cpp
  * @link https://github.com/HShigehara/Masters-Thesis.git
  * @brief 経路をプロットするためのメソッド群
  * @date 2014.10.24
@@ -8,14 +8,14 @@
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp" //ヘッダファイルのインクルード
-#include "RouteDrawingMethod.hpp"
+#include "DrawingMethod.hpp"
 
 /*!
-* @brief メソッドRouteDrawing::RouteDrawing().コンストラクタ
+* @brief メソッドDrawing::Drawing().コンストラクタ
 * @param なし
 * @return なし
 */
-RouteDrawing::RouteDrawing()
+Drawing::Drawing()
 {
 	if ((gnuplot = _popen("gnuplot", "w")) == NULL){
 		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
@@ -31,11 +31,11 @@ RouteDrawing::RouteDrawing()
 }
 
 /*!
-* @brief メソッドRouteDrawing::RouteDrawing().デストラクタ
+* @brief メソッドDrawing::Drawing().デストラクタ
 * @param なし
 * @return なし
 */
-RouteDrawing::~RouteDrawing()
+Drawing::~Drawing()
 {
 	_pclose(gnuplot);
 
@@ -50,11 +50,11 @@ RouteDrawing::~RouteDrawing()
 }
 
 /*!
- * @brief メソッドRouteDrawing::plot3D().3D座標をプロットするメソッド(未)
+ * @brief メソッドDrawing::plot3D().3D座標をプロットするメソッド(未)
  * @param outputDataName 
  * @return なし
  */
-void RouteDrawing::plot3D(const string* outputDataName)
+void Drawing::plot3D(const string* outputDataName)
 {
 	//出力ファイル名の定義
 	char* plotImageName = "plot.jpeg"; //plotしたときの画像ファイル名(c39)
@@ -109,11 +109,11 @@ void RouteDrawing::plot3D(const string* outputDataName)
 }
 
 /*!
-* @brief メソッドRouteDrawing::gnuplotScript().後で，3D座標をプロットして確認するためにgnuplotのスクリプトを出力する
+* @brief メソッドDrawing::gnuplotScript().後で，3D座標をプロットして確認するためにgnuplotのスクリプトを出力する
 * @param dataFileName
 * @return なし
 */
-void RouteDrawing::gnuplotScript(const string* dataFileName)
+void Drawing::gnuplotScript(const string* dataFileName)
 {
 	//if (checkNum == 1){ //データを保存する場合にスクリプトを生成する(c32)
 		FILE *gp; //!<gnuplotスクリプト用のポインタ
@@ -207,7 +207,7 @@ void RouteDrawing::gnuplotScript(const string* dataFileName)
 	return;
 }
 
-void RouteDrawing::plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_MAX])
+void Drawing::plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_MAX])
 {
 	FILE *realtimeplot; //!<リアルタイムに位置をプロットするために利用(c43)
 	char pathName[NOC]; //!<ファイルまでのパス名(c43)
@@ -254,11 +254,11 @@ void RouteDrawing::plot3DRealTime(int countDataNum, outputData outputData[OUTPUT
 }
 
 /*!
-* @brief メソッドRouteDrawing::gnuplotScript().後で，球の重心座標をプロットするためにgnuplotのスクリプトを出力する
+* @brief メソッドDrawing::gnuplotScript().後で，球の重心座標をプロットするためにgnuplotのスクリプトを出力する
 * @param dataFileName
 * @return なし
 */
-void RouteDrawing::gnuplotScriptCoG(const string* cogFileName)
+void Drawing::gnuplotScriptCoG(const string* cogFileName)
 {
 	//if (checkNum == 1){ //データを保存する場合にスクリプトを生成する(c32)
 		FILE *gp; //!<gnuplotスクリプト用のポインタ
@@ -301,16 +301,16 @@ void RouteDrawing::gnuplotScriptCoG(const string* cogFileName)
  *
  *
  */
-void RouteDrawing::outputEV3Route(Point3f ev3_centroid)
+void Drawing::outputEV3Route(Point3f ev3_centroid)
 {
 	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x*1000.0, ev3_centroid.y*1000.0, ev3_centroid.z*1000.0);
 	return;
 }
 
 /*!
- * @brief メソッドRouteDrawing::gnuplotScriptEV3Unit()．EV3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78)
+ * @brief メソッドDrawing::gnuplotScriptEV3Unit()．EV3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78)
  */
-void RouteDrawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
+void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 {
 	FILE *fp; //ファイルストリームを開く
 	fopen_s(&fp, "data/splot_ev3.plt", "w"); //ファイルを開く
