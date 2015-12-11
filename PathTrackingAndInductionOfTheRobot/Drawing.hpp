@@ -1,5 +1,5 @@
 ﻿/*
-* @file DrawingMethod.hpp 
+* @file Drawing.hpp 
 * @link https://github.com/HShigehara/Masters-Thesis.git
 * @brief gnuplot処理関連のクラスのヘッダ
 * @date 2014.12.10
@@ -7,8 +7,8 @@
 */
 
 /* インクルードガード */
-#ifndef __DRAWINGMETHOD_HPP__
-#define __DRAWINGMETHOD_HPP__
+#ifndef __DRAWING_HPP__
+#define __DRAWING_HPP__
 
 /* インクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
@@ -42,4 +42,4 @@ public:
 };
 
 /* インクルードガードの終了 */
-#endif /* __DRAWINGMETHOD_HPP__ */
+#endif /* __DRAWING_HPP__ */

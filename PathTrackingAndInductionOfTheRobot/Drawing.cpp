@@ -8,7 +8,7 @@
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp" //ヘッダファイルのインクルード
-#include "DrawingMethod.hpp"
+#include "Drawing.hpp"
 
 /*!
 * @brief メソッドDrawing::Drawing().コンストラクタ

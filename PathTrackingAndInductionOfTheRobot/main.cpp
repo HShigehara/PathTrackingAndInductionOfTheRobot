@@ -10,7 +10,7 @@
 #include "3DPathTrackingUsingtheKINECT.hpp"
 #include "KinectMethod.hpp"
 #include "ImageProcessingMethod.hpp"
-#include "DrawingMethod.hpp"
+#include "Drawing.hpp"
 #include "System.hpp"
 #include "LeastSquareMethod.hpp" //(c49)
 #include "PointCloudLibrary.hpp" //ポイントクラウド処理のヘッダを追加(c57)
