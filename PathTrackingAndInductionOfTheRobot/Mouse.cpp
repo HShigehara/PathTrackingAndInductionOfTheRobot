@@ -1,10 +1,10 @@
 ﻿/*
-* @file main.cpp
-* @link https://github.com/HShigehara/Masters-Thesis.git
-* @brief Mouseを扱うためのメソッド群
-* @date 2015.05.11
-* @author H.Shigehara
-*/
+ * @file main.cpp
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief Mouseを扱うためのメソッド群
+ * @date 2015.05.11
+ * @author H.Shigehara
+ */
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp" 

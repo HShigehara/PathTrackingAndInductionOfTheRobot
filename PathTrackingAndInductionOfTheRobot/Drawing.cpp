@@ -1,6 +1,6 @@
 ﻿/*
  * @file DrawingMethod.cpp
- * @link https://github.com/HShigehara/Masters-Thesis.git
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 経路をプロットするためのメソッド群
  * @date 2014.10.24
  * @author H.Shigehara

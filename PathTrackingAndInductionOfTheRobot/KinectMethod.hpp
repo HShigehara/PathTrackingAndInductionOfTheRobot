@@ -1,10 +1,10 @@
 ﻿/*
-* @file KinectMethod.hpp
-* @link https://github.com/HShigehara/Masters-Thesis.git 
-* @brief kinect処理のクラスのヘッダ
-* @date 2014.12.10
-* @author H.Shigehara
-*/
+ * @file KinectMethod.hpp
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief kinect処理のクラスのヘッダ
+ * @date 2014.12.10
+ * @author H.Shigehara
+ */
 
 /* インクルードガード */
 #ifndef __KINECTMETHOD_HPP__

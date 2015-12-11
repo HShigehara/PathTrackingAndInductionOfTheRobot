@@ -1,10 +1,10 @@
 ﻿/*
-* @file LeastSquareMethod.cpp
-* @link https://github.com/HShigehara/Masters-Thesis.git
-* @brief 最小二乗法を行うためのメソッド群
-* @date 2015.07.16
-* @author H.Shigehara
-*/
+ * @file LeastSquareMethod.cpp
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief 最小二乗法を行うためのメソッド群
+ * @date 2015.07.16
+ * @author H.Shigehara
+ */
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp" //ヘッダファイルのインクルード

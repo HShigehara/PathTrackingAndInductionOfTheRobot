@@ -1,10 +1,10 @@
 ﻿/*
-* @file Drawing.hpp 
-* @link https://github.com/HShigehara/Masters-Thesis.git
-* @brief gnuplot処理関連のクラスのヘッダ
-* @date 2014.12.10
-* @author H.Shigehara
-*/
+ * @file Drawing.hpp 
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief gnuplot処理関連のクラスのヘッダ
+ * @date 2014.12.10
+ * @author H.Shigehara
+ */
 
 /* インクルードガード */
 #ifndef __DRAWING_HPP__

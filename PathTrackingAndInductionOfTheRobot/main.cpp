@@ -1,6 +1,6 @@
 ﻿/*
  * @file main.cpp
- * @link https://github.com/HShigehara/Masters-Thesis.git
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief main関数
  * @date 2014.10.15
  * @author H.Shigehara

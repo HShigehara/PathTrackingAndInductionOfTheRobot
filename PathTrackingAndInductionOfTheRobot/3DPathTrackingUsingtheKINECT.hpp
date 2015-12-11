@@ -1,6 +1,6 @@
 ﻿/*
  * @file 3DPathTrackingUsingtheKINECT.h
- * @link https://github.com/HShigehara/Masters-Thesis.git
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 距離データを取得し画像として表示するプログラムのヘッダファイル
  * @date 2014.10.15
  * @author H.Shigehara

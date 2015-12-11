@@ -1,10 +1,10 @@
 ﻿/*
-* @file LeastSquareMethod.hpp
-* @link https://github.com/HShigehara/Masters-Thesis.git
-* @brief 最小二乗法を行うクラスのヘッダ
-* @date 2015.07.16
-* @author H.Shigehara
-*/
+ * @file LeastSquareMethod.hpp
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief 最小二乗法を行うクラスのヘッダ
+ * @date 2015.07.16
+ * @author H.Shigehara
+ */
 
 /* インクルードガード */
 #ifndef __LEASTSQUAREMETHOD_HPP__

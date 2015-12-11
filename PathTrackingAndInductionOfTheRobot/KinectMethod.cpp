@@ -1,6 +1,6 @@
 ﻿/*
  * @file KinectMethod.cpp
- * @link https://github.com/HShigehara/Masters-Thesis.git
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief Kinectを扱うためのメソッド群
  * @date 2014.10.15
  * @author H.Shigehara

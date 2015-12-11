@@ -1,10 +1,10 @@
 ﻿/*
-* @file PointCloudLibrary.cpp
-* @link https://github.com/HShigehara/Masters-Thesis.git
-* @brief PCL関連の処理を行うクラス
-* @date 2015.10.30
-* @author H.Shigehara
-*/
+ * @file PointCloudLibrary.cpp
+ * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
+ * @brief PCL関連の処理を行うクラス
+ * @date 2015.10.30
+ * @author H.Shigehara
+ */
 
 /* ヘッダファイルのインクルード */
 #include "3DPathTrackingUsingtheKINECT.hpp"
