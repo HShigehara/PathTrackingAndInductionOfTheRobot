@@ -303,7 +303,7 @@ void Drawing::gnuplotScriptCoG(const string* cogFileName)
  */
 void Drawing::outputEV3Route(Point3f ev3_centroid)
 {
-	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x*1000.0, ev3_centroid.y*1000.0, ev3_centroid.z*1000.0);
+	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x/**1000.0*/, ev3_centroid.y/**1000.0*/, ev3_centroid.z/**1000.0*/);
 	return;
 }
 
