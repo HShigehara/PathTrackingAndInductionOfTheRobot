@@ -81,6 +81,7 @@ int main()
 
 	Mat flip_image; //確認用に反転した画像
 	Mat current_image; //現在のフレームの画像(c75)
+	//Mat current_undistortion_image; //現在の補正後の画像
 	Mat bin_image; //背景差分によって得られた二値画像(c75)
 	Mat background_image; //!<背景画像(c75)
 	Mat background_gray_image;
@@ -120,6 +121,7 @@ int main()
 
 		//xmlファイル名の定義
 		char* cameraParameterName = "cameraParam.xml"; //カメラキャリブレーションによって得られたファイル名(c54)
+		imgproc.loadInternalCameraParameter(cameraParameterName); //キャリブレーションを行うためのパラメータを取得(c79)
 
 		//変数の初期化
 		countDataNum = 0;
@@ -145,6 +147,7 @@ int main()
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinect処理・画像処理
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
+		background_image = imgproc.getUndistortionImage(background_image);
 		imgproc.showImage("Background Image", background_image);
 		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
@@ -153,13 +156,6 @@ int main()
 		sys.countdownTimer(5000); //5000msカウントダウンする
 		system("cls"); //コンソール内の表示をリセット(c64)
 		pointcloudlibrary.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
-
-		//
-		/*pcl::visualization::PCLVisualizer viewer2("3D Viewer");
-		viewer2.setBackgroundColor(1.0, 0.5, 1.0);
-		viewer2.addPointCloud<pcl::PointXYZRGB>(pointcloudlibrary.cloud, "input cloud");
-		viewer2.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "input cloud");
-		*///
 
 		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
@@ -174,8 +170,7 @@ int main()
 			//Kinect処理・画像処理
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
-			//imgproc.loadinternal_cameraparameter(cameraParameterName);
-			//imgproc.undistortionImage = imgproc.getUndistortionImage(imgproc.current_image);
+			current_image = imgproc.getUndistortionImage(current_image);
 
 			flip(current_image, flip_image, 1);
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
@@ -228,7 +223,7 @@ int main()
 			
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
-			cout << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
+			cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			//
 			//pcl::PointCloud<pcl::Normal>::Ptr normals;
 			//normals = pointcloudlibrary.getSurfaceNormals(pointcloudlibrary.cloud);

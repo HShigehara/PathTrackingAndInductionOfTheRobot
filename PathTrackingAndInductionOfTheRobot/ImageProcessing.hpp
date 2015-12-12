@@ -57,7 +57,7 @@ public:
 
 	void loadInternalCameraParameter(char* cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
 	Mat getUndistortionImage(Mat& inputOriginalImage); //!<キャリブレーションデータを用いてKinectから取得した画像を補正する(c71)
-	Mat undistortionImage; //!<補正後の画像(c71)
+	//Mat undistortionImage; //!<補正後の画像(c71)
 
 	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
 

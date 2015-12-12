@@ -227,15 +227,19 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 		for (int i = 0; i < (depthData.size / sizeof(USHORT)); ++i){
 
 			USHORT distance = ::NuiDepthPixelToDepth(depth[i]);
+
+			//USHORT player = ::NuiDepthPixelToPlayerIndex(depth[i]);
+
 			LONG depthX = i % width;
 			LONG depthY = i / width;
 			LONG colorX = depthX;
 			LONG colorY = depthY;
 
 			// 距離カメラの座標を、RGBカメラの座標に変換する
-			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0, &colorX, &colorY);
+			kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0/*depth[i]*/, &colorX, &colorY);
 
 			//点群取得処理．渡された差分画像に応じて条件を入れ替える
+			//Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 			Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA_RESOLUTION);
 			//if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //グレースケール画像に対して点群を抽出する際はこっち(黒以外の点群を抽出)(c70)
 			if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //二値画像に対して点群を抽出する際はこっち(白色の点群を抽出)(c70)
