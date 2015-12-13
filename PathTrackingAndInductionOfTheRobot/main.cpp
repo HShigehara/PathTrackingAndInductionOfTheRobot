@@ -99,7 +99,7 @@ int main()
 
 		Kinect kinect; //Kinectクラスのインスタンスを生成
 		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, false/*true*/, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
+		PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
 
 
 		//.plyファイルの読み込み
@@ -197,7 +197,7 @@ int main()
 			}
 
 			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.2f, 0.2f, 0.2f); //Default=all 0.003
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, /*0.2*/0.9f, /*0.2*/0.9f, /*0.2*/0.9f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
