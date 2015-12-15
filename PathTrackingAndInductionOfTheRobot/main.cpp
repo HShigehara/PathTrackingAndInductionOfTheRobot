@@ -312,7 +312,7 @@ int main()
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 
 
-		draw.gnuplotScriptEV3Unit(coefficient_plane);
+		draw.gnuplotScriptEV3Unit(coefficient_plane); //スクリプト
 
 	}
 
