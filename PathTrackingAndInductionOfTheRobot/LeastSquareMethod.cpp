@@ -119,15 +119,15 @@ Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZR
 	//double a = 0, b = 0, c = 0;
 	//cout << "input Size => " << inputPointCloud->size() << endl;
 	for (int i = 1; i < inputPointCloud->size(); i++){ //それぞれの要素の計算
-		Szz = Szz + inputPointCloud->points[i].z * inputPointCloud->points[i].z;
-		Sxz = Sxz + inputPointCloud->points[i].x * inputPointCloud->points[i].z;
-		Syz = Syz + inputPointCloud->points[i].y * inputPointCloud->points[i].z;
-		Sz = Sz + inputPointCloud->points[i].z;
-		Sxx = Sxx + inputPointCloud->points[i].x * inputPointCloud->points[i].x;
-		Sxy = Sxy + inputPointCloud->points[i].x * inputPointCloud->points[i].y;
-		Sx = Sx + inputPointCloud->points[i].x;
-		Syy = Syy + inputPointCloud->points[i].y * inputPointCloud->points[i].y;
-		Sy = Sy + inputPointCloud->points[i].y;
+		Szz = Szz + (inputPointCloud->points[i].z*10000.0) * (inputPointCloud->points[i].z*10000.0);
+		Sxz = Sxz + (inputPointCloud->points[i].x*10000.0) * (inputPointCloud->points[i].z*10000.0);
+		Syz = Syz + (inputPointCloud->points[i].y*10000.0) * (inputPointCloud->points[i].z*10000.0);
+		Sz = Sz + (inputPointCloud->points[i].z*10000.0);
+		Sxx = Sxx + (inputPointCloud->points[i].x*10000.0) * (inputPointCloud->points[i].x*10000.0);
+		Sxy = Sxy + (inputPointCloud->points[i].x*10000.0) * (inputPointCloud->points[i].y*10000.0);
+		Sx = Sx + (inputPointCloud->points[i].x*10000.0);
+		Syy = Syy + (inputPointCloud->points[i].y*10000.0) * (inputPointCloud->points[i].y*10000.0);
+		Sy = Sy + (inputPointCloud->points[i].y*10000.0);
 	}
 
 	m1 << Sxx, Sxy, Sx,

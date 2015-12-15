@@ -48,7 +48,7 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel);
 	
 	//点群の重心座標と距離を取得
-	Point3f getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+	Point3d getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
 	//最小二乗法
 	Eigen::Vector3f leastSquareMethod(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);

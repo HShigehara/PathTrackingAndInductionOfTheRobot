@@ -311,13 +311,13 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClus
  * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
  * @return Point3f centroid
  */
-Point3f PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
 	//cout << "inputPointCloud => " << inputPointCloud->size() << endl; //最大のクラスタを受け取れているか確認(c76)
 	FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
 	FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
-	Point3f centroid_coordinate = 0; //重心座標
-	Point3f sum_pointcloud = 0; //座標の合計
+	Point3d centroid_coordinate = 0; //重心座標
+	Point3d sum_pointcloud = 0; //座標の合計
 
 	//ファイルオープンgnuplotの確認用
 	fopen_s(&pointcloud, "data/pointcloud.dat", "w"); //

@@ -60,7 +60,7 @@ int main()
 	System sys; //!<システム的なメソッドをまとめているクラス
 	Drawing draw; //!<drawingクラスのインスタンスを生成
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
-	EV3Control ev3_control; //!<EV3を制御する用のクラスを作成(c80)
+	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
 	//int checkNum; //!<プログラム終了時にデータを保存するか確認するための変数(c38)
@@ -90,7 +90,7 @@ int main()
 
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
-	DoF6d ev3_6dof = { 0 }; //DoF6d構造体の宣言と初期化(c80)
+	//DoF6d ev3_6dof = { 0 }; //DoF6d構造体の宣言と初期化(c80)
 
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
@@ -221,15 +221,17 @@ int main()
 				pointcloudlibrary.cloud = pointcloudlibrary.getExtractPlaneAndClustering(pointcloudlibrary.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			Point3f centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
+			Point3d centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 			//draw.outputEV3Route(centroid);
 			
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			
+			ev3control.set6DoFEV3(centroid, attitude_angle);
+
 			//[X, Y, Z, Yaw, Roll, Pitch]をDoF6構造体に格納する(c80)
-			ev3_6dof.x = centroid.x;
+			/*ev3_6dof.x = centroid.x;
 			ev3_6dof.y = centroid.y;
 			ev3_6dof.z = centroid.z;
 			ev3_6dof.yaw = attitude_angle.yaw;
@@ -238,7 +240,9 @@ int main()
 
 			cout << "[X, Y, Z, Yaw, Roll, Pitch]" << endl;
 			cout << "[ " << ev3_6dof.x << ", " << ev3_6dof.y << ", " << ev3_6dof.z << ", " << ev3_6dof.yaw << ", " << ev3_6dof.roll << ", " << ev3_6dof.pitch << " ]" << endl;
-
+			*/
+			//ev3control.ev3_6dof.x = centroid.x;
+			//ev3control.ev3_6dof.y = centroid.y;
 			cout << "==========================================================================================" << endl;
 			pointcloudlibrary.viewer->showCloud(pointcloudlibrary.cloud); //処理後の点群を表示
 
