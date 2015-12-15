@@ -326,7 +326,7 @@ Point3f PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 	//summention coordinate. ※inputPointCloud->width == inputPointCloud->size().
 	for (int i = 1; i < inputPointCloud->size(); i++){
 		//cout << i << " : " << "[x, y, z] => [ " << inputPointCloud->points[i].x << ", " << inputPointCloud->points[i].y << ", " << inputPointCloud->points[i].z << " ] " << endl;
-		fprintf_s(pointcloud, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
+		fprintf_s(pointcloud, "%f %f %f\n", inputPointCloud->points[i].x*10000, inputPointCloud->points[i].y*10000, inputPointCloud->points[i].z*10000); //ファイルに出力
 		sum_pointcloud.x = sum_pointcloud.x + inputPointCloud->points[i].x; //点群のx座標を足し合わせていく
 		sum_pointcloud.y = sum_pointcloud.y + inputPointCloud->points[i].y; //点群のy座標を足し合わせていく
 		sum_pointcloud.z = sum_pointcloud.z + inputPointCloud->points[i].z; //点群のz座標を足し合わせていく
@@ -334,9 +334,9 @@ Point3f PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 		//cout << sum_pointcloud << endl; //確認用
 	}
 	//cout << "SUM => " << sum_pointcloud << endl; //合計の確認用
-	centroid_coordinate.x = sum_pointcloud.x / inputPointCloud->size(); //x座標の平均(重心)
-	centroid_coordinate.y = sum_pointcloud.y / inputPointCloud->size(); //y座標の平均(重心)
-	centroid_coordinate.z = sum_pointcloud.z / inputPointCloud->size(); //z座標の平均(重心)
+	centroid_coordinate.x = sum_pointcloud.x / inputPointCloud->size() * 10000.0; //x座標の平均(重心)
+	centroid_coordinate.y = sum_pointcloud.y / inputPointCloud->size() * 10000.0; //y座標の平均(重心)
+	centroid_coordinate.z = sum_pointcloud.z / inputPointCloud->size() * 10000.0; //z座標の平均(重心)
 	//cout << "Centroid" << centroid_coordinate << endl; //確認用
 	
 	//平均座標(重心)をファイルに出力(確認用)

@@ -121,8 +121,8 @@ int main()
 		//const string outputVideoName = "video.avi"; //計測中の動画ファイル名(c39)
 
 		//xmlファイル名の定義
-		char* cameraParameterName = "cameraParam.xml"; //カメラキャリブレーションによって得られたファイル名(c54)
-		imgproc.loadInternalCameraParameter(cameraParameterName); //キャリブレーションを行うためのパラメータを取得(c79)
+		//char* cameraParameterName = "cameraParam.xml"; //カメラキャリブレーションによって得られたファイル名(c54)
+		//imgproc.loadInternalCameraParameter(cameraParameterName); //キャリブレーションを行うためのパラメータを取得(c79)
 
 		//変数の初期化
 		countDataNum = 0;
@@ -148,7 +148,7 @@ int main()
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinect処理・画像処理
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
-		background_image = imgproc.getUndistortionImage(background_image);
+		//background_image = imgproc.getUndistortionImage(background_image);
 		imgproc.showImage("Background Image", background_image);
 		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
@@ -171,7 +171,7 @@ int main()
 			//Kinect処理・画像処理
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
-			current_image = imgproc.getUndistortionImage(current_image);
+			//current_image = imgproc.getUndistortionImage(current_image);
 
 			flip(current_image, flip_image, 1);
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
@@ -198,8 +198,8 @@ int main()
 			}
 
 			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.2f, 0.2f, 0.2f); //Default=all 0.003
-				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
+				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f, 2.0f, 2.0f); //Default=all 0.003
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.0003f, 0.0003f, 0.0003f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
