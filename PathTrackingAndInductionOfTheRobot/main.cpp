@@ -88,6 +88,7 @@ int main()
 
 	//ポイントクラウド関係の変数(c57)
 	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
+	DoF6d ev3_6dof = { 0 }; //DoF6d構造体の宣言と初期化(c80)
 
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
@@ -219,11 +220,22 @@ int main()
 			}
 
 			Point3f centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
-			draw.outputEV3Route(centroid);
+			//draw.outputEV3Route(centroid);
 			
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
-			cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
+			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
+			
+			//[X, Y, Z, Yaw, Roll, Pitch]をDoF6構造体に格納する(c80)
+			ev3_6dof.x = centroid.x;
+			ev3_6dof.y = centroid.y;
+			ev3_6dof.z = centroid.z;
+			ev3_6dof.yaw = attitude_angle.yaw;
+			ev3_6dof.roll = attitude_angle.roll;
+			ev3_6dof.pitch = attitude_angle.pitch;
+
+			cout << "[X, Y, Z, Yaw, Roll, Pitch]" << endl;
+			cout << "[ " << ev3_6dof.x << ", " << ev3_6dof.y << ", " << ev3_6dof.z << ", " << ev3_6dof.yaw << ", " << ev3_6dof.roll << ", " << ev3_6dof.pitch << " ]" << endl;
 
 			cout << "==========================================================================================" << endl;
 			pointcloudlibrary.viewer->showCloud(pointcloudlibrary.cloud); //処理後の点群を表示
