@@ -14,6 +14,7 @@
 #include "System.hpp"
 #include "LeastSquareMethod.hpp" //(c49)
 #include "PointCloudLibrary.hpp" //ポイントクラウド処理のヘッダを追加(c57)
+#include "EV3Control.hpp" //EV3を制御するようのクラスを作成(c80)
 
 /* グローバル変数 */
 //画像データ
@@ -59,6 +60,7 @@ int main()
 	System sys; //!<システム的なメソッドをまとめているクラス
 	Drawing draw; //!<drawingクラスのインスタンスを生成
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
+	EV3Control ev3_control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
 	//int checkNum; //!<プログラム終了時にデータを保存するか確認するための変数(c38)

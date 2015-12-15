@@ -363,12 +363,12 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	////showImage("穴埋め処理後", closing_image);
 
 
-	threshold(diff_gray_image, diff_bin_image, /*13*/20, 255, THRESH_BINARY); //二値化
+	threshold(diff_gray_image, diff_bin_image, 13, 255, THRESH_BINARY); //二値化
 	//showImage("二値画像", diff_bin_image);
-	medianBlur(diff_bin_image, median_bin_image, 5); //ノイズ除去
+	medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去
 	//showImage("平滑化処理後", median_bin_image);
 	//morphologyEx(median_bin_image, opening_image, MORPH_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理
-	morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 5); //クロージング(膨張→収縮)処理．穴埋めに使われる
+	morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 7); //クロージング(膨張→収縮)処理．穴埋めに使われる
 	//showImage("穴埋め処理後", closing_image);
 	return closing_image;
 }

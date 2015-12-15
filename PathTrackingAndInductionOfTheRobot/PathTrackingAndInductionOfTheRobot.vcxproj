@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EV3Control.cpp" />
     <ClCompile Include="ImageProcessing.cpp" />
     <ClCompile Include="Kinect.cpp" />
     <ClCompile Include="LeastSquareMethod.cpp" />
@@ -100,6 +101,7 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EV3Control.hpp" />
     <ClInclude Include="PathTrackingAndInductionOfTheRobot.hpp" />
     <ClInclude Include="ImageProcessing.hpp" />
     <ClInclude Include="Kinect.hpp" />
