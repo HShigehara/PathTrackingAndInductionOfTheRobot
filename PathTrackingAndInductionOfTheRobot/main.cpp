@@ -305,7 +305,9 @@ int main()
 			//sys.removeDirectory();
 			//cout << "Data Removed." << endl;
 			//goto RETRY;
-			//}//
+			//}
+
+			//コメント
 
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
