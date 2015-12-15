@@ -243,9 +243,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 			//if (Mat_image.at<UCHAR>(colorY, colorX) != 0){ //グレースケール画像に対して点群を抽出する際はこっち(黒以外の点群を抽出)(c70)
 			if (Mat_image.at<UCHAR>(colorY, colorX) == 255){ //二値画像に対して点群を抽出する際はこっち(白色の点群を抽出)(c70)
 				pcl::PointXYZRGB point; //点群用の変数を確保
-				point.x = real.x*1000.0f; //ポイントクラウドのx座標を格納[m]
-				point.y = real.y*1000.0f; //ポイントクラウドのy座標を格納[m]
-				point.z = real.z*1000.0f; //ポイントクラウドのz座標を格納[m]
+				point.x = real.x; //ポイントクラウドのx座標を格納[m]
+				point.y = real.y; //ポイントクラウドのy座標を格納[m]
+				point.z = real.z; //ポイントクラウドのz座標を格納[m]
 
 				//テクスチャ(その座標の色を格納していく)
 				Vec4b color = image.at<Vec4b>(colorY, colorX); //色格納用の変数

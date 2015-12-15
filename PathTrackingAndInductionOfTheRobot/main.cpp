@@ -174,7 +174,7 @@ int main()
 
 			flip(current_image, flip_image, 1);
 			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
-
+			
 			//タイヤも含めて前面の点群を取得する
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 			//ユニット部だけ切り取る(c77)
@@ -197,7 +197,7 @@ int main()
 			}
 
 			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, /*0.2*/0.3f, /*0.2*/0.3f, /*0.2*/0.3f); //Default=all 0.003
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, /*0.2*/0.001f, /*0.2*/0.001f, /*0.2*/0.001f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
