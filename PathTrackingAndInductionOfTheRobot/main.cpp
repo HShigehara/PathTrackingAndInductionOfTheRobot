@@ -197,7 +197,7 @@ int main()
 			}
 
 			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, /*0.2*/0.001f, /*0.2*/0.001f, /*0.2*/0.001f); //Default=all 0.003
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.2f, 0.2f, 0.2f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.003, 0.003, 0.003); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
@@ -307,14 +307,12 @@ int main()
 			//goto RETRY;
 			//}
 
-			//コメント
-
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 
 
-		draw.gnuplotScriptEV3Unit(coefficient_plane); //スクリプト
+		draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 
 	}
 
