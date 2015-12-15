@@ -34,6 +34,9 @@
 ### PointCloudMethod.hpp / PointCloudMethod.cpp
   * PCL関連の処理をまとめたメソッド
 
+### EV3Control.hpp / EV3Control.cpp
+  * EV3の制御を行うための処理をまとめたメソッド
+
 ### ChangeLog.txt
   * 変更点を記述したファイル
 
