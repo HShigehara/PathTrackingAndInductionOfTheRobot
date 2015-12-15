@@ -201,7 +201,7 @@ int main()
 
 			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f, 2.0f, 2.0f); //Default=all 0.003
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.0003f, 0.0003f, 0.0003f); //Default=all 0.003
+				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.5f, 2.5f, 2.5f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
