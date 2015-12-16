@@ -363,7 +363,7 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	////showImage("穴埋め処理後", closing_image);
 
 
-	threshold(diff_gray_image, diff_bin_image, 13, 255, THRESH_BINARY); //二値化
+	threshold(diff_gray_image, diff_bin_image, 30, 255, THRESH_BINARY); //二値化
 	//showImage("二値画像", diff_bin_image);
 	medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去
 	//showImage("平滑化処理後", median_bin_image);

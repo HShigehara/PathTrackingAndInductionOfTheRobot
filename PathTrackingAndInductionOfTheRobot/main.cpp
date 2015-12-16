@@ -57,10 +57,12 @@ int main()
 {
 	RETRY: //goto文．再計測をやり直す場合
 	//インスタンスの生成
+	Kinect kinect; //Kinectクラスのインスタンスを生成
 	System sys; //!<システム的なメソッドをまとめているクラス
-	sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
+	ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
 	Drawing draw; //!<drawingクラスのインスタンスを生成
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
+	PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
@@ -101,9 +103,6 @@ int main()
 	try{
 		sys.startMessage(); //プログラム開始時のメッセージを表示
 
-		Kinect kinect; //Kinectクラスのインスタンスを生成
-		ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
-		PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
 
 
 		//.plyファイルの読み込み
@@ -139,6 +138,8 @@ int main()
 
 		kinect.initialize(); //Kinectの初期化
 
+		sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
+		
 		//動画を保存(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
@@ -174,9 +175,9 @@ int main()
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
 			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
 			current_image = imgproc.getUndistortionImage(current_image);
-
-			flip(current_image, flip_image, 1);
-			imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
+			imgproc.showImage("current_image", current_image);
+			//flip(current_image, flip_image, 1);
+			//imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 			
 			//タイヤも含めて前面の点群を取得する
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
@@ -223,13 +224,12 @@ int main()
 
 			Point3d centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 			//draw.outputEV3Route(centroid);
-			cout << "TEST" << endl;
 
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			
-			ev3control.set6DoFEV3(centroid, attitude_angle);
+			ev3control.set6DoFEV3(pointcloudlibrary.cloud, centroid, attitude_angle);
 
 			//[X, Y, Z, Yaw, Roll, Pitch]をDoF6構造体に格納する(c80)
 			/*ev3_6dof.x = centroid.x;
@@ -328,16 +328,32 @@ int main()
 
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
+
+		//計測が終了したところ
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
-
-
+		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
+		char filepath_currentimage[NOC];
+		sprintf_s(filepath_currentimage, "%s/current_image.jpg", directoryName);
+		imwrite(filepath_currentimage, current_image);
+		char filepath_binimage[NOC];
+		sprintf_s(filepath_binimage, "%s/background_image.jpg", directoryName);
+		imwrite(filepath_binimage, bin_image);
+		//データを保存するかの確認
+		cout << "Save Data?" << endl;
+		int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
+		if (checkNum == 0){
+			sys.removeDirectory(); //ディレクトリの削除
+		}
+
 
 	}
 
 	catch (exception& ex){ //例外処理
 		cout << ex.what() << endl;
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
+		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+
 		//異常終了した時はデータを保存する必要がないので削除
 		//sys.removeDirectory();
 		//cout << "Data Removed." << endl;
