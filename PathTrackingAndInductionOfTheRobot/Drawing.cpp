@@ -315,7 +315,7 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 {
 	FILE *fp; //ファイルストリームを開く
 	char filepath_splot_ev3[NOC];
-	sprintf_s(filepath_splot_ev3, "%s/splot_ev3.plt", directoryName);
+	sprintf_s(filepath_splot_ev3, "data/%s/splot_ev3.plt", directoryName);
 	fopen_s(&fp, filepath_splot_ev3, "w"); //ファイルを開く
 
 	//(c78)

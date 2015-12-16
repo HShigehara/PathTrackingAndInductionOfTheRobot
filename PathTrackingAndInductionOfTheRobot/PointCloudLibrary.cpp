@@ -321,8 +321,8 @@ Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 
 	char filepath_pointcloud[NOC];
 	char filepath_centroid[NOC];
-	sprintf_s(filepath_pointcloud, "%s/pointcloud.dat", directoryName);
-	sprintf_s(filepath_centroid, "%s/centroid.dat", directoryName);
+	sprintf_s(filepath_pointcloud, "data/%s/pointcloud.dat", directoryName);
+	sprintf_s(filepath_centroid, "data/%s/centroid.dat", directoryName);
 
 	//ファイルオープンgnuplotの確認用
 	fopen_s(&pointcloud, filepath_pointcloud, "w"); //

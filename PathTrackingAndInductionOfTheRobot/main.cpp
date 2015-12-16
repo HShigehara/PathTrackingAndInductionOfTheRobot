@@ -334,17 +334,17 @@ int main()
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 		char filepath_currentimage[NOC];
-		sprintf_s(filepath_currentimage, "%s/current_image.jpg", directoryName);
+		sprintf_s(filepath_currentimage, "data/%s/current_image.jpg", directoryName);
 		imwrite(filepath_currentimage, current_image);
 		char filepath_binimage[NOC];
-		sprintf_s(filepath_binimage, "%s/background_image.jpg", directoryName);
+		sprintf_s(filepath_binimage, "data/%s/background_image.jpg", directoryName);
 		imwrite(filepath_binimage, bin_image);
 		//データを保存するかの確認
-		cout << "Save Data?" << endl;
-		int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
-		if (checkNum == 0){
-			sys.removeDirectory(); //ディレクトリの削除
-		}
+		//cout << "Save Data?" << endl;
+		//int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
+		//if (checkNum == 0){
+		//	sys.removeDirectory(); //ディレクトリの削除
+		//}
 
 
 	}

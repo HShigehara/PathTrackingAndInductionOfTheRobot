@@ -184,10 +184,12 @@ void System::makeDirectory()
 {
 	//フォルダ名を区別するために時刻を取得しておく(c4)
 	SYSTEMTIME st;
+	char savedirpath[NOC];
 
 	GetLocalTime(&st);
-	sprintf_s(directoryName, "data/[%4d%02d%02d]%02d_%02d_%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
-	_mkdir(directoryName);
+	sprintf_s(directoryName, "[%4d%02d%02d]%02d_%02d_%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+	sprintf_s(savedirpath, "data/%s", directoryName);
+	_mkdir(savedirpath);
 
 	return;
 }
@@ -200,8 +202,10 @@ void System::makeDirectory()
 void System::removeDirectory()
 {
 	char rmdirCommand[NOC]; //ディレクトリを削除するコマンド(c21).変数名を変更&このメソッドのみで有効な変数(c30)
+
 	//ディレクトリを削除する
-	sprintf_s(rmdirCommand, "rmdir /s /q %s/%s", "data", directoryName);
+	cout << directoryName << endl;
+	sprintf_s(rmdirCommand, "rmdir /s /q data/%s", directoryName);
 	system(rmdirCommand);
 	cout << "Not Save.\n" << endl;
 

@@ -34,7 +34,7 @@ void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCl
 {
 	FILE *fp;
 	char filepath_measuredata[NOC];
-	sprintf_s(filepath_measuredata, "%s/measuredata.dat", directoryName);
+	sprintf_s(filepath_measuredata, "data/%s/measuredata.dat", directoryName);
 	fopen_s(&fp, filepath_measuredata, "w");
 
 	ev3_6dof.x = centroid.x;
