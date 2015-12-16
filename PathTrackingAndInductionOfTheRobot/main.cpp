@@ -223,7 +223,8 @@ int main()
 
 			Point3d centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 			//draw.outputEV3Route(centroid);
-			
+			cout << "TEST" << endl;
+
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;

@@ -186,7 +186,7 @@ void System::makeDirectory()
 	SYSTEMTIME st;
 
 	GetLocalTime(&st);
-	sprintf_s(directoryName, "[%4d%02d%02d]%02d_%02d_%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+	sprintf_s(directoryName, "data/[%4d%02d%02d]%02d_%02d_%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
 	_mkdir(directoryName);
 
 	return;

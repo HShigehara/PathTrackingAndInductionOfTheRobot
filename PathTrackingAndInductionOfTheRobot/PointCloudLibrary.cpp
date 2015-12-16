@@ -319,9 +319,14 @@ Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 	Point3d centroid_coordinate = 0; //重心座標
 	Point3d sum_pointcloud = 0; //座標の合計
 
+	char filepath_pointcloud[NOC];
+	char filepath_centroid[NOC];
+	sprintf_s(filepath_pointcloud, "%s/pointcloud.dat", directoryName);
+	sprintf_s(filepath_centroid, "%s/centroid.dat", directoryName);
+
 	//ファイルオープンgnuplotの確認用
-	fopen_s(&pointcloud, "data/pointcloud.dat", "w"); //
-	fopen_s(&centroid, "data/centroid.dat", "w");
+	fopen_s(&pointcloud, filepath_pointcloud, "w"); //
+	fopen_s(&centroid, filepath_centroid, "w");
 
 	//summention coordinate. ※inputPointCloud->width == inputPointCloud->size().
 	for (int i = 1; i < inputPointCloud->size(); i++){

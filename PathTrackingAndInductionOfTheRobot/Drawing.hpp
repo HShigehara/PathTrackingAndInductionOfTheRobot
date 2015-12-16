@@ -27,7 +27,7 @@ private:
 
 	//char filepath_centroidroute[NOC];
 	//FILE *centroid; //!<重心座標用のファイル出力ストリーム(c76)
-	FILE *splot_ev3unit; //!<EV3のユニット用(gnuplot)(c78)
+	//FILE *splot_ev3unit; //!<EV3のユニット用(gnuplot)(c78)
 
 public:
 	Drawing(); //!<コンストラクタ

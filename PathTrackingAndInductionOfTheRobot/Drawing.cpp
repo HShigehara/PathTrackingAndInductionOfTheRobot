@@ -314,12 +314,14 @@ void Drawing::gnuplotScriptCoG(const string* cogFileName)
 void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 {
 	FILE *fp; //ファイルストリームを開く
-	fopen_s(&fp, "data/splot_ev3.plt", "w"); //ファイルを開く
+	char filepath_splot_ev3[NOC];
+	sprintf_s(filepath_splot_ev3, "%s/splot_ev3.plt", directoryName);
+	fopen_s(&fp, filepath_splot_ev3, "w"); //ファイルを開く
 
 	//(c78)
-	if ((splot_ev3unit = _popen("gnuplot", "w")) == NULL){
-		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
-	}
+	//if ((splot_ev3unit = _popen("gnuplot", "w")) == NULL){
+	//	cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
+	//}
 
 	fprintf_s(fp, "set xlabel \"X-axis\"\n");
 	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
@@ -328,6 +330,6 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 	fprintf_s(fp, "splot \"centroid.dat\" pointsize 5,%f*x+%f*y+%f,\"pointcloud.dat\" every 5\n",coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z());
 
 	//(c78)
-	_pclose(splot_ev3unit);
+	//_pclose(splot_ev3unit);
 	fclose(fp);
 }
