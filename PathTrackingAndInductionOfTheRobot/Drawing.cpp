@@ -27,7 +27,8 @@ Drawing::Drawing()
 	}
 
 	//(c76)
-	fopen_s(&centroid, "data/centroid_route.dat", "w"); //重心座標を追記モードで開く
+	//sprintf_s(filepath_centroidroute, "%s/centroid_route.dat", directoryName);
+	//fopen_s(&centroid, filepath_centroidroute, "w"); //重心座標を保存するファイルを開く
 }
 
 /*!
@@ -45,7 +46,7 @@ Drawing::~Drawing()
 	_pclose(gpr);
 
 	//(c76)
-	fclose(centroid);
+	//fclose(centroid);
 
 }
 
@@ -301,11 +302,11 @@ void Drawing::gnuplotScriptCoG(const string* cogFileName)
  *
  *
  */
-void Drawing::outputEV3Route(Point3f ev3_centroid)
-{
-	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x/**1000.0*/, ev3_centroid.y/**1000.0*/, ev3_centroid.z/**1000.0*/);
-	return;
-}
+//void Drawing::outputEV3Route(Point3f ev3_centroid)
+//{
+//	fprintf_s(centroid, "%f %f %f\n", ev3_centroid.x/**1000.0*/, ev3_centroid.y/**1000.0*/, ev3_centroid.z/**1000.0*/);
+//	return;
+//}
 
 /*!
  * @brief メソッドDrawing::gnuplotScriptEV3Unit()．EV3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78)

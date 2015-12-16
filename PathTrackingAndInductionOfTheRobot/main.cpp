@@ -58,6 +58,7 @@ int main()
 	RETRY: //goto文．再計測をやり直す場合
 	//インスタンスの生成
 	System sys; //!<システム的なメソッドをまとめているクラス
+	sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
 	Drawing draw; //!<drawingクラスのインスタンスを生成
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
@@ -135,7 +136,6 @@ int main()
 		avgFlag = /*0*/false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
 		mouseFlag = /*0*/false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
 
-		//sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
 
 		kinect.initialize(); //Kinectの初期化
 
