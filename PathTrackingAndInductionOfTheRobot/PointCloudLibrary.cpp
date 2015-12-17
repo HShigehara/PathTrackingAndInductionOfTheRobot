@@ -59,9 +59,10 @@ void PointCloudLibrary::initializePointCloudViewer(string cloudViewerName)
 	return;
 }
 
-void PointCloudLibrary::loadPLY(char* ply_filename)
+void PointCloudLibrary::loadPLY(char* ply_name)
 {
-	pcl::io::loadPLYFile(ply_filename, *model);
+	pcl::io::loadPLYFile(ply_name, *model);
+	cout << "load " << ply_name << ". " << endl;
 	return;
 }
 

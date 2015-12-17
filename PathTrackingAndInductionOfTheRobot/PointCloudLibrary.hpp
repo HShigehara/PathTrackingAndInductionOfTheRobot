@@ -28,7 +28,7 @@ public:
 	void initializePointCloudViewer(string cloudViewerName);
 	void flagChecker(); //フラグを判定するメソッド(c64)
 
-	void loadPLY(char* ply_filename); //.plyファイルの読み込み
+	void loadPLY(char* ply_name); //.plyファイルの読み込み
 
 	//外れ値除去
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr passThroughFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
@@ -48,6 +48,7 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudRegistration(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputCloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputModel);
 	
 	//点群の重心座標と距離を取得
+	Point3d centroid;
 	Point3d getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 
 	//最小二乗法

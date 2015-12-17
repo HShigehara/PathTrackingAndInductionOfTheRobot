@@ -37,8 +37,6 @@ public:
 	void plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_MAX]); //リアルタイムでgnuplotに出力(c43)
 	void gnuplotScriptCoG(const string* cogFileName); //!<球の重心座標をプロットするメソッド(c52)
 
-	void outputEV3Route(Point3f ev3_centroid); //!<EV3の重心を渡したらファイルに出力するメソッド(c76)
-
 	void gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
 };
 

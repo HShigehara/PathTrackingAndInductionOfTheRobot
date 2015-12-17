@@ -11,7 +11,7 @@
 #define __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__
 
 //よく使うヘッダはstdafx.hに
-//構造体
+/* 構造体 */
 typedef struct Point3{ //抽出された座標を保存する構造体(c37)
 	int x;
 	int y;

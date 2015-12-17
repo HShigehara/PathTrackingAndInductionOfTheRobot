@@ -37,7 +37,7 @@ public:
 	ImageProcessing(); //!<コンストラクタ
 	~ImageProcessing(); //!<デストラクタ
 
-	void showImage(char* windowName, Mat& input_image); //!<ウインドウの名前を引数に追加(c31)．Matの表示(c17)
+	void showImage(string windowName, Mat& input_image); //!<ウインドウの名前を引数に追加(c31)．Matの表示(c17)
 	//複数の画像を1つのウインドウにまとめて表示する．オーバーロード(c36)
 	void showImageTogether(Mat& image1, Mat& image2); //!<2つの画像を一緒に表示(c36)
 	void showImageTogether(Mat& image1, Mat& image2, Mat& image3); //!<3つの画像を一緒に表示(c36)
@@ -55,7 +55,7 @@ public:
 
 	void drawCenterPoint(Mat& inputOriginalImage, Point3ius averageCoordinate/*, const string* mainWindowName*/); //!<計算した平均座標を画面上に表示する(c45)
 
-	void loadInternalCameraParameter(char* cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
+	void loadInternalCameraParameter(const string cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
 	Mat getUndistortionImage(Mat& inputOriginalImage); //!<キャリブレーションデータを用いてKinectから取得した画像を補正する(c71)
 	//Mat undistortionImage; //!<補正後の画像(c71)
 

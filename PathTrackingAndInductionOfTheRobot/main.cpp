@@ -45,8 +45,8 @@ int vmin = 10, vmax = 256, smin = 30; //!<HSVの範囲指定
 void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操作
 
 //(c26)
-/*int*/bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
-/*int*/bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
+bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
+bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
 /*!
  * @brief 関数main()
@@ -66,34 +66,16 @@ int main()
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
-	//int checkNum; //!<プログラム終了時にデータを保存するか確認するための変数(c38)
-	//outputData outputData[OUTPUTDATA_MAX]; //!<出力するデータを宣言．最大10000個(c41)
-
 	//ファイル名の定義(c39)
-	//const string outputDataName = "3d.dat"; //計測データが出力されるファイル名(c39)
-	//const string centerofgravityDataName = "cog.dat"; //重心座標が出力されるファイル名(c52)
 
 	//画像関係の変数
-	//Mat mHSVforObjectTracking_img; //!<ヒストグラム作成のためのHSV変換後のデータ保存用
-	//Mat mHSVforTrim_img; //!<切り取り後の画像格納用(c31)
-	//Mat mHSVColorExtraction_img; //!<(ce:color extraction).HSVに変換する用の変数
-
-	//オープニング処理用にとっておく
-	//Mat mGray_img; //!<グレースケール用の変数(c19)
-	//Mat mBin_img; //!<抽出した後に二値化した画像を保存する変数(c21)
-	//Mat mOpening_img; //!<オープニングを行った画像から距離を抽出する(c24).オープニング処理を行うには必要*/
-	//Mat mExtractedBlack_img; //!<オープニング後の二値画像から抽出された黒い座標を格納している変数(c40)
-
 	Mat flip_image; //確認用に反転した画像
 	Mat current_image; //現在のフレームの画像(c75)
-	//Mat current_undistortion_image; //現在の補正後の画像
 	Mat bin_image; //背景差分によって得られた二値画像(c75)
 	Mat background_image; //!<背景画像(c75)
 	Mat background_gray_image;
 
 	//ポイントクラウド関係の変数(c57)
-	//pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //ポイントクラウド保存用(c57)
-	//DoF6d ev3_6dof = { 0 }; //DoF6d構造体の宣言と初期化(c80)
 
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
@@ -102,80 +84,64 @@ int main()
 	//メインの処理
 	try{
 		sys.startMessage(); //プログラム開始時のメッセージを表示
-
-
-
-		//.plyファイルの読み込み
-		//pointcloudlibrary.loadPLY("20151208_EV3COLOR.ply");
-
-		//動画保存用
+		//初期設定(利用する場合はコメントを外す)
+		//pointcloudlibrary.loadPLY("EV3COLOR.ply"); //.plyファイルの読み込み．動作しない
 		//VideoWriter writer; //動画保存用 
 
-		//座標関係の変数
-		//Vector4 realPoint; //!<変換後の世界座標系の値を格納
-		//Point3ius averageCoordinate; //!<平均座標を格納するクラス内のローカル変数(c38)
-
-		//カウント用変数
-		int countDataNum; //出力されたデータ数をカウントする(c39)
-
 		//ウインドウ名とファイル名の定義
-		const string mainWindowName = "動画像"; //メインウインドウの名前をつけておく．(c31)
+		const string main_windowname = "Current Image"; //メインウインドウの名前をつけておく．(c31)
+		const string backgroundimage_windowname = "Background Image"; //背景画像を表示するためのウインドウ名
+		const string maskbinimage_windowname = "Mask Image"; //マスク画像を表示するためのウインドウ名
 		//const string outputVideoName = "video.avi"; //計測中の動画ファイル名(c39)
-
-		//xmlファイル名の定義
-		char* cameraParameterName = "cameraParam.xml"; //カメラキャリブレーションによって得られたファイル名(c54)
-		imgproc.loadInternalCameraParameter(cameraParameterName); //キャリブレーションを行うためのパラメータを取得(c79)
-
+		const string cameraparameter_name = "sourcedata/cameraParam.xml"; //xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)
+		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
+		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
 		//変数の初期化
-		countDataNum = 0;
-		//sumTime = 0.0; //合計の時間をカウントする変数
-		//realPoint.x = 0.0; //3次元座標のx座標
-		//realPoint.y = 0.0; //3次元座標のy座標
-		//realPoint.z = 0.0; //3次元座標のx座標
-		avgFlag = /*0*/false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
-		mouseFlag = /*0*/false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
-
+		avgFlag = false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
+		mouseFlag = false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
 
 		kinect.initialize(); //Kinectの初期化
-
+		sys.checkDirectory(basedirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)
 		sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
 		
-		//動画を保存(c40)
+		//動画を保存するために利用する(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
 
+		imgproc.loadInternalCameraParameter(cameraparameter_name); //キャリブレーションを行うためのパラメータを取得(c79)
+
 		//背景用に一度撮影(c75)
-		sys.countdownTimer(/*3*/2000);
+		cout << "Take a Background Image in " << endl;
+		sys.countdownTimer(/*3*/1000);
 		system("cls");
-		//データの更新を待つ
 		DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
-		//Kinect処理・画像処理
+		//Kinectから画像を取得し，背景画像とする
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
-		background_image = imgproc.getUndistortionImage(background_image);
-		imgproc.showImage("Background Image", background_image);
-		PlaySound(TEXT("sound/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME));
-		cvtColor(background_image, background_gray_image, CV_BGR2GRAY);
-
-		cout << "Process will Start in " << endl; //プログラム本編開始の通知
-		sys.countdownTimer(5000); //5000msカウントダウンする
+		background_image = imgproc.getUndistortionImage(background_image); //キャリブレーション後の画像を今の背景画像とする
+		PlaySound(TEXT("sourcedata/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+		imgproc.showImage(backgroundimage_windowname, background_image); //背景画像を表示する
+		cvtColor(background_image, background_gray_image, CV_BGR2GRAY); //グレースケールに変換
+		
+		//プログラム開始の通知
+		cout << "Process will Start in " << endl;
+		sys.countdownTimer(1000); //5000msカウントダウンする
 		system("cls"); //コンソール内の表示をリセット(c64)
-		pointcloudlibrary.initializePointCloudViewer("Point Cloud"); //クラウドビューワーの初期化
+
+		pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
 
 		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
-			//setMouseCallback(mainWindowName, onMouse, 0); //(c25)．マウスコールバック関数をセット(c31)
+			//setMouseCallback(mainwindow_name, onMouse, 0); //(c25)．マウスコールバック関数をセット(c31)
 
-			//データの更新を待つ
 			DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
 			::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 
-			//Kinect処理・画像処理
+			//Kinectから画像を取得し，画像処理を行う
 			current_image = kinect.drawRGBImage(image); //RGBカメラの処理
-			//Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
-			current_image = imgproc.getUndistortionImage(current_image);
-			imgproc.showImage("current_image", current_image);
+			current_image = imgproc.getUndistortionImage(current_image); //Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)
+			imgproc.showImage(main_windowname, current_image);
 			//flip(current_image, flip_image, 1);
 			//imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 			
@@ -183,13 +149,10 @@ int main()
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
 			//ユニット部だけ切り取る(c77)
 			//bin_image = imgproc.getUnitMask(bin_image);
-			imgproc.showImage("Mask Image", bin_image);
+			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
 
 			//ポイントクラウドの取得(c57)
-			//pointcloudlibrary.cloud = kinect.getPointCloud(imgproc.current_image); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pointcloudlibrary.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
-			//pointcloudlibrary.cloud = kinect.getPointCloud(/*depth_image*/imgproc.foreGroundMaskImage/*binimage*//*imgproc.diffBinImage*/); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
-			//pointcloudlibrary.cloud = kinect.getPointCloud(imgproc.foreGroundMaskBinImage); //ポイントクラウドの取得(c57)．前景画像を2値化した画像を引数として与える(c67)
 			pointcloudlibrary.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 			cout << "==========================================================================================" << endl;
 			cout << "Original PointCloud Size\t=>\t" << pointcloudlibrary.cloud->size() << endl;
@@ -222,82 +185,15 @@ int main()
 				pointcloudlibrary.cloud = pointcloudlibrary.getExtractPlaneAndClustering(pointcloudlibrary.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			Point3d centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
-			//draw.outputEV3Route(centroid);
+			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
 
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			
-			ev3control.set6DoFEV3(pointcloudlibrary.cloud, centroid, attitude_angle);
-
-			//[X, Y, Z, Yaw, Roll, Pitch]をDoF6構造体に格納する(c80)
-			/*ev3_6dof.x = centroid.x;
-			ev3_6dof.y = centroid.y;
-			ev3_6dof.z = centroid.z;
-			ev3_6dof.yaw = attitude_angle.yaw;
-			ev3_6dof.roll = attitude_angle.roll;
-			ev3_6dof.pitch = attitude_angle.pitch;
-
-			cout << "[X, Y, Z, Yaw, Roll, Pitch]" << endl;
-			cout << "[ " << ev3_6dof.x << ", " << ev3_6dof.y << ", " << ev3_6dof.z << ", " << ev3_6dof.yaw << ", " << ev3_6dof.roll << ", " << ev3_6dof.pitch << " ]" << endl;
-			*/
-			//ev3control.ev3_6dof.x = centroid.x;
-			//ev3control.ev3_6dof.y = centroid.y;
+			ev3control.set6DoFEV3(pointcloudlibrary.cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			cout << "==========================================================================================" << endl;
 			pointcloudlibrary.viewer->showCloud(pointcloudlibrary.cloud); //処理後の点群を表示
-
-			//メインの処理(c26)(c30)
-			//if (mouseFlag == true){ //mouseFlagがtrueであれば=マウスのボタンが上に上がったら
-			////writer << image; //動画を保存(c35)
-			//mHSVforObjectTracking_img = imgproc.convertRGB2HSV(image); //CamShiftで利用するヒストグラムを作成するためにHSVへ変換(c29)
-			//imgproc.trackingObject(mHSVforObjectTracking_img); //画像を追跡するメソッドへ移行(c26)
-			//mHSVforTrim_img = imgproc.convertRGB2HSV(imgproc.mTrim_img); //余裕を持って切り取られた画像をHSVに変換する(c33)
-			//mHSVColorExtraction_img = imgproc.extractColor(mHSVforTrim_img); //余裕を持って切り取った画像から特定の色を抽出する(c33)
-			//オープニングを行うなら必要な処理(c30)
-			//グレースケール変換(c19)
-			//mGray_img = imgproc.grayscaleImage(mHSVColorExtraction_img);
-			//抽出したピクセルからさらに精度を高めるために膨張・収縮を行う(c19)
-			//mBin_img = imgproc.binarizationImage(mGray_img); //抽出した画像の二値化
-			//mOpening_img = imgproc.OpeningImage(mBin_img); //オープニング処理(c19)
-			//mExtractedBlack_img = imgproc.getCoordinate(mOpening_img);
-
-			//確認用
-			//imgproc.showImage("計測対象の点", mExtractedBlack_img);
-
-			//最小二乗法を行う(仮)(c49)
-			////lsm.getSphereData(kinect.actualExtractedNum); //最小二乗法の処理へ移行(c49)
-
-			//averageCoordinate = kinect.getAverageCoordinate(image); //Depthカメラの処理(c5)
-			////imgproc.drawCenterPoint(image, averageCoordinate/*, &mainWindowName*/); //平均座標を表示するメソッド(c45)
-
-			/*if (avgFlag == true){ //平均座標が抽出されていたら
-				realPoint = kinect.getLocalPosition(averageCoordinate); //1フレームあたりの平均座標の3次元座標を取得する(c10)(c28)
-				end = getTickCount();
-				time = (end - start) * f;
-				sumTime += time;
-				fps = 1000.0 / time; //フレームレートを計算
-
-				putText(image, to_string((int)fps) + "fps", Point(WIDTH - 100, HEIGHT - 28), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 0), 2, CV_AA); //動画上にフレームレートを出力
-
-				outputData[countDataNum].totalTime = sumTime; //計測されたトータルの時間(c41)
-				outputData[countDataNum].x = realPoint.x; //Kinect座標系に変換されたx(c41)
-				outputData[countDataNum].y = realPoint.y; //Kinect座標系に変換されたy(c41)
-				outputData[countDataNum].z = realPoint.z; //Kinect座標系に変換されたz(c41)
-
-				//抽出されたデータを表示
-				//cout << "X => " << realPoint.x << "\tY => " << realPoint.y << "\tZ => " << realPoint.z << endl;
-				//draw.plot3DRealTime(countDataNum, outputData); //位置をリアルタイムでプロットする(c43)
-				countDataNum++; //出力されたデータ数をカウントする(c41)
-				}
-				else{ //座標が抽出されていないとき．オープニング処理を行っているときは白か黒の二値画像なのでここにくることはない(c41)
-				end = getTickCount(); //タイマー終了(c41)
-				}*/
-			//imgproc.showTogetherImage(mHSVforTrim_img, mHSVColorExtraction_img); //2つの画像を1つのウインドウに表示．確認用(c36)
-			//}
-			//else{ //マウスがクリックされていないときのタイマー終了(c41)
-			//end = getTickCount(); //タイマー終了
-			//}
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
@@ -313,19 +209,6 @@ int main()
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
-			/*if (kinect.key == 'q'){ //計測終了
-				//sys.outputAllData(&outputDataName, outputData, countDataNum);
-				//draw.plot3D(outputDataName); //(c4)
-				destroyAllWindows();
-				break;
-				}*/
-			//else if (kinect.key == 'r'){ //再計測するときに前のファイルを削除しておく(c31)
-			//destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
-			//sys.removeDirectory();
-			//cout << "Data Removed." << endl;
-			//goto RETRY;
-			//}
-
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 
@@ -345,35 +228,16 @@ int main()
 		//if (checkNum == 0){
 		//	sys.removeDirectory(); //ディレクトリの削除
 		//}
-
-
 	}
-
 	catch (exception& ex){ //例外処理
 		cout << ex.what() << endl;
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
-
 		//異常終了した時はデータを保存する必要がないので削除
 		//sys.removeDirectory();
 		//cout << "Data Removed." << endl;
 		//return -1;
 	}
-
-	//データを保存するかの確認(c27)
-	//cout << "Save Data?" << endl;
-	//checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
-
-	//if (checkNum == 0){ //削除するとき(c55)
-	//sys.removeDirectory(/*checkNum*/); //ディレクトリを削除するかどうか
-	//}
-	//else{ //保存するとき
-	//draw.gnuplotScript(/*checkNum, */&outputDataName); //後で3D座標をプロットする用のgnuplotスクリプトを作るかどうか
-	//draw.gnuplotScriptCoG(/*checkNum, */&centerofgravityDataName); //後で重心座標をプロットする用のgnuplotスクリプトを作るかどうか(c52)
-	//}
-
-	//sys.endMessage(checkNum);
-
 	sys.endMessage();
 	return 0;
 }

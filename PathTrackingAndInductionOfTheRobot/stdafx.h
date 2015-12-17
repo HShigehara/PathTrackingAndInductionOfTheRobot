@@ -20,6 +20,7 @@ using namespace std; //!<名前空間
 #include <direct.h> //!<ディレクトリを作成するため用いる
 #include <math.h> //!<数学関数用のライブラリ(c12)
 #include <ctype.h> //!<文字の種類の判定や文字の変換を行う(c25)
+#include <sys/stat.h> //!<ファイルやディレクトリの存在を確認するためのヘッダ(c81)
 
 /* NuiApi.hの前にWindows.hをインクルードする */
 #include <Windows.h>

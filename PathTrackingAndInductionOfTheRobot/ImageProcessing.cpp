@@ -35,7 +35,7 @@ ImageProcessing::~ImageProcessing()
 * @param char* windowName, Mat& input_image
 * @return なし
 */
-void ImageProcessing::showImage(char* windowName, Mat& input_image)
+void ImageProcessing::showImage(string windowName, Mat& input_image)
 {
 	namedWindow(windowName, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
 	imshow(windowName, input_image);
@@ -307,10 +307,10 @@ void ImageProcessing::drawCenterPoint(Mat& inputOriginalImage, Point3ius average
 
 /*!
 * @brief ImageProcessing::loadInternalCameraParam().カメラキャリブレーションによって得られたカメラパラメータを適用するメソッド(c54)
-* @param char* cameraParamFile
+* @param const char* cameraParamFile
 * @return なし
 */
-void ImageProcessing::loadInternalCameraParameter(char* cameraParamFile)
+void ImageProcessing::loadInternalCameraParameter(const string cameraParamFile)
 {
 	//xmlファイルの読み込み
 	FileStorage fs(cameraParamFile, FileStorage::READ); //読み込みモード
@@ -318,6 +318,7 @@ void ImageProcessing::loadInternalCameraParameter(char* cameraParamFile)
 	fs["camera_matrix"] >> internal_cameraparam; //内部パラメータを読み込む
 	fs["distortion_coefficients"] >> distortion_coefficients; //歪み係数を読み込む
 
+	cout << "loaded " << cameraParamFile << ". " << endl;
 	return;
 }
 

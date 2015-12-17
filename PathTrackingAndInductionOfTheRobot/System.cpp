@@ -47,7 +47,6 @@ void System::startMessage()
 	cout << "  Moving Least Square \t\t -> \t Press 'b' Key." << endl;
 	cout << "  Extract Plane & Clustering \t -> \t Press 'n' Key." << endl;
 	cout << "==================================================================" << endl;
-	cout << "Take a Background Image in " << endl;
 
 	return;
 }
@@ -96,8 +95,6 @@ void System::countdownTimer(int time_ms)
 
 /*!
  * @brief メソッドstartTimer().タイマーを開始する
- * @param なし
- * @return なし
  */
 void System::startTimer()
 {
@@ -109,8 +106,6 @@ void System::startTimer()
 
 /*!
 * @brief メソッドendTimer().タイマーを終了する
-* @param なし
-* @return なし
 */
 void System::endTimer()
 {
@@ -128,7 +123,6 @@ void System::endTimer()
 
 /*!
 * @brief メソッドgetTime().計測した時間を取得する(c65)
-* @param なし
 * @return double time
 */
 double System::getProcessTimeinMiliseconds()
@@ -152,7 +146,6 @@ double System::getProcessTimeinMiliseconds()
 
 /*!
 * @brief メソッドgetFrameRate().フレームレートを取得する(c65)
-* @param なし
 * @return double time
 */
 double System::getFrameRate()
@@ -176,9 +169,22 @@ double System::getFrameRate()
 }
 
 /*!
+ * @brief System::checkDirectory()．ファイルやディレクトリがあるかチェックし，無ければ作成する(c81)
+ * @param string checkdir_name
+ */
+void System::checkDirectory(const char* check_dirname)
+{
+	struct stat st;
+	int re = stat(check_dirname, &st);
+	if (re != 0){
+		_mkdir(check_dirname);
+		cout << "Make " << check_dirname << ". " << endl;
+	}
+	return;
+}
+
+/*!
 * @brief System::makeDirectory().ディレクトリを作成
-* @param なし
-* @return なし
 */
 void System::makeDirectory()
 {
