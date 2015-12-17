@@ -12,8 +12,6 @@
 
 /*!
 * @brief メソッドEV3Control::EV3Control().コンストラクタ
-* @param なし
-* @return なし
 */
 EV3Control::EV3Control()
 {
@@ -22,14 +20,16 @@ EV3Control::EV3Control()
 
 /*!
 * @brief メソッドEV3Control::EV3Control().コンストラクタ
-* @param なし
-* @return なし
 */
 EV3Control::~EV3Control()
 {
 	//デストラクタはなし
 }
 
+/*!
+ * @brief メソッドEV3Control::set6DoFEV3()．最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する
+ * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle
+ */
 void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle)
 {
 	FILE *fp;

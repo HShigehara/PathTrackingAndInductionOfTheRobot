@@ -12,8 +12,6 @@
 
 /*!
 * @brief メソッドPointCloudLibrary::PointCloudLibrary().コンストラクタ
-* @param なし
-* @return なし
 */
 PointCloudLibrary::PointCloudLibrary()
 {
@@ -23,39 +21,32 @@ PointCloudLibrary::PointCloudLibrary()
 /*!
  * @brief メソッドPointCloudLibrary::PointCloudLibrary().コンストラクタ(c64)
  * @param bool flag_removeOutlier, bool flag_downsampling, bool flag_MLS, bool flag_extractPlane
- * @return なし
  */
-PointCloudLibrary::PointCloudLibrary(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane)
+PointCloudLibrary::PointCloudLibrary(bool passthrough_flag, bool downsampling_flag, bool statisticaloutlierremoval_flag, bool mls_flag, bool extractplane_flag)
 {
 	//コンストラクタ
-	FlagPassThrough = flagPassThrough;
-	FlagDownsampling = flagDownsampling;
-	FlagStatisticalOutlierRemoval = flagStatisticalOutlierRemoval;
-	FlagMLS = flagMLS;
-	FlagExtractPlane = flagExtractPlane;
+	passthrough_flag = passthrough_flag;
+	downsampling_flag = downsampling_flag;
+	statisticaloutlierremoval_flag = statisticaloutlierremoval_flag;
+	mls_flag = mls_flag;
+	extractplane_flag= extractplane_flag;
 }
 
 /*!
 * @brief メソッドPointCloudLibrary::~PointCloudLibrary().デストラクタ
-* @param なし
-* @return なし
 */
 PointCloudLibrary::~PointCloudLibrary()
 {
 	//デストラクタ
 }
 
-
 /*!
  * @brief メソッドPointCloudLibrary::initializePointCloudViewer().ポイントクラウドビューアーを初期化するメソッド(c57)
- * @param string cloudViewerName
- * @return なし
+ * @param string cloudviewer_name
  */
-void PointCloudLibrary::initializePointCloudViewer(string cloudViewerName)
+void PointCloudLibrary::initializePointCloudViewer(string cloudviewer_name)
 {
-	viewer = new pcl::visualization::CloudViewer(cloudViewerName);
-	//boost::shared_ptr<pcl::visualization::PCLVisualizer> __viewer(new pcl::visualization::PCLVisualizer(cloudViewerName)); //仮
-	//__viewer(new pcl::visualization::PCLVisualizer(cloudViewerName));
+	viewer = new pcl::visualization::CloudViewer(cloudviewer_name);
 	return;
 }
 
@@ -74,22 +65,22 @@ void PointCloudLibrary::loadPLY(char* ply_name)
 void PointCloudLibrary::flagChecker()
 {
 	if (GetAsyncKeyState('X')){ //Xが入力されたので、パススルーフィルターのフラグを反転
-		FlagPassThrough = !FlagPassThrough;
+		passthrough_flag = !passthrough_flag;
 	}
 	if (GetAsyncKeyState('C')){	//Cが入力されたので、ダウンサンプリング処理のフラグを反転
-		FlagDownsampling = !FlagDownsampling;
+		downsampling_flag = !downsampling_flag;
 	}
 	if (GetAsyncKeyState('V')){ //Vが入力されたので、統計的な外れ値除去処理のフラグを反転
-		FlagStatisticalOutlierRemoval = !FlagStatisticalOutlierRemoval;
+		statisticaloutlierremoval_flag = !statisticaloutlierremoval_flag;
 	}
 	if (GetAsyncKeyState('B')){  //Nが入力されたので、MLS処理のフラグを反転
-		FlagMLS = !FlagMLS;
+		mls_flag = !mls_flag;
 	}
 	if (GetAsyncKeyState('N')){	//Mが入力されたので、平面検出のフラグを反転
-		FlagExtractPlane = !FlagExtractPlane;
+		extractplane_flag = !extractplane_flag;
 	}
 
-	cout << "範囲外除去(X) => " << FlagPassThrough << " ダウンサンプリング(C) => " << FlagDownsampling << " 外れ値(V) => " << FlagStatisticalOutlierRemoval << " MLS(B) => " << FlagMLS << " 平面検出(N) => " << FlagExtractPlane << endl;
+	cout << "範囲外除去(X) => " << passthrough_flag << " ダウンサンプリング(C) => " << downsampling_flag << " 外れ値(V) => " << statisticaloutlierremoval_flag << " MLS(B) => " << mls_flag << " 平面検出(N) => " << extractplane_flag << endl;
 	return;
 }
 /*!

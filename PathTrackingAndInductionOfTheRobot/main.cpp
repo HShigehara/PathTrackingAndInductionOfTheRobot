@@ -158,35 +158,34 @@ int main()
 			cout << "Original PointCloud Size\t=>\t" << pointcloudlibrary.cloud->size() << endl;
 
 			//PCLの処理
-			if (pointcloudlibrary.FlagPassThrough == true){  //外れ値除去(c59)
+			if (pointcloudlibrary.passthrough_flag == true){  //外れ値除去(c59)
 				pointcloudlibrary.cloud = pointcloudlibrary.passThroughFilter(pointcloudlibrary.cloud); //Kinectから取得した初期の外れ値を除去(c60)
 				//cloud = pointcloudlibrary.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
 
-			if (pointcloudlibrary.FlagDownsampling == true){	//ダウンサンプリング処理(c59)
+			if (pointcloudlibrary.downsampling_flag == true){	//ダウンサンプリング処理(c59)
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f, 2.0f, 2.0f); //Default=all 0.003
 				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.5f, 2.5f, 2.5f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
-			if (pointcloudlibrary.FlagStatisticalOutlierRemoval == true){
+			if (pointcloudlibrary.statisticaloutlierremoval_flag == true){
 				pointcloudlibrary.cloud = pointcloudlibrary.removeOutlier(pointcloudlibrary.cloud); //統計的な外れ値除去(c60)
 			}
 
-			if (pointcloudlibrary.FlagDownsampling == true && pointcloudlibrary.FlagMLS == true){  //スムージング処理(c60)
+			if (pointcloudlibrary.downsampling_flag == true && pointcloudlibrary.mls_flag == true){  //スムージング処理(c60)
 				pointcloudlibrary.cloud = pointcloudlibrary.smoothingUsingMovingLeastSquare(pointcloudlibrary.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
 
 			}
-			else if (pointcloudlibrary.FlagDownsampling == false && pointcloudlibrary.FlagMLS == true){
+			else if (pointcloudlibrary.downsampling_flag == false && pointcloudlibrary.mls_flag == true){
 				cout << "MLSを有効にするためには，ダウンサンプリングを有効にしてください" << endl;
 			}
 
-			if (pointcloudlibrary.FlagExtractPlane == true){	//平面検出とクラスタリング(c61)
+			if (pointcloudlibrary.extractplane_flag == true){	//平面検出とクラスタリング(c61)
 				pointcloudlibrary.cloud = pointcloudlibrary.getExtractPlaneAndClustering(pointcloudlibrary.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
 			}
 
-			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud);
-
+			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud); //重心座標の計算
 			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;

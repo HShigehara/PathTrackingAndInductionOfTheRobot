@@ -22,10 +22,10 @@ private:
 
 public:
 	PointCloudLibrary(); //コンストラクタ
-	PointCloudLibrary(bool flagPassThrough, bool flagDownsampling, bool flagStatisticalOutlierRemoval, bool flagMLS, bool flagExtractPlane); //コンストラクタ(c64)
+	PointCloudLibrary(bool passthrough_flag, bool downsampling_flag, bool statisticaloutlierremoval_flag, bool mls_flag, bool extractplane_flag); //コンストラクタ(c64)
 	~PointCloudLibrary(); //デストラクタ
 
-	void initializePointCloudViewer(string cloudViewerName);
+	void initializePointCloudViewer(string cloudviewer_name);
 	void flagChecker(); //フラグを判定するメソッド(c64)
 
 	void loadPLY(char* ply_name); //.plyファイルの読み込み
@@ -63,12 +63,11 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr model; //.plyファイルの点群(モデル)
 
 	//各点群処理を行うか否かのフラグ変数(c64)
-	bool FlagPassThrough;
-	bool FlagDownsampling;
-	bool FlagStatisticalOutlierRemoval;
-	bool FlagMLS;
-	bool FlagExtractPlane;
-	bool FlagIcpRegistration;
+	bool passthrough_flag;
+	bool downsampling_flag;
+	bool statisticaloutlierremoval_flag;
+	bool mls_flag;
+	bool extractplane_flag;
 };
 
 /* インクルードガードの終了 */
