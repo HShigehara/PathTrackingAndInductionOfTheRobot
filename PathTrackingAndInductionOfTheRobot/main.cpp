@@ -235,9 +235,9 @@ int main()
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		//異常終了した時はデータを保存する必要がないので削除
-		//sys.removeDirectory();
-		//cout << "Data Removed." << endl;
-		//return -1;
+		sys.removeDirectory();
+		cout << "Data Removed." << endl;
+		return -1;
 	}
 	sys.endMessage();
 	return 0;
