@@ -246,9 +246,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 				point.x = real.x*1000.0f; //ポイントクラウドのx座標を格納[mm]
 				point.y = real.y*1000.0f; //ポイントクラウドのy座標を格納[mm]
 				point.z = real.z*1000.0f; //ポイントクラウドのz座標を格納[mm]
-				//point.x = colorX;
-				//point.y = colorY;
-				//point.z = distance;
 
 				//cout << point << endl;
 				//テクスチャ(その座標の色を格納していく)
