@@ -207,7 +207,7 @@ void System::makeDirectory()
 */
 void System::removeDirectory()
 {
-	char rmdirCommand[128]; //ディレクトリを削除するコマンド(c21).変数名を変更&このメソッドのみで有効な変数(c30)
+	char rmdirCommand[NOC]; //ディレクトリを削除するコマンド(c21).変数名を変更&このメソッドのみで有効な変数(c30)
 
 	//ディレクトリを削除する
 	cout << directoryName << endl;

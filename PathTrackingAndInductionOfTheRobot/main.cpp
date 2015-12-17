@@ -199,13 +199,7 @@ int main()
 			sys.endTimer(); //タイマーを終了(c65)
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
-			//その時の画像を保存
-			char filepath_currentimage[NOC];
-			sprintf_s(filepath_currentimage, "data/%s/current_image.jpg", directoryName);
-			imwrite(filepath_currentimage, current_image);
-			char filepath_binimage[NOC];
-			sprintf_s(filepath_binimage, "data/%s/background_image.jpg", directoryName);
-			imwrite(filepath_binimage, bin_image);
+
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1);
@@ -213,6 +207,9 @@ int main()
 				system("cls");
 				destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 				pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+				sys.removeDirectory(); //再計測を行う場合は，現在のデータは必要ないため削除
+				cout << "Data Removed." << endl;
+				system("cls"); //cmdをクリア
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
@@ -222,7 +219,14 @@ int main()
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
-		
+		//その時の画像を保存
+		char filepath_currentimage[NOC];
+		sprintf_s(filepath_currentimage, "data/%s/current_image.jpg", directoryName);
+		imwrite(filepath_currentimage, current_image);
+		char filepath_binimage[NOC];
+		sprintf_s(filepath_binimage, "data/%s/background_image.jpg", directoryName);
+		imwrite(filepath_binimage, bin_image);
+
 		//データを保存するかの確認
 		cout << "Save Data?" << endl;
 		int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
