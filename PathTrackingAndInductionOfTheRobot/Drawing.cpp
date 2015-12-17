@@ -12,8 +12,6 @@
 
 /*!
 * @brief メソッドDrawing::Drawing().コンストラクタ
-* @param なし
-* @return なし
 */
 Drawing::Drawing()
 {
@@ -25,16 +23,10 @@ Drawing::Drawing()
 	if ((gpr = _popen("gnuplot", "w")) == NULL){
 		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
 	}
-
-	//(c76)
-	//sprintf_s(filepath_centroidroute, "%s/centroid_route.dat", directoryName);
-	//fopen_s(&centroid, filepath_centroidroute, "w"); //重心座標を保存するファイルを開く
 }
 
 /*!
 * @brief メソッドDrawing::Drawing().デストラクタ
-* @param なし
-* @return なし
 */
 Drawing::~Drawing()
 {
@@ -44,16 +36,11 @@ Drawing::~Drawing()
 	//fprintf_s(gpr, "unset multiplot\n");
 	fprintf_s(gpr, "quit\n");
 	_pclose(gpr);
-
-	//(c76)
-	//fclose(centroid);
-
 }
 
 /*!
  * @brief メソッドDrawing::plot3D().3D座標をプロットするメソッド(未)
  * @param outputDataName 
- * @return なし
  */
 void Drawing::plot3D(const string* outputDataName)
 {
@@ -112,7 +99,6 @@ void Drawing::plot3D(const string* outputDataName)
 /*!
 * @brief メソッドDrawing::gnuplotScript().後で，3D座標をプロットして確認するためにgnuplotのスクリプトを出力する
 * @param dataFileName
-* @return なし
 */
 void Drawing::gnuplotScript(const string* dataFileName)
 {
@@ -257,7 +243,6 @@ void Drawing::plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_
 /*!
 * @brief メソッドDrawing::gnuplotScript().後で，球の重心座標をプロットするためにgnuplotのスクリプトを出力する
 * @param dataFileName
-* @return なし
 */
 void Drawing::gnuplotScriptCoG(const string* cogFileName)
 {

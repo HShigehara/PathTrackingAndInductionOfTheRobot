@@ -76,6 +76,7 @@ int main()
 	Mat background_gray_image;
 
 	//ポイントクラウド関係の変数(c57)
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //処理を受け取る点群
 
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
@@ -152,29 +153,29 @@ int main()
 			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
 
 			//ポイントクラウドの取得(c57)
-			pointcloudlibrary.cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
+			cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
 			pointcloudlibrary.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
 			cout << "==========================================================================================" << endl;
-			cout << "Original PointCloud Size\t=>\t" << pointcloudlibrary.cloud->size() << endl;
+			cout << "Original PointCloud Size\t=>\t" << cloud->size() << endl;
 
 			//PCLの処理
 			if (pointcloudlibrary.passthrough_flag == true){  //外れ値除去(c59)
-				pointcloudlibrary.cloud = pointcloudlibrary.passThroughFilter(pointcloudlibrary.cloud); //Kinectから取得した初期の外れ値を除去(c60)
+				cloud = pointcloudlibrary.passThroughFilter(cloud, "z", 400, 20000); //Kinectから取得した外れ値を除去(c60)．与えた軸の中で自分が取得したい範囲の下限と上限を与えることでそれ以外を省く(c81)
 				//cloud = pointcloudlibrary.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
 
 			if (pointcloudlibrary.downsampling_flag == true){	//ダウンサンプリング処理(c59)
-				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f, 2.0f, 2.0f); //Default=all 0.003
-				pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.5f, 2.5f, 2.5f); //Default=all 0.003
+				//cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f, 2.0f, 2.0f); //Default=all 0.003
+				cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(cloud, 2.5f, 2.5f, 2.5f); //Default=all 0.003
 				//pointcloudlibrary.cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003
 			}
 
 			if (pointcloudlibrary.statisticaloutlierremoval_flag == true){
-				pointcloudlibrary.cloud = pointcloudlibrary.removeOutlier(pointcloudlibrary.cloud); //統計的な外れ値除去(c60)
+				cloud = pointcloudlibrary.removeOutlier(cloud); //統計的な外れ値除去(c60)
 			}
 
 			if (pointcloudlibrary.downsampling_flag == true && pointcloudlibrary.mls_flag == true){  //スムージング処理(c60)
-				pointcloudlibrary.cloud = pointcloudlibrary.smoothingUsingMovingLeastSquare(pointcloudlibrary.cloud, true, true, 0.001); //0.002 < radius < ◯．小さいほど除去される
+				cloud = pointcloudlibrary.smoothingUsingMovingLeastSquare(cloud, true, true, 2.5); //0.002 < radius < ◯．小さいほど除去される
 
 			}
 			else if (pointcloudlibrary.downsampling_flag == false && pointcloudlibrary.mls_flag == true){
@@ -182,17 +183,17 @@ int main()
 			}
 
 			if (pointcloudlibrary.extractplane_flag == true){	//平面検出とクラスタリング(c61)
-				pointcloudlibrary.cloud = pointcloudlibrary.getExtractPlaneAndClustering(pointcloudlibrary.cloud, true, 1, 0.00008/*0.000003*//*0.0001*//*0.0009*//*0.0005*//*0.003*/, false, true, /*0.035*//*0.003タイヤの下が省かれる*/0.005/*0.05*/, /*350*/150, /*25000*//*20000*/1500); //Default=0.03(前処理なしの場合)
+				cloud = pointcloudlibrary.getExtractPlaneAndClustering(cloud, true, 100, 5, false, true, 0.02, /*350*/150, /*25000*//*20000*/200000); //Default=0.03(前処理なしの場合)
 			}
 
-			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(pointcloudlibrary.cloud); //重心座標の計算
-			coefficient_plane = lsm.getCoefficient(pointcloudlibrary.cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
+			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(cloud); //重心座標の計算
+			coefficient_plane = lsm.getCoefficient(cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			
-			ev3control.set6DoFEV3(pointcloudlibrary.cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
+			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			cout << "==========================================================================================" << endl;
-			pointcloudlibrary.viewer->showCloud(pointcloudlibrary.cloud); //処理後の点群を表示
+			pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
@@ -208,9 +209,8 @@ int main()
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
-			//system("cls"); //コンソール内の表示をリセット(c64)
+			system("cls"); //コンソール内の表示をリセット(c64)
 		}
-
 		//計測が終了したところ
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
