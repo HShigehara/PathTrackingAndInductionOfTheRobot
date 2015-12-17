@@ -25,11 +25,9 @@ public:
 	LeastSquareMethod(); //!<コンストラクタ
 	~LeastSquareMethod(); //!<デストラクタ
 
-	void getSphereData(int actualExtractedNum); //!<最小二乗法によって求めた球の情報を取得するメソッド
-
 	//最小二乗法
-	Eigen::Vector3f getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
-	AttitudeAngle3d calcYawRollPitch(Eigen::Vector3f coefficient_plane);
+	Eigen::Vector3f getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud); //!<最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド
+	AttitudeAngle3d calcYawRollPitch(Eigen::Vector3f coefficient_plane); //!<最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する
 
 };
 
