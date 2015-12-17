@@ -12,8 +12,6 @@
 
 /*!
  * @brief メソッドKinect::Kinect().コンストラクタ
- * @param なし
- * @return なし
  */
 Kinect::Kinect()
 {
@@ -22,8 +20,6 @@ Kinect::Kinect()
 
 /*!
  * @brief メソッドKinect::~Kinect().デストラクタ
- * @param なし
- * @return なし
  */
 Kinect::~Kinect()
 {
@@ -36,8 +32,6 @@ Kinect::~Kinect()
 
 /*!
  * @brief メソッドKinect::createInstance().インスタンスの生成
- * @param なし
- * @return なし
  */
 void Kinect::createInstance()
 {
@@ -61,8 +55,6 @@ void Kinect::createInstance()
 
 /*!
  * @brief メソッドKinect::initialize().Kinectの初期化
- * @param なし
- * @return なし
  */
 void Kinect::initialize()
 {
@@ -84,8 +76,8 @@ void Kinect::initialize()
 
 /*!
  * @brief メソッドKinect::drawRGBImage(Mat& image).RGBカメラの処理
- * @param image
- * @return image
+ * @param cv::Mat& image
+ * @return cv::Mat image
  */
 Mat Kinect::drawRGBImage(Mat& image)
 {
@@ -108,99 +100,6 @@ Mat Kinect::drawRGBImage(Mat& image)
 		cout << ex.what() << endl;
 	}
 	return (image); //RGBカメラから画像を取得し返す(c30)
-}
-
-/*!
- * @brief メソッドKinect::getAverageCoordinate(Mat& image).Depthカメラの処理
- * @param cv::Mat& image
- * @return なし
- */
-Point3ius Kinect::getAverageCoordinate(Mat& image) //(c31)
-{
-	Vector4 sumCoordinate; //1フレームの各座標の総和を求める変数の初期化(c31)
-	Point3ius avgCoordinate; //!<平均座標を格納するクラス内のローカル変数(c38)
-
-	//変数の初期化(c31)
-	actualExtractedNum = 0;
-
-	sumCoordinate.x = 0;
-	sumCoordinate.y = 0;
-	sumCoordinate.z = 0;
-
-	avgCoordinate.x = 0;
-	avgCoordinate.y = 0;
-	avgCoordinate.z = 0;
-
-	//Depthカメラのフレームデータを取得する
-	NUI_IMAGE_FRAME depthFrame = { 0 };
-	ERROR_CHECK(kinect->NuiImageStreamGetNextFrame(depthStreamHandle, INFINITE, &depthFrame));
-
-	//Depthデータを取得
-	NUI_LOCKED_RECT depthData = { 0 };
-	depthFrame.pFrameTexture->LockRect(0, &depthData, 0, 0);
-
-	USHORT* depth = (USHORT*)depthData.pBits; //depthデータを格納
-
-				//cout << actualExtractedNum << endl;
-	if (extractedNum > 0){ //抽出した座標が1つ以上あれば以下の処理を実行
-		for (int i = 0; i < extractedNum; i++){ //抽出された数だけ座標を足しあわせていく(c37)
-			USHORT distance = ::NuiDepthPixelToDepth(depth[extractedPointOneDim[i]]); //distanceの単位はmm
-			if (distance != 0){ //距離が0以外であれば，距離と座標を足し合わせ，足された数をカウント(c31)
-				sumCoordinate.x += extCoordinate[i].x; //抽出されたx座標を足しあわせていく(c37)
-				sumCoordinate.y += extCoordinate[i].y; //抽出されたy座標を足しあわせていく(c37)
-				sumCoordinate.z += distance; //抽出されたz(距離)を足しあわせていく(c37)
-
-				//cout << distance << endl; (※確認用)
-
-				Vector4 worldCoordinate = NuiTransformDepthImageToSkeleton((long)extCoordinate[i].x, (long)extCoordinate[i].y, (USHORT)distance, NUI_IMAGE_RESOLUTION_640x480);
-				XYZCoordinate[actualExtractedNum].x = worldCoordinate.x * 1000.0f;
-				XYZCoordinate[actualExtractedNum].y = worldCoordinate.y * 1000.0f;
-				XYZCoordinate[actualExtractedNum].z = worldCoordinate.z * 1000.0f;
-
-				//cout << XYZCoordinate[actualExtractedNum].z << endl; (※確認用)
-				actualExtractedNum++; //実際に足しあわされた数をカウントする(c37)
-			}
-		}
-		avgCoordinate.x = /*(float)*/(int)(sumCoordinate.x / actualExtractedNum);
-		avgCoordinate.y = /*(float)*/(int)(sumCoordinate.y / actualExtractedNum);
-		avgCoordinate.z = /*(USHORT)*/(USHORT)(sumCoordinate.z / actualExtractedNum); //(c11)
-
-		avgFlag = true;
-	}
-	else
-	{
-		avgFlag = false; //平均座標を計算しないようにする
-	}
-
-	ERROR_CHECK(kinect->NuiImageStreamReleaseFrame(depthStreamHandle, &depthFrame));
-
-	return (avgCoordinate);
-}
-
-/*!
-* @brief メソッドKinect::coordinateTransform.座標の変換を行うメソッド(c10)
-* @param Point3ius averageCoordinate
-* @return Vector4 rp
-*/
-Vector4 Kinect::getLocalPosition(Point3ius averageCoordinate)
-{
-	Vector4 rp; //realPoint格納用の変数(c38)
-	Vector4 worldCoordinate; //ワールド座標系(c38)
-
-	//変数の初期化(c33)
-	rp.x = 0.0;
-	rp.y = 0.0;
-	rp.z = 0.0;
-	worldCoordinate.x = 0.0;
-	worldCoordinate.y = 0.0;
-	worldCoordinate.z = 0.0;
-
-	worldCoordinate = NuiTransformDepthImageToSkeleton((long)averageCoordinate.x, (long)averageCoordinate.y, (USHORT)averageCoordinate.z, NUI_IMAGE_RESOLUTION_640x480);
-	rp.x = (float)(worldCoordinate.x * 1000.0f);
-	rp.y = (float)(worldCoordinate.y * 1000.0f);
-	rp.z = (float)(worldCoordinate.z * 1000.0f);
-
-	return rp;
 }
 
 /*
