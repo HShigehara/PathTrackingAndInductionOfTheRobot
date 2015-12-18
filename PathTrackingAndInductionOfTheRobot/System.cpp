@@ -19,6 +19,7 @@ System::System()
 	FlagEndTimer = false; //終了用のタイマーが実行されたかのフラグを初期化(c65)
 	time = 0.0; //時間計測用の変数を初期化(c65)
 	save_count = 0; //保存用カウント用の変数を初期化(c82)
+	centroidroute_flag = false;
 }
 
 /*!
@@ -348,11 +349,13 @@ void System::saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::Point
 	char filepath_currentimage[NOC];
 	sprintf_s(filepath_currentimage, "data/%s/current_image%2d.jpg", directoryName, save_count);
 	imwrite(filepath_currentimage, current_image);
-	//背景の画像を保存
+	
+	//差分を計算した二値画像を保存
 	char filepath_binimage[NOC];
 	sprintf_s(filepath_binimage, "data/%s/background_image%2d.jpg", directoryName, save_count);
 	imwrite(filepath_binimage, bin_image);
 
+	//点群情報を保存
 	FILE *pointcloud_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
 	char filepath_pointcloud[NOC];
 	sprintf_s(filepath_pointcloud, "data/%s/pointcloud%2d.dat", directoryName, save_count);
@@ -362,6 +365,7 @@ void System::saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::Point
 	}
 	fclose(pointcloud_fp);
 
+	//6DoF情報を保存
 	FILE *dof6_fp; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
 	char filepath_dof6[NOC];
 	sprintf_s(filepath_dof6, "data/%s/dof6%2d.dat", directoryName, save_count);
@@ -369,6 +373,23 @@ void System::saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::Point
 	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
 	fclose(pointcloud_fp);
 
+	//6DoF情報を続けて保存する
+	FILE *dof6con_fp;
+	char filepath_dof6con[NOC];
+	sprintf_s(filepath_dof6con, "data/%s/dof6con.dat", directoryName);
+	fopen_s(&dof6con_fp, filepath_dof6con, "a");
+	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
+	fclose(dof6con_fp);
 
+	//平均座標を続けて保存する
+	FILE *centroid_route;
+	char filepath_centroidroute[NOC];
+	sprintf_s(filepath_centroidroute, "data/%s/centroid_route.dat", directoryName);
+	fopen_s(&centroid_route, filepath_centroidroute, "a");
+	fprintf_s(centroid_route, "%f %f %f\n", dof6.x, dof6.y, dof6.z);
+	fclose(centroid_route);
+	
 	save_count++;
+
+	return;
 }

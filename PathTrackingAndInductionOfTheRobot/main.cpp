@@ -215,6 +215,15 @@ int main()
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
 
+			if (sys.centroidroute_flag == true){
+				FILE *ev3route;
+				char filepath_ev3route[NOC];
+				sprintf_s(filepath_ev3route, "data/%s/ev3route.dat", directoryName);
+				fopen_s(&ev3route, filepath_ev3route, "a");
+				fprintf_s(ev3route, "%f %f %f\n", ev3control.ev3_6dof.x, ev3control.ev3_6dof.y, ev3control.ev3_6dof.z);
+				fclose(ev3route);
+			}
+
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1);
@@ -231,6 +240,9 @@ int main()
 			else if (kinect.key == 'p'){
 				sys.saveData(current_image,bin_image,ev3control.ev3_6dof, cloud);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
+
+				draw.gnuplotScriptEV3Route();
+				sys.centroidroute_flag = true; //平均座標軌道を出力するフラグをオンにする(c82)
 			}
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}

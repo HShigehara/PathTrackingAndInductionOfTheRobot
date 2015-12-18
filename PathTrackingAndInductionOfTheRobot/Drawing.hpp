@@ -36,6 +36,8 @@ public:
 	void gnuplotScriptCoG(const string* cogFileName); //!<球の重心座標をプロットするメソッド(c52)
 
 	void gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
+	
+	void gnuplotScriptEV3Route();
 };
 
 /* インクルードガードの終了 */

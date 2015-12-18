@@ -313,3 +313,21 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 
 	return;
 }
+
+void Drawing::gnuplotScriptEV3Route()
+{
+	FILE *fp;
+	char filepath_splot_ev3route[NOC];
+	sprintf_s(filepath_splot_ev3route, "data/%s/splot_ev3route.plt", directoryName);
+	fopen_s(&fp, filepath_splot_ev3route, "w");
+
+	fprintf_s(fp, "set xlabel \"X-axis\"\n");
+	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
+	fprintf_s(fp, "set zlabel \"Z-axis\"\n");
+	fprintf_s(fp, "set title \"EV3 Centroid Route\"\n");
+	fprintf_s(fp, "splot \"ev3route.dat\" with lp\n");
+
+	fclose(fp);
+
+	return;
+}

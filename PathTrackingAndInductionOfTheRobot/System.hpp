@@ -59,6 +59,7 @@ public:
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
 
 	void saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
+	bool centroidroute_flag;
 };
 
 #endif /* __SYSTEM_HPP__ */
