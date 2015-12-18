@@ -77,7 +77,8 @@ extern const float* phranges;
 extern /*int*/bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
 extern /*int*/bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
-
+/* 同一複数データ保存用(c82) */
+extern int save_count;
 
 /* インクルードガードの終了 */
 #endif /* __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__ */

@@ -48,7 +48,7 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
 bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
 bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
-void onTrackbar(int th, void*);
+int save_count = 0; //同一複数データ保存用(c82)
 
 /*!
  * @brief 関数main()
@@ -68,6 +68,7 @@ int main()
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
+	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
 	//ファイル名の定義(c39)
 
 	//画像関係の変数
@@ -131,7 +132,7 @@ int main()
 
 		//プログラム開始の通知
 		cout << "Process will Start in " << endl;
-		sys.countdownTimer(5); 
+		sys.countdownTimer(2); 
 		PlaySound(TEXT("sourcedata/shutter.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
 		system("cls"); //コンソール内の表示をリセット(c64)
 
@@ -215,15 +216,6 @@ int main()
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
 
-			if (sys.centroidroute_flag == true){
-				FILE *ev3route;
-				char filepath_ev3route[NOC];
-				sprintf_s(filepath_ev3route, "data/%s/ev3route.dat", directoryName);
-				fopen_s(&ev3route, filepath_ev3route, "a");
-				fprintf_s(ev3route, "%f %f %f\n", ev3control.ev3_6dof.x, ev3control.ev3_6dof.y, ev3control.ev3_6dof.z);
-				fclose(ev3route);
-			}
-
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1);
@@ -241,16 +233,27 @@ int main()
 				sys.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 
-				draw.gnuplotScriptEV3Route();
-				sys.centroidroute_flag = true; //平均座標軌道を出力するフラグをオンにする(c82)
+				//draw.gnuplotScriptEV3Route();
+				sys.save_flag = true; //平均座標軌道を出力するフラグをオンにする(c82)
+
+				save_count++;
 			}
+			else if (kinect.key == 'l'){ //'l'が入力されたら．EV3軌道が欲しい時に入力する
+				saveev3route_flag = true; //フラグをtrueにする
+			}
+
+			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
+				sys.saveDataContinuously(ev3control.ev3_6dof);
+			}
+
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		//計測が終了したところ
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
-		//その時の画像を保存
-		
+		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
+			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
+		}
 
 		//データを保存するかの確認
 		cout << "Save Data?" << endl;
@@ -271,6 +274,5 @@ int main()
 		cout << "Data Removed." << endl;
 		return -1;
 	}
-	//sys.endMessage();
 	return 0;
 }

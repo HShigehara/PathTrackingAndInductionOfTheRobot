@@ -18,8 +18,8 @@ System::System()
 	FlagStartTimer = false; //スタート用のタイマーが実行されたかのフラグを初期化(c65)
 	FlagEndTimer = false; //終了用のタイマーが実行されたかのフラグを初期化(c65)
 	time = 0.0; //時間計測用の変数を初期化(c65)
-	save_count = 0; //保存用カウント用の変数を初期化(c82)
-	centroidroute_flag = false;
+	//save_count = 0; //保存用カウント用の変数を初期化(c82)
+	save_flag = false;
 }
 
 /*!
@@ -40,6 +40,7 @@ void System::startMessage()
 	//cout << " Please Enclose the Object You Want to Track." << endl;
 	cout << " If You Enter a 'q' Key, the Program Terminates." << endl;
 	cout << " If You Enter a 'r' Key, the Program Restart." << endl;
+	cout << " Each Time You Enter a 'p' Key, Then Save The Data." << endl;
 	//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;
 	cout << "\n";
 	cout << " Switching of Point Cloud Processing." << endl;
@@ -343,53 +344,77 @@ VideoWriter System::outputVideo(const string* outputVideoName)
 	return (writer);
 }
 
+/*!
+ * @brief メソッドSystem::saveDataEveryEnterKey()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する．
+ * @param cv::Mat& current_image, cv::Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
+ */
 void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
+	//その都度保存するためのディレクトリを作成(c82)
+	char filepath_output[NOC];
+	sprintf_s(filepath_output, "data/%s/%d", directoryName, save_count);
+	_mkdir(filepath_output);
+
 	//現在の画像を保存
 	char filepath_currentimage[NOC];
-	sprintf_s(filepath_currentimage, "data/%s/current_image%2d.jpg", directoryName, save_count);
+	sprintf_s(filepath_currentimage, "data/%s/%d/current_image-%02d.jpg", directoryName, save_count, save_count);
 	imwrite(filepath_currentimage, current_image);
 	
 	//差分を計算した二値画像を保存
 	char filepath_binimage[NOC];
-	sprintf_s(filepath_binimage, "data/%s/background_image%2d.jpg", directoryName, save_count);
+	sprintf_s(filepath_binimage, "data/%s/%d/background_image-%02d.jpg", directoryName, save_count, save_count);
 	imwrite(filepath_binimage, bin_image);
 
 	//点群情報を保存
-	FILE *pointcloud_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
-	char filepath_pointcloud[NOC];
-	sprintf_s(filepath_pointcloud, "data/%s/pointcloud%2d.dat", directoryName, save_count);
-	fopen_s(&pointcloud_fp, filepath_pointcloud, "w"); //
+	FILE *point_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
+	char filepath_point[NOC];
+	sprintf_s(filepath_point, "data/%s/%d/point-%02d.dat", directoryName, save_count, save_count);
+	fopen_s(&point_fp, filepath_point, "w"); //
 	for (int i = 1; i < inputPointCloud->size(); i++){
-		fprintf_s(pointcloud_fp, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
+		fprintf_s(point_fp, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
 	}
-	fclose(pointcloud_fp);
+	fclose(point_fp);
 
 	//6DoF情報を保存
 	FILE *dof6_fp; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
 	char filepath_dof6[NOC];
-	sprintf_s(filepath_dof6, "data/%s/dof6%2d.dat", directoryName, save_count);
+	sprintf_s(filepath_dof6, "data/%s/%d/dof6-%02d.dat", directoryName, save_count, save_count);
 	fopen_s(&dof6_fp, filepath_dof6, "w");
 	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
-	fclose(pointcloud_fp);
+	fclose(dof6_fp);
 
 	//6DoF情報を続けて保存する
 	FILE *dof6con_fp;
 	char filepath_dof6con[NOC];
-	sprintf_s(filepath_dof6con, "data/%s/dof6con.dat", directoryName);
+	sprintf_s(filepath_dof6con, "data/%s/dof6con.csv", directoryName);
 	fopen_s(&dof6con_fp, filepath_dof6con, "a");
-	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
+	if (save_flag == false){
+		fprintf(dof6_fp, "x,y,z,Yaw,Roll,Pitch,Data Size\n");
+	}
+	fprintf_s(dof6_fp, "%f,%f,%f,%f,%f,%f,%d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
 	fclose(dof6con_fp);
 
-	//平均座標を続けて保存する
-	FILE *centroid_route;
-	char filepath_centroidroute[NOC];
-	sprintf_s(filepath_centroidroute, "data/%s/centroid_route.dat", directoryName);
-	fopen_s(&centroid_route, filepath_centroidroute, "a");
-	fprintf_s(centroid_route, "%f %f %f\n", dof6.x, dof6.y, dof6.z);
-	fclose(centroid_route);
+	//PointCloudを保存する
+	char filepath_pointcloud[NOC];
+	sprintf_s(filepath_pointcloud, "data/%s/%d/pointcloud-%02d.ply", directoryName, save_count, save_count);
+	pcl::io::savePLYFileASCII(filepath_pointcloud, *inputPointCloud);
 	
-	save_count++;
+	return;
+}
 
+/*!
+ * @brief メソッドSystem::saveDataContinuously()．pキーが入力されたら，平均座標を出力(c82)
+ * @@param DoF6d centroid
+ */
+void System::saveDataContinuously(DoF6d centroid)
+{
+	//保存用のファイル作成
+	FILE *ev3route;
+	char filepath_ev3route[NOC];
+	sprintf_s(filepath_ev3route, "data/%s/ev3route.dat", directoryName);
+	fopen_s(&ev3route, filepath_ev3route, "a"); //ファイルオープン
+	fprintf_s(ev3route, "%f %f %f\n", centroid.x, centroid.y, centroid.z); //データをファイルに書き込む
+
+	fclose(ev3route);
 	return;
 }

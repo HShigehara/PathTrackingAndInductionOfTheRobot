@@ -29,7 +29,7 @@ private:
 	double fps; //!<フレームレート
 	//double sumTime; //!<処理の合計時間
 
-	int save_count; //!<カウントダウンタイマー用の変数(c75)
+	//int save_count; //!<カウントダウンタイマー用の変数(c75)
 
 public:
 	System();
@@ -59,7 +59,9 @@ public:
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
 
 	void saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
-	bool centroidroute_flag;
+	bool save_flag;
+
+	void saveDataContinuously(DoF6d centroid);
 };
 
 #endif /* __SYSTEM_HPP__ */
