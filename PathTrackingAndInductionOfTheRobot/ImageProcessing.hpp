@@ -35,7 +35,10 @@ public:
 	
 	void loadInternalCameraParameter(const string cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
 	Mat getUndistortionImage(Mat& inputOriginalImage); //!<キャリブレーションデータを用いてKinectから取得した画像を補正する(c71)
-	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
+	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image/*, int threshold, int neighborhood, int closing_times*/); //!<背景差分によって得られた二値画像(c75)
+	int th; //!<二値化するときの閾値(c82)
+	int neighborhood;
+	int closing_times;
 	Mat getUnitMask(Mat& input_binimage);
 };
 

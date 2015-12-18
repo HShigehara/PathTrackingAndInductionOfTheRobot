@@ -228,7 +228,7 @@ void System::makeDirectory()
 	char savedirpath[NOC];
 
 	GetLocalTime(&st);
-	sprintf_s(directoryName, "[%4d%02d%02d]-%02d%02d%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+	sprintf_s(directoryName, "[%4d%02d%02d]%02d%02d%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
 	sprintf_s(savedirpath, "data/%s", directoryName);
 	_mkdir(savedirpath);
 

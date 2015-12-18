@@ -48,6 +48,8 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
 bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
 bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
+void onTrackbar(int th, void*);
+
 /*!
  * @brief 関数main()
  * @param なし
@@ -66,6 +68,7 @@ int main()
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
+	//int th = 13;
 	//ファイル名の定義(c39)
 
 	//画像関係の変数
@@ -97,6 +100,7 @@ int main()
 		const string cameraparameter_name = "sourcedata/cameraParam.xml"; //xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)
 		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
 		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
+		const string param_windowname = "Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
 		//変数の初期化
 		avgFlag = false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
 		mouseFlag = false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
@@ -133,6 +137,7 @@ int main()
 
 		pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
 
+		//namedWindow("閾値", 1);
 		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q'/* && !GetAsyncKeyState('Q')*/){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
@@ -150,10 +155,16 @@ int main()
 			//imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 			
 			//タイヤも含めて前面の点群を取得する
-			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image);
+			namedWindow(param_windowname, CV_WINDOW_KEEPRATIO);
+			createTrackbar("Threshold(0-255)", param_windowname, &imgproc.th, 255);
+			createTrackbar("Neighborhood Level(0-10)", param_windowname, &imgproc.neighborhood, 10);
+			createTrackbar("Closing Times Level(0-10)", param_windowname, &imgproc.closing_times, 10);
+			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image/*, imgproc.th, imgproc.med, imgproc.cnt*/);
 			//ユニット部だけ切り取る(c77)
 			//bin_image = imgproc.getUnitMask(bin_image);
 			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
+			
+
 
 			//ポイントクラウドの取得(c57)
 			cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする

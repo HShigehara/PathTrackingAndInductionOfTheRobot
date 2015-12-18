@@ -16,6 +16,9 @@
 ImageProcessing::ImageProcessing()
 {
 	//コンストラクタは今のところなし
+	th = 13; //閾値の初期値(c82)
+	neighborhood = 2;
+	closing_times = 3;
 }
 
 /*!
@@ -120,7 +123,7 @@ Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
  * @param cv::Mat& current_image, cv::Mat& background_image 
  * @return cv::Mat median_bin_image
  */
-Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image)
+Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image/*, int threshold, int neighborhood, int closing_times*/)
 {
 	Mat current_gray_image; //!<現在のグレースケール画像(c75)
 	Mat diff_gray_image; //!<背景差分画像(c74)
@@ -143,15 +146,15 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 	////showImage("穴埋め処理後", closing_image);
 
 
-	threshold(diff_gray_image, diff_bin_image, 17, 255, THRESH_BINARY); //二値化
+	threshold(diff_gray_image, diff_bin_image, th, 255, THRESH_BINARY); //二値化
 	//showImage("二値画像", diff_bin_image);
-	medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去
+	medianBlur(diff_bin_image, median_bin_image, 2*neighborhood+1); //ノイズ除去
 	//showImage("平滑化処理後", median_bin_image);
 	//morphologyEx(median_bin_image, opening_image, MORPH_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理
-	//morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 7); //クロージング(膨張→収縮)処理．穴埋めに使われる
+	morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 2*closing_times+1); //クロージング(膨張→収縮)処理．穴埋めに使われる
 	//showImage("穴埋め処理後", closing_image);
-	//return closing_image;
-	return median_bin_image;
+	return closing_image;
+	//return median_bin_image;
 }
 
 Mat ImageProcessing::getUnitMask(Mat& input_binimage)
