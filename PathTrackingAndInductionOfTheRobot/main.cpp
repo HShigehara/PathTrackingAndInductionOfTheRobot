@@ -19,17 +19,8 @@
 /* グローバル変数 */
 //画像データ
 Mat image; //!<RGB画像格納用の変数
-//Mat depth_image; //!<距離画像格納用の変数(c58)
 
 char directoryName[NOC]; //!<フォルダ名
-
-//(c6)
-int extractedPointOneDim[ALLPIXEL]; //!<抽出された座標の1次元の値
-int extractedNum; //(c6)colorExtraction()で何ピクセル抽出されたかカウントする変数
-
-Point3ius extCoordinate[ALLPIXEL]; //抽出された座標(c37)
-
-Vector4 XYZCoordinate[ALLPIXEL]; //3次元に変換された(X,Y,Z)(c49)
 
 //(c25)
 Rect trackWindow; //!<追跡ウインドウ
@@ -229,26 +220,25 @@ int main()
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
-			else if (kinect.key == 'p'){
+			else if (kinect.key == 'p'){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
+				cout << "Save the Current Data." << endl;
 				sys.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
-
-				//draw.gnuplotScriptEV3Route();
-				sys.save_flag = true; //平均座標軌道を出力するフラグをオンにする(c82)
-
+				sys.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
 				save_count++;
 			}
 			else if (kinect.key == 'l'){ //'l'が入力されたら．EV3軌道が欲しい時に入力する
 				saveev3route_flag = true; //フラグをtrueにする
 			}
 
+			//平均座標の軌道を追跡し続ける(c82)
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
 				sys.saveDataContinuously(ev3control.ev3_6dof);
 			}
 
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
-		//計測が終了したところ
+		//計測が終了したところ(PCL上または、OpenCVウインドウ上で'q'が押されてたとき)
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
@@ -256,13 +246,16 @@ int main()
 		}
 
 		//データを保存するかの確認
-		cout << "Save Data?" << endl;
-		int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
-		if (checkNum == 1){
-			sys.endMessage(checkNum);
-		}else{
+		if (saveev3route_flag == true || sys.save_flag == true){ //データを保存するフラグがtrue(=データが保存されている)なら保存するかどうか確認する
+			cout << "Save Data?" << endl;
+			int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
+			if (checkNum == 1){
+				sys.endMessage(checkNum);
+			}
+		}
+		else{
 			sys.removeDirectory(); //ディレクトリの削除
-			sys.endMessage(checkNum);
+			sys.endMessage();
 		}
 	}
 	catch (exception& ex){ //例外処理

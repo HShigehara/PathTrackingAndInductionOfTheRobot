@@ -44,20 +44,9 @@ typedef struct AttitudeAngle{
 /* グローバル変数 */
 //画像関係
 extern Mat image; //!<RGB画像格納用の変数
-//extern Mat depth_image; //!<距離画像格納用の変数(c58)
 
 //ファイル名関係
 extern char directoryName[NOC]; //!<フォルダ名
-
-//(c6)
-extern int extractedPointOneDim[ALLPIXEL]; //!<抽出された座標の1次元の値
-extern int extractedNum; //!<(c6)colorExtraction()で何ピクセル抽出されたかカウントする変数
-
-//(c8)
-extern Point3ius extCoordinate[ALLPIXEL]; //!<抽出された座標を保存する変数(c37)
-
-//(c49)
-extern Vector4 XYZCoordinate[ALLPIXEL]; //!<3次元に変換された(X,Y,Z)のデータ(c49)
 
 /* CamShift用変数(c25) */
 extern bool backprojMode; //!<バックプロジェクトモード

@@ -32,8 +32,8 @@ private:
 	//int save_count; //!<カウントダウンタイマー用の変数(c75)
 
 public:
-	System();
-	~System();
+	System(); //!<コンストラクタ
+	~System(); //!<デストラクタ
 
 	void countdownTimer(int time_sec); //!<引数の時間[sec]に応じてカウントダウンを開始する(c75)
 
@@ -59,9 +59,9 @@ public:
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
 
 	void saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
-	bool save_flag;
+	bool save_flag; //!<6DoF情報を出力するフラグ
 
-	void saveDataContinuously(DoF6d centroid);
+	void saveDataContinuously(DoF6d centroid); //平均座標を連続で保存する
 };
 
 #endif /* __SYSTEM_HPP__ */
