@@ -100,7 +100,8 @@ int main()
 		const string cameraparameter_name = "sourcedata/cameraParam.xml"; //xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)
 		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
 		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
-		const string param_windowname = "Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
+		const string param_windowname = "OpenCV Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
+
 		//変数の初期化
 		avgFlag = false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
 		mouseFlag = false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
@@ -164,8 +165,6 @@ int main()
 			//bin_image = imgproc.getUnitMask(bin_image);
 			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
 			
-
-
 			//ポイントクラウドの取得(c57)
 			cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
 			pointcloudlibrary.flagChecker(); //各点群処理のフラグをチェックするメソッド(c64)
