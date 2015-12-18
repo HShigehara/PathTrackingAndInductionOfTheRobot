@@ -23,6 +23,8 @@ Drawing::Drawing()
 	if ((gpr = _popen("gnuplot", "w")) == NULL){
 		cout << "gnuplotが開けません．\"gnuplot/binary\"へパスが通っているか確認して下さい" << endl; //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる
 	}
+
+	save_count = 0;
 }
 
 /*!
@@ -290,7 +292,7 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 {
 	FILE *fp; //ファイルストリームを開く
 	char filepath_splot_ev3[NOC];
-	sprintf_s(filepath_splot_ev3, "data/%s/splot_ev3.plt", directoryName);
+	sprintf_s(filepath_splot_ev3, "data/%s/splot_ev3%2d.plt", directoryName, save_count);
 	fopen_s(&fp, filepath_splot_ev3, "w"); //ファイルを開く
 
 	//(c78)
@@ -302,9 +304,12 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
 	fprintf_s(fp, "set zlabel \"Z-axis\"\n");
 	fprintf_s(fp, "set title \"PointCloud Plane(LSM) Centroid\"\n");
-	fprintf_s(fp, "splot \"centroid.dat\" pointsize 5,%f*x+%f*y+%f,\"pointcloud.dat\" every 5\n",coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z());
+	fprintf_s(fp, "splot \"dof6%2d.dat\" pointsize 5,%f*x+%f*y+%f,\"pointcloud%2d.dat\" every 5\n",save_count, coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z(), save_count);
 
 	//(c78)
 	//_pclose(splot_ev3unit);
 	fclose(fp);
+	save_count++;
+
+	return;
 }

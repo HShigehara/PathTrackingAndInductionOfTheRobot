@@ -29,7 +29,7 @@ private:
 	double fps; //!<フレームレート
 	//double sumTime; //!<処理の合計時間
 
-	//int time_ms; //!<カウントダウンタイマー用の変数(c75)
+	int save_count; //!<カウントダウンタイマー用の変数(c75)
 
 public:
 	System();
@@ -57,6 +57,8 @@ public:
 	void outputAllData(const string* outputDataName, outputData* outputData, int countDataNum); //!<データをファイルに書き出すメソッド(c41)
 	
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
+
+	void saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 };
 
 #endif /* __SYSTEM_HPP__ */

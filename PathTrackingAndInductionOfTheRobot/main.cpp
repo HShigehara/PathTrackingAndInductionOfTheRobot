@@ -68,7 +68,6 @@ int main()
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
-	//int th = 13;
 	//ファイル名の定義(c39)
 
 	//画像関係の変数
@@ -200,11 +199,14 @@ int main()
 			}
 
 			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(cloud); //重心座標の計算
+			
+			
 			coefficient_plane = lsm.getCoefficient(cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
 			
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
+			
 			cout << "==========================================================================================" << endl;
 			pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
 
@@ -226,19 +228,17 @@ int main()
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
+			else if (kinect.key == 'p'){
+				sys.saveData(current_image,bin_image,ev3control.ev3_6dof, cloud);
+				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
+			}
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
 		//計測が終了したところ
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
-		draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 		//その時の画像を保存
-		char filepath_currentimage[NOC];
-		sprintf_s(filepath_currentimage, "data/%s/current_image.jpg", directoryName);
-		imwrite(filepath_currentimage, current_image);
-		char filepath_binimage[NOC];
-		sprintf_s(filepath_binimage, "data/%s/background_image.jpg", directoryName);
-		imwrite(filepath_binimage, bin_image);
+		
 
 		//データを保存するかの確認
 		cout << "Save Data?" << endl;

@@ -306,24 +306,24 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClus
 Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
 	//cout << "inputPointCloud => " << inputPointCloud->size() << endl; //最大のクラスタを受け取れているか確認(c76)
-	FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
-	FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
+	//FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
+	//FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
 	Point3d centroid_coordinate = 0; //重心座標
 	Point3d sum_pointcloud = 0; //座標の合計
 
-	char filepath_pointcloud[NOC];
-	char filepath_centroid[NOC];
-	sprintf_s(filepath_pointcloud, "data/%s/pointcloud.dat", directoryName);
-	sprintf_s(filepath_centroid, "data/%s/centroid.dat", directoryName);
+	//char filepath_pointcloud[NOC];
+	//char filepath_centroid[NOC];
+	//sprintf_s(filepath_pointcloud, "data/%s/pointcloud.dat", directoryName);
+	//sprintf_s(filepath_centroid, "data/%s/centroid.dat", directoryName);
 
 	//ファイルオープンgnuplotの確認用
-	fopen_s(&pointcloud, filepath_pointcloud, "w"); //
-	fopen_s(&centroid, filepath_centroid, "w");
+	//fopen_s(&pointcloud, filepath_pointcloud, "w"); //
+	//fopen_s(&centroid, filepath_centroid, "w");
 
 	//summention coordinate. ※inputPointCloud->width == inputPointCloud->size().
 	for (int i = 1; i < inputPointCloud->size(); i++){
 		//cout << i << " : " << "[x, y, z] => [ " << inputPointCloud->points[i].x << ", " << inputPointCloud->points[i].y << ", " << inputPointCloud->points[i].z << " ] " << endl;
-		fprintf_s(pointcloud, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
+		//fprintf_s(pointcloud, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
 		sum_pointcloud.x = sum_pointcloud.x + inputPointCloud->points[i].x; //点群のx座標を足し合わせていく
 		sum_pointcloud.y = sum_pointcloud.y + inputPointCloud->points[i].y; //点群のy座標を足し合わせていく
 		sum_pointcloud.z = sum_pointcloud.z + inputPointCloud->points[i].z; //点群のz座標を足し合わせていく
@@ -337,11 +337,11 @@ Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 	//cout << "Centroid" << centroid_coordinate << endl; //確認用
 	
 	//平均座標(重心)をファイルに出力(確認用)
-	fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x,centroid_coordinate.y,centroid_coordinate.z);
+	//fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x,centroid_coordinate.y,centroid_coordinate.z);
 
 	//ファイルを閉じる(核に尿)
-	fclose(pointcloud);
-	fclose(centroid);
+	//fclose(pointcloud);
+	//fclose(centroid);
 
 	return centroid_coordinate;
 }

@@ -32,10 +32,10 @@ EV3Control::~EV3Control()
  */
 void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle)
 {
-	FILE *fp;
-	char filepath_measuredata[NOC];
-	sprintf_s(filepath_measuredata, "data/%s/measuredata.dat", directoryName);
-	fopen_s(&fp, filepath_measuredata, "w");
+	//FILE *fp;
+	//char filepath_measuredata[NOC];
+	//sprintf_s(filepath_measuredata, "data/%s/measuredata.dat", directoryName);
+	//fopen_s(&fp, filepath_measuredata, "w");
 
 	ev3_6dof.x = centroid.x;
 	ev3_6dof.y = centroid.y;
@@ -46,9 +46,9 @@ void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCl
 	cout << "[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]" << endl;
 	cout << "[ " << ev3_6dof.x << ", " << ev3_6dof.y << ", " << ev3_6dof.z << ", " << ev3_6dof.yaw << ", " << ev3_6dof.roll << ", " << ev3_6dof.pitch << ", " << inputPointCloud->size() << " ]" << endl;
 
-	fprintf_s(fp, "[\tX\tY\tZ\tYaw\tRoll\tPitch\tPointCloudNum\t]\n");
-	fprintf_s(fp, "%f\t%f\t%f\t%f\t%f\t%f\t%d\n", ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, inputPointCloud->size());
+	//fprintf_s(fp, "[\tX\tY\tZ\tYaw\tRoll\tPitch\tPointCloudNum\t]\n");
+	//fprintf_s(fp, "%f\t%f\t%f\t%f\t%f\t%f\t%d\n", ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, inputPointCloud->size());
 
-	fclose(fp);
+	//fclose(fp);
 	return;
 }

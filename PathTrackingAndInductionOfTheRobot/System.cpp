@@ -18,6 +18,7 @@ System::System()
 	FlagStartTimer = false; //スタート用のタイマーが実行されたかのフラグを初期化(c65)
 	FlagEndTimer = false; //終了用のタイマーが実行されたかのフラグを初期化(c65)
 	time = 0.0; //時間計測用の変数を初期化(c65)
+	save_count = 0; //保存用カウント用の変数を初期化(c82)
 }
 
 /*!
@@ -339,4 +340,35 @@ VideoWriter System::outputVideo(const string* outputVideoName)
 		cerr << outputVideoPath << " is Not Opened." << endl;
 	}
 	return (writer);
+}
+
+void System::saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+{
+	//現在の画像を保存
+	char filepath_currentimage[NOC];
+	sprintf_s(filepath_currentimage, "data/%s/current_image%2d.jpg", directoryName, save_count);
+	imwrite(filepath_currentimage, current_image);
+	//背景の画像を保存
+	char filepath_binimage[NOC];
+	sprintf_s(filepath_binimage, "data/%s/background_image%2d.jpg", directoryName, save_count);
+	imwrite(filepath_binimage, bin_image);
+
+	FILE *pointcloud_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
+	char filepath_pointcloud[NOC];
+	sprintf_s(filepath_pointcloud, "data/%s/pointcloud%2d.dat", directoryName, save_count);
+	fopen_s(&pointcloud_fp, filepath_pointcloud, "w"); //
+	for (int i = 1; i < inputPointCloud->size(); i++){
+		fprintf_s(pointcloud_fp, "%f %f %f\n", inputPointCloud->points[i].x, inputPointCloud->points[i].y, inputPointCloud->points[i].z); //ファイルに出力
+	}
+	fclose(pointcloud_fp);
+
+	FILE *dof6_fp; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
+	char filepath_dof6[NOC];
+	sprintf_s(filepath_dof6, "data/%s/dof6%2d.dat", directoryName, save_count);
+	fopen_s(&dof6_fp, filepath_dof6, "w");
+	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
+	fclose(pointcloud_fp);
+
+
+	save_count++;
 }

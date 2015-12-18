@@ -25,6 +25,8 @@ private:
 	bool first = true; //
 	int plotMode = 1; //!<gnuplotのスクリプトをファイルに出力する際に，計測する対象の状況に応じて値の範囲を変更する.中心固定用(1)，縦移動用(2)，横移動用(3)(c46)，自動縮尺(4)(c47)
 
+	int save_count;
+
 public:
 	Drawing(); //!<コンストラクタ
 	~Drawing(); //!<デストラクタ
