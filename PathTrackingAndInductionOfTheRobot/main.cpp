@@ -238,7 +238,7 @@ int main()
 				goto RETRY;
 			}
 			else if (kinect.key == 'p'){
-				sys.saveData(current_image,bin_image,ev3control.ev3_6dof, cloud);
+				sys.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 
 				draw.gnuplotScriptEV3Route();

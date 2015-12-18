@@ -343,7 +343,7 @@ VideoWriter System::outputVideo(const string* outputVideoName)
 	return (writer);
 }
 
-void System::saveData(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
 	//現在の画像を保存
 	char filepath_currentimage[NOC];
