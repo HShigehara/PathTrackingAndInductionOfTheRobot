@@ -112,25 +112,28 @@ int main()
 
 		//背景用に一度撮影(c75)
 		cout << "Take a Background Image in " << endl;
-		sys.countdownTimer(/*3*/1000);
+		sys.countdownTimer(3);
 		system("cls");
 		DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); //フレーム更新をイベントとして待つ
 		::ResetEvent(kinect.streamEvent); //イベントが発生したら次のイベントに備えてリセット
 		//Kinectから画像を取得し，背景画像とする
+		PlaySound(TEXT("sourcedata/shutter.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
 		background_image = kinect.drawRGBImage(image); //RGBカメラの処理
 		background_image = imgproc.getUndistortionImage(background_image); //キャリブレーション後の画像を今の背景画像とする
-		PlaySound(TEXT("sourcedata/shutter_nikon.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
 		imgproc.showImage(backgroundimage_windowname, background_image); //背景画像を表示する
 		cvtColor(background_image, background_gray_image, CV_BGR2GRAY); //グレースケールに変換
 		
+		Sleep(1000);
+
 		//プログラム開始の通知
 		cout << "Process will Start in " << endl;
-		sys.countdownTimer(1000); //5000msカウントダウンする
+		sys.countdownTimer(5); 
+		PlaySound(TEXT("sourcedata/shutter.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
 		system("cls"); //コンソール内の表示をリセット(c64)
 
 		pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
 
-		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
+		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q'/* && !GetAsyncKeyState('Q')*/){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
@@ -230,8 +233,11 @@ int main()
 		//データを保存するかの確認
 		cout << "Save Data?" << endl;
 		int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
-		if (checkNum == 0){
+		if (checkNum == 1){
+			sys.endMessage(checkNum);
+		}else{
 			sys.removeDirectory(); //ディレクトリの削除
+			sys.endMessage(checkNum);
 		}
 	}
 	catch (exception& ex){ //例外処理
@@ -243,6 +249,6 @@ int main()
 		cout << "Data Removed." << endl;
 		return -1;
 	}
-	sys.endMessage();
+	//sys.endMessage();
 	return 0;
 }

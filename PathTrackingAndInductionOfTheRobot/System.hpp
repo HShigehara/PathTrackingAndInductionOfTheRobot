@@ -35,7 +35,7 @@ public:
 	System();
 	~System();
 
-	void countdownTimer(int time_ms); //!<引数の時間[ms]に応じてカウントダウンを開始する(c75)
+	void countdownTimer(int time_sec); //!<引数の時間[sec]に応じてカウントダウンを開始する(c75)
 
 	void startMessage(); //!<プログラム開始時のメッセージを表示(c26)
 	void endMessage(int cNum); //!<プログラム終了時のメッセージを表示(c38)

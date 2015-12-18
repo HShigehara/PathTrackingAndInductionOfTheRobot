@@ -41,11 +41,11 @@ void System::startMessage()
 	//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;
 	cout << "\n";
 	cout << " Switching of Point Cloud Processing." << endl;
-	cout << "  Pass Through Filter \t\t -> \t Press 'x' Key." << endl;
-	cout << "  Downsampling \t\t\t -> \t Press 'c' Key." << endl;
-	cout << "  Remove Outlier \t\t -> \t Press 'v' Key." << endl;
-	cout << "  Moving Least Square \t\t -> \t Press 'b' Key." << endl;
-	cout << "  Extract Plane & Clustering \t -> \t Press 'n' Key." << endl;
+	cout << "  Pass Through Filter \t\t -> \t Enter 'x' Key." << endl;
+	cout << "  Downsampling \t\t\t -> \t Enter 'c' Key." << endl;
+	cout << "  Remove Outlier \t\t -> \t Enter 'v' Key." << endl;
+	cout << "  Moving Least Square \t\t -> \t Enter 'b' Key." << endl;
+	cout << "  Extract Plane & Clustering \t -> \t Enter 'n' Key." << endl;
 	cout << "==================================================================" << endl;
 
 	return;
@@ -59,7 +59,7 @@ void System::endMessage(int cNum)
 	cout << "==================================================================" << endl;
 	cout << "Closing the Program...." << endl;
 	if (cNum == 1){
-		cout << "Data Has Been Output to \"" << directoryName << "\"." << endl;
+		cout << "Data Has Been Output to \"data/" << directoryName << "\"." << endl;
 		openDirectory();
 	}
 	cout << "==================================================================" << endl;
@@ -80,14 +80,49 @@ void System::endMessage()
 
 /*!
  * @brief メソッドcountdownTimer()．タイマーによるカウントダウン
- * @param int time_ms 
+ * @param int time_sec 
  */
-void System::countdownTimer(int time_ms)
+void System::countdownTimer(int time_sec)
 {
-	while (time_ms > 0){
-		cout << time_ms/1000 << " seconds" << "\r";
+	string playfile_name;
+	while (time_sec > 0){
+		cout << time_sec << " seconds" << "\r";
+		switch (time_sec)
+		{
+		case 1: 
+			PlaySound(TEXT("sourcedata/count1.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 2: 
+			PlaySound(TEXT("sourcedata/count2.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 3:
+			PlaySound(TEXT("sourcedata/count3.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 4:
+			PlaySound(TEXT("sourcedata/count4.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 5:
+			PlaySound(TEXT("sourcedata/count5.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 6:
+			PlaySound(TEXT("sourcedata/count6.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 7:
+			PlaySound(TEXT("sourcedata/count7.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 8:
+			PlaySound(TEXT("sourcedata/count8.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 9:
+			PlaySound(TEXT("sourcedata/count9.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		case 10:
+			PlaySound(TEXT("sourcedata/count10.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
+			break;
+		default: break;
+		}
 		Sleep(1000);
-		time_ms = time_ms - 1000;
+		time_sec = time_sec - 1;
 	}
 	cout << "\n";
 	return;
@@ -193,7 +228,7 @@ void System::makeDirectory()
 	char savedirpath[NOC];
 
 	GetLocalTime(&st);
-	sprintf_s(directoryName, "[%4d%02d%02d]%02d_%02d_%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+	sprintf_s(directoryName, "[%4d%02d%02d]-%02d%02d%02d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
 	sprintf_s(savedirpath, "data/%s", directoryName);
 	_mkdir(savedirpath);
 
@@ -202,8 +237,6 @@ void System::makeDirectory()
 
 /*!
 * @brief System::removeDirectory().ディレクトリを削除(c21)
-* @param なし 
-* @return なし
 */
 void System::removeDirectory()
 {
@@ -220,7 +253,6 @@ void System::removeDirectory()
 
 /*!
 * @brief System::alternatives().Yes/Noの2択のチェック(c21)
-* @param なし
 * @return checkNum
 */
 int System::alternatives()
@@ -251,14 +283,12 @@ int System::alternatives()
 
 /*!
 * @brief System::openDireectory().出力したディレクトリを開く(c39)
-* @param なし
-* @return なし
 */
 void System::openDirectory()
 {
 	cout << "Opening This Directory." << endl;
 	char openDirectoryCommand[NOC]; //自動で開くウインドウのパス
-	sprintf_s(openDirectoryCommand, "explorer %s", directoryName); //ディレクトリを開くコマンド
+	sprintf_s(openDirectoryCommand, "explorer \"data\\%s\"", directoryName); //ディレクトリを開くコマンド
 	system(openDirectoryCommand); //ディレクトリを開くコマンドを実行
 
 	return;
@@ -267,7 +297,6 @@ void System::openDirectory()
 /*!
 * @brief System::outputData().データをファイルに書き出すメソッド(c41)
 * @param outputDataName, outputData, countDataNum
-* @return なし
 */
 void System::outputAllData(const string* outputDataName, outputData* outputData, int countDataNum)
 {
