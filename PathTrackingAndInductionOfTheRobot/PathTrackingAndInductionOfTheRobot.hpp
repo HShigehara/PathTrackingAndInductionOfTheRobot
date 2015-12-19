@@ -49,22 +49,11 @@ extern Mat image; //!<RGB画像格納用の変数
 extern char directoryName[NOC]; //!<フォルダ名
 
 /* CamShift用変数(c25) */
-extern bool backprojMode; //!<バックプロジェクトモード
 extern bool selectObject; //!<オブジェクト選択
 extern int trackObject; //!<追跡するオブジェクト
 extern Point origin; //!<オリジナルの座標
 extern Rect selection; //!<選択
-extern int vmin, vmax, smin; //!<HSVの範囲指定
 extern void onMouse(int event, int x, int y, int, void*); //!<マウス操作
-/* (c25) */
-extern Rect trackWindow; //!<追跡ウインドウ
-extern int hsize;
-extern float hranges[];//!<Hの範囲
-extern const float* phranges;
-
-/* (c26) */
-extern /*int*/bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
-extern /*int*/bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
 /* 同一複数データ保存用(c82) */
 extern int save_count;

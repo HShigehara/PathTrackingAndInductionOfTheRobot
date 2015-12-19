@@ -23,21 +23,13 @@ Mat image; //!<RGB画像格納用の変数
 char directoryName[NOC]; //!<フォルダ名
 
 //(c25)
-Rect trackWindow; //!<追跡ウインドウ
-int hsize = 16;
-float hranges[] = { 0, 180 }; //!<Hの範囲
-const float* phranges = hranges;
-bool backprojMode = false; //!<バックプロジェクトモード
 bool selectObject = false; //!<オブジェクト選択
 int trackObject = 0; //!<追跡するオブジェクト
 Point origin; //!<オリジナルの座標
 Rect selection; //!<選択
-int vmin = 10, vmax = 256, smin = 30; //!<HSVの範囲指定
 void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操作
 
 //(c26)
-bool avgFlag; //!<平均を計算したとき用のフラグ(c30)
-bool mouseFlag; //!<マウス操作確認用のフラグ(c26)
 
 int save_count = 0; //同一複数データ保存用(c82)
 
@@ -94,8 +86,6 @@ int main()
 		const string param_windowname = "OpenCV Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
 
 		//変数の初期化
-		avgFlag = false; //再計測のために平均座標を計算したかチェックするフラグ変数を初期化
-		mouseFlag = false; //再計測のためにマウスをクリックしたかをチェックするフラグ変数を初期化
 
 		kinect.initialize(); //Kinectの初期化
 		sys.checkDirectory(basedirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)

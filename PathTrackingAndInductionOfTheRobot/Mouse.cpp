@@ -32,9 +32,9 @@ void onMouse(int event, int x, int y, int flags, void* param)
 		if (selection.width > 0 && selection.height > 0)
 		{
 			trackObject = -1;
-			mouseFlag = true;
 		}
 		break;
 	}
 
+	return;
 }
