@@ -29,8 +29,6 @@ Point origin; //!<オリジナルの座標
 Rect selection; //!<選択
 void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操作
 
-//(c26)
-
 int save_count = 0; //同一複数データ保存用(c82)
 
 /*!
@@ -52,7 +50,6 @@ int main()
 
 	//変数の宣言
 	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
-	//ファイル名の定義(c39)
 
 	//画像関係の変数
 	Mat flip_image; //確認用に反転した画像
@@ -68,9 +65,10 @@ int main()
 	Eigen::Vector3f coefficient_plane; //平面の係数
 	AttitudeAngle3d attitude_angle; //姿勢角(c78)
 
-	pcl::visualization::PCLVisualizer *visualizer = new pcl::visualization::PCLVisualizer("3D Viewer");
-	visualizer->setBackgroundColor(0, 0, 0);
-	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "sample cloud");
+	//CloudVisualizermの初期設定(c83)
+	pcl::visualization::PCLVisualizer *visualizer = new pcl::visualization::PCLVisualizer("3D Viewer"); //PCLVisualizerのウインドウ名
+	visualizer->setBackgroundColor(0, 0, 0); //PCLVisualizerの背景色
+	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "show cloud");
 	visualizer->addCoordinateSystem(1.0);
 	visualizer->initCameraParameters();
 
@@ -90,8 +88,6 @@ int main()
 		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
 		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
 		const string param_windowname = "OpenCV Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
-
-		//変数の初期化
 
 		kinect.initialize(); //Kinectの初期化
 		sys.checkDirectory(basedirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)
@@ -195,18 +191,26 @@ int main()
 			
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			
-			visualizer->addPointCloud(cloud, "sample cloud");
-			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "sample cloud");
-			visualizer->spinOnce();
+			//平均座標に球を描画する(c83)
+			pcl::PointXYZ sphere;
+			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
+			sphere.y = pointcloudlibrary.centroid.y; //平均座標のy座標
+			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
+			visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
+
+			//Kinectから取得した点群を描画
+			visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
+			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "show cloud");
 			cout << "==========================================================================================" << endl;
+
 			//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
+			visualizer->spinOnce(); //PCLVisualizerを描画
+			//終了のためのキー入力チェック兼表示のためのウェイトタイム
+			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
-
-			//終了のためのキー入力チェック兼表示のためのウェイトタイム
-			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
 
 			//キーが入力されていれば以下を実行する．GetAsyncKeyStateを利用することで
 			if (GetAsyncKeyState('R')){
@@ -234,13 +238,18 @@ int main()
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
 				sys.saveDataContinuously(ev3control.ev3_6dof);
 			}
-			visualizer->removePointCloud("sample cloud");
+
+			//PCLVisualizerに描画した点群を削除する
+			visualizer->removePointCloud("show cloud");
+			visualizer->removeShape("sphere");
 
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
-		//計測が終了したところ(PCL上または、OpenCVウインドウ上で'q'が押されてたとき)
+
+		//計測が終了したところ(PCL上, OpenCVウインドウ上, コンソール上で'q'が押されてたとき)
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+		visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
 			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
 		}
@@ -262,6 +271,7 @@ int main()
 		cout << ex.what() << endl;
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+		visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		//異常終了した時はデータを保存する必要がないので削除
 		sys.removeDirectory();
 		cout << "Data Removed." << endl;
