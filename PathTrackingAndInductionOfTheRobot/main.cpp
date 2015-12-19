@@ -68,6 +68,12 @@ int main()
 	Eigen::Vector3f coefficient_plane; //平面の係数
 	AttitudeAngle3d attitude_angle; //姿勢角(c78)
 
+	pcl::visualization::PCLVisualizer *visualizer = new pcl::visualization::PCLVisualizer("3D Viewer");
+	visualizer->setBackgroundColor(0, 0, 0);
+	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "sample cloud");
+	visualizer->addCoordinateSystem(1.0);
+	visualizer->initCameraParameters();
+
 	//メインの処理
 	try{
 		sys.startMessage(); //プログラム開始時のメッセージを表示
@@ -117,10 +123,10 @@ int main()
 		PlaySound(TEXT("sourcedata/shutter.wav"), NULL, (SND_ASYNC | SND_FILENAME)); //音声ファイルを再生
 		system("cls"); //コンソール内の表示をリセット(c64)
 
-		pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
+		//pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
 
 		//namedWindow("閾値", 1);
-		while (!pointcloudlibrary.viewer->wasStopped() && kinect.key != 'q'/* && !GetAsyncKeyState('Q')*/){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
+		while (/*!pointcloudlibrary.viewer->wasStopped() && */kinect.key != 'q'/* && !GetAsyncKeyState('Q')*/){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
@@ -189,8 +195,12 @@ int main()
 			
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			
+			visualizer->addPointCloud(cloud, "sample cloud");
+			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "sample cloud");
+			visualizer->spinOnce();
+			visualizer->removePointCloud("sample cloud");
 			cout << "==========================================================================================" << endl;
-			pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
+			//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
@@ -203,7 +213,7 @@ int main()
 			if (GetAsyncKeyState('R')){
 				system("cls");
 				destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
-				pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+				//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 				sys.removeDirectory(); //再計測を行う場合は，現在のデータは必要ないため削除
 				cout << "Data Removed." << endl;
 				system("cls"); //cmdをクリア
@@ -230,7 +240,7 @@ int main()
 		}
 		//計測が終了したところ(PCL上または、OpenCVウインドウ上で'q'が押されてたとき)
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
-		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
 			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
 		}
@@ -251,7 +261,7 @@ int main()
 	catch (exception& ex){ //例外処理
 		cout << ex.what() << endl;
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
-		pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
+		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		//異常終了した時はデータを保存する必要がないので削除
 		sys.removeDirectory();
 		cout << "Data Removed." << endl;
