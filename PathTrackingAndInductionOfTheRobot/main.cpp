@@ -70,7 +70,7 @@ int main()
 
 	pcl::visualization::PCLVisualizer *visualizer = new pcl::visualization::PCLVisualizer("3D Viewer");
 	visualizer->setBackgroundColor(0, 0, 0);
-	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "sample cloud");
+	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "sample cloud");
 	visualizer->addCoordinateSystem(1.0);
 	visualizer->initCameraParameters();
 
@@ -126,7 +126,7 @@ int main()
 		//pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
 
 		//namedWindow("閾値", 1);
-		while (/*!pointcloudlibrary.viewer->wasStopped() && */kinect.key != 'q'/* && !GetAsyncKeyState('Q')*/){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
+		while (/*!pointcloudlibrary.viewer->wasStopped() && */!visualizer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
@@ -198,7 +198,6 @@ int main()
 			visualizer->addPointCloud(cloud, "sample cloud");
 			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "sample cloud");
 			visualizer->spinOnce();
-			visualizer->removePointCloud("sample cloud");
 			cout << "==========================================================================================" << endl;
 			//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
 
@@ -206,10 +205,10 @@ int main()
 			sys.endTimer(); //タイマーを終了(c65)
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
-
-
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
-			kinect.key = waitKey(1);
+			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
+
+			//キーが入力されていれば以下を実行する．GetAsyncKeyStateを利用することで
 			if (GetAsyncKeyState('R')){
 				system("cls");
 				destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
@@ -220,21 +219,22 @@ int main()
 				cout << "RETRY" << endl;
 				goto RETRY;
 			}
-			else if (kinect.key == 'p'){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
+			else if (GetAsyncKeyState('P')){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
 				cout << "Save the Current Data." << endl;
 				sys.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 				sys.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
 				save_count++;
 			}
-			else if (kinect.key == 'l'){ //'l'が入力されたら．EV3軌道が欲しい時に入力する
+			else if (GetAsyncKeyState('L')){ //'l'が入力されたら．EV3軌道が欲しい時に入力する
 				saveev3route_flag = true; //フラグをtrueにする
 			}
 
-			//平均座標の軌道を追跡し続ける(c82)
+			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
 				sys.saveDataContinuously(ev3control.ev3_6dof);
 			}
+			visualizer->removePointCloud("sample cloud");
 
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}

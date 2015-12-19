@@ -304,7 +304,7 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
 	fprintf_s(fp, "set zlabel \"Z-axis\"\n");
 	fprintf_s(fp, "set title \"PointCloud Plane(LSM) Centroid\"\n");
-	fprintf_s(fp, "splot \"dof6-%2d.dat\" pointsize 5,%f*x+%f*y+%f,\"point-%2d.dat\" every 5\n",save_count, coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z(), save_count);
+	fprintf_s(fp, "splot \"dof6-%02d.dat\" pointsize 5,%f*x+%f*y+%f,\"point-%02d.dat\" every 5\n",save_count, coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z(), save_count);
 
 	//(c78)
 	//_pclose(splot_ev3unit);
