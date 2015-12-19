@@ -1,0 +1,1059 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>PathTrackingAndInductionOfTheRobot: System クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PathTrackingAndInductionOfTheRobot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>クラス一覧</span></a></li>
+      <li><a href="classes.html"><span>クラス索引</span></a></li>
+      <li><a href="functions.html"><span>クラスメンバ</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_system.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>クラス</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>型定義</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="class_system-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">System クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_system_8hpp_source.html">System.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae317936c9bcf1374d61745572e0f2f8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#ae317936c9bcf1374d61745572e0f2f8a">System</a> ()</td></tr>
+<tr class="memdesc:ae317936c9bcf1374d61745572e0f2f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#ae317936c9bcf1374d61745572e0f2f8a">[詳解]</a><br/></td></tr>
+<tr class="separator:ae317936c9bcf1374d61745572e0f2f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be70bb338e3f062f821173fd15680d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a3be70bb338e3f062f821173fd15680d0">~System</a> ()</td></tr>
+<tr class="memdesc:a3be70bb338e3f062f821173fd15680d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a3be70bb338e3f062f821173fd15680d0">[詳解]</a><br/></td></tr>
+<tr class="separator:a3be70bb338e3f062f821173fd15680d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afce9f814824cbcb337abe755883f764c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#afce9f814824cbcb337abe755883f764c">countdownTimer</a> (int time_sec)</td></tr>
+<tr class="memdesc:afce9f814824cbcb337abe755883f764c"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数の時間[sec]に応じてカウントダウンを開始する(c75)  <a href="#afce9f814824cbcb337abe755883f764c">[詳解]</a><br/></td></tr>
+<tr class="separator:afce9f814824cbcb337abe755883f764c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15325f6b106b804af8432d102945535c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a15325f6b106b804af8432d102945535c">startMessage</a> ()</td></tr>
+<tr class="memdesc:a15325f6b106b804af8432d102945535c"><td class="mdescLeft">&#160;</td><td class="mdescRight">プログラム開始時のメッセージを表示(c26)  <a href="#a15325f6b106b804af8432d102945535c">[詳解]</a><br/></td></tr>
+<tr class="separator:a15325f6b106b804af8432d102945535c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba9d00b32578f2ea574bf67078db4aa7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#aba9d00b32578f2ea574bf67078db4aa7">endMessage</a> (int cNum)</td></tr>
+<tr class="memdesc:aba9d00b32578f2ea574bf67078db4aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">プログラム終了時のメッセージを表示(c38)  <a href="#aba9d00b32578f2ea574bf67078db4aa7">[詳解]</a><br/></td></tr>
+<tr class="separator:aba9d00b32578f2ea574bf67078db4aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106b76482db29cedc46d4f46b34f3d35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a106b76482db29cedc46d4f46b34f3d35">endMessage</a> ()</td></tr>
+<tr class="memdesc:a106b76482db29cedc46d4f46b34f3d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">プログラム終了時のメッセージを表示(c63)  <a href="#a106b76482db29cedc46d4f46b34f3d35">[詳解]</a><br/></td></tr>
+<tr class="separator:a106b76482db29cedc46d4f46b34f3d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62488af6f94b96aa37988c54e19074f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#ac62488af6f94b96aa37988c54e19074f">startTimer</a> ()</td></tr>
+<tr class="memdesc:ac62488af6f94b96aa37988c54e19074f"><td class="mdescLeft">&#160;</td><td class="mdescRight">タイマーを開始(c65)  <a href="#ac62488af6f94b96aa37988c54e19074f">[詳解]</a><br/></td></tr>
+<tr class="separator:ac62488af6f94b96aa37988c54e19074f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178a7a315866961f208b6cab6c2d7e88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a178a7a315866961f208b6cab6c2d7e88">endTimer</a> ()</td></tr>
+<tr class="memdesc:a178a7a315866961f208b6cab6c2d7e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">タイマーを終了(c65)  <a href="#a178a7a315866961f208b6cab6c2d7e88">[詳解]</a><br/></td></tr>
+<tr class="separator:a178a7a315866961f208b6cab6c2d7e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f235cfc9736103d150e9dbeee82e543"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a5f235cfc9736103d150e9dbeee82e543">getProcessTimeinMiliseconds</a> ()</td></tr>
+<tr class="memdesc:a5f235cfc9736103d150e9dbeee82e543"><td class="mdescLeft">&#160;</td><td class="mdescRight">計測した時間をミリ秒単位で取得.startTimer()とendTimer()が実行されていることが前提(c65)  <a href="#a5f235cfc9736103d150e9dbeee82e543">[詳解]</a><br/></td></tr>
+<tr class="separator:a5f235cfc9736103d150e9dbeee82e543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584a2b655a935ea404937cf8f11ab43c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a584a2b655a935ea404937cf8f11ab43c">getFrameRate</a> ()</td></tr>
+<tr class="memdesc:a584a2b655a935ea404937cf8f11ab43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">フレームレートを取得.startTimer()とendTimer()が実行されていることが前提(c65)  <a href="#a584a2b655a935ea404937cf8f11ab43c">[詳解]</a><br/></td></tr>
+<tr class="separator:a584a2b655a935ea404937cf8f11ab43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2eb72dffbb596c530ca149fd8830cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a2f2eb72dffbb596c530ca149fd8830cd">checkDirectory</a> (const char *check_dirname)</td></tr>
+<tr class="memdesc:a2f2eb72dffbb596c530ca149fd8830cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81)  <a href="#a2f2eb72dffbb596c530ca149fd8830cd">[詳解]</a><br/></td></tr>
+<tr class="separator:a2f2eb72dffbb596c530ca149fd8830cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab047a364bb881c7bd701973bc6abbe12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#ab047a364bb881c7bd701973bc6abbe12">makeDirectory</a> ()</td></tr>
+<tr class="memdesc:ab047a364bb881c7bd701973bc6abbe12"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_system.html#ab047a364bb881c7bd701973bc6abbe12" title="System::makeDirectory().ディレクトリを作成 ">System::makeDirectory()</a>.ディレクトリを作成  <a href="#ab047a364bb881c7bd701973bc6abbe12">[詳解]</a><br/></td></tr>
+<tr class="separator:ab047a364bb881c7bd701973bc6abbe12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3523df6c59162a85350b41a065efa3dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a3523df6c59162a85350b41a065efa3dd">removeDirectory</a> ()</td></tr>
+<tr class="memdesc:a3523df6c59162a85350b41a065efa3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">取得したデータが不要だった場合ディレクトリを削除する  <a href="#a3523df6c59162a85350b41a065efa3dd">[詳解]</a><br/></td></tr>
+<tr class="separator:a3523df6c59162a85350b41a065efa3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d222fb43f36cb2db3fb7d0bbed1c20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#ae6d222fb43f36cb2db3fb7d0bbed1c20">alternatives</a> ()</td></tr>
+<tr class="memdesc:ae6d222fb43f36cb2db3fb7d0bbed1c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">数字の入力をチェックする  <a href="#ae6d222fb43f36cb2db3fb7d0bbed1c20">[詳解]</a><br/></td></tr>
+<tr class="separator:ae6d222fb43f36cb2db3fb7d0bbed1c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9016157380cb3dfe6637731daf2e3b4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a9016157380cb3dfe6637731daf2e3b4b">openDirectory</a> ()</td></tr>
+<tr class="memdesc:a9016157380cb3dfe6637731daf2e3b4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ディレクトリを開く(c38)  <a href="#a9016157380cb3dfe6637731daf2e3b4b">[詳解]</a><br/></td></tr>
+<tr class="separator:a9016157380cb3dfe6637731daf2e3b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc3a3a3f3015727df3b352b23829440"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a8fc3a3a3f3015727df3b352b23829440">outputAllData</a> (const string *outputDataName, <a class="el" href="structoutput_data.html">outputData</a> *<a class="el" href="structoutput_data.html">outputData</a>, int countDataNum)</td></tr>
+<tr class="memdesc:a8fc3a3a3f3015727df3b352b23829440"><td class="mdescLeft">&#160;</td><td class="mdescRight">データをファイルに書き出すメソッド(c41)  <a href="#a8fc3a3a3f3015727df3b352b23829440">[詳解]</a><br/></td></tr>
+<tr class="separator:a8fc3a3a3f3015727df3b352b23829440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95bbdc3e7877f2d919f4d92dc4a79367"><td class="memItemLeft" align="right" valign="top">VideoWriter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a95bbdc3e7877f2d919f4d92dc4a79367">outputVideo</a> (const string *outputVideoName)</td></tr>
+<tr class="memdesc:a95bbdc3e7877f2d919f4d92dc4a79367"><td class="mdescLeft">&#160;</td><td class="mdescRight">動画を出力する  <a href="#a95bbdc3e7877f2d919f4d92dc4a79367">[詳解]</a><br/></td></tr>
+<tr class="separator:a95bbdc3e7877f2d919f4d92dc4a79367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdb1dd5b5cddd739cc23627a4875cf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a4cdb1dd5b5cddd739cc23627a4875cf0">saveDataEveryEnterKey</a> (Mat &amp;current_image, Mat &amp;bin_image, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a> dof6, pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</td></tr>
+<tr class="memdesc:a4cdb1dd5b5cddd739cc23627a4875cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">メソッドSystem::saveDataEveryEnterKey()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する．  <a href="#a4cdb1dd5b5cddd739cc23627a4875cf0">[詳解]</a><br/></td></tr>
+<tr class="separator:a4cdb1dd5b5cddd739cc23627a4875cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5cdbb8dc2bef6cb584ba554e314e5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#afe5cdbb8dc2bef6cb584ba554e314e5f">saveDataContinuously</a> (<a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a> centroid)</td></tr>
+<tr class="memdesc:afe5cdbb8dc2bef6cb584ba554e314e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">メソッドSystem::saveDataContinuously()．pキーが入力されたら，平均座標を出力(c82) @param DoF6d centroid  <a href="#afe5cdbb8dc2bef6cb584ba554e314e5f">[詳解]</a><br/></td></tr>
+<tr class="separator:afe5cdbb8dc2bef6cb584ba554e314e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a8dc5ce644873f9846cb21195674186f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system.html#a8dc5ce644873f9846cb21195674186f8">save_flag</a></td></tr>
+<tr class="memdesc:a8dc5ce644873f9846cb21195674186f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">6DoF情報を出力するフラグ  <a href="#a8dc5ce644873f9846cb21195674186f8">[詳解]</a><br/></td></tr>
+<tr class="separator:a8dc5ce644873f9846cb21195674186f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock">
+<p> <a class="el" href="_system_8hpp_source.html">System.hpp</a> の <a class="el" href="_system_8hpp_source.html#l00017">17</a> 行目に定義があります。</p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a class="anchor" id="ae317936c9bcf1374d61745572e0f2f8a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">System::System </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<p><a class="el" href="class_system.html#ae317936c9bcf1374d61745572e0f2f8a" title="コンストラクタ ">System::System()</a>.コンストラクタ </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_system_8hpp_source.html#l00062">save_flag</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    FlagStartTimer = <span class="keyword">false</span>; <span class="comment">//スタート用のタイマーが実行されたかのフラグを初期化(c65)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    FlagEndTimer = <span class="keyword">false</span>; <span class="comment">//終了用のタイマーが実行されたかのフラグを初期化(c65)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    time = 0.0; <span class="comment">//時間計測用の変数を初期化(c65)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">//save_count = 0; //保存用カウント用の変数を初期化(c82)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_system.html#a8dc5ce644873f9846cb21195674186f8">save_flag</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="ttc" id="class_system_html_a8dc5ce644873f9846cb21195674186f8"><div class="ttname"><a href="class_system.html#a8dc5ce644873f9846cb21195674186f8">System::save_flag</a></div><div class="ttdeci">bool save_flag</div><div class="ttdoc">6DoF情報を出力するフラグ </div><div class="ttdef"><b>Definition:</b> <a href="_system_8hpp_source.html#l00062">System.hpp:62</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3be70bb338e3f062f821173fd15680d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">System::~System </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>デストラクタ </p>
+<p><a class="el" href="class_system.html#a3be70bb338e3f062f821173fd15680d0" title="デストラクタ ">System::~System()</a>.デストラクタ </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00028">28</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//デストラクタの処理はなし</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="ae6d222fb43f36cb2db3fb7d0bbed1c20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int System::alternatives </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>数字の入力をチェックする </p>
+<p><a class="el" href="class_system.html#ae6d222fb43f36cb2db3fb7d0bbed1c20" title="数字の入力をチェックする ">System::alternatives()</a>.Yes/Noの2択のチェック(c21)</p>
+<dl class="section return"><dt>戻り値</dt><dd>checkNum </dd></dl>
+<p>&lt;0か1をチェックするための変数(c27).このメソッドのみで有効な変数(c30) </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00261">261</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">char</span> checkNum; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;1. Yes&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;0. No&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    cin &gt;&gt; checkNum;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">if</span> (checkNum == <span class="charliteral">&#39;0&#39;</span>){</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">return</span> (atoi(&amp;checkNum));</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (checkNum == <span class="charliteral">&#39;1&#39;</span>){</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span> (atoi(&amp;checkNum));</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Please Input 1 or 0.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;1. Yes&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;0. No&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            cin &gt;&gt; checkNum;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a2f2eb72dffbb596c530ca149fd8830cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::checkDirectory </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>check_dirname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81) </p>
+<p><a class="el" href="class_system.html#a2f2eb72dffbb596c530ca149fd8830cd" title="引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81) ">System::checkDirectory()</a>．ファイルやディレクトリがあるかチェックし，無ければ作成する(c81)</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>checkdir_name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00213">213</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;{</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keyword">struct </span>stat st;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">int</span> re = stat(check_dirname, &amp;st);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">if</span> (re != 0){</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        _mkdir(check_dirname);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Make &quot;</span> &lt;&lt; check_dirname &lt;&lt; <span class="stringliteral">&quot;. &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afce9f814824cbcb337abe755883f764c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::countdownTimer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>time_sec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>引数の時間[sec]に応じてカウントダウンを開始する(c75) </p>
+<p>メソッドcountdownTimer()．タイマーによるカウントダウン</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>time_sec </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00088">88</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">string</span> playfile_name;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">while</span> (time_sec &gt; 0){</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        cout &lt;&lt; time_sec &lt;&lt; <span class="stringliteral">&quot; seconds&quot;</span> &lt;&lt; <span class="stringliteral">&quot;\r&quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">switch</span> (time_sec)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">case</span> 1: </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count1.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">case</span> 2: </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count2.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count3.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count4.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">case</span> 5:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count5.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">case</span> 6:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count6.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">case</span> 7:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count7.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">case</span> 8:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count8.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">case</span> 9:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count9.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">case</span> 10:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            PlaySound(TEXT(<span class="stringliteral">&quot;sourcedata/count10.wav&quot;</span>), NULL, (SND_ASYNC | SND_FILENAME)); <span class="comment">//音声ファイルを再生</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">default</span>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        Sleep(1000);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        time_sec = time_sec - 1;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aba9d00b32578f2ea574bf67078db4aa7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::endMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cNum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プログラム終了時のメッセージを表示(c38) </p>
+<p><a class="el" href="class_system.html#a106b76482db29cedc46d4f46b34f3d35" title="プログラム終了時のメッセージを表示(c63) ">System::endMessage()</a>.プログラム終了時のメッセージ </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00060">60</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="_system_8cpp_source.html#l00290">openDirectory()</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Closing the Program....&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (cNum == 1){</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Data Has Been Output to \&quot;data/&quot;</span> &lt;&lt; <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a> &lt;&lt; <span class="stringliteral">&quot;\&quot;.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="class_system.html#a9016157380cb3dfe6637731daf2e3b4b">openDirectory</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="ttc" id="class_system_html_a9016157380cb3dfe6637731daf2e3b4b"><div class="ttname"><a href="class_system.html#a9016157380cb3dfe6637731daf2e3b4b">System::openDirectory</a></div><div class="ttdeci">void openDirectory()</div><div class="ttdoc">ディレクトリを開く(c38) </div><div class="ttdef"><b>Definition:</b> <a href="_system_8cpp_source.html#l00290">System.cpp:290</a></div></div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a106b76482db29cedc46d4f46b34f3d35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::endMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プログラム終了時のメッセージを表示(c63) </p>
+<p><a class="el" href="class_system.html#a106b76482db29cedc46d4f46b34f3d35" title="プログラム終了時のメッセージを表示(c63) ">System::endMessage()</a>.プログラム終了時のメッセージ </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00076">76</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Closing the Program....&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a178a7a315866961f208b6cab6c2d7e88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::endTimer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>タイマーを終了(c65) </p>
+<p>メソッドendTimer().タイマーを終了する </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00148">148</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">true</span>){</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        end = getTickCount();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        time = (end - start) * f;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        FlagEndTimer = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use endTimer() method, please run the System::startTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a584a2b655a935ea404937cf8f11ab43c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double System::getFrameRate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>フレームレートを取得.startTimer()とendTimer()が実行されていることが前提(c65) </p>
+<p>メソッドgetFrameRate().フレームレートを取得する(c65)</p>
+<dl class="section return"><dt>戻り値</dt><dd>double time </dd></dl>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00189">189</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">true</span> &amp;&amp; FlagEndTimer == <span class="keyword">true</span>){</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        fps = 1000.0 / time;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> fps;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">false</span> &amp;&amp; FlagEndTimer == <span class="keyword">true</span>){</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getFrameRate() method, please run the System::startTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">true</span> &amp;&amp; FlagEndTimer == <span class="keyword">false</span>){</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getFrameRate() method, please run the System::endTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getFrameRate() method, please run the System::startTimer() and System::endTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a5f235cfc9736103d150e9dbeee82e543"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double System::getProcessTimeinMiliseconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>計測した時間をミリ秒単位で取得.startTimer()とendTimer()が実行されていることが前提(c65) </p>
+<p>メソッドgetTime().計測した時間を取得する(c65)</p>
+<dl class="section return"><dt>戻り値</dt><dd>double time </dd></dl>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00166">166</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">true</span> &amp;&amp; FlagEndTimer == <span class="keyword">true</span>){</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">return</span> time;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (FlagStartTimer == <span class="keyword">false</span> &amp;&amp; FlagEndTimer == <span class="keyword">true</span>){</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getProcessTimeinMiliseconds() method, please run the System::startTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (FlagStartTimer==<span class="keyword">true</span> &amp;&amp; FlagEndTimer == <span class="keyword">false</span>){</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getProcessTimeinMiliseconds() method, please run the System::endTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        cerr &lt;&lt; <span class="stringliteral">&quot;Before you use getProcessTimeinMiliseconds() method, please run the System::startTimer() and System::endTimer().&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab047a364bb881c7bd701973bc6abbe12"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::makeDirectory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_system.html#ab047a364bb881c7bd701973bc6abbe12" title="System::makeDirectory().ディレクトリを作成 ">System::makeDirectory()</a>.ディレクトリを作成 </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00227">227</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;{</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">//フォルダ名を区別するために時刻を取得しておく(c4)</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    SYSTEMTIME st;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">char</span> savedirpath[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    GetLocalTime(&amp;st);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    sprintf_s(<a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <span class="stringliteral">&quot;[%4d%02d%02d]%02d%02d%02d&quot;</span>, st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    sprintf_s(savedirpath, <span class="stringliteral">&quot;data/%s&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    _mkdir(savedirpath);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a9016157380cb3dfe6637731daf2e3b4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::openDirectory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ディレクトリを開く(c38) </p>
+<p>System::openDireectory().出力したディレクトリを開く(c39) </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00290">290</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>.</p>
+
+<p>参照元 <a class="el" href="_system_8cpp_source.html#l00060">endMessage()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;{</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Opening This Directory.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordtype">char</span> openDirectoryCommand[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>]; <span class="comment">//自動で開くウインドウのパス</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    sprintf_s(openDirectoryCommand, <span class="stringliteral">&quot;explorer \&quot;data\\%s\&quot;&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>); <span class="comment">//ディレクトリを開くコマンド</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    system(openDirectoryCommand); <span class="comment">//ディレクトリを開くコマンドを実行</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a8fc3a3a3f3015727df3b352b23829440"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::outputAllData </td>
+          <td>(</td>
+          <td class="paramtype">const string *&#160;</td>
+          <td class="paramname"><em>outputDataName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structoutput_data.html">outputData</a> *&#160;</td>
+          <td class="paramname"><em>outputData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>countDataNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>データをファイルに書き出すメソッド(c41) </p>
+<p>System::outputData().データをファイルに書き出すメソッド(c41)</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outputDataName,<a class="el" href="structoutput_data.html">outputData</a>,countDataNum</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>&lt;抽出した座標の距離(c7)</p>
+<p>&lt;ファイルポインタの初期化(c7)</p>
+<p>&lt;データファイル出力の際のパス(c37) </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00304">304</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>.</p>
+<div class="fragment"><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;{</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="comment">//ファイルポインタ</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    FILE *extractedCoordinate; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    extractedCoordinate = NULL; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">//(X,Y,Z)データ格納用のファイル</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">char</span> outputDataPath[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>]; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    sprintf_s(outputDataPath, <span class="stringliteral">&quot;%s/%s&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, outputDataName); <span class="comment">//(c7)</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    fopen_s(&amp;extractedCoordinate, outputDataPath, <span class="stringliteral">&quot;w&quot;</span>); <span class="comment">//(c7)</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (outputDataPath == NULL){ <span class="comment">//ファイルオープンエラー処理(c40)</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        cerr &lt;&lt; outputDataPath &lt;&lt; <span class="stringliteral">&quot; is Not Opened.&quot;</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        exit(1);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="comment">//ファイルに出力する処理(c42)</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; countDataNum - 15; i++){ <span class="comment">//最初と最後のいくつかのデータをファイルに出力しない(c41)</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        fprintf_s(extractedCoordinate, <span class="stringliteral">&quot;%f %f %f %f\n&quot;</span>, outputData[i].totalTime, outputData[i].x, outputData[i].y, outputData[i].z);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    fclose(extractedCoordinate); <span class="comment">//(c8)</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a95bbdc3e7877f2d919f4d92dc4a79367"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VideoWriter System::outputVideo </td>
+          <td>(</td>
+          <td class="paramtype">const string *&#160;</td>
+          <td class="paramname"><em>outputVideoName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>動画を出力する </p>
+<p><a class="el" href="class_system.html#a95bbdc3e7877f2d919f4d92dc4a79367" title="動画を出力する ">System::outputVideo()</a>.動作確認用に動画を出力するメソッド</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraParamFile</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>VideoWriter writer </dd></dl>
+<p>&lt;動画出力時のパス(c38) </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00334">334</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>.</p>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;{</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">//動画を出力(c40)</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordtype">char</span> outputVideoPath[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>]; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    sprintf_s(outputVideoPath, <span class="stringliteral">&quot;%s/%s&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, outputVideoName); <span class="comment">//(c38)</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="comment">//VideoWriter writer(outputVideoPath, /*CV_FOURCC(&#39;D&#39;,&#39;I&#39;,&#39;B&#39;,&#39; &#39;)*/-1/*CV_FOURCC(&#39;X&#39;,&#39;V&#39;,&#39;I&#39;,&#39;D&#39;)*//*CV_FOURCC(&#39;P&#39;,&#39;M&#39;,&#39;I&#39;,&#39;1&#39;)*/, 20, /*Size(WIDTH, HEIGHT)*/Size(640, 480), true); //動画に出力.録画が必要なときはコメントアウト(c35)</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    VideoWriter writer(outputVideoPath, <span class="comment">/*CV_FOURCC(&#39;D&#39;,&#39;I&#39;,&#39;B&#39;,&#39; &#39;)*/</span>-1<span class="comment">/*CV_FOURCC(&#39;X&#39;,&#39;V&#39;,&#39;I&#39;,&#39;D&#39;)*/</span><span class="comment">/*CV_FOURCC(&#39;P&#39;,&#39;M&#39;,&#39;I&#39;,&#39;1&#39;)*/</span>, 20, <span class="comment">/*Size(WIDTH, HEIGHT)*/</span>Size(640, 480), <span class="keyword">true</span>); <span class="comment">//動画に出力.録画が必要なときはコメントアウト(c35)</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">if</span> (!writer.isOpened()){ <span class="comment">//オープンエラー処理(c40)</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        cerr &lt;&lt; outputVideoPath &lt;&lt; <span class="stringliteral">&quot; is Not Opened.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">return</span> (writer);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;}</div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3523df6c59162a85350b41a065efa3dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::removeDirectory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取得したデータが不要だった場合ディレクトリを削除する </p>
+<p><a class="el" href="class_system.html#a3523df6c59162a85350b41a065efa3dd" title="取得したデータが不要だった場合ディレクトリを削除する ">System::removeDirectory()</a>.ディレクトリを削除(c21) </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00244">244</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;{</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordtype">char</span> rmdirCommand[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>]; <span class="comment">//ディレクトリを削除するコマンド(c21).変数名を変更&amp;このメソッドのみで有効な変数(c30)</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">//ディレクトリを削除する</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    cout &lt;&lt; <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    sprintf_s(rmdirCommand, <span class="stringliteral">&quot;rmdir /s /q \&quot;data\\%s\&quot;&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>); <span class="comment">//ディレクトリの削除コマンドを書く．パスは[\&quot;\&quot;]で囲み，階層があるときは[\\]で書く</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    system(rmdirCommand);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Not Save.\n&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afe5cdbb8dc2bef6cb584ba554e314e5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::saveDataContinuously </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a>&#160;</td>
+          <td class="paramname"><em>centroid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メソッドSystem::saveDataContinuously()．pキーが入力されたら，平均座標を出力(c82) @param DoF6d centroid </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00409">409</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">DoF::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">DoF::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">DoF::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;{</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <span class="comment">//保存用のファイル作成</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    FILE *ev3route;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordtype">char</span> filepath_ev3route[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    sprintf_s(filepath_ev3route, <span class="stringliteral">&quot;data/%s/ev3route.dat&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    fopen_s(&amp;ev3route, filepath_ev3route, <span class="stringliteral">&quot;a&quot;</span>); <span class="comment">//ファイルオープン</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    fprintf_s(ev3route, <span class="stringliteral">&quot;%f %f %f\n&quot;</span>, centroid.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a>, centroid.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a>, centroid.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a>); <span class="comment">//データをファイルに書き込む</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    fclose(ev3route);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;}<div class="ttc" id="struct_do_f_html_abfbe7d3335c98676e382a99d206b7509"><div class="ttname"><a href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">DoF::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">PathTrackingAndInductionOfTheRobot.hpp:31</a></div></div>
+<div class="ttc" id="struct_do_f_html_a85425df1c7f31461d90068c6f65f014d"><div class="ttname"><a href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">DoF::z</a></div><div class="ttdeci">double z</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">PathTrackingAndInductionOfTheRobot.hpp:32</a></div></div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="struct_do_f_html_ade12f9d2e1670795f645919e6ff013ef"><div class="ttname"><a href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">DoF::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">PathTrackingAndInductionOfTheRobot.hpp:30</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4cdb1dd5b5cddd739cc23627a4875cf0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::saveDataEveryEnterKey </td>
+          <td>(</td>
+          <td class="paramtype">Mat &amp;&#160;</td>
+          <td class="paramname"><em>current_image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mat &amp;&#160;</td>
+          <td class="paramname"><em>bin_image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a>&#160;</td>
+          <td class="paramname"><em>dof6</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;&#160;</td>
+          <td class="paramname"><em>inputPointCloud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メソッドSystem::saveDataEveryEnterKey()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する． </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cv::Mat&amp;</td><td>current_image, cv::Mat&amp; bin_image, DoF6d dof6, pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00351">351</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="main_8cpp_source.html#l00023">directoryName</a>, <a class="el" href="stdafx_8h_source.html#l00079">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00035">DoF::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00034">DoF::roll</a>, <a class="el" href="main_8cpp_source.html#l00032">save_count</a>, <a class="el" href="_system_8hpp_source.html#l00062">save_flag</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">DoF::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">DoF::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00033">DoF::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">DoF::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;{</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="comment">//その都度保存するためのディレクトリを作成(c82)</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordtype">char</span> filepath_output[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    sprintf_s(filepath_output, <span class="stringliteral">&quot;data/%s/%d&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    _mkdir(filepath_output);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">//現在の画像を保存</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordtype">char</span> filepath_currentimage[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    sprintf_s(filepath_currentimage, <span class="stringliteral">&quot;data/%s/%d/current_image-%02d.jpg&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    imwrite(filepath_currentimage, current_image);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="comment">//差分を計算した二値画像を保存</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordtype">char</span> filepath_binimage[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    sprintf_s(filepath_binimage, <span class="stringliteral">&quot;data/%s/%d/background_image-%02d.jpg&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    imwrite(filepath_binimage, bin_image);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="comment">//点群情報を保存</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    FILE *point_fp; <span class="comment">//最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordtype">char</span> filepath_point[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    sprintf_s(filepath_point, <span class="stringliteral">&quot;data/%s/%d/point-%02d.dat&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    fopen_s(&amp;point_fp, filepath_point, <span class="stringliteral">&quot;w&quot;</span>); <span class="comment">//</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; inputPointCloud-&gt;size(); i++){</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        fprintf_s(point_fp, <span class="stringliteral">&quot;%f %f %f\n&quot;</span>, inputPointCloud-&gt;points[i].x, inputPointCloud-&gt;points[i].y, inputPointCloud-&gt;points[i].z); <span class="comment">//ファイルに出力</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    fclose(point_fp);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="comment">//6DoF情報を保存</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    FILE *dof6_fp; <span class="comment">//最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordtype">char</span> filepath_dof6[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    sprintf_s(filepath_dof6, <span class="stringliteral">&quot;data/%s/%d/dof6-%02d.dat&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    fopen_s(&amp;dof6_fp, filepath_dof6, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    fprintf_s(dof6_fp, <span class="stringliteral">&quot;%f %f %f %f %f %f %d\n&quot;</span>, dof6.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a>, dof6.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a>, dof6.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a>, dof6.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a>, dof6.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a>, dof6.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a>, inputPointCloud-&gt;size());</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    fclose(dof6_fp);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">//6DoF情報を続けて保存する</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    FILE *dof6con_fp;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">char</span> filepath_dof6con[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    sprintf_s(filepath_dof6con, <span class="stringliteral">&quot;data/%s/dof6con.csv&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    fopen_s(&amp;dof6con_fp, filepath_dof6con, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_system.html#a8dc5ce644873f9846cb21195674186f8">save_flag</a> == <span class="keyword">false</span>){</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        fprintf(dof6_fp, <span class="stringliteral">&quot;x,y,z,Yaw,Roll,Pitch,Data Size\n&quot;</span>);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    fprintf_s(dof6_fp, <span class="stringliteral">&quot;%f,%f,%f,%f,%f,%f,%d\n&quot;</span>, dof6.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a>, dof6.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a>, dof6.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a>, dof6.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a>, dof6.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a>, dof6.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a>, inputPointCloud-&gt;size());</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    fclose(dof6con_fp);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="comment">//PointCloudを保存する</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordtype">char</span> filepath_pointcloud[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    sprintf_s(filepath_pointcloud, <span class="stringliteral">&quot;data/%s/%d/pointcloud-%02d.ply&quot;</span>, <a class="code" href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>, <a class="code" href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a>);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    pcl::io::savePLYFileASCII(filepath_pointcloud, *inputPointCloud);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div>
+<div class="ttc" id="struct_do_f_html_abfbe7d3335c98676e382a99d206b7509"><div class="ttname"><a href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">DoF::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">PathTrackingAndInductionOfTheRobot.hpp:31</a></div></div>
+<div class="ttc" id="struct_do_f_html_ad50a401c21ed40b7419edd1c1b6d194c"><div class="ttname"><a href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">DoF::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00033">PathTrackingAndInductionOfTheRobot.hpp:33</a></div></div>
+<div class="ttc" id="class_system_html_a8dc5ce644873f9846cb21195674186f8"><div class="ttname"><a href="class_system.html#a8dc5ce644873f9846cb21195674186f8">System::save_flag</a></div><div class="ttdeci">bool save_flag</div><div class="ttdoc">6DoF情報を出力するフラグ </div><div class="ttdef"><b>Definition:</b> <a href="_system_8hpp_source.html#l00062">System.hpp:62</a></div></div>
+<div class="ttc" id="struct_do_f_html_ae281b05a1f55ab36e1648638d5de595c"><div class="ttname"><a href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">DoF::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00034">PathTrackingAndInductionOfTheRobot.hpp:34</a></div></div>
+<div class="ttc" id="struct_do_f_html_a85425df1c7f31461d90068c6f65f014d"><div class="ttname"><a href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">DoF::z</a></div><div class="ttdeci">double z</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">PathTrackingAndInductionOfTheRobot.hpp:32</a></div></div>
+<div class="ttc" id="main_8cpp_html_abefb498e9a643f68bb3d37c22953ddad"><div class="ttname"><a href="main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad">directoryName</a></div><div class="ttdeci">char directoryName[NOC]</div><div class="ttdoc">フォルダ名 </div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="struct_do_f_html_ade12f9d2e1670795f645919e6ff013ef"><div class="ttname"><a href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">DoF::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">PathTrackingAndInductionOfTheRobot.hpp:30</a></div></div>
+<div class="ttc" id="struct_do_f_html_aafd25e3441a352a3feaa072fe58c61ab"><div class="ttname"><a href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">DoF::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00035">PathTrackingAndInductionOfTheRobot.hpp:35</a></div></div>
+<div class="ttc" id="main_8cpp_html_aacae5d304dcef5f6bbf0fe5030e50626"><div class="ttname"><a href="main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626">save_count</a></div><div class="ttdeci">int save_count</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00032">main.cpp:32</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00079">stdafx.h:79</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a15325f6b106b804af8432d102945535c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::startMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プログラム開始時のメッセージを表示(c26) </p>
+<p><a class="el" href="class_system.html#a15325f6b106b804af8432d102945535c" title="プログラム開始時のメッセージを表示(c26) ">System::startMessage()</a>.プログラム起動時のメッセージ </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00036">36</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; Starting the Program....&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//cout &lt;&lt; &quot; Please Enclose the Object You Want to Track.&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; If You Enter a &#39;q&#39; Key, the Program Terminates.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; If You Enter a &#39;r&#39; Key, the Program Restart.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; Each Time You Enter a &#39;p&#39; Key, Then Save The Data.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//cout &lt;&lt; &quot; To Initialize Tracking, Re-Select the Object with Mouse.&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; Switching of Point Cloud Processing.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  Pass Through Filter \t\t -&gt; \t Enter &#39;x&#39; Key.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  Downsampling \t\t\t -&gt; \t Enter &#39;c&#39; Key.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  Remove Outlier \t\t -&gt; \t Enter &#39;v&#39; Key.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  Moving Least Square \t\t -&gt; \t Enter &#39;b&#39; Key.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  Extract Plane &amp; Clustering \t -&gt; \t Enter &#39;n&#39; Key.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;==================================================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac62488af6f94b96aa37988c54e19074f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::startTimer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>タイマーを開始(c65) </p>
+<p>メソッドstartTimer().タイマーを開始する </p>
+
+<p> <a class="el" href="_system_8cpp_source.html">System.cpp</a> の <a class="el" href="_system_8cpp_source.html#l00137">137</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    f = 1000.0 / getTickFrequency();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    start = getTickCount(); <span class="comment">//スタート</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    FlagStartTimer = <span class="keyword">true</span>; <span class="comment">//スタート用のタイマーが実行されたのでフラグをtrueに</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a class="anchor" id="a8dc5ce644873f9846cb21195674186f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool System::save_flag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>6DoF情報を出力するフラグ </p>
+
+<p> <a class="el" href="_system_8hpp_source.html">System.hpp</a> の <a class="el" href="_system_8hpp_source.html#l00062">62</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>, <a class="el" href="_system_8cpp_source.html#l00351">saveDataEveryEnterKey()</a>, <a class="el" href="_system_8cpp_source.html#l00016">System()</a>.</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="_system_8hpp_source.html">System.hpp</a></li>
+<li><a class="el" href="_system_8cpp_source.html">System.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_system.html">System</a></li>
+    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

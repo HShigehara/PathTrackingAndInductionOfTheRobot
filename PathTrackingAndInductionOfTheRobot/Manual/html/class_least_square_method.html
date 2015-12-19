@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>PathTrackingAndInductionOfTheRobot: LeastSquareMethod クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PathTrackingAndInductionOfTheRobot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>クラス一覧</span></a></li>
+      <li><a href="classes.html"><span>クラス索引</span></a></li>
+      <li><a href="functions.html"><span>クラスメンバ</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_least_square_method.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>クラス</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>型定義</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="class_least_square_method-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">LeastSquareMethod クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>最小二乗法を行うクラス  
+ <a href="class_least_square_method.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_least_square_method_8hpp_source.html">LeastSquareMethod.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a15a1de9d76f1b0f476760297e0c98fd1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_least_square_method.html#a15a1de9d76f1b0f476760297e0c98fd1">LeastSquareMethod</a> ()</td></tr>
+<tr class="memdesc:a15a1de9d76f1b0f476760297e0c98fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="#a15a1de9d76f1b0f476760297e0c98fd1">[詳解]</a><br/></td></tr>
+<tr class="separator:a15a1de9d76f1b0f476760297e0c98fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e80e4ea9baa065f0bdbc9da48fb077"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_least_square_method.html#a66e80e4ea9baa065f0bdbc9da48fb077">~LeastSquareMethod</a> ()</td></tr>
+<tr class="memdesc:a66e80e4ea9baa065f0bdbc9da48fb077"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="#a66e80e4ea9baa065f0bdbc9da48fb077">[詳解]</a><br/></td></tr>
+<tr class="separator:a66e80e4ea9baa065f0bdbc9da48fb077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19559c76884063927045732a38fe043b"><td class="memItemLeft" align="right" valign="top">Eigen::Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_least_square_method.html#a19559c76884063927045732a38fe043b">getCoefficient</a> (pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</td></tr>
+<tr class="memdesc:a19559c76884063927045732a38fe043b"><td class="mdescLeft">&#160;</td><td class="mdescRight">最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド  <a href="#a19559c76884063927045732a38fe043b">[詳解]</a><br/></td></tr>
+<tr class="separator:a19559c76884063927045732a38fe043b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf062bbbd7b380abc5f24d3a09d39e47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a4860903646946a52474a935518d26b08">AttitudeAngle3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_least_square_method.html#adf062bbbd7b380abc5f24d3a09d39e47">calcYawRollPitch</a> (Eigen::Vector3f coefficient_plane)</td></tr>
+<tr class="memdesc:adf062bbbd7b380abc5f24d3a09d39e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する  <a href="#adf062bbbd7b380abc5f24d3a09d39e47">[詳解]</a><br/></td></tr>
+<tr class="separator:adf062bbbd7b380abc5f24d3a09d39e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>最小二乗法を行うクラス </p>
+
+<p> <a class="el" href="_least_square_method_8hpp_source.html">LeastSquareMethod.hpp</a> の <a class="el" href="_least_square_method_8hpp_source.html#l00020">20</a> 行目に定義があります。</p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a class="anchor" id="a15a1de9d76f1b0f476760297e0c98fd1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LeastSquareMethod::LeastSquareMethod </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<p>メソッドLeastSquareMethod::LeastSquareMethod().コンストラクタ </p>
+
+<p> <a class="el" href="_least_square_method_8cpp_source.html">LeastSquareMethod.cpp</a> の <a class="el" href="_least_square_method_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a66e80e4ea9baa065f0bdbc9da48fb077"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LeastSquareMethod::~LeastSquareMethod </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>デストラクタ </p>
+<p>メソッドLeastSquareMethod::~LeastSquareMethod().デストラクタ </p>
+
+<p> <a class="el" href="_least_square_method_8cpp_source.html">LeastSquareMethod.cpp</a> の <a class="el" href="_least_square_method_8cpp_source.html#l00024">24</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//デストラクタ</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="adf062bbbd7b380abc5f24d3a09d39e47"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a4860903646946a52474a935518d26b08">AttitudeAngle3d</a> LeastSquareMethod::calcYawRollPitch </td>
+          <td>(</td>
+          <td class="paramtype">Eigen::Vector3f&#160;</td>
+          <td class="paramname"><em>coefficient_plane</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する </p>
+<p>メソッドLeastSquareMethod::calcYawRollPitch()．最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する </p>
+
+<p> <a class="el" href="_least_square_method_8cpp_source.html">LeastSquareMethod.cpp</a> の <a class="el" href="_least_square_method_8cpp_source.html#l00077">77</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00041">AttitudeAngle::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00040">AttitudeAngle::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00039">AttitudeAngle::yaw</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="struct_attitude_angle.html">AttitudeAngle3d</a> attitude_angle_rad; <span class="comment">//姿勢角(ラジアン)</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="struct_attitude_angle.html">AttitudeAngle3d</a> attitude_angle_deg; <span class="comment">//姿勢角(度)</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//ヨー角の計算</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">yaw</a> = -atan(coefficient_plane.x());</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    attitude_angle_deg.<a class="code" href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">yaw</a> = attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">yaw</a> / M_PI * 180.0;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">//ロール角の計算</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">roll</a> = atan2(-coefficient_plane.x(), coefficient_plane.y());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    attitude_angle_deg.<a class="code" href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">roll</a> = attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">roll</a> / M_PI * 180.0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">//ピッチ角の計算</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">pitch</a> = atan2(1, coefficient_plane.y());</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    attitude_angle_deg.<a class="code" href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">pitch</a> = attitude_angle_rad.<a class="code" href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">pitch</a> / M_PI * 180.0;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> attitude_angle_deg;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}<div class="ttc" id="struct_attitude_angle_html_ae41ffc4738b93a5ce00141fb8b535c74"><div class="ttname"><a href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">AttitudeAngle::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00040">PathTrackingAndInductionOfTheRobot.hpp:40</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html_a9a2b52b89e0f763cef36b623962ff998"><div class="ttname"><a href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">AttitudeAngle::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00039">PathTrackingAndInductionOfTheRobot.hpp:39</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html_ad8f6b5c2dc91fff26166d9b8516abf2c"><div class="ttname"><a href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">AttitudeAngle::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00041">PathTrackingAndInductionOfTheRobot.hpp:41</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html"><div class="ttname"><a href="struct_attitude_angle.html">AttitudeAngle</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00038">PathTrackingAndInductionOfTheRobot.hpp:38</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a19559c76884063927045732a38fe043b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::Vector3f LeastSquareMethod::getCoefficient </td>
+          <td>(</td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;&#160;</td>
+          <td class="paramname"><em>inputPointCloud</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド </p>
+<p>メソッドLeastSquareMethod::getCoefficient()．最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcl::PointCloud&lt;pcl::PointXYARGB&gt;::Ptr</td><td>&amp;inputPointCloud </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>Eigen::Vector3f coefficient_plane </dd></dl>
+
+<p> <a class="el" href="_least_square_method_8cpp_source.html">LeastSquareMethod.cpp</a> の <a class="el" href="_least_square_method_8cpp_source.html#l00034">34</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Eigen::Vector3f coefficient_plane(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    Eigen::Matrix3f m1;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    m1.Zero();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    Eigen::Vector3f m2(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">//3×3行列 S=[Sxx Sxy Sx;Sxy Syy Sy;Sx Sy inputPointCloud-&gt;size()]の初期化</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> Szz = 0, Sxz = 0, Syz = 0, Sz = 0, Sxx = 0, Sxy = 0, Sx = 0, Syy = 0, Sy = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//最小二乗法によって求めたA=[a b c]&#39;の要素の初期化</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//double a = 0, b = 0, c = 0;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;input Size =&gt; &quot; &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; inputPointCloud-&gt;size(); i++){ <span class="comment">//それぞれの要素の計算</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        Szz = Szz + inputPointCloud-&gt;points[i].z * inputPointCloud-&gt;points[i].z;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        Sxz = Sxz + inputPointCloud-&gt;points[i].x * inputPointCloud-&gt;points[i].z;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        Syz = Syz + inputPointCloud-&gt;points[i].y * inputPointCloud-&gt;points[i].z;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        Sz = Sz + inputPointCloud-&gt;points[i].z;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        Sxx = Sxx + inputPointCloud-&gt;points[i].x * inputPointCloud-&gt;points[i].x;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        Sxy = Sxy + inputPointCloud-&gt;points[i].x * inputPointCloud-&gt;points[i].y;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        Sx = Sx + inputPointCloud-&gt;points[i].x;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        Syy = Syy + inputPointCloud-&gt;points[i].y * inputPointCloud-&gt;points[i].y;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        Sy = Sy + inputPointCloud-&gt;points[i].y;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    m1 &lt;&lt; Sxx, Sxy, Sx,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        Sxy, Syy, Sy,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        Sx, Sy, inputPointCloud-&gt;size();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;m1 =&gt; \n&quot; &lt;&lt; m1 &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;m1_inverse =&gt; \n&quot; &lt;&lt; m1.inverse() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    m2 &lt;&lt; Sxz, Syz, Sz;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;m2 =&gt; \n&quot; &lt;&lt; m2 &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    coefficient_plane = m1.inverse() * m2;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;coefficient_plane =&gt; \n&quot; &lt;&lt; coefficient_plane &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> coefficient_plane;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="_least_square_method_8hpp_source.html">LeastSquareMethod.hpp</a></li>
+<li><a class="el" href="_least_square_method_8cpp_source.html">LeastSquareMethod.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_least_square_method.html">LeastSquareMethod</a></li>
+    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

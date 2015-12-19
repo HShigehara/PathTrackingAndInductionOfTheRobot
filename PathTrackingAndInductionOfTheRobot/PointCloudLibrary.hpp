@@ -26,6 +26,7 @@ public:
 	~PointCloudLibrary(); //デストラクタ
 
 	void initializePointCloudViewer(string cloudviewer_name); //!<ポイントクラウドビューアーを初期化
+	void initializePCLVisualizer(string pclvisualizer_name);
 
 	void loadPLY(char* ply_name); //.plyファイルの読み込み
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr model; //.plyファイルの点群(モデル)
@@ -47,6 +48,9 @@ public:
 	
 	//クラウドビューワー用
 	pcl::visualization::CloudViewer *viewer;
+
+	//PCLVisualizer用
+	pcl::visualization::PCLVisualizer *visualizer;
 
 	//各点群処理を行うか否かのフラグ変数(c64)
 	bool passthrough_flag;

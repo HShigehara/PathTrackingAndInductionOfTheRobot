@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>PathTrackingAndInductionOfTheRobot: EV3Control.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PathTrackingAndInductionOfTheRobot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_e_v3_control_8cpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>クラス</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>型定義</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">EV3Control.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_e_v3_control_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* @file EV3Control.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* @brief EV3を制御するためのメソッド群</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* @date 2015.12.15</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">* @author H.Shigehara</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* ヘッダファイルのインクルード */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_e_v3_control_8hpp.html">EV3Control.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_e_v3_control.html#a030f467b372dee725bb176d0b7cea259">   16</a></span>&#160;<a class="code" href="class_e_v3_control.html#a030f467b372dee725bb176d0b7cea259">EV3Control::EV3Control</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//コンストラクタはなし</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_e_v3_control.html#a68c7fd119aa2f422f9eebbe9318e8ab9">   24</a></span>&#160;<a class="code" href="class_e_v3_control.html#a68c7fd119aa2f422f9eebbe9318e8ab9">EV3Control::~EV3Control</a>()</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//デストラクタはなし</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_e_v3_control.html#a8ef402279dc736292ae0cf780dd3aed8">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_e_v3_control.html#a8ef402279dc736292ae0cf780dd3aed8">EV3Control::set6DoFEV3</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, Point3d centroid, <a class="code" href="struct_attitude_angle.html">AttitudeAngle</a> attitude_angle)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//FILE *fp;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//char filepath_measuredata[NOC];</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">//sprintf_s(filepath_measuredata, &quot;data/%s/measuredata.dat&quot;, directoryName);</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//fopen_s(&amp;fp, filepath_measuredata, &quot;w&quot;);</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a> = centroid.x;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a> = centroid.y;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a> = centroid.z;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">yaw</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">roll</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">pitch</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;[ &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; <span class="stringliteral">&quot; ]&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//fprintf_s(fp, &quot;[\tX\tY\tZ\tYaw\tRoll\tPitch\tPointCloudNum\t]\n&quot;);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//fprintf_s(fp, &quot;%f\t%f\t%f\t%f\t%f\t%f\t%d\n&quot;, ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, inputPointCloud-&gt;size());</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">//fclose(fp);</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="ttc" id="struct_do_f_html_abfbe7d3335c98676e382a99d206b7509"><div class="ttname"><a href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">DoF::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">PathTrackingAndInductionOfTheRobot.hpp:31</a></div></div>
+<div class="ttc" id="class_e_v3_control_html_a030f467b372dee725bb176d0b7cea259"><div class="ttname"><a href="class_e_v3_control.html#a030f467b372dee725bb176d0b7cea259">EV3Control::EV3Control</a></div><div class="ttdeci">EV3Control()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_control_8cpp_source.html#l00016">EV3Control.cpp:16</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html_ae41ffc4738b93a5ce00141fb8b535c74"><div class="ttname"><a href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">AttitudeAngle::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00040">PathTrackingAndInductionOfTheRobot.hpp:40</a></div></div>
+<div class="ttc" id="struct_do_f_html_ad50a401c21ed40b7419edd1c1b6d194c"><div class="ttname"><a href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">DoF::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00033">PathTrackingAndInductionOfTheRobot.hpp:33</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html_a9a2b52b89e0f763cef36b623962ff998"><div class="ttname"><a href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">AttitudeAngle::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00039">PathTrackingAndInductionOfTheRobot.hpp:39</a></div></div>
+<div class="ttc" id="struct_do_f_html_ae281b05a1f55ab36e1648638d5de595c"><div class="ttname"><a href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">DoF::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00034">PathTrackingAndInductionOfTheRobot.hpp:34</a></div></div>
+<div class="ttc" id="struct_do_f_html_a85425df1c7f31461d90068c6f65f014d"><div class="ttname"><a href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">DoF::z</a></div><div class="ttdeci">double z</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">PathTrackingAndInductionOfTheRobot.hpp:32</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html_ad8f6b5c2dc91fff26166d9b8516abf2c"><div class="ttname"><a href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">AttitudeAngle::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00041">PathTrackingAndInductionOfTheRobot.hpp:41</a></div></div>
+<div class="ttc" id="_e_v3_control_8hpp_html"><div class="ttname"><a href="_e_v3_control_8hpp.html">EV3Control.hpp</a></div></div>
+<div class="ttc" id="class_e_v3_control_html_a68c7fd119aa2f422f9eebbe9318e8ab9"><div class="ttname"><a href="class_e_v3_control.html#a68c7fd119aa2f422f9eebbe9318e8ab9">EV3Control::~EV3Control</a></div><div class="ttdeci">~EV3Control()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_control_8cpp_source.html#l00024">EV3Control.cpp:24</a></div></div>
+<div class="ttc" id="class_e_v3_control_html_a8ef402279dc736292ae0cf780dd3aed8"><div class="ttname"><a href="class_e_v3_control.html#a8ef402279dc736292ae0cf780dd3aed8">EV3Control::set6DoFEV3</a></div><div class="ttdeci">void set6DoFEV3(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle)</div><div class="ttdoc">最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する(c80) </div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_control_8cpp_source.html#l00033">EV3Control.cpp:33</a></div></div>
+<div class="ttc" id="_path_tracking_and_induction_of_the_robot_8hpp_html"><div class="ttname"><a href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a></div></div>
+<div class="ttc" id="struct_do_f_html_ade12f9d2e1670795f645919e6ff013ef"><div class="ttname"><a href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">DoF::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">PathTrackingAndInductionOfTheRobot.hpp:30</a></div></div>
+<div class="ttc" id="struct_do_f_html_aafd25e3441a352a3feaa072fe58c61ab"><div class="ttname"><a href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">DoF::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00035">PathTrackingAndInductionOfTheRobot.hpp:35</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html"><div class="ttname"><a href="struct_attitude_angle.html">AttitudeAngle</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00038">PathTrackingAndInductionOfTheRobot.hpp:38</a></div></div>
+<div class="ttc" id="class_e_v3_control_html_a146d50ba64a58289ef7776013d21c4a0"><div class="ttname"><a href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">EV3Control::ev3_6dof</a></div><div class="ttdeci">DoF6d ev3_6dof</div><div class="ttdoc">EV3の6自由度(c80) </div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_control_8hpp_source.html#l00028">EV3Control.hpp:28</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="_e_v3_control_8cpp.html">EV3Control.cpp</a></li>
+    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+\section{Kinect.\-hpp ファイル}
+\label{_kinect_8hpp}\index{Kinect.\-hpp@{Kinect.\-hpp}}
+{\ttfamily \#include \char`\"{}Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp\char`\"{}}\\*
+\subsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf Kinect}
+\begin{DoxyCompactList}\small\item\em Kinect操作用のクラス \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}(ret)
+\begin{DoxyCompactList}\small\item\em エラーチェック \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+const N\-U\-I\-\_\-\-I\-M\-A\-G\-E\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N {\bf C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N} = N\-U\-I\-\_\-\-I\-M\-A\-G\-E\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N\-\_\-640x480
+\end{DoxyCompactItemize}
+
+
+\subsection{マクロ定義詳解}
+\index{Kinect.\-hpp@{Kinect.\-hpp}!E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K@{E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}}
+\index{E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K@{E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}!Kinect.hpp@{Kinect.\-hpp}}
+\subsubsection[{E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K(
+\begin{DoxyParamCaption}
+\item[{}]{ret}
+\end{DoxyParamCaption}
+)}\label{_kinect_8hpp_a60155ea06e80f9ce19fbf58d043f3287}
+{\bfseries 値\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (ret != S\_OK)\{ \(\backslash\)
+stringstream ss; \(\backslash\)
+ss << \textcolor{stringliteral}{"faild"} #ret \textcolor{stringliteral}{" "} << hex << ret << endl; \(\backslash\)
+throw runtime\_error(ss.str().c\_str()); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+エラーチェック 
+
+
+
+ Kinect.\-hpp の 17 行目に定義があります。
+
+
+
+参照元 Kinect\-::create\-Instance(), Kinect\-::draw\-R\-G\-B\-Image(), Kinect\-::get\-Point\-Cloud(), Kinect\-::initialize().
+
+
+
+\subsection{変数詳解}
+\index{Kinect.\-hpp@{Kinect.\-hpp}!C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N@{C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}}
+\index{C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N@{C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}!Kinect.hpp@{Kinect.\-hpp}}
+\subsubsection[{C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}const N\-U\-I\-\_\-\-I\-M\-A\-G\-E\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N = N\-U\-I\-\_\-\-I\-M\-A\-G\-E\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N\-\_\-640x480}\label{_kinect_8hpp_ac0e005483bfce51f732e38048c0b1898}
+Kinectの解像度の設定 
+
+ Kinect.\-hpp の 25 行目に定義があります。
+
+
+
+参照元 Kinect\-::get\-Point\-Cloud(), Kinect\-::initialize().
+

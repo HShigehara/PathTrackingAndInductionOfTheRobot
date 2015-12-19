@@ -50,6 +50,16 @@ void PointCloudLibrary::initializePointCloudViewer(string cloudviewer_name)
 	return;
 }
 
+void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
+{
+	visualizer = new pcl::visualization::PCLVisualizer(pclvisualizer_name); //PCLVisualizerのウインドウ名
+	visualizer->setBackgroundColor(0, 0, 0); //PCLVisualizerの背景色
+	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "show cloud");
+	visualizer->addCoordinateSystem(1.0);
+	visualizer->initCameraParameters();
+	return;
+}
+
 /*!
  * @brief メソッドPointCloudLibrary::loadPLY()．plyファイルを読み込む
  * @param char* ply_name

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>PathTrackingAndInductionOfTheRobot: PointCloudLibrary.hpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PathTrackingAndInductionOfTheRobot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_point_cloud_library_8hpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>クラス</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>型定義</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">PointCloudLibrary.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_point_cloud_library_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file PointCloudLibrary.hpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @brief PCL関連の処理を行うクラスのヘッダ</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @date 2015.10.30</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* インクルードガード */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __POINTCLOUDLIBRARY_HPP__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __POINTCLOUDLIBRARY_HPP__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/* インクルード */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_point_cloud_library.html">PointCloudLibrary</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary</a>(); <span class="comment">//コンストラクタ</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary</a>(<span class="keywordtype">bool</span> passthroughflag, <span class="keywordtype">bool</span> downsamplingflag, <span class="keywordtype">bool</span> statisticaloutlierremovalflag, <span class="keywordtype">bool</span> mlsflag, <span class="keywordtype">bool</span> extractplaneflag); <span class="comment">//コンストラクタ(c64)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_point_cloud_library.html#ab592f569c2ac402971f0b176af8b8c1e">~PointCloudLibrary</a>(); <span class="comment">//デストラクタ</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a7539694c0625f14897552f4536008757">initializePointCloudViewer</a>(<span class="keywordtype">string</span> cloudviewer_name); </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4">initializePCLVisualizer</a>(<span class="keywordtype">string</span> pclvisualizer_name);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690">loadPLY</a>(<span class="keywordtype">char</span>* ply_name); <span class="comment">//.plyファイルの読み込み</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417">   32</a></span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417">model</a>; <span class="comment">//.plyファイルの点群(モデル)</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd">flagChecker</a>(); <span class="comment">//フラグを判定するメソッド(c64)</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//外れ値除去</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902">passThroughFilter</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">char</span>* axis, <span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max); </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36">removeOutlier</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a3731df64289fac15009df853c94bc537">radiusOutlierRemoval</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99">downSamplingUsingVoxelGridFilter</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">float</span> leafSizeX, <span class="keywordtype">float</span> leafSizeY, <span class="keywordtype">float</span> leafSizeZ); </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74">smoothingUsingMovingLeastSquare</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">bool</span> compute_normals, <span class="keywordtype">bool</span> polynomial_fit, <span class="keywordtype">double</span> radius); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517">getExtractPlaneAndClustering</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">bool</span> optimize, <span class="keywordtype">int</span> maxIterations, <span class="keywordtype">double</span> threshold, <span class="keywordtype">bool</span> negative1, <span class="keywordtype">bool</span> negative2, <span class="keywordtype">double</span> tolerance, <span class="keywordtype">int</span> minClusterSize, <span class="keywordtype">int</span> maxClusterSize); </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#aa8b11edec4c6910b0a9ad5c5340dcfa2">   44</a></span>&#160;    Point3d <a class="code" href="class_point_cloud_library.html#aa8b11edec4c6910b0a9ad5c5340dcfa2">centroid</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Point3d <a class="code" href="class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78">getCentroidCoordinate3d</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud); <span class="comment">//取得した点群の平均座標を取得するメソッド</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    pcl::PointCloud&lt;pcl::Normal&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610">getSurfaceNormals</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud); </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//クラウドビューワー用</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339">   50</a></span>&#160;    pcl::visualization::CloudViewer *<a class="code" href="class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339">viewer</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">//PCLVisualizer用</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">   53</a></span>&#160;    pcl::visualization::PCLVisualizer *<a class="code" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">visualizer</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">//各点群処理を行うか否かのフラグ変数(c64)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">   56</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">passthrough_flag</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">   57</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">downsampling_flag</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">   58</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">statisticaloutlierremoval_flag</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">   59</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">mls_flag</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">extractplane_flag</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* インクルードガードの終了 */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __POINTCLOUDLIBRARY_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_point_cloud_library_html_ad6ce847f97bd8bc4621a4c6a2c380b78"><div class="ttname"><a href="class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78">PointCloudLibrary::getCentroidCoordinate3d</a></div><div class="ttdeci">Point3d getCentroidCoordinate3d(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドgetCentroidCoordinate </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00316">PointCloudLibrary.cpp:316</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a29aa3ebced9106bfc070d557efdbdbcf"><div class="ttname"><a href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">PointCloudLibrary::passthrough_flag</a></div><div class="ttdeci">bool passthrough_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00056">PointCloudLibrary.hpp:56</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a4cbedddc1feb21c4653d128de7dcd690"><div class="ttname"><a href="class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690">PointCloudLibrary::loadPLY</a></div><div class="ttdeci">void loadPLY(char *ply_name)</div><div class="ttdoc">メソッドPointCloudLibrary::loadPLY()．plyファイルを読み込む </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00067">PointCloudLibrary.cpp:67</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a00af6b104220e288f26c2d6f890ccd86"><div class="ttname"><a href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">PointCloudLibrary::visualizer</a></div><div class="ttdeci">pcl::visualization::PCLVisualizer * visualizer</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00053">PointCloudLibrary.hpp:53</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_ab592f569c2ac402971f0b176af8b8c1e"><div class="ttname"><a href="class_point_cloud_library.html#ab592f569c2ac402971f0b176af8b8c1e">PointCloudLibrary::~PointCloudLibrary</a></div><div class="ttdeci">~PointCloudLibrary()</div><div class="ttdoc">メソッドPointCloudLibrary::~PointCloudLibrary().デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00038">PointCloudLibrary.cpp:38</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html"><div class="ttname"><a href="class_point_cloud_library.html">PointCloudLibrary</a></div><div class="ttdoc">点群処理を行うクラス </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00020">PointCloudLibrary.hpp:20</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a02bfccb26f68ce7498f0054f7bdd5517"><div class="ttname"><a href="class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517">PointCloudLibrary::getExtractPlaneAndClustering</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr getExtractPlaneAndClustering(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)</div><div class="ttdoc">平面検出とクラスタリング </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00214">PointCloudLibrary.cpp:214</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a3731df64289fac15009df853c94bc537"><div class="ttname"><a href="class_point_cloud_library.html#a3731df64289fac15009df853c94bc537">PointCloudLibrary::radiusOutlierRemoval</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr radiusOutlierRemoval(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドPointCloudLibrary::radiusOutlierRemoval()．外れ値を除去するメソッド(c60) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00146">PointCloudLibrary.cpp:146</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a4f27c0dfaae2be0174d733e295d1bf36"><div class="ttname"><a href="class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36">PointCloudLibrary::removeOutlier</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr removeOutlier(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドPointCloudLibrary::removeOutlier()．外れ値を除去するメソッド(c59) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00124">PointCloudLibrary.cpp:124</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a6bb70f323f325576a505c45edd1f2ebe"><div class="ttname"><a href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">PointCloudLibrary::downsampling_flag</a></div><div class="ttdeci">bool downsampling_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00057">PointCloudLibrary.hpp:57</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a0745fdcbdae44048793a4dce33dfeb4f"><div class="ttname"><a href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">PointCloudLibrary::mls_flag</a></div><div class="ttdeci">bool mls_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00059">PointCloudLibrary.hpp:59</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a1381846354368f5925e3b4e7d649c902"><div class="ttname"><a href="class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902">PointCloudLibrary::passThroughFilter</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr passThroughFilter(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, char *axis, float min, float max)</div><div class="ttdoc">パススルーフィルタ．zの値の距離に応じてカット可能 </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00103">PointCloudLibrary.cpp:103</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a7539694c0625f14897552f4536008757"><div class="ttname"><a href="class_point_cloud_library.html#a7539694c0625f14897552f4536008757">PointCloudLibrary::initializePointCloudViewer</a></div><div class="ttdeci">void initializePointCloudViewer(string cloudviewer_name)</div><div class="ttdoc">ポイントクラウドビューアーを初期化 </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00047">PointCloudLibrary.cpp:47</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a08edbe28c7fbc3f0f9b1e857d45ac610"><div class="ttname"><a href="class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610">PointCloudLibrary::getSurfaceNormals</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::Normal &gt;::Ptr getSurfaceNormals(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">法線を計算する </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00364">PointCloudLibrary.cpp:364</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a2899ca3f4f6b2f8bce39524fba686e74"><div class="ttname"><a href="class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74">PointCloudLibrary::smoothingUsingMovingLeastSquare</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr smoothingUsingMovingLeastSquare(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, bool compute_normals, bool polynomial_fit, double radius)</div><div class="ttdoc">スムージング </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00189">PointCloudLibrary.cpp:189</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a9353ff5d5de9f4d0cc755c3f6bff8417"><div class="ttname"><a href="class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417">PointCloudLibrary::model</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr model</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00032">PointCloudLibrary.hpp:32</a></div></div>
+<div class="ttc" id="_path_tracking_and_induction_of_the_robot_8hpp_html"><div class="ttname"><a href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a76c829d2feea3efcb84449a0c360ec43"><div class="ttname"><a href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">PointCloudLibrary::extractplane_flag</a></div><div class="ttdeci">bool extractplane_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00060">PointCloudLibrary.hpp:60</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a1ee163b625dc199c44149db55c84bafd"><div class="ttname"><a href="class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd">PointCloudLibrary::flagChecker</a></div><div class="ttdeci">void flagChecker()</div><div class="ttdoc">メソッドPointCloudLibrary::flagChecker().PCL処理に関する処理の有無を判定するフラグ変数を反転させるメソッド(c64) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00077">PointCloudLibrary.cpp:77</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a25f7509ec80771a394266cc98c117a9b"><div class="ttname"><a href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">PointCloudLibrary::statisticaloutlierremoval_flag</a></div><div class="ttdeci">bool statisticaloutlierremoval_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00058">PointCloudLibrary.hpp:58</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_afade3ec02d4cdcf848e2ab972292f0c4"><div class="ttname"><a href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary::PointCloudLibrary</a></div><div class="ttdeci">PointCloudLibrary()</div><div class="ttdoc">メソッドPointCloudLibrary::PointCloudLibrary().コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00016">PointCloudLibrary.cpp:16</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_aa8b11edec4c6910b0a9ad5c5340dcfa2"><div class="ttname"><a href="class_point_cloud_library.html#aa8b11edec4c6910b0a9ad5c5340dcfa2">PointCloudLibrary::centroid</a></div><div class="ttdeci">Point3d centroid</div><div class="ttdoc">平均座標 </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00044">PointCloudLibrary.hpp:44</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a43d9e8806ab9f7e52782604020922339"><div class="ttname"><a href="class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339">PointCloudLibrary::viewer</a></div><div class="ttdeci">pcl::visualization::CloudViewer * viewer</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00050">PointCloudLibrary.hpp:50</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a7c0232fc05e878dd58f64c1e6ed8e0b4"><div class="ttname"><a href="class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4">PointCloudLibrary::initializePCLVisualizer</a></div><div class="ttdeci">void initializePCLVisualizer(string pclvisualizer_name)</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00053">PointCloudLibrary.cpp:53</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_abf4a5840ba484d07a775c2c0c9e41a99"><div class="ttname"><a href="class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99">PointCloudLibrary::downSamplingUsingVoxelGridFilter</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr downSamplingUsingVoxelGridFilter(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, float leafSizeX, float leafSizeY, float leafSizeZ)</div><div class="ttdoc">ダウンサンプリングの </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00167">PointCloudLibrary.cpp:167</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="_point_cloud_library_8hpp.html">PointCloudLibrary.hpp</a></li>
+    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

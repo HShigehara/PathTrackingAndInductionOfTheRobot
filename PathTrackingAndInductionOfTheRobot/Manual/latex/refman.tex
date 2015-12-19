@@ -1,0 +1,161 @@
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage[table]{xcolor}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize 2015年12月19日(土) 20時25分30秒作成 -\/ Path\-Tracking\-And\-Induction\-Of\-The\-Robot / 構成\-:  Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize 2015年12月19日(土) 20時25分30秒作成 -\/ Path\-Tracking\-And\-Induction\-Of\-The\-Robot / 構成\-:  Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\pagenumbering{roman}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%
+{\Large Path\-Tracking\-And\-Induction\-Of\-The\-Robot }\\
+\vspace*{1cm}
+{\large 構築\-: Doxygen 1.8.6}\\
+\vspace*{0.5cm}
+{\small 2015年12月19日(土) 20時25分30秒}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+
+%--- Begin generated contents ---
+\chapter{クラス索引}
+\input{annotated}
+\chapter{ファイル索引}
+\input{files}
+\chapter{クラス詳解}
+\input{struct_attitude_angle}
+\input{struct_do_f}
+\input{class_drawing}
+\input{class_e_v3_control}
+\input{class_image_processing}
+\input{class_kinect}
+\input{class_least_square_method}
+\input{structoutput_data}
+\input{struct_point3}
+\input{class_point_cloud_library}
+\input{class_system}
+\chapter{ファイル詳解}
+\input{_drawing_8cpp}
+\input{_drawing_8hpp}
+\input{_e_v3_control_8cpp}
+\input{_e_v3_control_8hpp}
+\input{_image_processing_8cpp}
+\input{_image_processing_8hpp}
+\input{_kinect_8cpp}
+\input{_kinect_8hpp}
+\input{_least_square_method_8cpp}
+\input{_least_square_method_8hpp}
+\input{main_8cpp}
+\input{_mouse_8cpp}
+\input{_path_tracking_and_induction_of_the_robot_8hpp}
+\input{_point_cloud_library_8cpp}
+\input{_point_cloud_library_8hpp}
+\input{stdafx_8cpp}
+\input{stdafx_8h}
+\input{_system_8cpp}
+\input{_system_8hpp}
+%--- End generated contents ---
+
+% Index
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{document}

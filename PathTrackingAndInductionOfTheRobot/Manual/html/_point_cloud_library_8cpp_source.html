@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>PathTrackingAndInductionOfTheRobot: PointCloudLibrary.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PathTrackingAndInductionOfTheRobot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_point_cloud_library_8cpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全て</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>クラス</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>ファイル</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>関数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>変数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>型定義</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>マクロ定義</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">PointCloudLibrary.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_point_cloud_library_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file PointCloudLibrary.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @brief PCL関連の処理を行うクラス</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @date 2015.10.30</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* ヘッダファイルのインクルード */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_point_cloud_library_8hpp.html">PointCloudLibrary.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">   16</a></span>&#160;<a class="code" href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary::PointCloudLibrary</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//コンストラクタ</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#ae9975b76a6035d433bcabd076be4c3ee">   25</a></span>&#160;<a class="code" href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary::PointCloudLibrary</a>(<span class="keywordtype">bool</span> passthroughflag, <span class="keywordtype">bool</span> downsamplingflag, <span class="keywordtype">bool</span> statisticaloutlierremovalflag, <span class="keywordtype">bool</span> mlsflag, <span class="keywordtype">bool</span> extractplaneflag)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">//コンストラクタ</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">passthrough_flag</a> = passthroughflag;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">downsampling_flag</a> = downsamplingflag;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">statisticaloutlierremoval_flag</a> = statisticaloutlierremovalflag;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">mls_flag</a> = mlsflag;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">extractplane_flag</a>= extractplaneflag;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#ab592f569c2ac402971f0b176af8b8c1e">   38</a></span>&#160;<a class="code" href="class_point_cloud_library.html#ab592f569c2ac402971f0b176af8b8c1e">PointCloudLibrary::~PointCloudLibrary</a>()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//デストラクタ</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a7539694c0625f14897552f4536008757">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a7539694c0625f14897552f4536008757">PointCloudLibrary::initializePointCloudViewer</a>(<span class="keywordtype">string</span> cloudviewer_name)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339">viewer</a> = <span class="keyword">new</span> pcl::visualization::CloudViewer(cloudviewer_name);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4">PointCloudLibrary::initializePCLVisualizer</a>(<span class="keywordtype">string</span> pclvisualizer_name)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">visualizer</a> = <span class="keyword">new</span> pcl::visualization::PCLVisualizer(pclvisualizer_name); <span class="comment">//PCLVisualizerのウインドウ名</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">visualizer</a>-&gt;setBackgroundColor(0, 0, 0); <span class="comment">//PCLVisualizerの背景色</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">//visualizer-&gt;setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, &quot;show cloud&quot;);</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">visualizer</a>-&gt;addCoordinateSystem(1.0);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">visualizer</a>-&gt;initCameraParameters();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690">PointCloudLibrary::loadPLY</a>(<span class="keywordtype">char</span>* ply_name)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    pcl::io::loadPLYFile(ply_name, *<a class="code" href="class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417">model</a>); <span class="comment">//plyファイルを読み込みmodelに格納する</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;load &quot;</span> &lt;&lt; ply_name &lt;&lt; <span class="stringliteral">&quot;. &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd">PointCloudLibrary::flagChecker</a>()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">if</span> (GetAsyncKeyState(<span class="charliteral">&#39;X&#39;</span>)){ <span class="comment">//Xが入力されたので、パススルーフィルターのフラグを反転</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">passthrough_flag</a> = !<a class="code" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">passthrough_flag</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (GetAsyncKeyState(<span class="charliteral">&#39;C&#39;</span>)){ <span class="comment">//Cが入力されたので、ダウンサンプリング処理のフラグを反転</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">downsampling_flag</a> = !<a class="code" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">downsampling_flag</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (GetAsyncKeyState(<span class="charliteral">&#39;V&#39;</span>)){ <span class="comment">//Vが入力されたので、統計的な外れ値除去処理のフラグを反転</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">statisticaloutlierremoval_flag</a> = !<a class="code" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">statisticaloutlierremoval_flag</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> (GetAsyncKeyState(<span class="charliteral">&#39;B&#39;</span>)){  <span class="comment">//Nが入力されたので、MLS処理のフラグを反転</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">mls_flag</a> = !<a class="code" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">mls_flag</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (GetAsyncKeyState(<span class="charliteral">&#39;N&#39;</span>)){ <span class="comment">//Mが入力されたので、平面検出のフラグを反転</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">extractplane_flag</a> = !<a class="code" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">extractplane_flag</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;範囲外除去(X) =&gt; &quot;</span> &lt;&lt; <a class="code" href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">passthrough_flag</a> &lt;&lt; <span class="stringliteral">&quot; ダウンサンプリング(C) =&gt; &quot;</span> &lt;&lt; <a class="code" href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">downsampling_flag</a> &lt;&lt; <span class="stringliteral">&quot; 外れ値(V) =&gt; &quot;</span> &lt;&lt; <a class="code" href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">statisticaloutlierremoval_flag</a> &lt;&lt; <span class="stringliteral">&quot; MLS(B) =&gt; &quot;</span> &lt;&lt; <a class="code" href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">mls_flag</a> &lt;&lt; <span class="stringliteral">&quot; 平面検出(N) =&gt; &quot;</span> &lt;&lt; <a class="code" href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">extractplane_flag</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902">  103</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902">PointCloudLibrary::passThroughFilter</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">char</span>* axis, <span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tPassThroughFilter\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//フィルター後用のポイントクラウド</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    pcl::PassThrough&lt;pcl::PointXYZRGB&gt; pass;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    pass.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    pass.setFilterFieldName(axis);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    pass.setFilterLimitsNegative(<span class="keyword">false</span>); <span class="comment">//setFilterLimits(float min, float max)で指定した範囲以外を削除(c69)</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    pass.setFilterLimits(min, max);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    pass.filter(*filtered);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tPassThroughFilter\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36">  124</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36">PointCloudLibrary::removeOutlier</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tRemove Outlier\t\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//フィルタリング後用のポイントクラウドを宣言</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    pcl::StatisticalOutlierRemoval&lt;pcl::PointXYZRGB&gt; fl;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    fl.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    fl.setMeanK(10);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    fl.setStddevMulThresh(0.1);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    fl.filter(*filtered);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    fl.setNegative(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tRemove Outlier\t\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a3731df64289fac15009df853c94bc537">  146</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a3731df64289fac15009df853c94bc537">PointCloudLibrary::radiusOutlierRemoval</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tRadiusOutlierRemoval\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//フィルタリング後用のポイントクラウドを宣言</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    pcl::RadiusOutlierRemoval&lt;pcl::PointXYZRGB&gt; ror;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    ror.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    ror.setRadiusSearch(0.8);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    ror.setMinNeighborsInRadius(2);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    ror.filter(*filtered);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tRadiusOutlierRemoval\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99">  167</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99">PointCloudLibrary::downSamplingUsingVoxelGridFilter</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">float</span> leafSizeX, <span class="keywordtype">float</span> leafSizeY, <span class="keywordtype">float</span> leafSizeZ)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tVoxel Grid Filter\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//フィルタリング後用のポイントクラウドを宣言</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    pcl::VoxelGrid&lt;pcl::PointXYZRGB&gt; vg;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    vg.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">//sor.setLeafSize()でダウンサンプリングの程度を変更</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    vg.setLeafSize(leafSizeX, leafSizeY, leafSizeZ);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    vg.filter(*filtered);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">//ポイントクラウドをしっかり保持できているかサイズを確認</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tVoxel Grid Filter\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl; <span class="comment">//出力されるポイントクラウドのサイズ</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74">  189</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74">PointCloudLibrary::smoothingUsingMovingLeastSquare</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">bool</span> compute_normals, <span class="keywordtype">bool</span> polynomial_fit, <span class="keywordtype">double</span> radius)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tMLS\t\t\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//フィルタリング処理後用のポイントクラウド</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;::Ptr tree(<span class="keyword">new</span> pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;()); <span class="comment">//KdTreeの作成</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    pcl::MovingLeastSquares&lt;pcl::PointXYZRGB, pcl::PointXYZRGB&gt; mls; <span class="comment">//スムージング処理</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    mls.setComputeNormals(compute_normals); <span class="comment">//法線の計算</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">//各パラメータの設定</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    mls.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    mls.setPolynomialFit(polynomial_fit);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    mls.setSearchMethod(tree);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    mls.setSearchRadius(radius);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    mls.process(*filtered); <span class="comment">// 出力</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tMLS\t\t\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517">  214</a></span>&#160;pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517">PointCloudLibrary::getExtractPlaneAndClustering</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud, <span class="keywordtype">bool</span> optimize, <span class="keywordtype">int</span> maxIterations, <span class="keywordtype">double</span> threshold, <span class="keywordtype">bool</span> negative1, <span class="keywordtype">bool</span> negative2, <span class="keywordtype">double</span> tolerance, <span class="keywordtype">int</span> minClusterSize, <span class="keywordtype">int</span> maxClusterSize)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;before\tExtract Plane\t\t=&gt;\t&quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr cloud_plane(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;());</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr filtered(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    pcl::ModelCoefficients::Ptr coefficients(<span class="keyword">new</span> pcl::ModelCoefficients);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    pcl::PointIndices::Ptr inliers(<span class="keyword">new</span> pcl::PointIndices);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">//セグメンテーションオブジェクトの生成</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    pcl::SACSegmentation&lt;pcl::PointXYZRGB&gt; seg;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="comment">//オプション</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    seg.setOptimizeCoefficients(optimize);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">//Mandatory</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    seg.setModelType(pcl::SACMODEL_PLANE);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    seg.setMethodType(pcl::SAC_RANSAC);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">//クラスタリング</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    seg.setMaxIterations(maxIterations); <span class="comment">//Default-&gt;100</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    seg.setDistanceThreshold(threshold);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">int</span> i = 0, nr_points = (int)inputPointCloud-&gt;points.size();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">while</span> (inputPointCloud-&gt;points.size() &gt; 0.3*nr_points)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        seg.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        seg.segment(*inliers, *coefficients);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">if</span> (inliers-&gt;indices.size() == 0)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Could not estimate a planar model for the given dataset.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        pcl::ExtractIndices&lt;pcl::PointXYZRGB&gt; extract;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        extract.setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        extract.setIndices(inliers);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        extract.setNegative(negative1); <span class="comment">//true:平面以外を残す．false:平面を残す</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        extract.filter(*cloud_plane);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">//cout &lt;&lt; &quot;PointCloud representing the planar component: &quot; &lt;&lt; cloud_plane-&gt;points.size() &lt;&lt; endl; //平面のサイズ</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        extract.setNegative(negative2);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        extract.filter(*filtered);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        pcl::copyPointCloud(*filtered, *inputPointCloud);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;::Ptr tree(<span class="keyword">new</span> pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    tree-&gt;setInputCloud(inputPointCloud);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    std::vector&lt;pcl::PointIndices&gt; cluster_indices;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    pcl::EuclideanClusterExtraction&lt;pcl::PointXYZRGB&gt; ec;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    ec.setClusterTolerance(tolerance); <span class="comment">//単位[m]</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    ec.setMinClusterSize(minClusterSize); <span class="comment">//最小クラスタの値</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    ec.setMaxClusterSize(maxClusterSize); <span class="comment">//最大クラスタの値</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    ec.setSearchMethod(tree); <span class="comment">//検索手法</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    ec.setInputCloud(inputPointCloud); <span class="comment">//点群を入力</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    ec.extract(cluster_indices); <span class="comment">//クラスタ情報を出力</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordtype">int</span> j = 0; <span class="comment">//クラスタのカウント</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr cloud_cluster(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;); <span class="comment">//クラスタに色付後の点群用</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr max_cluster(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZRGB&gt;); <span class="comment">//最大のクラスタを探す(c76)</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    max_cluster = cloud_cluster; <span class="comment">//最初のクラスタを最大クラスタとする(c76)</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordtype">float</span> colors[6][3] = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 }, { 255, 255, 0 }, { 0, 255, 255 }, { 255, 0, 255 } }; <span class="comment">//クラスタに色を付ける用</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;pcl::PointIndices&gt;::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); ++it) <span class="comment">//クラスタを1塊ごとに出力</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;int&gt;::const_iterator pit = it-&gt;indices.begin(); pit != it-&gt;indices.end(); ++pit){</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            inputPointCloud-&gt;points[*pit].r = colors[j % 6][0];</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            inputPointCloud-&gt;points[*pit].g = colors[j % 6][1];</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            inputPointCloud-&gt;points[*pit].b = colors[j % 6][2];</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            cloud_cluster-&gt;points.push_back(inputPointCloud-&gt;points[*pit]);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="comment">//最大のクラスタを探す．元のmac_clusterより新しいクラスタの方が大きければ新しいクラスタをmax_clusterとする(c76)</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">if</span> (max_cluster-&gt;size() &lt; cloud_cluster-&gt;size()){</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            pcl::copyPointCloud(*cloud_cluster, *max_cluster);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="comment">//cloud_cluster-&gt;width = cloud_cluster-&gt;points.size();</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="comment">//cloud_cluster-&gt;height = 1;</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        cloud_cluster-&gt;is_dense = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Cluster &quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot;\t\t\t=&gt;\t&quot;</span> &lt;&lt; cloud_cluster-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        j++;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;width =&gt; &quot; &lt;&lt; max_cluster-&gt;width &lt;&lt; &quot; height =&gt; &quot; &lt;&lt; max_cluster-&gt;height &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;cloud_cluster =&gt; &quot; &lt;&lt; cloud_cluster-&gt;size() &lt;&lt; &quot;, max_cluster =&gt; &quot; &lt;&lt; max_cluster-&gt;size() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="comment">//pcl::copyPointCloud(*cloud_cluster, *filtered); //カラーリングしたクラスタ全てを出力</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    pcl::copyPointCloud(*max_cluster, *filtered); <span class="comment">//最大のクラスタのみ出力(c76)</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;after\tExtract Plane\t\t=&gt;\t&quot;</span> &lt;&lt; filtered-&gt;size() &lt;&lt; endl;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">return</span> filtered;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78">  316</a></span>&#160;Point3d <a class="code" href="class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78">PointCloudLibrary::getCentroidCoordinate3d</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;inputPointCloud =&gt; &quot; &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; endl; //最大のクラスタを受け取れているか確認(c76)</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="comment">//FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="comment">//FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    Point3d centroid_coordinate = 0; <span class="comment">//重心座標</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    Point3d sum_pointcloud = 0; <span class="comment">//座標の合計</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">//char filepath_pointcloud[NOC];</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="comment">//char filepath_centroid[NOC];</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment">//sprintf_s(filepath_pointcloud, &quot;data/%s/pointcloud.dat&quot;, directoryName);</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">//sprintf_s(filepath_centroid, &quot;data/%s/centroid.dat&quot;, directoryName);</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment">//ファイルオープンgnuplotの確認用</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="comment">//fopen_s(&amp;pointcloud, filepath_pointcloud, &quot;w&quot;); //</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment">//fopen_s(&amp;centroid, filepath_centroid, &quot;w&quot;);</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">//summention coordinate. ※inputPointCloud-&gt;width == inputPointCloud-&gt;size().</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; inputPointCloud-&gt;size(); i++){</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; : &quot; &lt;&lt; &quot;[x, y, z] =&gt; [ &quot; &lt;&lt; inputPointCloud-&gt;points[i].x &lt;&lt; &quot;, &quot; &lt;&lt; inputPointCloud-&gt;points[i].y &lt;&lt; &quot;, &quot; &lt;&lt; inputPointCloud-&gt;points[i].z &lt;&lt; &quot; ] &quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">//fprintf_s(pointcloud, &quot;%f %f %f\n&quot;, inputPointCloud-&gt;points[i].x, inputPointCloud-&gt;points[i].y, inputPointCloud-&gt;points[i].z); //ファイルに出力</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        sum_pointcloud.x = sum_pointcloud.x + inputPointCloud-&gt;points[i].x; <span class="comment">//点群のx座標を足し合わせていく</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        sum_pointcloud.y = sum_pointcloud.y + inputPointCloud-&gt;points[i].y; <span class="comment">//点群のy座標を足し合わせていく</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        sum_pointcloud.z = sum_pointcloud.z + inputPointCloud-&gt;points[i].z; <span class="comment">//点群のz座標を足し合わせていく</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; : &quot; &lt;&lt; &quot;sum_x =&gt; &quot; &lt;&lt; sum_pointcloud.x &lt;&lt; &quot;, sum_y =&gt; &quot; &lt;&lt; sum_pointcloud.y &lt;&lt; &quot;, sum_z =&gt; &quot; &lt;&lt; sum_pointcloud.z &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="comment">//cout &lt;&lt; sum_pointcloud &lt;&lt; endl; //確認用</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;SUM =&gt; &quot; &lt;&lt; sum_pointcloud &lt;&lt; endl; //合計の確認用</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    centroid_coordinate.x = sum_pointcloud.x / inputPointCloud-&gt;size(); <span class="comment">//x座標の平均(重心)</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    centroid_coordinate.y = sum_pointcloud.y / inputPointCloud-&gt;size(); <span class="comment">//y座標の平均(重心)</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    centroid_coordinate.z = sum_pointcloud.z / inputPointCloud-&gt;size(); <span class="comment">//z座標の平均(重心)</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;Centroid&quot; &lt;&lt; centroid_coordinate &lt;&lt; endl; //確認用</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="comment">//平均座標(重心)をファイルに出力(確認用)</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="comment">//fprintf_s(centroid, &quot;%f %f %f\n&quot;,centroid_coordinate.x,centroid_coordinate.y,centroid_coordinate.z);</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">//ファイルを閉じる(核に尿)</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="comment">//fclose(pointcloud);</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">//fclose(centroid);</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">return</span> centroid_coordinate;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;}</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610">  364</a></span>&#160;pcl::PointCloud&lt;pcl::Normal&gt;::Ptr <a class="code" href="class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610">PointCloudLibrary::getSurfaceNormals</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    pcl::NormalEstimation&lt;pcl::PointXYZRGB, pcl::Normal&gt; ne;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    ne.setInputCloud(inputPointCloud); <span class="comment">//入力された点群の法線を計算する</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;::Ptr tree(<span class="keyword">new</span> pcl::search::KdTree&lt;pcl::PointXYZRGB&gt;());</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    ne.setSearchMethod(tree);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    pcl::PointCloud&lt;pcl::Normal&gt;::Ptr cloud_normals(<span class="keyword">new</span> pcl::PointCloud&lt;pcl::Normal&gt;);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    ne.setRadiusSearch(0.005);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    ne.compute(*cloud_normals);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    cout &lt;&lt; *cloud_normals &lt;&lt; endl;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">return</span> cloud_normals;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;}</div>
+<div class="ttc" id="class_point_cloud_library_html_ad6ce847f97bd8bc4621a4c6a2c380b78"><div class="ttname"><a href="class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78">PointCloudLibrary::getCentroidCoordinate3d</a></div><div class="ttdeci">Point3d getCentroidCoordinate3d(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドgetCentroidCoordinate </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00316">PointCloudLibrary.cpp:316</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a29aa3ebced9106bfc070d557efdbdbcf"><div class="ttname"><a href="class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf">PointCloudLibrary::passthrough_flag</a></div><div class="ttdeci">bool passthrough_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00056">PointCloudLibrary.hpp:56</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a4cbedddc1feb21c4653d128de7dcd690"><div class="ttname"><a href="class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690">PointCloudLibrary::loadPLY</a></div><div class="ttdeci">void loadPLY(char *ply_name)</div><div class="ttdoc">メソッドPointCloudLibrary::loadPLY()．plyファイルを読み込む </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00067">PointCloudLibrary.cpp:67</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a00af6b104220e288f26c2d6f890ccd86"><div class="ttname"><a href="class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86">PointCloudLibrary::visualizer</a></div><div class="ttdeci">pcl::visualization::PCLVisualizer * visualizer</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00053">PointCloudLibrary.hpp:53</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_ab592f569c2ac402971f0b176af8b8c1e"><div class="ttname"><a href="class_point_cloud_library.html#ab592f569c2ac402971f0b176af8b8c1e">PointCloudLibrary::~PointCloudLibrary</a></div><div class="ttdeci">~PointCloudLibrary()</div><div class="ttdoc">メソッドPointCloudLibrary::~PointCloudLibrary().デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00038">PointCloudLibrary.cpp:38</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a02bfccb26f68ce7498f0054f7bdd5517"><div class="ttname"><a href="class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517">PointCloudLibrary::getExtractPlaneAndClustering</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr getExtractPlaneAndClustering(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)</div><div class="ttdoc">平面検出とクラスタリング </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00214">PointCloudLibrary.cpp:214</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a3731df64289fac15009df853c94bc537"><div class="ttname"><a href="class_point_cloud_library.html#a3731df64289fac15009df853c94bc537">PointCloudLibrary::radiusOutlierRemoval</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr radiusOutlierRemoval(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドPointCloudLibrary::radiusOutlierRemoval()．外れ値を除去するメソッド(c60) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00146">PointCloudLibrary.cpp:146</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a4f27c0dfaae2be0174d733e295d1bf36"><div class="ttname"><a href="class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36">PointCloudLibrary::removeOutlier</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr removeOutlier(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">メソッドPointCloudLibrary::removeOutlier()．外れ値を除去するメソッド(c59) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00124">PointCloudLibrary.cpp:124</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a6bb70f323f325576a505c45edd1f2ebe"><div class="ttname"><a href="class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe">PointCloudLibrary::downsampling_flag</a></div><div class="ttdeci">bool downsampling_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00057">PointCloudLibrary.hpp:57</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a0745fdcbdae44048793a4dce33dfeb4f"><div class="ttname"><a href="class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f">PointCloudLibrary::mls_flag</a></div><div class="ttdeci">bool mls_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00059">PointCloudLibrary.hpp:59</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a1381846354368f5925e3b4e7d649c902"><div class="ttname"><a href="class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902">PointCloudLibrary::passThroughFilter</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr passThroughFilter(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, char *axis, float min, float max)</div><div class="ttdoc">パススルーフィルタ．zの値の距離に応じてカット可能 </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00103">PointCloudLibrary.cpp:103</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a7539694c0625f14897552f4536008757"><div class="ttname"><a href="class_point_cloud_library.html#a7539694c0625f14897552f4536008757">PointCloudLibrary::initializePointCloudViewer</a></div><div class="ttdeci">void initializePointCloudViewer(string cloudviewer_name)</div><div class="ttdoc">ポイントクラウドビューアーを初期化 </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00047">PointCloudLibrary.cpp:47</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a08edbe28c7fbc3f0f9b1e857d45ac610"><div class="ttname"><a href="class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610">PointCloudLibrary::getSurfaceNormals</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::Normal &gt;::Ptr getSurfaceNormals(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">法線を計算する </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00364">PointCloudLibrary.cpp:364</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a2899ca3f4f6b2f8bce39524fba686e74"><div class="ttname"><a href="class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74">PointCloudLibrary::smoothingUsingMovingLeastSquare</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr smoothingUsingMovingLeastSquare(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, bool compute_normals, bool polynomial_fit, double radius)</div><div class="ttdoc">スムージング </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00189">PointCloudLibrary.cpp:189</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a9353ff5d5de9f4d0cc755c3f6bff8417"><div class="ttname"><a href="class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417">PointCloudLibrary::model</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr model</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00032">PointCloudLibrary.hpp:32</a></div></div>
+<div class="ttc" id="_path_tracking_and_induction_of_the_robot_8hpp_html"><div class="ttname"><a href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a76c829d2feea3efcb84449a0c360ec43"><div class="ttname"><a href="class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43">PointCloudLibrary::extractplane_flag</a></div><div class="ttdeci">bool extractplane_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00060">PointCloudLibrary.hpp:60</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a1ee163b625dc199c44149db55c84bafd"><div class="ttname"><a href="class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd">PointCloudLibrary::flagChecker</a></div><div class="ttdeci">void flagChecker()</div><div class="ttdoc">メソッドPointCloudLibrary::flagChecker().PCL処理に関する処理の有無を判定するフラグ変数を反転させるメソッド(c64) </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00077">PointCloudLibrary.cpp:77</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a25f7509ec80771a394266cc98c117a9b"><div class="ttname"><a href="class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b">PointCloudLibrary::statisticaloutlierremoval_flag</a></div><div class="ttdeci">bool statisticaloutlierremoval_flag</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00058">PointCloudLibrary.hpp:58</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_afade3ec02d4cdcf848e2ab972292f0c4"><div class="ttname"><a href="class_point_cloud_library.html#afade3ec02d4cdcf848e2ab972292f0c4">PointCloudLibrary::PointCloudLibrary</a></div><div class="ttdeci">PointCloudLibrary()</div><div class="ttdoc">メソッドPointCloudLibrary::PointCloudLibrary().コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00016">PointCloudLibrary.cpp:16</a></div></div>
+<div class="ttc" id="_point_cloud_library_8hpp_html"><div class="ttname"><a href="_point_cloud_library_8hpp.html">PointCloudLibrary.hpp</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a43d9e8806ab9f7e52782604020922339"><div class="ttname"><a href="class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339">PointCloudLibrary::viewer</a></div><div class="ttdeci">pcl::visualization::CloudViewer * viewer</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8hpp_source.html#l00050">PointCloudLibrary.hpp:50</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_a7c0232fc05e878dd58f64c1e6ed8e0b4"><div class="ttname"><a href="class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4">PointCloudLibrary::initializePCLVisualizer</a></div><div class="ttdeci">void initializePCLVisualizer(string pclvisualizer_name)</div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00053">PointCloudLibrary.cpp:53</a></div></div>
+<div class="ttc" id="class_point_cloud_library_html_abf4a5840ba484d07a775c2c0c9e41a99"><div class="ttname"><a href="class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99">PointCloudLibrary::downSamplingUsingVoxelGridFilter</a></div><div class="ttdeci">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr downSamplingUsingVoxelGridFilter(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, float leafSizeX, float leafSizeY, float leafSizeZ)</div><div class="ttdoc">ダウンサンプリングの </div><div class="ttdef"><b>Definition:</b> <a href="_point_cloud_library_8cpp_source.html#l00167">PointCloudLibrary.cpp:167</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="_point_cloud_library_8cpp.html">PointCloudLibrary.cpp</a></li>
+    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,537 @@
+\section{Drawing クラス}
+\label{class_drawing}\index{Drawing@{Drawing}}
+
+
+経路描画用のクラス  
+
+
+
+
+{\ttfamily \#include $<$Drawing.\-hpp$>$}
+
+\subsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Drawing} ()
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+{\bf $\sim$\-Drawing} ()
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
+void {\bf plot3\-D} (const string $\ast$output\-Data\-Name)
+\begin{DoxyCompactList}\small\item\em 3\-D座標ファイルをプロットするメソッド \end{DoxyCompactList}\item 
+void {\bf gnuplot\-Script} (const string $\ast$data\-File\-Name)
+\begin{DoxyCompactList}\small\item\em メソッド\-Drawing\-::gnuplot\-Script().後で，3\-D座標をプロットして確認するためにgnuplotのスクリプトを出力する \end{DoxyCompactList}\item 
+void {\bf plot3\-D\-Real\-Time} (int count\-Data\-Num, {\bf output\-Data} {\bf output\-Data}[{\bf O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}])
+\item 
+void {\bf gnuplot\-Script\-Co\-G} (const string $\ast$cog\-File\-Name)
+\begin{DoxyCompactList}\small\item\em 球の重心座標をプロットするメソッド(c52) \end{DoxyCompactList}\item 
+void {\bf gnuplot\-Script\-E\-V3\-Unit} (Eigen\-::\-Vector3f coefficient\-\_\-plane)
+\begin{DoxyCompactList}\small\item\em E\-V3の点群をプロットするためのスクリプト(c78) \end{DoxyCompactList}\item 
+void {\bf gnuplot\-Script\-E\-V3\-Route} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{詳解}
+経路描画用のクラス 
+
+ Drawing.\-hpp の 20 行目に定義があります。
+
+
+
+\subsection{構築子と解体子}
+\index{Drawing@{Drawing}!Drawing@{Drawing}}
+\index{Drawing@{Drawing}!Drawing@{Drawing}}
+\subsubsection[{Drawing}]{\setlength{\rightskip}{0pt plus 5cm}Drawing\-::\-Drawing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_drawing_a9fb3a5b171cda26bb4dfccce875642c3}
+
+
+コンストラクタ 
+
+メソッド\-Drawing\-::\-Drawing().コンストラクタ 
+
+ Drawing.\-cpp の 16 行目に定義があります。
+
+
+\begin{DoxyCode}
+17 \{
+18     \textcolor{keywordflow}{if} ((gnuplot = \_popen(\textcolor{stringliteral}{"gnuplot"}, \textcolor{stringliteral}{"w"})) == NULL)\{
+19         cout << \textcolor{stringliteral}{"gnuplotが開けません．\(\backslash\)"gnuplot/binary\(\backslash\)"へパスが通っているか確認して下さい"} << endl; \textcolor{comment}{//
+      gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる}
+20     \}
+21 
+22     \textcolor{comment}{//(c43)}
+23     \textcolor{keywordflow}{if} ((gpr = \_popen(\textcolor{stringliteral}{"gnuplot"}, \textcolor{stringliteral}{"w"})) == NULL)\{
+24         cout << \textcolor{stringliteral}{"gnuplotが開けません．\(\backslash\)"gnuplot/binary\(\backslash\)"へパスが通っているか確認して下さい"} << endl; \textcolor{comment}{//
+      gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる}
+25     \}
+26 
+27     \textcolor{comment}{//save\_count = 0;}
+28 \}
+\end{DoxyCode}
+\index{Drawing@{Drawing}!$\sim$\-Drawing@{$\sim$\-Drawing}}
+\index{$\sim$\-Drawing@{$\sim$\-Drawing}!Drawing@{Drawing}}
+\subsubsection[{$\sim$\-Drawing}]{\setlength{\rightskip}{0pt plus 5cm}Drawing\-::$\sim$\-Drawing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_drawing_a704a4be87976fca2f8b175a4aa257e9d}
+
+
+デストラクタ 
+
+メソッド\-Drawing\-::\-Drawing().デストラクタ 
+
+ Drawing.\-cpp の 33 行目に定義があります。
+
+
+\begin{DoxyCode}
+34 \{
+35     \_pclose(gnuplot);
+36 
+37     \textcolor{comment}{//(c43)}
+38     \textcolor{comment}{//fprintf\_s(gpr, "unset multiplot\(\backslash\)n");}
+39     fprintf\_s(gpr, \textcolor{stringliteral}{"quit\(\backslash\)n"});
+40     \_pclose(gpr);
+41 \}
+\end{DoxyCode}
+
+
+\subsection{関数詳解}
+\index{Drawing@{Drawing}!gnuplot\-Script@{gnuplot\-Script}}
+\index{gnuplot\-Script@{gnuplot\-Script}!Drawing@{Drawing}}
+\subsubsection[{gnuplot\-Script}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::gnuplot\-Script (
+\begin{DoxyParamCaption}
+\item[{const string $\ast$}]{data\-File\-Name}
+\end{DoxyParamCaption}
+)}\label{class_drawing_a828ad9eef17af47bd64ddd7130ae556a}
+
+
+メソッド\-Drawing\-::gnuplot\-Script().後で，3\-D座標をプロットして確認するためにgnuplotのスクリプトを出力する 
+
+
+\begin{DoxyParams}{引数}
+{\em data\-File\-Name} & \\
+\hline
+\end{DoxyParams}
+$<$gnuplotスクリプト用のポインタ
+
+$<$ファイルのパスを格納する変数 
+
+ Drawing.\-cpp の 105 行目に定義があります。
+
+
+
+参照先 directory\-Name, N\-O\-C.
+
+
+\begin{DoxyCode}
+106 \{
+107     \textcolor{comment}{//if (checkNum == 1)\{ //データを保存する場合にスクリプトを生成する(c32)}
+108         FILE *gp; 
+109         \textcolor{keywordtype}{char} filePath[NOC]; 
+110         \textcolor{keywordtype}{char}* scriptFileName = \textcolor{stringliteral}{"splot.plt"}; \textcolor{comment}{//出力するスクリプトファイルの名前(c39)}
+111 
+112         sprintf\_s(filePath, \textcolor{stringliteral}{"%s/%s"}, directoryName, scriptFileName); \textcolor{comment}{//出力パスを固定}
+113         fopen\_s(&gp, filePath, \textcolor{stringliteral}{"w"}); \textcolor{comment}{//ファイルを書き込みモードで開く}
+114 
+115         \textcolor{comment}{//共通設定}
+116         fprintf\_s(gp, \textcolor{stringliteral}{"set multiplot layout 2,2\(\backslash\)n"}); \textcolor{comment}{//1つのウインドウに複数のプロットを表示}
+117         fprintf\_s(gp, \textcolor{stringliteral}{"set grid xtics ytics ztics\(\backslash\)n"});
+118 
+119         \textcolor{comment}{//範囲設定(自動縮尺)}
+120         \textcolor{keywordflow}{if} (plotMode == 4)\{
+121             fprintf\_s(gp, \textcolor{stringliteral}{"set autoscale\(\backslash\)n"}); \textcolor{comment}{//自動縮尺(c47)}
+122         \}
+123 
+124         \textcolor{comment}{//Time-X}
+125         fprintf\_s(gp, \textcolor{stringliteral}{"set title \(\backslash\)"Time-X\(\backslash\)"\(\backslash\)n"});
+126         fprintf\_s(gp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"Time(ms)\(\backslash\)"\(\backslash\)n"});
+127         fprintf\_s(gp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"X-axis(mm)\(\backslash\)"\(\backslash\)n"});
+128         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+129             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-5:5]\(\backslash\)n"}); \textcolor{comment}{//中心固定用}
+130         \}
+131         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+132             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-15:15]\(\backslash\)n"}); \textcolor{comment}{//縦移動用}
+133         \}
+134         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+135             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-60:60]\(\backslash\)n"}); \textcolor{comment}{//横移動用}
+136         \}
+137         fprintf\_s(gp, \textcolor{stringliteral}{"plot \(\backslash\)"%s\(\backslash\)" using 1:2 with linespoints\(\backslash\)n"}, dataFileName);
+138 
+139         \textcolor{comment}{//Time-Y}
+140         fprintf\_s(gp, \textcolor{stringliteral}{"set title \(\backslash\)"Time-Y\(\backslash\)"\(\backslash\)n"});
+141         fprintf\_s(gp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"Time(ms)\(\backslash\)"\(\backslash\)n"});
+142         fprintf\_s(gp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis(mm)\(\backslash\)"\(\backslash\)n"});
+143         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+144             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:0]\(\backslash\)n"}); \textcolor{comment}{//中心固定用}
+145         \}
+146         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+147             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-15:15]\(\backslash\)n"}); \textcolor{comment}{//縦移動用}
+148         \}
+149         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+150             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-15:15]\(\backslash\)n"}); \textcolor{comment}{//横移動用}
+151         \}
+152         fprintf\_s(gp, \textcolor{stringliteral}{"plot \(\backslash\)"%s\(\backslash\)" using 1:3 with linespoints\(\backslash\)n"}, dataFileName);
+153 
+154         \textcolor{comment}{//Time-Z}
+155         fprintf\_s(gp, \textcolor{stringliteral}{"set title \(\backslash\)"Time-Z\(\backslash\)"\(\backslash\)n"});
+156         fprintf\_s(gp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"Time(ms)\(\backslash\)"\(\backslash\)n"});
+157         fprintf\_s(gp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Z-axis(mm)\(\backslash\)"\(\backslash\)n"});
+158         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+159             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [70:150]\(\backslash\)n"}); \textcolor{comment}{//中心固定用}
+160         \}
+161         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+162             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [150:250]\(\backslash\)n"}); \textcolor{comment}{//縦移動用}
+163         \}
+164         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+165             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [50:250]\(\backslash\)n"}); \textcolor{comment}{//横移動用}
+166         \}
+167         fprintf\_s(gp, \textcolor{stringliteral}{"plot \(\backslash\)"%s\(\backslash\)" using 1:4 with linespoints\(\backslash\)n"}, dataFileName);
+168 
+169         fprintf\_s(gp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis(mm)\(\backslash\)"\(\backslash\)n"});
+170         fprintf\_s(gp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis(mm)\(\backslash\)"\(\backslash\)n"});
+171         fprintf\_s(gp, \textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis(mm)\(\backslash\)"\(\backslash\)n"});
+172         fprintf\_s(gp, \textcolor{stringliteral}{"set title \(\backslash\)"Path\(\backslash\)"\(\backslash\)n"});
+173         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+174             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-10:10]\(\backslash\)n"});
+175             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:0]\(\backslash\)n"});
+176             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [80:120]\(\backslash\)n"});
+177         \}
+178         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+179             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-10:10]\(\backslash\)n"});
+180             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+181             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [50:300]\(\backslash\)n"});
+182         \}
+183         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+184             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-60:60]\(\backslash\)n"});
+185             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+186             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [150:250]\(\backslash\)n"});
+187         \}
+188         fprintf\_s(gp, \textcolor{stringliteral}{"set view equal xy\(\backslash\)n"});
+189         \textcolor{comment}{//fprintf\_s(gp, "splot \(\backslash\)"%s\(\backslash\)" every 4 using 2:3:4 with linespoints\(\backslash\)n", dataFileName);
+       //点を間引いてプロットするとき(c40)}
+190         fprintf\_s(gp, \textcolor{stringliteral}{"splot \(\backslash\)"%s\(\backslash\)" using 2:3:4 with linespoints\(\backslash\)n"}, dataFileName); \textcolor{comment}{//データをそのままプロット(c40)}
+191 
+192         fprintf\_s(gp, \textcolor{stringliteral}{"unset multiplot\(\backslash\)n"});
+193 
+194         fclose(gp);
+195     \textcolor{comment}{//\}}
+196     \textcolor{keywordflow}{return};
+197 \}
+\end{DoxyCode}
+\index{Drawing@{Drawing}!gnuplot\-Script\-Co\-G@{gnuplot\-Script\-Co\-G}}
+\index{gnuplot\-Script\-Co\-G@{gnuplot\-Script\-Co\-G}!Drawing@{Drawing}}
+\subsubsection[{gnuplot\-Script\-Co\-G}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::gnuplot\-Script\-Co\-G (
+\begin{DoxyParamCaption}
+\item[{const string $\ast$}]{cog\-File\-Name}
+\end{DoxyParamCaption}
+)}\label{class_drawing_a0751f5d718d05021e178748144499988}
+
+
+球の重心座標をプロットするメソッド(c52) 
+
+メソッド\-Drawing\-::gnuplot\-Script().後で，球の重心座標をプロットするためにgnuplotのスクリプトを出力する
+
+
+\begin{DoxyParams}{引数}
+{\em data\-File\-Name} & \\
+\hline
+\end{DoxyParams}
+$<$gnuplotスクリプト用のポインタ
+
+$<$ファイルのパスを格納する変数 
+
+ Drawing.\-cpp の 249 行目に定義があります。
+
+
+
+参照先 directory\-Name, N\-O\-C.
+
+
+\begin{DoxyCode}
+250 \{
+251     \textcolor{comment}{//if (checkNum == 1)\{ //データを保存する場合にスクリプトを生成する(c32)}
+252         FILE *gp; 
+253         \textcolor{keywordtype}{char} filePath[NOC]; 
+254         \textcolor{keywordtype}{char}* scriptFileName = \textcolor{stringliteral}{"cog.plt"}; \textcolor{comment}{//出力するスクリプトファイルの名前(c39)}
+255 
+256         sprintf\_s(filePath, \textcolor{stringliteral}{"%s/%s"}, directoryName, scriptFileName); \textcolor{comment}{//出力パスを固定}
+257         fopen\_s(&gp, filePath, \textcolor{stringliteral}{"w"}); \textcolor{comment}{//ファイルを書き込みモードで開く}
+258 
+259         fprintf\_s(gp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"});
+260         fprintf\_s(gp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"});
+261         fprintf\_s(gp, \textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"});
+262         fprintf\_s(gp, \textcolor{stringliteral}{"set title \(\backslash\)"Path\(\backslash\)"\(\backslash\)n"});
+263         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+264             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-60:60]\(\backslash\)n"});
+265             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-30:30]\(\backslash\)n"});
+266             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [50:300]\(\backslash\)n"});
+267         \}
+268         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+269             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-10:10]\(\backslash\)n"});
+270             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+271             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [50:300]\(\backslash\)n"});
+272         \}
+273         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+274             fprintf\_s(gp, \textcolor{stringliteral}{"set xrange [-60:60]\(\backslash\)n"});
+275             fprintf\_s(gp, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+276             fprintf\_s(gp, \textcolor{stringliteral}{"set zrange [150:250]\(\backslash\)n"});
+277         \}
+278         \textcolor{keywordflow}{else}\{
+279             fprintf\_s(gp, \textcolor{stringliteral}{"set autoscale\(\backslash\)n"}); \textcolor{comment}{//自動縮尺}
+280         \}
+281         fprintf\_s(gp, \textcolor{stringliteral}{"set view equal xy\(\backslash\)n"});
+282         fprintf\_s(gp, \textcolor{stringliteral}{"splot \(\backslash\)"%s\(\backslash\)" using 2:3:4 with linespoints\(\backslash\)n"}, cogFileName); \textcolor{comment}{//データをそのままプロット(c40)}
+283         fclose(gp);
+284     \textcolor{comment}{//\}}
+285     \textcolor{keywordflow}{return};
+286 \}
+\end{DoxyCode}
+\index{Drawing@{Drawing}!gnuplot\-Script\-E\-V3\-Route@{gnuplot\-Script\-E\-V3\-Route}}
+\index{gnuplot\-Script\-E\-V3\-Route@{gnuplot\-Script\-E\-V3\-Route}!Drawing@{Drawing}}
+\subsubsection[{gnuplot\-Script\-E\-V3\-Route}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::gnuplot\-Script\-E\-V3\-Route (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_drawing_ab52f7ed91ece10aec81f903ed058e906}
+
+
+ Drawing.\-cpp の 316 行目に定義があります。
+
+
+
+参照先 directory\-Name, N\-O\-C.
+
+
+
+参照元 main().
+
+
+\begin{DoxyCode}
+317 \{
+318     FILE *fp;
+319     \textcolor{keywordtype}{char} filepath\_splot\_ev3route[NOC];
+320     sprintf\_s(filepath\_splot\_ev3route, \textcolor{stringliteral}{"data/%s/splot\_ev3route.plt"}, 
+      directoryName);
+321     fopen\_s(&fp, filepath\_splot\_ev3route, \textcolor{stringliteral}{"w"});
+322 
+323     fprintf\_s(fp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"});
+324     fprintf\_s(fp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"});
+325     fprintf\_s(fp, \textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"});
+326     fprintf\_s(fp, \textcolor{stringliteral}{"set title \(\backslash\)"EV3 Centroid Route\(\backslash\)"\(\backslash\)n"});
+327     fprintf\_s(fp, \textcolor{stringliteral}{"splot \(\backslash\)"ev3route.dat\(\backslash\)" with lp\(\backslash\)n"});
+328 
+329     fclose(fp);
+330 
+331     \textcolor{keywordflow}{return};
+332 \}\end{DoxyCode}
+\index{Drawing@{Drawing}!gnuplot\-Script\-E\-V3\-Unit@{gnuplot\-Script\-E\-V3\-Unit}}
+\index{gnuplot\-Script\-E\-V3\-Unit@{gnuplot\-Script\-E\-V3\-Unit}!Drawing@{Drawing}}
+\subsubsection[{gnuplot\-Script\-E\-V3\-Unit}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::gnuplot\-Script\-E\-V3\-Unit (
+\begin{DoxyParamCaption}
+\item[{Eigen\-::\-Vector3f}]{coefficient\-\_\-plane}
+\end{DoxyParamCaption}
+)}\label{class_drawing_a0f86dd5f0f6bfeee40dfc735d33389b3}
+
+
+E\-V3の点群をプロットするためのスクリプト(c78) 
+
+メソッド\-Drawing\-::gnuplot\-Script\-E\-V3\-Unit()．\-E\-V3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78) 
+
+ Drawing.\-cpp の 291 行目に定義があります。
+
+
+
+参照先 directory\-Name, N\-O\-C, save\-\_\-count.
+
+
+
+参照元 main().
+
+
+\begin{DoxyCode}
+292 \{
+293     FILE *fp; \textcolor{comment}{//ファイルストリームを開く}
+294     \textcolor{keywordtype}{char} filepath\_splot\_ev3[NOC];
+295     sprintf\_s(filepath\_splot\_ev3, \textcolor{stringliteral}{"data/%s/%d/splot\_ev3-%02d.plt"}, directoryName, 
+      save_count, save_count);
+296     fopen\_s(&fp, filepath\_splot\_ev3, \textcolor{stringliteral}{"w"}); \textcolor{comment}{//ファイルを開く}
+297 
+298     \textcolor{comment}{//(c78)}
+299     \textcolor{comment}{//if ((splot\_ev3unit = \_popen("gnuplot", "w")) == NULL)\{}
+300     \textcolor{comment}{//  cout << "gnuplotが開けません．\(\backslash\)"gnuplot/binary\(\backslash\)"へパスが通っているか確認して下さい" << endl;
+       //gnuplot/binary/gnuplot.exeを開く.※wgnuplot.exeは起動するが処理が進まず,gnuplotが起動したままになる}
+301     \textcolor{comment}{//\}}
+302 
+303     fprintf\_s(fp, \textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"});
+304     fprintf\_s(fp, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"});
+305     fprintf\_s(fp, \textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"});
+306     fprintf\_s(fp, \textcolor{stringliteral}{"set title \(\backslash\)"PointCloud Plane(LSM) Centroid\(\backslash\)"\(\backslash\)n"});
+307     fprintf\_s(fp, \textcolor{stringliteral}{"splot \(\backslash\)"dof6-%02d.dat\(\backslash\)" pointsize 5,%f*x+%f*y+%f,\(\backslash\)"point-%02d.dat\(\backslash\)" every 5\(\backslash\)n"},
+      save_count, coefficient\_plane.x(),coefficient\_plane.y(),coefficient\_plane.z(), 
+      save_count);
+308 
+309     \textcolor{comment}{//(c78)}
+310     \textcolor{comment}{//\_pclose(splot\_ev3unit);}
+311     fclose(fp);
+312 
+313     \textcolor{keywordflow}{return};
+314 \}
+\end{DoxyCode}
+\index{Drawing@{Drawing}!plot3\-D@{plot3\-D}}
+\index{plot3\-D@{plot3\-D}!Drawing@{Drawing}}
+\subsubsection[{plot3\-D}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::plot3\-D (
+\begin{DoxyParamCaption}
+\item[{const string $\ast$}]{output\-Data\-Name}
+\end{DoxyParamCaption}
+)}\label{class_drawing_abae17ec6a3c54570bdf83cc44b5d4504}
+
+
+3\-D座標ファイルをプロットするメソッド 
+
+メソッド\-Drawing\-::plot3\-D().3\-D座標をプロットするメソッド(未)
+
+
+\begin{DoxyParams}{引数}
+{\em output\-Data\-Name} & \\
+\hline
+\end{DoxyParams}
+
+
+ Drawing.\-cpp の 47 行目に定義があります。
+
+
+
+参照先 directory\-Name.
+
+
+\begin{DoxyCode}
+48 \{
+49     \textcolor{comment}{//出力ファイル名の定義}
+50     \textcolor{keywordtype}{char}* plotImageName = \textcolor{stringliteral}{"plot.jpeg"}; \textcolor{comment}{//plotしたときの画像ファイル名(c39)}
+51     \textcolor{keywordtype}{char}* plotXYImageName = \textcolor{stringliteral}{"plot\_X-Y.jpeg"}; \textcolor{comment}{//X-Y平面でプロットした画像ファイルの名前(c39)}
+52     \textcolor{keywordtype}{char}* plotXZImageName = \textcolor{stringliteral}{"plot\_X-Z.jpeg"}; \textcolor{comment}{//X-Z平面でプロットした画像ファイルの名前(c39)}
+53     \textcolor{keywordtype}{char}* plotYZImageName = \textcolor{stringliteral}{"plot\_Y-Z.jpeg"}; \textcolor{comment}{//Y-Z平面でプロットした画像ファイルの名前(c39)}
+54 
+55     \textcolor{comment}{//fprintf\_s(gnuplot,"書式指定子",変数);で書式を指定して，gnuplotへ出力できる}
+56     \textcolor{comment}{//fputs("コマンド",gnuplot);でコマンドをそのまま出力できる}
+57     fputs(\textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//X軸のラベル}
+58     fputs(\textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//Y軸のラベル}
+59     fputs(\textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//Z軸のラベル}
+60 
+61     fprintf\_s(gnuplot, \textcolor{stringliteral}{"splot \(\backslash\)"%s/%s\(\backslash\)" using 2:3:4 with lp\(\backslash\)n"}, directoryName, outputDataName); \textcolor{comment}{//データをプロット}
+62     fputs(\textcolor{stringliteral}{"set title \(\backslash\)"Path\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのタイトル}
+63     fputs(\textcolor{stringliteral}{"set term jpeg size 1280,720\(\backslash\)n"}, gnuplot); \textcolor{comment}{//jpegで保存するため}
+64     fprintf\_s(gnuplot,\textcolor{stringliteral}{"set output \(\backslash\)"%s/%s\(\backslash\)"\(\backslash\)n"}, directoryName, plotImageName); \textcolor{comment}{//名前をつけて保存}
+65     fputs(\textcolor{stringliteral}{"rep\(\backslash\)n"}, gnuplot); \textcolor{comment}{//画像の保存の反映}
+66 
+67     \textcolor{comment}{//fputs("set view 1,360,1,1\(\backslash\)n", gnuplot); //(X,Y)平面}
+68     fprintf\_s(gnuplot, \textcolor{stringliteral}{"plot \(\backslash\)"%s/%s\(\backslash\)" u 2:3 with lp\(\backslash\)n"}, directoryName, outputDataName); \textcolor{comment}{//データをプロット}
+69     fputs(\textcolor{stringliteral}{"set title \(\backslash\)"Path X-Y\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのタイトル}
+70     fputs(\textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのX軸ラベル}
+71     fputs(\textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのY軸ラベル}
+72     fprintf\_s(gnuplot,\textcolor{stringliteral}{"set output \(\backslash\)"%s/%s\(\backslash\)"\(\backslash\)n"}, directoryName, plotXYImageName); \textcolor{comment}{//名前をつけて保存}
+73     fputs(\textcolor{stringliteral}{"rep\(\backslash\)n"}, gnuplot); \textcolor{comment}{//画像の保存の反映}
+74     
+75     \textcolor{comment}{//fputs("set view 90,360,1,1\(\backslash\)n", gnuplot); //(X,Z)平面}
+76     fprintf\_s(gnuplot, \textcolor{stringliteral}{"plot \(\backslash\)"%s/%s\(\backslash\)" u 2:4 with lp\(\backslash\)n"}, directoryName, outputDataName); \textcolor{comment}{//データをプロット}
+77     fputs(\textcolor{stringliteral}{"set title \(\backslash\)"Path X-Z\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのタイトル}
+78     fputs(\textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのX軸ラベル}
+79     fputs(\textcolor{stringliteral}{"set ylabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのY軸ラベル}
+80     fprintf\_s(gnuplot,\textcolor{stringliteral}{"set output \(\backslash\)"%s/%s\(\backslash\)"\(\backslash\)n"}, directoryName, plotXZImageName); \textcolor{comment}{//名前をつけて保存}
+81     fputs(\textcolor{stringliteral}{"rep\(\backslash\)n"}, gnuplot); \textcolor{comment}{//画像の保存の反映}
+82 
+83     \textcolor{comment}{//fputs("set view 90,90,1,1\(\backslash\)n", gnuplot); //(Y,Z)平面}
+84     fprintf\_s(gnuplot, \textcolor{stringliteral}{"plot \(\backslash\)"%s/%s\(\backslash\)" u 3:4 with lp\(\backslash\)n"}, directoryName,outputDataName); \textcolor{comment}{//データをプロット}
+85     fputs(\textcolor{stringliteral}{"set title \(\backslash\)"Path Y-Z\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのタイトル}
+86     fputs(\textcolor{stringliteral}{"set xlabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのX軸ラベル}
+87     fputs(\textcolor{stringliteral}{"set ylabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"}, gnuplot); \textcolor{comment}{//グラフのY軸ラベル}
+88     fprintf\_s(gnuplot,\textcolor{stringliteral}{"set output \(\backslash\)"%s/%s\(\backslash\)"\(\backslash\)n"}, directoryName, plotYZImageName); \textcolor{comment}{//名前をつけて保存}
+89     fputs(\textcolor{stringliteral}{"rep\(\backslash\)n"}, gnuplot); \textcolor{comment}{//画像の保存の反映}
+90 
+91     \textcolor{comment}{//確認用}
+92     \textcolor{comment}{//fprintf\_s(gnuplot, "splot \(\backslash\)"%s/%s\(\backslash\)" with points\(\backslash\)n", directoryName, outputDataName); //データをプロット}
+93     \textcolor{comment}{//fputs("pause 3\(\backslash\)n", gnuplot); //プロットした結果をしばらく表示}
+94     
+95     fputs(\textcolor{stringliteral}{"quit\(\backslash\)n"}, gnuplot); \textcolor{comment}{//gnuplotを終了}
+96     fflush(gnuplot); \textcolor{comment}{//コマンドをgnuplotで実行}
+97 
+98     \textcolor{keywordflow}{return};
+99 \}
+\end{DoxyCode}
+\index{Drawing@{Drawing}!plot3\-D\-Real\-Time@{plot3\-D\-Real\-Time}}
+\index{plot3\-D\-Real\-Time@{plot3\-D\-Real\-Time}!Drawing@{Drawing}}
+\subsubsection[{plot3\-D\-Real\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void Drawing\-::plot3\-D\-Real\-Time (
+\begin{DoxyParamCaption}
+\item[{int}]{count\-Data\-Num, }
+\item[{{\bf output\-Data}}]{output\-Data[\-O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X]}
+\end{DoxyParamCaption}
+)}\label{class_drawing_aec59eb6880875fbaedae8cadbcd5f7f7}
+$<$リアルタイムに位置をプロットするために利用(c43)
+
+$<$ファイルまでのパス名(c43)
+
+$<$リアルタイムプロット用のデータファイル(c43) 
+
+ Drawing.\-cpp の 199 行目に定義があります。
+
+
+
+参照先 directory\-Name, N\-O\-C.
+
+
+\begin{DoxyCode}
+200 \{
+201     FILE *realtimeplot; 
+202     \textcolor{keywordtype}{char} pathName[NOC]; 
+203     \textcolor{keywordtype}{char}* fileName = \textcolor{stringliteral}{"realplot.dat"}; 
+204 
+205     sprintf\_s(pathName, \textcolor{stringliteral}{"%s/%s"}, directoryName, fileName); \textcolor{comment}{//データファイルの保存先を指定}
+206     fopen\_s(&realtimeplot, pathName, \textcolor{stringliteral}{"a"}); \textcolor{comment}{//ファイルを追記モードで開く(c43)}
+207     fprintf\_s(realtimeplot, \textcolor{stringliteral}{"%f %f %f %f\(\backslash\)n"}, outputData[countDataNum].totalTime, outputData[countDataNum].x
+      , outputData[countDataNum].y, outputData[countDataNum].z); \textcolor{comment}{//ファイルへ出力(c43)}
+208     fclose(realtimeplot); \textcolor{comment}{//ファイルを閉じる(c43)}
+209 
+210     \textcolor{comment}{//プロット開始}
+211     \textcolor{keywordflow}{if} (first == \textcolor{keyword}{true})\{ \textcolor{comment}{//1回目は描画の初期設定をする}
+212         fprintf\_s(gpr, \textcolor{stringliteral}{"set grid\(\backslash\)n"}); \textcolor{comment}{//グリッドを描画}
+213         \textcolor{comment}{//fprintf\_s(gpr, "unset key\(\backslash\)n"); //凡例を消す}
+214         fprintf\_s(gpr, \textcolor{stringliteral}{"set xlabel \(\backslash\)"X-axis\(\backslash\)"\(\backslash\)n"}); \textcolor{comment}{//X軸のラベルを設定}
+215         fprintf\_s(gpr, \textcolor{stringliteral}{"set ylabel \(\backslash\)"Y-axis\(\backslash\)"\(\backslash\)n"}); \textcolor{comment}{//Y軸のラベルを設定}
+216         fprintf\_s(gpr, \textcolor{stringliteral}{"set zlabel \(\backslash\)"Z-axis\(\backslash\)"\(\backslash\)n"}); \textcolor{comment}{//Z軸のラベルを設定}
+217 
+218         \textcolor{keywordflow}{if} (plotMode == 1)\{ \textcolor{comment}{//(1)中心固定用}
+219             fprintf\_s(gpr, \textcolor{stringliteral}{"set xrange [-10:10]\(\backslash\)n"});
+220             fprintf\_s(gpr, \textcolor{stringliteral}{"set yrange [-20:0]\(\backslash\)n"});
+221             fprintf\_s(gpr, \textcolor{stringliteral}{"set zrange [50:200]\(\backslash\)n"});
+222         \}
+223         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (plotMode == 2)\{ \textcolor{comment}{//(2)縦移動用}
+224             fprintf\_s(gpr, \textcolor{stringliteral}{"set xrange [-10:10]\(\backslash\)n"});
+225             fprintf\_s(gpr, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+226             fprintf\_s(gpr, \textcolor{stringliteral}{"set zrange [50:300]\(\backslash\)n"});
+227         \}
+228         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(plotMode == 3)\{ \textcolor{comment}{//(3)横移動用}
+229             fprintf\_s(gpr, \textcolor{stringliteral}{"set xrange [-60:60]\(\backslash\)n"});
+230             fprintf\_s(gpr, \textcolor{stringliteral}{"set yrange [-10:10]\(\backslash\)n"});
+231             fprintf\_s(gpr, \textcolor{stringliteral}{"set zrange [150:250]\(\backslash\)n"});
+232         \}
+233         \textcolor{keywordflow}{else}\{ \textcolor{comment}{//(4)自動縮尺}
+234             fprintf\_s(gpr, \textcolor{stringliteral}{"set autoscale\(\backslash\)n"}); \textcolor{comment}{//自動縮尺(c47)}
+235         \}
+236 
+237         first = \textcolor{keyword}{false};
+238     \}
+239     fprintf\_s(gpr, \textcolor{stringliteral}{"splot \(\backslash\)"%s\(\backslash\)" using 2:3:4 with linespoints\(\backslash\)n"}, pathName);
+240     fflush(gpr);
+241 
+242     \textcolor{keywordflow}{return};
+243 \}
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\-:\begin{DoxyCompactItemize}
+\item 
+{\bf Drawing.\-hpp}\item 
+{\bf Drawing.\-cpp}\end{DoxyCompactItemize}

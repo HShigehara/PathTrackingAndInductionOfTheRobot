@@ -1,0 +1,162 @@
+\section{E\-V3\-Control クラス}
+\label{class_e_v3_control}\index{E\-V3\-Control@{E\-V3\-Control}}
+
+
+E\-V3を制御するためのクラス  
+
+
+
+
+{\ttfamily \#include $<$E\-V3\-Control.\-hpp$>$}
+
+\subsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+{\bf E\-V3\-Control} ()
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+{\bf $\sim$\-E\-V3\-Control} ()
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
+void {\bf set6\-Do\-F\-E\-V3} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, Point3d centroid, {\bf Attitude\-Angle} attitude\-\_\-angle)
+\begin{DoxyCompactList}\small\item\em 最小二乗法によって求めた平均座標と位置を\-E\-V3の制御のために構造体に格納する(c80) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Do\-F6d} {\bf ev3\-\_\-6dof}
+\begin{DoxyCompactList}\small\item\em E\-V3の6自由度(c80) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{詳解}
+E\-V3を制御するためのクラス 
+
+ E\-V3\-Control.\-hpp の 19 行目に定義があります。
+
+
+
+\subsection{構築子と解体子}
+\index{E\-V3\-Control@{E\-V3\-Control}!E\-V3\-Control@{E\-V3\-Control}}
+\index{E\-V3\-Control@{E\-V3\-Control}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{E\-V3\-Control}]{\setlength{\rightskip}{0pt plus 5cm}E\-V3\-Control\-::\-E\-V3\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a030f467b372dee725bb176d0b7cea259}
+
+
+コンストラクタ 
+
+メソッド\-E\-V3\-Control\-::\-E\-V3\-Control().コンストラクタ 
+
+ E\-V3\-Control.\-cpp の 16 行目に定義があります。
+
+
+\begin{DoxyCode}
+17 \{
+18     \textcolor{comment}{//コンストラクタはなし}
+19 \}
+\end{DoxyCode}
+\index{E\-V3\-Control@{E\-V3\-Control}!$\sim$\-E\-V3\-Control@{$\sim$\-E\-V3\-Control}}
+\index{$\sim$\-E\-V3\-Control@{$\sim$\-E\-V3\-Control}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{$\sim$\-E\-V3\-Control}]{\setlength{\rightskip}{0pt plus 5cm}E\-V3\-Control\-::$\sim$\-E\-V3\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a68c7fd119aa2f422f9eebbe9318e8ab9}
+
+
+デストラクタ 
+
+メソッド\-E\-V3\-Control\-::\-E\-V3\-Control().コンストラクタ 
+
+ E\-V3\-Control.\-cpp の 24 行目に定義があります。
+
+
+\begin{DoxyCode}
+25 \{
+26     \textcolor{comment}{//デストラクタはなし}
+27 \}
+\end{DoxyCode}
+
+
+\subsection{関数詳解}
+\index{E\-V3\-Control@{E\-V3\-Control}!set6\-Do\-F\-E\-V3@{set6\-Do\-F\-E\-V3}}
+\index{set6\-Do\-F\-E\-V3@{set6\-Do\-F\-E\-V3}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{set6\-Do\-F\-E\-V3}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::set6\-Do\-F\-E\-V3 (
+\begin{DoxyParamCaption}
+\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{input\-Point\-Cloud, }
+\item[{Point3d}]{centroid, }
+\item[{{\bf Attitude\-Angle}}]{attitude\-\_\-angle}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8}
+
+
+最小二乗法によって求めた平均座標と位置を\-E\-V3の制御のために構造体に格納する(c80) 
+
+メソッド\-E\-V3\-Control\-::set6\-Do\-F\-E\-V3()．最小二乗法によって求めた平均座標と位置を\-E\-V3の制御のために構造体に格納する
+
+
+\begin{DoxyParams}{引数}
+{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr} & \&input\-Point\-Cloud, Point3d centroid, \doxyref{Attitude\-Angle}{p.}{struct_attitude_angle} attitude\-\_\-angle \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 33 行目に定義があります。
+
+
+
+参照先 ev3\-\_\-6dof, Do\-F\-::pitch, Attitude\-Angle\-::pitch, Do\-F\-::roll, Attitude\-Angle\-::roll, Do\-F\-::x, Do\-F\-::y, Do\-F\-::yaw, Attitude\-Angle\-::yaw, Do\-F\-::z.
+
+
+
+参照元 main().
+
+
+\begin{DoxyCode}
+34 \{
+35     \textcolor{comment}{//FILE *fp;}
+36     \textcolor{comment}{//char filepath\_measuredata[NOC];}
+37     \textcolor{comment}{//sprintf\_s(filepath\_measuredata, "data/%s/measuredata.dat", directoryName);}
+38     \textcolor{comment}{//fopen\_s(&fp, filepath\_measuredata, "w");}
+39 
+40     ev3_6dof.x = centroid.x;
+41     ev3_6dof.y = centroid.y;
+42     ev3_6dof.z = centroid.z;
+43     ev3_6dof.yaw = attitude\_angle.yaw;
+44     ev3_6dof.roll = attitude\_angle.roll;
+45     ev3_6dof.pitch = attitude\_angle.pitch;
+46     cout << \textcolor{stringliteral}{"[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]"} << endl;
+47     cout << \textcolor{stringliteral}{"[ "} << ev3_6dof.x << \textcolor{stringliteral}{", "} << ev3_6dof.y << \textcolor{stringliteral}{", "} << ev3_6dof.z << \textcolor{stringliteral}{", "} << 
+      ev3_6dof.yaw << \textcolor{stringliteral}{", "} << ev3_6dof.roll << \textcolor{stringliteral}{", "} << ev3_6dof.pitch << \textcolor{stringliteral}{", "} << inputPointCloud->size() << \textcolor{stringliteral}{" ]"} 
+      << endl;
+48 
+49     \textcolor{comment}{//fprintf\_s(fp, "[\(\backslash\)tX\(\backslash\)tY\(\backslash\)tZ\(\backslash\)tYaw\(\backslash\)tRoll\(\backslash\)tPitch\(\backslash\)tPointCloudNum\(\backslash\)t]\(\backslash\)n");}
+50     \textcolor{comment}{//fprintf\_s(fp, "%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%d\(\backslash\)n", ev3\_6dof.x, ev3\_6dof.y, ev3\_6dof.z, ev3\_6dof.yaw,
+       ev3\_6dof.roll, ev3\_6dof.pitch, inputPointCloud->size());}
+51 
+52     \textcolor{comment}{//fclose(fp);}
+53     \textcolor{keywordflow}{return};
+54 \}\end{DoxyCode}
+
+
+\subsection{メンバ詳解}
+\index{E\-V3\-Control@{E\-V3\-Control}!ev3\-\_\-6dof@{ev3\-\_\-6dof}}
+\index{ev3\-\_\-6dof@{ev3\-\_\-6dof}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{ev3\-\_\-6dof}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Do\-F6d} E\-V3\-Control\-::ev3\-\_\-6dof}\label{class_e_v3_control_a146d50ba64a58289ef7776013d21c4a0}
+
+
+E\-V3の6自由度(c80) 
+
+
+
+ E\-V3\-Control.\-hpp の 28 行目に定義があります。
+
+
+
+参照元 main(), set6\-Do\-F\-E\-V3().
+
+
+
+このクラス詳解は次のファイルから抽出されました\-:\begin{DoxyCompactItemize}
+\item 
+{\bf E\-V3\-Control.\-hpp}\item 
+{\bf E\-V3\-Control.\-cpp}\end{DoxyCompactItemize}

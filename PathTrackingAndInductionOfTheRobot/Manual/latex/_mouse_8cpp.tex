@@ -1,0 +1,64 @@
+\section{Mouse.\-cpp ファイル}
+\label{_mouse_8cpp}\index{Mouse.\-cpp@{Mouse.\-cpp}}
+{\ttfamily \#include \char`\"{}Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp\char`\"{}}\\*
+\subsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf on\-Mouse} (int event, int x, int y, int flags, void $\ast$param)
+\begin{DoxyCompactList}\small\item\em マウス操作 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{関数詳解}
+\index{Mouse.\-cpp@{Mouse.\-cpp}!on\-Mouse@{on\-Mouse}}
+\index{on\-Mouse@{on\-Mouse}!Mouse.cpp@{Mouse.\-cpp}}
+\subsubsection[{on\-Mouse}]{\setlength{\rightskip}{0pt plus 5cm}void on\-Mouse (
+\begin{DoxyParamCaption}
+\item[{int}]{event, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{flags, }
+\item[{void $\ast$}]{param}
+\end{DoxyParamCaption}
+)}\label{_mouse_8cpp_ab6ccc6c8d80970d4178c943533533860}
+
+
+マウス操作 
+
+
+
+ Mouse.\-cpp の 12 行目に定義があります。
+
+
+
+参照先 image, origin, selection, select\-Object, track\-Object.
+
+
+\begin{DoxyCode}
+13 \{
+14     \textcolor{keywordflow}{if} (selectObject)
+15     \{
+16         selection.x = MIN(x, origin.x);
+17         selection.y = MIN(y, origin.y);
+18         selection.width = abs(x - origin.x);
+19         selection.height = abs(y - origin.y);
+20         selection &= Rect(0, 0, image.cols, image.rows);
+21     \}
+22 
+23     \textcolor{keywordflow}{switch} (event)
+24     \{
+25     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONDOWN:
+26         origin = Point(x, y);
+27         selection = Rect(x, y, 0, 0);
+28         selectObject = \textcolor{keyword}{true};
+29         \textcolor{keywordflow}{break};
+30     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONUP:
+31         selectObject = \textcolor{keyword}{false};
+32         \textcolor{keywordflow}{if} (selection.width > 0 && selection.height > 0)
+33         \{
+34             trackObject = -1;
+35         \}
+36         \textcolor{keywordflow}{break};
+37     \}
+38 
+39     \textcolor{keywordflow}{return};
+40 \}\end{DoxyCode}

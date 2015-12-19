@@ -66,11 +66,7 @@ int main()
 	AttitudeAngle3d attitude_angle; //姿勢角(c78)
 
 	//CloudVisualizermの初期設定(c83)
-	pcl::visualization::PCLVisualizer *visualizer = new pcl::visualization::PCLVisualizer("3D Viewer"); //PCLVisualizerのウインドウ名
-	visualizer->setBackgroundColor(0, 0, 0); //PCLVisualizerの背景色
-	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "show cloud");
-	visualizer->addCoordinateSystem(1.0);
-	visualizer->initCameraParameters();
+
 
 	//メインの処理
 	try{
@@ -87,6 +83,7 @@ int main()
 		const string cameraparameter_name = "sourcedata/cameraParam.xml"; //xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)
 		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
 		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
+		const string pclvisualizer_windowname = "3D Viewer";
 		const string param_windowname = "OpenCV Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
 
 		kinect.initialize(); //Kinectの初期化
@@ -120,9 +117,10 @@ int main()
 		system("cls"); //コンソール内の表示をリセット(c64)
 
 		//pointcloudlibrary.initializePointCloudViewer(cloudviewer_windowname); //クラウドビューアーの初期化
+		pointcloudlibrary.initializePCLVisualizer(pclvisualizer_windowname);
 
 		//namedWindow("閾値", 1);
-		while (/*!pointcloudlibrary.viewer->wasStopped() && */!visualizer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
+		while (/*!pointcloudlibrary.viewer->wasStopped() && */!pointcloudlibrary.visualizer->wasStopped() && kinect.key != 'q' && !GetAsyncKeyState('Q')){ //(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する
 			//タイマー開始(c65)
 			sys.startTimer();
 
@@ -156,7 +154,7 @@ int main()
 
 			//PCLの処理
 			if (pointcloudlibrary.passthrough_flag == true){  //外れ値除去(c59)
-				cloud = pointcloudlibrary.passThroughFilter(cloud, "z", 400, 20000); //Kinectから取得した外れ値を除去(c60)．与えた軸の中で自分が取得したい範囲の下限と上限を与えることでそれ以外を省く(c81)
+				cloud = pointcloudlibrary.passThroughFilter(cloud, "z", 400, 30000); //Kinectから取得した外れ値を除去(c60)．与えた軸の中で自分が取得したい範囲の下限と上限を与えることでそれ以外を省く(c81)
 				//cloud = pointcloudlibrary.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)
 			}
 
@@ -196,15 +194,15 @@ int main()
 			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
 			sphere.y = pointcloudlibrary.centroid.y; //平均座標のy座標
 			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
-			visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
+			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
 
 			//Kinectから取得した点群を描画
-			visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
+			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
 			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "show cloud");
 			cout << "==========================================================================================" << endl;
 
 			//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
-			visualizer->spinOnce(); //PCLVisualizerを描画
+			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
 
@@ -219,6 +217,7 @@ int main()
 				//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 				sys.removeDirectory(); //再計測を行う場合は，現在のデータは必要ないため削除
 				cout << "Data Removed." << endl;
+				save_count = 0;
 				system("cls"); //cmdをクリア
 				cout << "RETRY" << endl;
 				goto RETRY;
@@ -240,8 +239,8 @@ int main()
 			}
 
 			//PCLVisualizerに描画した点群を削除する
-			visualizer->removePointCloud("show cloud");
-			visualizer->removeShape("sphere");
+			pointcloudlibrary.visualizer->removePointCloud("show cloud");
+			pointcloudlibrary.visualizer->removeShape("sphere");
 
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
@@ -249,7 +248,7 @@ int main()
 		//計測が終了したところ(PCL上, OpenCVウインドウ上, コンソール上で'q'が押されてたとき)
 		destroyAllWindows(); //PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)
 		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
-		visualizer->~PCLVisualizer(); //PCLVisualizerの削除
+		pointcloudlibrary.visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
 			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
 		}
@@ -271,7 +270,7 @@ int main()
 		cout << ex.what() << endl;
 		destroyAllWindows(); //OpenCVで作成したウインドウを全て削除する(c35)
 		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
-		visualizer->~PCLVisualizer(); //PCLVisualizerの削除
+		pointcloudlibrary.visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		//異常終了した時はデータを保存する必要がないので削除
 		sys.removeDirectory();
 		cout << "Data Removed." << endl;
