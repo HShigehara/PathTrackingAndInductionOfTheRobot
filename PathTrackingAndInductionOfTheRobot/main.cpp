@@ -60,6 +60,7 @@ int main()
 
 	//ポイントクラウド関係の変数(c57)
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //処理を受け取る点群
+	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>); //法線を格納する変数(c84)
 
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
@@ -180,33 +181,23 @@ int main()
 				cloud = pointcloudlibrary.getExtractPlaneAndClustering(cloud, true, 100, 5, false, true, 0.02, /*350*/150, /*25000*//*20000*/200000); //Default=0.03(前処理なしの場合)
 			}
 
+			//6DoFを設定
 			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(cloud); //重心座標の計算
-			
-			
 			coefficient_plane = lsm.getCoefficient(cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
-			//cout << "[Yaw, Roll, Pitch]" << attitude_angle.yaw << " , " << attitude_angle.roll << " , " << attitude_angle.pitch << endl;
-			
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			
-			pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
-			cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud);
-			pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
+			//法線を計算(c84)
+			cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud); //法線を計算(c84)
 
-			//平均座標に球を描画する(c83)
+			//平均座標のポイントクラウドを作成(c83)
 			pcl::PointXYZ sphere;
 			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
 			sphere.y = pointcloudlibrary.centroid.y; //平均座標のy座標
 			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
-			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
-
-			//Kinectから取得した点群を描画
-			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
-			//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "show cloud");
 			cout << "==========================================================================================" << endl;
 
-			//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示
-			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
+
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
 
@@ -241,6 +232,14 @@ int main()
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
 				sys.saveDataContinuously(ev3control.ev3_6dof);
 			}
+
+			//Kinectから取得した点群を描画
+			pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
+			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
+			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
+
+			//点群の表示
+			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
 
 			//PCLVisualizerに描画した点群を削除する
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");

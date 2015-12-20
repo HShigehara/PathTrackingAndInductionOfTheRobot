@@ -372,6 +372,5 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 	ne.setRadiusSearch(10);
 	ne.compute(*cloud_normals);
 
-	cout << *cloud_normals << endl;
 	return cloud_normals;
 }
