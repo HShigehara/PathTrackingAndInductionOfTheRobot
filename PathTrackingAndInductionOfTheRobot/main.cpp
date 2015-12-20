@@ -189,6 +189,10 @@ int main()
 			
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			
+			pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
+			cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud);
+			pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
+
 			//平均座標に球を描画する(c83)
 			pcl::PointXYZ sphere;
 			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
@@ -241,7 +245,7 @@ int main()
 			//PCLVisualizerに描画した点群を削除する
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");
 			pointcloudlibrary.visualizer->removeShape("sphere");
-
+			pointcloudlibrary.visualizer->removeAllPointClouds();
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
 

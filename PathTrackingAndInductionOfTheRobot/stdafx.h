@@ -61,6 +61,9 @@ using namespace cv; //!<名前空間
 #include <pcl\features\normal_3d.h>
 #include <pcl\segmentation\extract_clusters.h>
 
+//法線計算(c84)
+#include <pcl\features\integral_image_normal.h>
+
 #include <boost\thread\thread.hpp>
 
 //ICPアルゴリズムによる位置合わせ

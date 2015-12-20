@@ -54,7 +54,8 @@ void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
 {
 	visualizer = new pcl::visualization::PCLVisualizer(pclvisualizer_name); //PCLVisualizerのウインドウ名
 	visualizer->setBackgroundColor(0, 0, 0); //PCLVisualizerの背景色
-	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "show cloud");
+	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "show cloud");
+	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "normals");
 	visualizer->addCoordinateSystem(1.0);
 	visualizer->initCameraParameters();
 	return;
@@ -368,7 +369,7 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 	pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>());
 	ne.setSearchMethod(tree);
 	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
-	ne.setRadiusSearch(0.005);
+	ne.setRadiusSearch(10);
 	ne.compute(*cloud_normals);
 
 	cout << *cloud_normals << endl;
