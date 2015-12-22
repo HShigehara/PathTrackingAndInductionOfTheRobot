@@ -39,7 +39,7 @@ public:
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr radiusOutlierRemoval(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr downSamplingUsingVoxelGridFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, float leafSizeX, float leafSizeY, float leafSizeZ); //!<ダウンサンプリングの
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr smoothingUsingMovingLeastSquare(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool compute_normals, bool polynomial_fit, double radius); //!<スムージング
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize); //!<平面検出とクラスタリング
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations,/* double threshold, */bool negative1, bool negative2,/* double tolerance, */int minClusterSize, int maxClusterSize); //!<平面検出とクラスタリング
 
 	Point3d centroid; //!<平均座標
 	Point3d getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud); //取得した点群の平均座標を取得するメソッド
@@ -51,6 +51,9 @@ public:
 
 	//PCLVisualizer用
 	pcl::visualization::PCLVisualizer *visualizer;
+
+	int th;
+	int tor;
 
 	//各点群処理を行うか否かのフラグ変数(c64)
 	bool passthrough_flag;

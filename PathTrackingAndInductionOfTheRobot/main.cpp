@@ -153,6 +153,12 @@ int main()
 			cout << "==========================================================================================" << endl;
 			cout << "Original PointCloud Size\t=>\t" << cloud->size() << endl;
 
+
+			namedWindow("PCL", CV_WINDOW_KEEPRATIO);
+			createTrackbar("thresh", "PCL", &pointcloudlibrary.th,1000);
+			createTrackbar("tol", "PCL", &pointcloudlibrary.tor, 1000);
+
+
 			//PCLの処理
 			if (pointcloudlibrary.passthrough_flag == true){  //外れ値除去(c59)
 				cloud = pointcloudlibrary.passThroughFilter(cloud, "z", 400, 30000); //Kinectから取得した外れ値を除去(c60)．与えた軸の中で自分が取得したい範囲の下限と上限を与えることでそれ以外を省く(c81)
@@ -178,7 +184,7 @@ int main()
 			}
 
 			if (pointcloudlibrary.extractplane_flag == true){	//平面検出とクラスタリング(c61)
-				cloud = pointcloudlibrary.getExtractPlaneAndClustering(cloud, true, 100, 5, false, true, 0.02, /*350*/150, /*25000*//*20000*/200000); //Default=0.03(前処理なしの場合)
+				cloud = pointcloudlibrary.getExtractPlaneAndClustering(cloud, true, 100,/* 30, */false, true,/* 50, *//*350*/150, /*25000*//*20000*/200000); //Default=0.03(前処理なしの場合)
 			}
 
 			//6DoFを設定
@@ -188,7 +194,7 @@ int main()
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
 			
 			//法線を計算(c84)
-			cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud); //法線を計算(c84)
+			//cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud); //法線を計算(c84)
 
 			//平均座標のポイントクラウドを作成(c83)
 			pcl::PointXYZ sphere;
@@ -197,6 +203,9 @@ int main()
 			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
 			cout << "==========================================================================================" << endl;
 
+
+			//EV3の速度を計算(c85)
+			ev3control.getVelocity();
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
@@ -234,7 +243,7 @@ int main()
 			}
 
 			//Kinectから取得した点群を描画
-			pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
+			//pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
 			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
 			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
 
@@ -244,7 +253,7 @@ int main()
 			//PCLVisualizerに描画した点群を削除する
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");
 			pointcloudlibrary.visualizer->removeShape("sphere");
-			pointcloudlibrary.visualizer->removeAllPointClouds();
+			//pointcloudlibrary.visualizer->removeAllPointClouds();
 			system("cls"); //コンソール内の表示をリセット(c64)
 		}
 
@@ -261,6 +270,10 @@ int main()
 			cout << "Save Data?" << endl;
 			int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
 			if (checkNum == 1){
+				sys.endMessage(checkNum);
+			}
+			else{
+				sys.removeDirectory(); //ディレクトリの削除
 				sys.endMessage(checkNum);
 			}
 		}

@@ -85,7 +85,16 @@ AttitudeAngle3d LeastSquareMethod::calcYawRollPitch(Eigen::Vector3f coefficient_
 
 	//ロール角の計算
 	attitude_angle_rad.roll = atan2(-coefficient_plane.x(), coefficient_plane.y());
-	attitude_angle_deg.roll = attitude_angle_rad.roll / M_PI * 180.0;
+	//attitude_angle_rad.roll = atan2(-coefficient_plane.y(), coefficient_plane.x());
+	//attitude_angle_rad.roll = -atan2(-coefficient_plane.x(), coefficient_plane.y());
+	
+	//xが+ならロール角に+90°して補正，xが-ならロール角に-90°して補正(c85)
+	if (coefficient_plane.x() >= 0){
+		attitude_angle_deg.roll = (attitude_angle_rad.roll / M_PI * 180.0) + 90;
+	}
+	else if (coefficient_plane.x() < 0){
+		attitude_angle_deg.roll = (attitude_angle_rad.roll / M_PI * 180.0) - 90;
+	}
 
 	//ピッチ角の計算
 	attitude_angle_rad.pitch = atan2(1, coefficient_plane.y());

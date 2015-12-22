@@ -389,9 +389,9 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof
 	sprintf_s(filepath_dof6con, "data/%s/dof6con.csv", directoryName);
 	fopen_s(&dof6con_fp, filepath_dof6con, "a");
 	if (save_flag == false){
-		fprintf(dof6_fp, "x,y,z,Yaw,Roll,Pitch,Data Size\n");
+		fprintf(dof6_fp, "x,y,z,Yaw,Roll,Pitch,Data Size,Frame Rate\n");
 	}
-	fprintf_s(dof6_fp, "%f,%f,%f,%f,%f,%f,%d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
+	fprintf_s(dof6_fp, "%f,%f,%f,%f,%f,%f,%d,%f\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size(),fps);
 	fclose(dof6con_fp);
 
 	//PointCloudを保存する
@@ -399,6 +399,14 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof
 	sprintf_s(filepath_pointcloud, "data/%s/%d/pointcloud-%02d.ply", directoryName, save_count, save_count);
 	pcl::io::savePLYFileASCII(filepath_pointcloud, *inputPointCloud);
 	
+	//処理時間を保存する
+	FILE *framerate;
+	char filepath_framerate[NOC];
+	sprintf_s(filepath_framerate, "data/%s/%d/framerate-%02d.dat", directoryName, save_count, save_count);
+	fopen_s(&framerate, filepath_framerate, "w");
+	fprintf_s(framerate, "%f\n", fps);
+	fclose(framerate);
+
 	return;
 }
 

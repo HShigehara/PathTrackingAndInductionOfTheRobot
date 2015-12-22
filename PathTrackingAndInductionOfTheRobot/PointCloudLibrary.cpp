@@ -30,6 +30,9 @@ PointCloudLibrary::PointCloudLibrary(bool passthroughflag, bool downsamplingflag
 	statisticaloutlierremoval_flag = statisticaloutlierremovalflag;
 	mls_flag = mlsflag;
 	extractplane_flag= extractplaneflag;
+
+	th = 1;
+	tor = 1;
 }
 
 /*!
@@ -54,8 +57,8 @@ void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
 {
 	visualizer = new pcl::visualization::PCLVisualizer(pclvisualizer_name); //PCLVisualizerのウインドウ名
 	visualizer->setBackgroundColor(0, 0, 0); //PCLVisualizerの背景色
-	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "show cloud");
-	visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "normals");
+	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "show cloud");
+	//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "normals");
 	visualizer->addCoordinateSystem(1.0);
 	visualizer->initCameraParameters();
 	return;
@@ -212,7 +215,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::smoothingUsingMovingLe
  * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
  * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
  */
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations, double threshold, bool negative1, bool negative2, double tolerance, int minClusterSize, int maxClusterSize)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations,/* double threshold, */bool negative1, bool negative2,/* double tolerance, */int minClusterSize, int maxClusterSize)
 {
 	cout << "before\tExtract Plane\t\t=>\t" << inputPointCloud->size() << endl;
 
@@ -235,7 +238,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClus
 	seg.setMaxIterations(maxIterations); //Default->100
 	//
 
-	seg.setDistanceThreshold(threshold);
+	seg.setDistanceThreshold(/*threshold*/th*0.0001);
 
 	int i = 0, nr_points = (int)inputPointCloud->points.size();
 	while (inputPointCloud->points.size() > 0.3*nr_points)
@@ -265,7 +268,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClus
 
 	std::vector<pcl::PointIndices> cluster_indices;
 	pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
-	ec.setClusterTolerance(tolerance); //単位[m]
+	ec.setClusterTolerance(/*tolerance*/tor); //単位[m]
 	ec.setMinClusterSize(minClusterSize); //最小クラスタの値
 	ec.setMaxClusterSize(maxClusterSize); //最大クラスタの値
 	ec.setSearchMethod(tree); //検索手法
@@ -350,7 +353,7 @@ Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 	//平均座標(重心)をファイルに出力(確認用)
 	//fprintf_s(centroid, "%f %f %f\n",centroid_coordinate.x,centroid_coordinate.y,centroid_coordinate.z);
 
-	//ファイルを閉じる(核に尿)
+	//ファイルを閉じる(確認用)
 	//fclose(pointcloud);
 	//fclose(centroid);
 
@@ -371,6 +374,11 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 	pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
 	ne.setRadiusSearch(10);
 	ne.compute(*cloud_normals);
+
+	/*for (int i = 0; i < cloud_normals->size(); i++){
+		cout << "i >> " << i << endl;
+		cout << cloud_normals->points[i].getNormalVector3fMap() << endl;
+	}*/
 
 	return cloud_normals;
 }
