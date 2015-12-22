@@ -41,6 +41,11 @@ typedef struct AttitudeAngle{
 	double pitch;
 }AttitudeAngle3d;
 
+typedef struct ControlParam{
+	double velocity;
+	double yaw;
+}ControlParamd;
+
 /* グローバル変数 */
 //画像関係
 extern Mat image; //!<RGB画像格納用の変数

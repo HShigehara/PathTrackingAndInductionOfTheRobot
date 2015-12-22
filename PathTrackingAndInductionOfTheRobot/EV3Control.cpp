@@ -19,6 +19,15 @@ EV3Control::EV3Control()
 	current = { 0 };
 	before = { 0 };
 	flag_velocity = false; //1フレーム目のときは処理をしないようにするためのフラグ(c85)
+
+	current_average = { 0 };
+	before1_average = { 0 };
+	before2_average = { 0 };
+	before3_average = { 0 };
+	before4_average = { 0 };
+	before5_average = { 0 };
+	count_average = 0;
+	flag_average = false;
 }
 
 /*!
@@ -76,5 +85,76 @@ void EV3Control::getVelocity()
 	}
 
 	cout << "Velocity => " << velocity/1000 << "[mm/frame]" << endl;
+	return;
+}
+
+void EV3Control::getAverageVelocityAndYaw()
+{
+	//最初の5フレームはデータを保存するだけ
+	if (flag_average == false){ //5フレームの間の処理
+		if (count_average == 0){
+			cout << "1フレーム目なので保存" << endl;
+			before5_average.velocity = velocity;
+			before5_average.yaw = ev3_6dof.yaw;
+			//current_average.velocity = before5_average.velocity;
+			//current_average.yaw = before5_average.yaw;
+			count_average++;
+		}
+		else if (count_average == 1){
+			cout << "2フレーム目なので保存" << endl;
+			before4_average.velocity = velocity;
+			before4_average.yaw = ev3_6dof.yaw;
+			//current_average.velocity = (before5_average.velocity+before4_average.velocity)/2;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw)/2;
+			
+			count_average++;
+		}
+		else if (count_average == 2){
+			cout << "3フレーム目なので保存" << endl;
+			before3_average.velocity = velocity;
+			before3_average.yaw = ev3_6dof.yaw;
+			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity)/3;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw)/3;
+			count_average++;
+		}
+		else if (count_average == 3){
+			cout << "4フレーム目なので保存" << endl;
+			before2_average.velocity = velocity;
+			before2_average.yaw = ev3_6dof.yaw;
+			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity+before2_average.velocity)/4;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw)/4;
+			count_average++;
+			//flag_average = true;
+		}
+		else if (count_average == 4){
+			cout << "5フレーム目なので保存" << endl;
+			before1_average.velocity = velocity;
+			before1_average.yaw = ev3_6dof.yaw;
+			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity+before2_average.velocity)/4;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw)/4;
+			count_average++;
+			flag_average = true;
+		}
+	}
+	else{
+
+		//現在の速度の平均を計算し，1フレームずつ後ろにずらす
+		current_average.velocity = ((before1_average.velocity*1000000000 + before2_average.velocity*1000000000 + before3_average.velocity*1000000000 + before4_average.velocity*1000000000 + before5_average.velocity*1000000000) / 5)/1000000000;
+		before1_average.velocity = current_average.velocity;
+		before2_average.velocity = before1_average.velocity;
+		before3_average.velocity = before2_average.velocity;
+		before4_average.velocity = before3_average.velocity;
+		before5_average.velocity = before4_average.velocity;
+
+		//現在のよ～角の平均を計算し，1フレームずつ後ろにずらす
+		current_average.yaw = ((before1_average.yaw*1000000000 + before2_average.yaw*1000000000 + before3_average.yaw*1000000000 + before4_average.yaw*1000000000 + before5_average.yaw*1000000000) / 5)/1000000000;
+		before1_average.yaw = current_average.yaw;
+		before2_average.yaw = before1_average.yaw;
+		before3_average.yaw = before2_average.yaw;
+		before4_average.yaw = before3_average.yaw;
+		before5_average.yaw = before4_average.yaw;
+
+		cout << "[ " << current_average.velocity << " , " << current_average.yaw << " ]" << endl;
+	}
 	return;
 }

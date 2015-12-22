@@ -32,6 +32,17 @@ public:
 	DoF6d current; //現フレームの情報
 	double velocity; //!<速度(c85)
 	bool flag_velocity; //最初の1フレームのためのフラグ
+
+	void getAverageVelocityAndYaw();
+	ControlParamd current_average;
+	ControlParamd before1_average;
+	ControlParamd before2_average;
+	ControlParamd before3_average;
+	ControlParamd before4_average;
+	ControlParamd before5_average;
+	
+	int count_average;
+	bool flag_average;
 };
 /* インクルードガードの終了 */
 #endif /* __EV3CONTROL_HPP__ */

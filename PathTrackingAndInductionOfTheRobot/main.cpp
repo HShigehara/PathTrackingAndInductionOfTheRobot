@@ -206,6 +206,7 @@ int main()
 
 			//EV3の速度を計算(c85)
 			ev3control.getVelocity();
+			ev3control.getAverageVelocityAndYaw();
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
@@ -254,7 +255,7 @@ int main()
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");
 			pointcloudlibrary.visualizer->removeShape("sphere");
 			//pointcloudlibrary.visualizer->removeAllPointClouds();
-			system("cls"); //コンソール内の表示をリセット(c64)
+			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 
 		//計測が終了したところ(PCL上, OpenCVウインドウ上, コンソール上で'q'が押されてたとき)
