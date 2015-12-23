@@ -348,7 +348,7 @@ VideoWriter System::outputVideo(const string* outputVideoName)
  * @brief メソッドSystem::saveDataEveryEnterKey()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する．
  * @param cv::Mat& current_image, cv::Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
  */
-void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
+void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
 	//その都度保存するためのディレクトリを作成(c82)
 	char filepath_output[NOC];
@@ -380,7 +380,7 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof
 	char filepath_dof6[NOC];
 	sprintf_s(filepath_dof6, "data/%s/%d/dof6-%02d.dat", directoryName, save_count, save_count);
 	fopen_s(&dof6_fp, filepath_dof6, "w");
-	fprintf_s(dof6_fp, "%f %f %f %f %f %f %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
+	fprintf_s(dof6_fp, "%d %d %d %d %d %d %d\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
 	fclose(dof6_fp);
 
 	//6DoF情報を続けて保存する
@@ -391,7 +391,7 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof
 	if (save_flag == false){
 		fprintf(dof6_fp, "x,y,z,Yaw,Roll,Pitch,Data Size,Frame Rate\n");
 	}
-	fprintf_s(dof6_fp, "%f,%f,%f,%f,%f,%f,%d,%f\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size(),fps);
+	fprintf_s(dof6_fp, "%d,%d,%d,%d,%d,%d,%d,%f\n", dof6.x, dof6.y, dof6.z, dof6.yaw, dof6.roll, dof6.pitch, inputPointCloud->size(),fps);
 	fclose(dof6con_fp);
 
 	//PointCloudを保存する
@@ -414,15 +414,22 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6d dof
  * @brief メソッドSystem::saveDataContinuously()．pキーが入力されたら，平均座標を出力(c82)
  * @@param DoF6d centroid
  */
-void System::saveDataContinuously(DoF6d centroid)
+void System::saveDataContinuously(DoF6i centroid, ControlParamd current)
 {
 	//保存用のファイル作成
 	FILE *ev3route;
 	char filepath_ev3route[NOC];
 	sprintf_s(filepath_ev3route, "data/%s/ev3route.dat", directoryName);
 	fopen_s(&ev3route, filepath_ev3route, "a"); //ファイルオープン
-	fprintf_s(ev3route, "%f %f %f\n", centroid.x, centroid.y, centroid.z); //データをファイルに書き込む
-
+	fprintf_s(ev3route, "%d %d %d\n", centroid.x, centroid.y, centroid.z); //データをファイルに書き込む
 	fclose(ev3route);
+
+	FILE *test;
+	char filepath[NOC];
+	sprintf_s(filepath, "data/%s/time-averagevandyaw.dat", directoryName);
+	fopen_s(&test, filepath, "a");
+	fprintf_s(test, "%f %f %f\n", sum_time, current.velocity, current.yaw);
+	fclose(test);
+
 	return;
 }

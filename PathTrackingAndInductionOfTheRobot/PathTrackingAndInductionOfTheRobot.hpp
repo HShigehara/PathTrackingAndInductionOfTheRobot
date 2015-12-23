@@ -26,7 +26,7 @@ typedef struct outputData{ //ファイルに出力するデータ群(c41)
 }outputData;
 
 //姿勢構造体の定義(c78)
-typedef struct DoF{
+typedef struct DoF6d{
 	double x; //x座標
 	double y; //y座標
 	double z; //z座標
@@ -35,13 +35,22 @@ typedef struct DoF{
 	double pitch; //x軸回転
 }DoF6d;
 
+typedef struct DoF6i{
+	int x;
+	int y;
+	int z;
+	int yaw;
+	int roll;
+	int pitch;
+}DoF6i;
+
 typedef struct AttitudeAngle{
 	double yaw;
 	double roll;
 	double pitch;
 }AttitudeAngle3d;
 
-typedef struct ControlParam{
+typedef struct ControlParamd{
 	double velocity;
 	double yaw;
 }ControlParamd;
@@ -63,5 +72,6 @@ extern void onMouse(int event, int x, int y, int, void*); //!<マウス操作
 /* 同一複数データ保存用(c82) */
 extern int save_count;
 
+extern double sum_time;
 /* インクルードガードの終了 */
 #endif /* __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__ */

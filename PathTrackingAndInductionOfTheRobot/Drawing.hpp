@@ -37,6 +37,9 @@ public:
 
 	void gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
 	
+	void gnuplotScriptTime2V();
+	void gnuplotScriptTime2Yaw();
+
 	void gnuplotScriptEV3Route();
 };
 

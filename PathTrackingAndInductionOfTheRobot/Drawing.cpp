@@ -330,3 +330,31 @@ void Drawing::gnuplotScriptEV3Route()
 
 	return;
 }
+
+void Drawing::gnuplotScriptTime2V()
+{
+	FILE *fp;
+	char filepath_splot_time2v[NOC];
+	sprintf_s(filepath_splot_time2v, "data/%s/plot_time-v.plt", directoryName);
+	fopen_s(&fp, filepath_splot_time2v, "w");
+
+	fprintf_s(fp, "set xlabel \"Time[ms]\"\n");
+	fprintf_s(fp, "set ylabel \"v[mm/frame]\"\n");
+	fprintf_s(fp, "plot \"time-averagevandyaw.dat\" u 1:2 with lp\n");
+
+	return;
+}
+
+void Drawing::gnuplotScriptTime2Yaw()
+{
+	FILE *fp;
+	char filepath_splot_time2yaw[NOC];
+	sprintf_s(filepath_splot_time2yaw, "data/%s/plot_time-yaw.plt", directoryName);
+	fopen_s(&fp, filepath_splot_time2yaw, "w");
+
+	fprintf_s(fp, "set xlabel \"Time[ms]\"\n");
+	fprintf_s(fp, "set ylabel \"Yaw[deg]\"\n");
+	fprintf_s(fp, "plot \"time-averagevandyaw.dat\" u 1:3 with lp\n");
+
+	return;
+}

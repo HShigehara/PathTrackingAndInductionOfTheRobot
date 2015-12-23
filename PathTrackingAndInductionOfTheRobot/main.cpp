@@ -31,6 +31,8 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
 
 int save_count = 0; //同一複数データ保存用(c82)
 
+double sum_time; //処理時間の合計を計算する変数(c85)
+
 /*!
  * @brief 関数main()
  * @param なし
@@ -68,6 +70,7 @@ int main()
 
 	//CloudVisualizermの初期設定(c83)
 
+	sum_time = 0.0;
 
 	//メインの処理
 	try{
@@ -144,8 +147,8 @@ int main()
 			createTrackbar("Closing Times Level(0-10)", param_windowname, &imgproc.closing_times, 10);
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image/*, imgproc.th, imgproc.med, imgproc.cnt*/);
 			//ユニット部だけ切り取る(c77)
-			//bin_image = imgproc.getUnitMask(bin_image);
-			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
+			bin_image = imgproc.getUnitMask(bin_image);
+			imgproc.showImage(/*maskbinimage_windowname*/"修正後マスク画像", bin_image); //確認用に切り取った画像を表示する
 			
 			//ポイントクラウドの取得(c57)
 			cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
@@ -189,6 +192,12 @@ int main()
 
 			//6DoFを設定
 			pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(cloud); //重心座標の計算
+			//平均座標のポイントクラウドを作成(c83)
+			pcl::PointXYZ sphere;
+			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
+			sphere.y = pointcloudlibrary.centroid.y; //平均座標のy座標
+			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
+
 			coefficient_plane = lsm.getCoefficient(cloud); //最小二乗法を行い平面の係数[a b c]'を取得する(c78)
 			attitude_angle = lsm.calcYawRollPitch(coefficient_plane); //姿勢角を取得(c78)
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude_angle); //6DoFをまとめる
@@ -196,24 +205,13 @@ int main()
 			//法線を計算(c84)
 			//cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud); //法線を計算(c84)
 
-			//平均座標のポイントクラウドを作成(c83)
-			pcl::PointXYZ sphere;
-			sphere.x = pointcloudlibrary.centroid.x; //平均座標のx座標
-			sphere.y = pointcloudlibrary.centroid.y; //平均座標のy座標
-			sphere.z = pointcloudlibrary.centroid.z; //平均座標のz座標
 			cout << "==========================================================================================" << endl;
 
 
-			//EV3の速度を計算(c85)
-			ev3control.getVelocity();
-			ev3control.getAverageVelocityAndYaw();
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
 
-			//PCLのフレームレートを計算する用(c61)
-			sys.endTimer(); //タイマーを終了(c65)
-			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 
 			//キーが入力されていれば以下を実行する．GetAsyncKeyStateを利用することで
 			if (GetAsyncKeyState('R')){
@@ -238,10 +236,7 @@ int main()
 				saveev3route_flag = true; //フラグをtrueにする
 			}
 
-			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
-			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
-				sys.saveDataContinuously(ev3control.ev3_6dof);
-			}
+
 
 			//Kinectから取得した点群を描画
 			//pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
@@ -255,6 +250,25 @@ int main()
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");
 			pointcloudlibrary.visualizer->removeShape("sphere");
 			//pointcloudlibrary.visualizer->removeAllPointClouds();
+
+
+			//EV3の速度を計算(c85)
+			ev3control.getVelocity();
+			
+			ControlParamd current;
+			current = ev3control.getAverageVelocityAndYaw();
+
+			//PCLのフレームレートを計算する用(c61)
+			sys.endTimer(); //タイマーを終了(c65)
+			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
+
+			sum_time = sum_time + sys.getProcessTimeinMiliseconds();
+
+
+			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
+			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
+				sys.saveDataContinuously(ev3control.ev3_6dof, current);
+			}
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
 
@@ -264,6 +278,8 @@ int main()
 		pointcloudlibrary.visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
 			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
+			draw.gnuplotScriptTime2V();
+			draw.gnuplotScriptTime2Yaw();
 		}
 
 		//データを保存するかの確認

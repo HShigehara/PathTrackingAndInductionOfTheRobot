@@ -49,12 +49,12 @@ void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCl
 	//sprintf_s(filepath_measuredata, "data/%s/measuredata.dat", directoryName);
 	//fopen_s(&fp, filepath_measuredata, "w");
 
-	ev3_6dof.x = centroid.x;
-	ev3_6dof.y = centroid.y;
-	ev3_6dof.z = centroid.z;
-	ev3_6dof.yaw = attitude_angle.yaw;
-	ev3_6dof.roll = attitude_angle.roll;
-	ev3_6dof.pitch = attitude_angle.pitch;
+	ev3_6dof.x = round(centroid.x);
+	ev3_6dof.y = round(centroid.y);
+	ev3_6dof.z = round(centroid.z);
+	ev3_6dof.yaw = round(attitude_angle.yaw);
+	ev3_6dof.roll = round(attitude_angle.roll);
+	ev3_6dof.pitch = round(attitude_angle.pitch);
 	cout << "[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]" << endl;
 	cout << "[ " << ev3_6dof.x << ", " << ev3_6dof.y << ", " << ev3_6dof.z << ", " << ev3_6dof.yaw << ", " << ev3_6dof.roll << ", " << ev3_6dof.pitch << ", " << inputPointCloud->size() << " ]" << endl;
 
@@ -76,7 +76,7 @@ void EV3Control::getVelocity()
 		flag_velocity = true; //フラグをtrueにする
 	}
 	else{ //2フレーム目以降の処理
-		cout << "c_x " << current.x*1000 << ", c_z " << current.z*1000 << ", b_x " << before.x*1000 << ", b_z " << before.z*1000 << endl;
+		cout << "c_x " << current.x << ", c_z " << current.z << ", b_x " << before.x << ", b_z " << before.z << endl;
 		current.x = ev3_6dof.x; //現在のxの値を格納
 		current.z = ev3_6dof.z; //現在のzの値を格納
 		velocity = sqrt(pow((current.x-before.x),2)+pow((current.z-before.z),2));
@@ -84,11 +84,11 @@ void EV3Control::getVelocity()
 		before.z = current.z;
 	}
 
-	cout << "Velocity => " << velocity/1000 << "[mm/frame]" << endl;
+	cout << "Velocity => " << velocity << "[mm/frame]" << endl;
 	return;
 }
 
-void EV3Control::getAverageVelocityAndYaw()
+ControlParamd EV3Control::getAverageVelocityAndYaw()
 {
 	//最初の5フレームはデータを保存するだけ
 	if (flag_average == false){ //5フレームの間の処理
@@ -122,7 +122,7 @@ void EV3Control::getAverageVelocityAndYaw()
 			before2_average.velocity = velocity;
 			before2_average.yaw = ev3_6dof.yaw;
 			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity+before2_average.velocity)/4;
-			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw)/4;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw+before2_average.yaw)/4;
 			count_average++;
 			//flag_average = true;
 		}
@@ -130,8 +130,9 @@ void EV3Control::getAverageVelocityAndYaw()
 			cout << "5フレーム目なので保存" << endl;
 			before1_average.velocity = velocity;
 			before1_average.yaw = ev3_6dof.yaw;
-			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity+before2_average.velocity)/4;
-			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw)/4;
+			//current_average.velocity = (before5_average.velocity+before4_average.velocity+before3_average.velocity+before2_average.velocity+before1_average.velocity)/5;
+			//current_average.yaw = (before5_average.yaw+before4_average.yaw+before3_average.yaw+before2_average.yaw+before1_average.yaw)/5;
+			
 			count_average++;
 			flag_average = true;
 		}
@@ -139,7 +140,7 @@ void EV3Control::getAverageVelocityAndYaw()
 	else{
 
 		//現在の速度の平均を計算し，1フレームずつ後ろにずらす
-		current_average.velocity = ((before1_average.velocity*1000000000 + before2_average.velocity*1000000000 + before3_average.velocity*1000000000 + before4_average.velocity*1000000000 + before5_average.velocity*1000000000) / 5)/1000000000;
+		current_average.velocity = (velocity + before1_average.velocity + before2_average.velocity + before3_average.velocity + before4_average.velocity + before5_average.velocity) / 6.0; //現在と過去5フレーム分の速度から現在の速度を計算
 		before1_average.velocity = current_average.velocity;
 		before2_average.velocity = before1_average.velocity;
 		before3_average.velocity = before2_average.velocity;
@@ -147,7 +148,7 @@ void EV3Control::getAverageVelocityAndYaw()
 		before5_average.velocity = before4_average.velocity;
 
 		//現在のよ～角の平均を計算し，1フレームずつ後ろにずらす
-		current_average.yaw = ((before1_average.yaw*1000000000 + before2_average.yaw*1000000000 + before3_average.yaw*1000000000 + before4_average.yaw*1000000000 + before5_average.yaw*1000000000) / 5)/1000000000;
+		current_average.yaw = (ev3_6dof.yaw + before1_average.yaw + before2_average.yaw + before3_average.yaw + before4_average.yaw + before5_average.yaw) / 6.0;
 		before1_average.yaw = current_average.yaw;
 		before2_average.yaw = before1_average.yaw;
 		before3_average.yaw = before2_average.yaw;
@@ -156,5 +157,5 @@ void EV3Control::getAverageVelocityAndYaw()
 
 		cout << "[ " << current_average.velocity << " , " << current_average.yaw << " ]" << endl;
 	}
-	return;
+	return current_average;
 }

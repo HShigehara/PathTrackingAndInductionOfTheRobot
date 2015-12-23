@@ -19,27 +19,27 @@
 class EV3Control
 {
 private:
+	ControlParamd before1_average;
+	ControlParamd before2_average;
+	ControlParamd before3_average;
+	ControlParamd before4_average;
+	ControlParamd before5_average;
 
 public:
 	EV3Control(); //!<コンストラクタ
 	~EV3Control(); //!<デストラクタ
 
 	void set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle); //!<最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する(c80)
-	DoF6d ev3_6dof; //!<EV3の6自由度(c80)
+	DoF6i ev3_6dof; //!<EV3の6自由度(c80)
 
 	void getVelocity(); //!<EV3の速度を計算する(c85)
-	DoF6d before; //前フレームの情報
-	DoF6d current; //現フレームの情報
+	DoF6i before; //前フレームの情報
+	DoF6i current; //現フレームの情報
 	double velocity; //!<速度(c85)
 	bool flag_velocity; //最初の1フレームのためのフラグ
 
-	void getAverageVelocityAndYaw();
+	ControlParamd getAverageVelocityAndYaw();
 	ControlParamd current_average;
-	ControlParamd before1_average;
-	ControlParamd before2_average;
-	ControlParamd before3_average;
-	ControlParamd before4_average;
-	ControlParamd before5_average;
 	
 	int count_average;
 	bool flag_average;
