@@ -72,15 +72,18 @@ void EV3Control::getVelocity()
 {
 	if (flag_velocity == false){ //1フレーム目の処理
 		before.x = ev3_6dof.x; //速度の計算に必要なx座標
+		before.y = ev3_6dof.y; //速度の計算に必要なy座標
 		before.z = ev3_6dof.z; //速度の計算に必要なz座標
 		flag_velocity = true; //フラグをtrueにする
 	}
 	else{ //2フレーム目以降の処理
-		cout << "c_x " << current.x << ", c_z " << current.z << ", b_x " << before.x << ", b_z " << before.z << endl;
+		//cout << "c_x " << current.x << ", c_z " << current.z << ", b_x " << before.x << ", b_z " << before.z << endl;
 		current.x = ev3_6dof.x; //現在のxの値を格納
+		current.y = ev3_6dof.y; //現在のyの値を格納
 		current.z = ev3_6dof.z; //現在のzの値を格納
-		velocity = sqrt(pow((current.x-before.x),2)+pow((current.z-before.z),2));
+		velocity = sqrt(pow((current.x-before.x),2)+pow((current.y-before.y),2)+pow((current.z-before.z),2));
 		before.x = current.x;
+		before.y = current.y;
 		before.z = current.z;
 	}
 
