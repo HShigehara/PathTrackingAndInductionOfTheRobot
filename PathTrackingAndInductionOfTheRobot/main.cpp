@@ -31,7 +31,6 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
 
 int save_count = 0; //同一複数データ保存用(c82)
 
-double sum_time; //処理時間の合計を計算する変数(c85)
 
 /*!
  * @brief 関数main()
@@ -52,6 +51,7 @@ int main()
 
 	//変数の宣言
 	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
+	double sum_time = 0.0; //処理時間の合計を計算する変数(c85)
 
 	//画像関係の変数
 	Mat flip_image; //確認用に反転した画像
@@ -70,7 +70,6 @@ int main()
 
 	//CloudVisualizermの初期設定(c83)
 
-	sum_time = 0.0;
 
 	//メインの処理
 	try{
@@ -211,8 +210,6 @@ int main()
 
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
-
-
 			//キーが入力されていれば以下を実行する．GetAsyncKeyStateを利用することで
 			if (GetAsyncKeyState('R')){
 				system("cls");
@@ -236,21 +233,16 @@ int main()
 				saveev3route_flag = true; //フラグをtrueにする
 			}
 
-
-
 			//Kinectから取得した点群を描画
 			//pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
 			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
 			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
-
 			//点群の表示
 			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
-
 			//PCLVisualizerに描画した点群を削除する
 			pointcloudlibrary.visualizer->removePointCloud("show cloud");
 			pointcloudlibrary.visualizer->removeShape("sphere");
 			//pointcloudlibrary.visualizer->removeAllPointClouds();
-
 
 			//EV3の速度を計算(c85)
 			ev3control.getVelocity();
@@ -264,10 +256,9 @@ int main()
 
 			sum_time = sum_time + sys.getProcessTimeinMiliseconds();
 
-
 			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
-				sys.saveDataContinuously(ev3control.ev3_6dof, current);
+				sys.saveDataContinuously(sum_time, ev3control.ev3_6dof, current);
 			}
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}

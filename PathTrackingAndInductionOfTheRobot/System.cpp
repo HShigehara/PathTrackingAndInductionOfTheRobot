@@ -414,7 +414,7 @@ void System::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof
  * @brief メソッドSystem::saveDataContinuously()．pキーが入力されたら，平均座標を出力(c82)
  * @@param DoF6d centroid
  */
-void System::saveDataContinuously(DoF6i centroid, ControlParamd current)
+void System::saveDataContinuously(double sum_time, DoF6i centroid, ControlParamd current)
 {
 	//保存用のファイル作成
 	FILE *ev3route;
@@ -424,12 +424,12 @@ void System::saveDataContinuously(DoF6i centroid, ControlParamd current)
 	fprintf_s(ev3route, "%d %d %d\n", centroid.x, centroid.y, centroid.z); //データをファイルに書き込む
 	fclose(ev3route);
 
-	FILE *test;
-	char filepath[NOC];
-	sprintf_s(filepath, "data/%s/time-averagevandyaw.dat", directoryName);
-	fopen_s(&test, filepath, "a");
-	fprintf_s(test, "%f %f %f\n", sum_time, current.velocity, current.yaw);
-	fclose(test);
+	FILE *time_averagevandyaw;
+	char filepath_timeaveragevandyaw[NOC];
+	sprintf_s(filepath_timeaveragevandyaw, "data/%s/time-averagevandyaw.dat", directoryName);
+	fopen_s(&time_averagevandyaw, filepath_timeaveragevandyaw, "a");
+	fprintf_s(time_averagevandyaw, "%f %f %f\n", sum_time, current.velocity, current.yaw);
+	fclose(time_averagevandyaw);
 
 	return;
 }

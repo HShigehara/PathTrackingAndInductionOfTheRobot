@@ -61,7 +61,7 @@ public:
 	void saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
 	bool save_flag; //!<6DoF情報を出力するフラグ
 
-	void saveDataContinuously(DoF6i centroid, ControlParamd current); //平均座標を連続で保存する
+	void saveDataContinuously(double sum_time, DoF6i centroid, ControlParamd current); //平均座標を連続で保存する
 };
 
 #endif /* __SYSTEM_HPP__ */

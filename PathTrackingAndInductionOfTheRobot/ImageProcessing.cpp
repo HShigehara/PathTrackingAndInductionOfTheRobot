@@ -220,10 +220,10 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	}*/
 	//imwrite("before_cut.jpg", input_binimage);
 	//上限と下限からカットするボーダーを決定する
-	y_border = (y_max + y_min) * /*0.45*/0.5; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
+	y_border = (y_max + y_min) * 0.47; //影の影響でy_maxが増えるため少し大きめに設定するのが良い 
 	//下部を白にする
 	int step;
-	step = 15;
+	step = 10;
 	for (int y = y_min; y < y_min + step; y++){
 		for (int x = 0; x < input_binimage.cols; x++){
 			if (input_binimage.at<unsigned char>(y, x) == 255){

@@ -92,6 +92,7 @@
     <ClCompile Include="LeastSquareMethod.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="OutputDatafile.cpp" />
     <ClCompile Include="PointCloudLibrary.cpp" />
     <ClCompile Include="Drawing.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -102,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EV3Control.hpp" />
+    <ClInclude Include="OutputDatafile.hpp" />
     <ClInclude Include="PathTrackingAndInductionOfTheRobot.hpp" />
     <ClInclude Include="ImageProcessing.hpp" />
     <ClInclude Include="Kinect.hpp" />
