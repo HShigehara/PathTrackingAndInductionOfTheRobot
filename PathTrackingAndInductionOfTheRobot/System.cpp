@@ -297,35 +297,6 @@ void System::openDirectory()
 }
 
 /*!
-* @brief System::outputData().データをファイルに書き出すメソッド(c41)
-* @param outputDataName, outputData, countDataNum
-*/
-void System::outputAllData(const string* outputDataName, outputData* outputData, int countDataNum)
-{
-	//ファイルポインタ
-	FILE *extractedCoordinate; //!<抽出した座標の距離(c7)
-	extractedCoordinate = NULL; //!<ファイルポインタの初期化(c7)
-
-	//(X,Y,Z)データ格納用のファイル
-	char outputDataPath[NOC]; //!<データファイル出力の際のパス(c37)
-	
-	sprintf_s(outputDataPath, "%s/%s", directoryName, outputDataName); //(c7)
-	fopen_s(&extractedCoordinate, outputDataPath, "w"); //(c7)
-	if (outputDataPath == NULL){ //ファイルオープンエラー処理(c40)
-		cerr << outputDataPath << " is Not Opened.";
-		exit(1);
-	}
-
-	//ファイルに出力する処理(c42)
-	for (int i = 2; i < countDataNum - 15; i++){ //最初と最後のいくつかのデータをファイルに出力しない(c41)
-		fprintf_s(extractedCoordinate, "%f %f %f %f\n", outputData[i].totalTime, outputData[i].x, outputData[i].y, outputData[i].z);
-	}
-	fclose(extractedCoordinate); //(c8)
-
-	return;
-}
-
-/*!
 * @brief System::outputVideo().動作確認用に動画を出力するメソッド
 * @param cameraParamFile
 * @return VideoWriter writer
@@ -342,6 +313,3 @@ VideoWriter System::outputVideo(const string* outputVideoName)
 	}
 	return (writer);
 }
-
-
-

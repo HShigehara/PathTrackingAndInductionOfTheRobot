@@ -17,18 +17,13 @@
 class System
 {
 private:
-	char fullPathName[NOC]; //!<フルパスを取得(c38)
-	
 	//タイマー系の変数(c65)
 	bool FlagStartTimer; //!<スタート用のタイマーが実行されたかのフラグ.初期値はfalse(c65)
 	bool FlagEndTimer; //!<終了用のタイマーが実行されたかのフラグ.諸お基地はfalse(c65) 
 	int64 start; //スタート時のタイマー変数
 	double f;
 	int64 end; //終了時のタイマー変数
-	double time; //!<処理時間の結果
 	//double sumTime; //!<処理の合計時間
-
-	//int save_count; //!<カウントダウンタイマー用の変数(c75)
 
 public:
 	System(); //!<コンストラクタ
@@ -44,6 +39,8 @@ public:
 	void endTimer(); //!<タイマーを終了(c65)
 	double getProcessTimeinMiliseconds(); //!<計測した時間をミリ秒単位で取得.startTimer()とendTimer()が実行されていることが前提(c65)
 	double getFrameRate(); //!<フレームレートを取得.startTimer()とendTimer()が実行されていることが前提(c65)
+	double time; //!<処理時間の結果
+	double fps; //!<フレームレート
 
 	void checkDirectory(const char* check_dirname); //!<引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81)
 	void makeDirectory(); //ディレクトリの作成
@@ -53,12 +50,9 @@ public:
 	
 	void openDirectory(); //!<ディレクトリを開く(c38)
 	
-	void outputAllData(const string* outputDataName, outputData* outputData, int countDataNum); //!<データをファイルに書き出すメソッド(c41)
-	
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
 
 
-	double fps; //!<フレームレート
 };
 
 #endif /* __SYSTEM_HPP__ */
