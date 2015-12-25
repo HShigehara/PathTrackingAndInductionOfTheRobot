@@ -24,6 +24,11 @@ private:
 public:
 	OutputDatafile(); //!<コンストラクタ
 	~OutputDatafile(); //!<デストラクタ
+
+
+	void saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, double fps);
+	bool save_flag; //!<6DoF情報を出力するフラグ
+	void saveDataContinuously(double sum_time, DoF6i centroid, ControlParamd current); //平均座標を連続で保存する
 };
 
 /* インクルードガードの終了 */

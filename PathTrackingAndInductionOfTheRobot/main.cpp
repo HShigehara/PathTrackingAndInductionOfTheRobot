@@ -15,6 +15,7 @@
 #include "LeastSquareMethod.hpp" //(c49)
 #include "PointCloudLibrary.hpp" //ポイントクラウド処理のヘッダを追加(c57)
 #include "EV3Control.hpp" //EV3を制御するようのクラスを作成(c80)
+#include "OutputDatafile.hpp" //データをファイルに出力するためのクラス(c86)
 
 /* グローバル変数 */
 //画像データ
@@ -48,6 +49,7 @@ int main()
 	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
 	PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
 	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
+	OutputDatafile outputdatafile; //!<データをファイルに出力する(c86)
 
 	//変数の宣言
 	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
@@ -67,9 +69,6 @@ int main()
 	//EV3ユニットの平面の係数(c78)
 	Eigen::Vector3f coefficient_plane; //平面の係数
 	AttitudeAngle3d attitude_angle; //姿勢角(c78)
-
-	//CloudVisualizermの初期設定(c83)
-
 
 	//メインの処理
 	try{
@@ -224,9 +223,9 @@ int main()
 			}
 			else if (GetAsyncKeyState('P')){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
 				cout << "Save the Current Data." << endl;
-				sys.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud);
+				outputdatafile.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud, sys.fps);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
-				sys.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
+				outputdatafile.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
 				save_count++;
 			}
 			else if (GetAsyncKeyState('L')){ //'l'が入力されたら．EV3軌道が欲しい時に入力する
@@ -258,7 +257,7 @@ int main()
 
 			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
-				sys.saveDataContinuously(sum_time, ev3control.ev3_6dof, current);
+				 outputdatafile.saveDataContinuously(sum_time, ev3control.ev3_6dof, current);
 			}
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
@@ -274,7 +273,7 @@ int main()
 		}
 
 		//データを保存するかの確認
-		if (saveev3route_flag == true || sys.save_flag == true){ //データを保存するフラグがtrue(=データが保存されている)なら保存するかどうか確認する
+		if (saveev3route_flag == true || outputdatafile.save_flag == true){ //データを保存するフラグがtrue(=データが保存されている)なら保存するかどうか確認する
 			cout << "Save Data?" << endl;
 			int checkNum = sys.alternatives(); //'1'なら保存，'0'なら削除
 			if (checkNum == 1){

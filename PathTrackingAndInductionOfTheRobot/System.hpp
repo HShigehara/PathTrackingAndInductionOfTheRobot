@@ -26,7 +26,6 @@ private:
 	double f;
 	int64 end; //終了時のタイマー変数
 	double time; //!<処理時間の結果
-	double fps; //!<フレームレート
 	//double sumTime; //!<処理の合計時間
 
 	//int save_count; //!<カウントダウンタイマー用の変数(c75)
@@ -58,10 +57,8 @@ public:
 	
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
 
-	void saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud);
-	bool save_flag; //!<6DoF情報を出力するフラグ
 
-	void saveDataContinuously(double sum_time, DoF6i centroid, ControlParamd current); //平均座標を連続で保存する
+	double fps; //!<フレームレート
 };
 
 #endif /* __SYSTEM_HPP__ */
