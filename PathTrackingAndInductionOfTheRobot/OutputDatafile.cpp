@@ -112,7 +112,7 @@ void OutputDatafile::saveDataContinuously(double sum_time, DoF6i centroid, Contr
 	char filepath_timeaveragevandyaw[NOC];
 	sprintf_s(filepath_timeaveragevandyaw, "data/%s/time-averagevandyaw.dat", directoryName);
 	fopen_s(&time_averagevandyaw, filepath_timeaveragevandyaw, "a");
-	fprintf_s(time_averagevandyaw, "%f %f %f\n", sum_time, current.velocity, current.yaw);
+	fprintf_s(time_averagevandyaw, "%f %f %f\n", sum_time/1000.0, current.velocity, current.yaw);
 	fclose(time_averagevandyaw);
 
 	return;

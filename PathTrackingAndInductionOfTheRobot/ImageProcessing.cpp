@@ -197,7 +197,7 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 			}
 		}
 	}
-	cout << "x_min => " << x_min << ", x_max => " << x_max << ", y_min => " << y_min << ", y_max => " << y_max << endl;
+	//cout << "x_min => " << x_min << ", x_max => " << x_max << ", y_min => " << y_min << ", y_max => " << y_max << endl;
 
 	//x方向の切り取り
 	x_border1 = (x_min + x_max) * /*0.18*/0.17;

@@ -145,7 +145,7 @@ int main()
 			createTrackbar("Closing Times Level(0-10)", param_windowname, &imgproc.closing_times, 10);
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image/*, imgproc.th, imgproc.med, imgproc.cnt*/);
 			//ユニット部だけ切り取る(c77)
-			bin_image = imgproc.getUnitMask(bin_image);
+			//bin_image = imgproc.getUnitMask(bin_image);
 			imgproc.showImage(/*maskbinimage_windowname*/"修正後マスク画像", bin_image); //確認用に切り取った画像を表示する
 			
 			//ポイントクラウドの取得(c57)
@@ -222,9 +222,9 @@ int main()
 				goto RETRY;
 			}
 			else if (GetAsyncKeyState('P')){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
-				cout << "Save the Current Data." << endl;
 				outputdatafile.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud, sys.fps);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
+				cout << "Save the Current Data." << endl;
 				outputdatafile.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
 				save_count++;
 			}
@@ -244,7 +244,7 @@ int main()
 			//pointcloudlibrary.visualizer->removeAllPointClouds();
 
 			//EV3の速度を計算(c85)
-			ev3control.getVelocity();
+			ev3control.getVelocity(); //速度を計算
 			
 			ControlParamd current;
 			current = ev3control.getAverageVelocityAndYaw();

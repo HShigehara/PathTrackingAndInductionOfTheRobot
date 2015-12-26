@@ -70,10 +70,6 @@ using namespace cv; //!<名前空間
 #include <pcl\registration\icp.h>
 #include <pcl\PCLPointField.h>
 
-//#include "PCLAdapter.h"
-
-
-
 /* 定義 */
 //マクロ
 #define WIDTH 640 //!<画像の幅
@@ -81,6 +77,3 @@ using namespace cv; //!<名前空間
 #define ALLPIXEL WIDTH*HEIGHT //!<1フレームの全ピクセル数
 #define NOC 64 //!<Number of Characters．(ファイルの名前を付けるときの文字数制限)
 #define OUTPUTDATA_MAX 10000 //!<出力するデータの上限
-
-
-// TODO: プログラムに必要な追加ヘッダーをここで参照してください。
