@@ -30,17 +30,13 @@ private:
 public:
 	Drawing(); //!<コンストラクタ
 	~Drawing(); //!<デストラクタ
-	void plot3D(const string* outputDataName); //!<3D座標ファイルをプロットするメソッド
-	void gnuplotScript(const string* dataFileName); //
-	void plot3DRealTime(int countDataNum, outputData outputData[OUTPUTDATA_MAX]); //リアルタイムでgnuplotに出力(c43)
-	void gnuplotScriptCoG(const string* cogFileName); //!<球の重心座標をプロットするメソッド(c52)
 
-	void gnuplotScriptEV3Unit(char* original_dirpath, char* output_filename, Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
-	
-	void gnuplotScriptTime2V();
-	void gnuplotScriptTime2Yaw();
+	void gnuplotScriptEV3(int save_count, char* original_dirpath, char* output_filename, Eigen::Vector3f coefficient_plane); //!<EV3の点群をプロットするためのスクリプト(c78)
+	void gnuplotScriptEV3Route(char* original_dirpath, char* output_filename); //!<EV3の軌道をプロットするためのスクリプト
 
-	void gnuplotScriptEV3Route();
+	void gnuplotScriptTime2V(); //!<時間と速度のプロット
+	void gnuplotScriptTime2Yaw(); //!<時間とヨー角のプロット
+
 };
 
 /* インクルードガードの終了 */

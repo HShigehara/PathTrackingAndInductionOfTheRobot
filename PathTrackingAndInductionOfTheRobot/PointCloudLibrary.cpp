@@ -383,7 +383,10 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 	return cloud_normals;
 }
 
-void PointCloudLibrary::outputPointCloud(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
+/*!
+ * @brief メソッドPointCloudLibrary::outputPointCloud()．時間と速度のプロット
+ */
+void PointCloudLibrary::outputPointCloud(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {
 	FILE *point_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
 	char output_filepath[NOC];
@@ -397,7 +400,10 @@ void PointCloudLibrary::outputPointCloud(char* original_dirpath, char* output_fi
 	return;
 }
 
-void PointCloudLibrary::outputPointCloudPLY(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
+/*!
+ * @brief メソッドPointCloudLibrary::outputPointCloudPLY()．時間とヨー角のプロット
+ */
+void PointCloudLibrary::outputPointCloudPLY(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {
 	//PointCloudを保存する
 	char filepath_pointcloud[NOC];

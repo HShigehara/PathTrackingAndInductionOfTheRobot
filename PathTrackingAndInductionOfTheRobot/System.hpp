@@ -23,7 +23,6 @@ private:
 	int64 start; //スタート時のタイマー変数
 	double f;
 	int64 end; //終了時のタイマー変数
-	//double sumTime; //!<処理の合計時間
 
 public:
 	System(); //!<コンストラクタ
@@ -41,6 +40,8 @@ public:
 	double getFrameRate(); //!<フレームレートを取得.startTimer()とendTimer()が実行されていることが前提(c65)
 	double time; //!<処理時間の結果
 	double fps; //!<フレームレート
+	double sum_time; //!<処理の合計時間
+
 
 	void checkDirectory(const char* check_dirname); //!<引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81)
 	void makeDirectoryBasedDate(); //ディレクトリの作成
@@ -52,8 +53,6 @@ public:
 	void openDirectory(); //!<ディレクトリを開く(c38)
 	
 	VideoWriter outputVideo(const string* outputVideoName); //!<動画を出力する
-
-
 };
 
 #endif /* __SYSTEM_HPP__ */

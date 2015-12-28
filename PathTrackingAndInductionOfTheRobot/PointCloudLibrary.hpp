@@ -62,8 +62,8 @@ public:
 	bool mls_flag;
 	bool extractplane_flag;
 
-	void outputPointCloud(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
-	void outputPointCloudPLY(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
+	void outputPointCloud(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
+	void outputPointCloudPLY(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
 };
 
 /* インクルードガードの終了 */

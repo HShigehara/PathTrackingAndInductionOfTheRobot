@@ -18,6 +18,8 @@ System::System()
 	FlagStartTimer = false; //スタート用のタイマーが実行されたかのフラグを初期化(c65)
 	FlagEndTimer = false; //終了用のタイマーが実行されたかのフラグを初期化(c65)
 	time = 0.0; //時間計測用の変数を初期化(c65)
+	fps = 0.0; //フレームレートの初期化
+	sum_time = 0.0; //処理の合計時間の初期化
 	//save_count = 0; //保存用カウント用の変数を初期化(c82)
 }
 

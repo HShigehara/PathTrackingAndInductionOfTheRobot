@@ -29,9 +29,6 @@ Point origin; //!<オリジナルの座標
 Rect selection; //!<選択
 void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操作
 
-int save_count = 0; //同一複数データ保存用(c82)
-
-
 /*!
  * @brief 関数main()
  * @param なし
@@ -51,7 +48,7 @@ int main()
 
 	//変数の宣言
 	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
-	double sum_time = 0.0; //処理時間の合計を計算する変数(c85)
+	int save_count = 0;
 
 	//画像関係の変数
 	Mat flip_image; //確認用に反転した画像
@@ -226,13 +223,13 @@ int main()
 				sys.makeDirectory(base_dirname, save_count);
 				char output_basedirpath[NOC]; //その時ごとの保存先のパスを作成する
 				sprintf_s(output_basedirpath, "%s/%02d", base_dirname, save_count);
-				imgproc.outputImageSelectDirectory(output_basedirpath, "current-image", current_image); //現在の画像を出力
-				imgproc.outputImageSelectDirectory(output_basedirpath, "mask-image", bin_image); //作成したマスク画像を保存
-				pointcloudlibrary.outputPointCloud(output_basedirpath, "pointcloud", cloud); //現在の点群を出力
-				ev3control.output6DoF(output_basedirpath, "6dof", cloud);
+				imgproc.outputImageSelectDirectory(save_count, output_basedirpath, "current-image", current_image); //現在の画像を出力
+				imgproc.outputImageSelectDirectory(save_count, output_basedirpath, "mask-image", bin_image); //作成したマスク画像を保存
+				pointcloudlibrary.outputPointCloud(save_count, output_basedirpath, "pointcloud", cloud); //現在の点群を出力
+				ev3control.output6DoF(save_count, output_basedirpath, "6dof", cloud);
 				ev3control.output6DoFContinuous(base_dirname, "6dof_continuous", cloud);
-				pointcloudlibrary.outputPointCloudPLY(output_basedirpath, "pointcloud", cloud);
-				draw.gnuplotScriptEV3Unit(output_basedirpath, "splot_ev3", coefficient_plane); //gnuplot用のスクリプト
+				pointcloudlibrary.outputPointCloudPLY(save_count, output_basedirpath, "pointcloud", cloud);
+				draw.gnuplotScriptEV3(save_count, output_basedirpath, "splot_ev3", coefficient_plane); //gnuplot用のスクリプト
 				cout << "Save the Current Data." << endl;
 				ev3control.save_flag = true; //6DoF情報を出力するフラグをオンにする(c82)
 				save_count++;
@@ -253,19 +250,18 @@ int main()
 
 			//EV3の速度を計算(c85)
 			ev3control.getVelocity(); //速度を計算
-			ev3control.getAverageVelocityAndYaw();
 
 			//PCLのフレームレートを計算する用(c61)
 			sys.endTimer(); //タイマーを終了(c65)
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
-
-			sum_time = sum_time + sys.getProcessTimeinMiliseconds();
+			sys.sum_time = sys.sum_time + sys.getProcessTimeinMiliseconds();
 
 			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
 			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
-				 //outputdatafile.saveDataContinuously(sum_time, ev3control.ev3_6dof, current);
-				ev3control.outputEV3RouteContinuous(base_dirname, "ev3route");
-				ev3control.outputControlInformation(sum_time, base_dirname, "time-averagevandyaw");
+				 //outputdatafile.saveDataContinuously(sys.sum_time, ev3control.ev3_6dof, current);
+				ev3control.getAverageVelocityAndYaw(); //平均速度とヨー角を計算する
+				ev3control.outputEV3RouteContinuous(base_dirname, "ev3route"); //EV3の軌道をファイルに出力
+				ev3control.outputControlInformation(sys.sum_time, base_dirname, "time-averagevandyaw"); //時間と平均速度・平均ヨー角を出力
 			}
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}
@@ -275,7 +271,7 @@ int main()
 		//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除
 		pointcloudlibrary.visualizer->~PCLVisualizer(); //PCLVisualizerの削除
 		if (saveev3route_flag == true){ //一度でもデータを保存していれば，どちらかのフラグはtrueになる
-			draw.gnuplotScriptEV3Route(); //軌道をプロットするスクリプトを保存する
+			draw.gnuplotScriptEV3Route(base_dirname,"splot_ev3route"); //軌道をプロットするスクリプトを保存する
 			draw.gnuplotScriptTime2V();
 			draw.gnuplotScriptTime2Yaw();
 		}

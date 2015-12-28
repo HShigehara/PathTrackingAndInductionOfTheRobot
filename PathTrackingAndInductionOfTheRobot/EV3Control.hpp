@@ -19,11 +19,11 @@
 class EV3Control
 {
 private:
-	ControlParamd before1_average;
-	ControlParamd before2_average;
-	ControlParamd before3_average;
-	ControlParamd before4_average;
-	ControlParamd before5_average;
+	ControlParamd before1_average; //!<1フレーム前の平均速度と平均ヨー角
+	ControlParamd before2_average; //!<2フレーム前の平均速度と平均ヨー角
+	ControlParamd before3_average; //!<3フレーム前の平均速度と平均ヨー角
+	ControlParamd before4_average; //!<4フレーム前の平均速度と平均ヨー角
+	ControlParamd before5_average; //!<5フレーム前の平均速度と平均ヨー角
 
 public:
 	EV3Control(); //!<コンストラクタ
@@ -33,24 +33,23 @@ public:
 	DoF6i ev3_6dof; //!<EV3の6自由度(c80)
 
 	void getVelocity(); //!<EV3の速度を計算する(c85)
-	DoF6i before; //前フレームの情報
-	DoF6i current; //現フレームの情報
-	double velocity; //!<速度(c85)
-	bool flag_velocity; //最初の1フレームのためのフラグ
+	DoF6i before; //!<前フレームの6DoF情報
+	DoF6i current; //!<現フレームの6DoF情報
+	double velocity; //!<速度v(c85)
+	bool flag_velocity; //!<最初の1フレームのためのフラグ
 
-	void getAverageVelocityAndYaw();
-	ControlParamd current_average;
-	
-	int count_average;
-	bool flag_average;
+	void getAverageVelocityAndYaw(); //!<平均の速度とヨー角を計算する
+	ControlParamd current_average; //!<現在の平均の速度とヨー角
+	int count_average; //!<速度とヨー角の過去5フレーム分の平均を取るために最初の5フレームをカウントするための変数
+	bool flag_average; //!<始めの5フレーム分用
 
-	void output6DoF(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
-	void output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
-	bool save_flag; //!<6DoF情報を出力するフラグ
-
-	void outputEV3RouteContinuous(char* original_dirpath, char* output_filename);
-	void outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename);
-
+	//データ出力メソッド
+	void output6DoF(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud); //!<現フレームの6DoF情報をファイルに出力する
+	void output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud); //!<キーを入力したときの6DoF情報を連続してcsv形式で保存する
+	bool save_flag; //!<6DoF情報を出力するかチェックするためのフラグ
+	void outputEV3RouteContinuous(char* original_dirpath, char* output_filename); //!<EV3の走行軌道を保存する
+	void outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename); //!<EV3の制御情報を出力する
 };
+
 /* インクルードガードの終了 */
 #endif /* __EV3CONTROL_HPP__ */

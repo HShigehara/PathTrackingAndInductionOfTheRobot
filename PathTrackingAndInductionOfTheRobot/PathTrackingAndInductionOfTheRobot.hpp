@@ -69,8 +69,5 @@ extern Point origin; //!<オリジナルの座標
 extern Rect selection; //!<選択
 extern void onMouse(int event, int x, int y, int, void*); //!<マウス操作
 
-/* 同一複数データ保存用(c82) */
-extern int save_count;
-
 /* インクルードガードの終了 */
 #endif /* __PATHTRACKINGANDINDUCTIONTHEROBOT_HPP__ */
