@@ -254,3 +254,12 @@ void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
 	createTrackbar("Closing", trackbar_name, &closing_times, 15);
 	return;
 }
+
+void ImageProcessing::outputImageSelectDirectory(char* original_dirpath, char* save_filename, Mat& output_image)
+{
+	char output_path[NOC];
+	sprintf_s(output_path, "%s/%s-%02d.jpg", original_dirpath, save_filename, save_count);
+	imwrite(output_path, output_image);
+
+	return;
+}

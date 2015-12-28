@@ -83,14 +83,16 @@ int main()
 		const string maskbinimage_windowname = "Mask Image"; //マスク画像を表示するためのウインドウ名
 		//const string outputVideoName = "video.avi"; //計測中の動画ファイル名(c39)
 		const string cameraparameter_name = "sourcedata/cameraParam.xml"; //xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)
-		const char* basedirectory_name = "data"; //データ保存先のディレクトリ名
+		const char* datadirectory_name = "data"; //データ保存先のディレクトリ名
+		char base_dirname[NOC]; //出力先のdataと日付ディレクトリを合わせたもの(c86)
 		const string cloudviewer_windowname = "Cloud Viewer"; //クラウドビューアーの名前の定義(c81)
 		const string pclvisualizer_windowname = "3D Viewer";
 		const string param_windowname = "OpenCV Parameter Setting Window"; //パラメータ調整用のウインドウ(c82)
 
 		kinect.initialize(); //Kinectの初期化
-		sys.checkDirectory(basedirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)
+		sys.checkDirectory(datadirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)
 		sys.makeDirectoryBasedDate(); //起動時刻をフォルダ名にしてフォルダを作成
+		sprintf_s(base_dirname, "%s/%s", datadirectory_name, directoryName); //保存先の基本となるディレクトリ名を定義(c86)
 		
 		//動画を保存するために利用する(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
@@ -223,6 +225,11 @@ int main()
 				goto RETRY;
 			}
 			else if (GetAsyncKeyState('P')){ //その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける
+				sys.makeDirectory(base_dirname, save_count);
+				char output_basedirpath[NOC]; //その時ごとの保存先のパスを作成する
+				sprintf_s(output_basedirpath, "%s/%d", base_dirname, save_count);
+				imgproc.outputImageSelectDirectory(output_basedirpath, "current-image", current_image); //現在の画像を出力
+				imgproc.outputImageSelectDirectory(output_basedirpath, "mask-image", bin_image); //作成したマスク画像を保存
 				outputdatafile.saveDataEveryEnterKey(current_image,bin_image,ev3control.ev3_6dof, cloud, sys.fps);
 				draw.gnuplotScriptEV3Unit(coefficient_plane); //gnuplot用のスクリプト
 				cout << "Save the Current Data." << endl;

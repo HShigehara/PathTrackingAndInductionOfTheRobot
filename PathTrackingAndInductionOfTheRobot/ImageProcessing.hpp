@@ -42,6 +42,8 @@ public:
 	Mat getUnitMask(Mat& input_binimage);
 
 	void openCVSettingTrackbar(const string trackbar_name);
+
+	void outputImageSelectDirectory(char* original_dirpath, char* save_filename, Mat& output_image); //画像を指定したディレクトリに保存(c86)
 };
 
 /* インクルードガードの終了 */

@@ -238,6 +238,18 @@ void System::makeDirectoryBasedDate()
 }
 
 /*!
+ * @brief System::makeDirectory()．指定したディレクトリ以下に新しいディレクトリを作成する
+ */
+void System::makeDirectory(char* original_path, int create_dirnum)
+{
+	char new_dirpath[NOC];
+	sprintf_s(new_dirpath, "%s/%02d", original_path, create_dirnum);
+	_mkdir(new_dirpath);
+
+	return;
+}
+
+/*!
 * @brief System::removeDirectory().ディレクトリを削除(c21)
 */
 void System::removeDirectory()

@@ -35,19 +35,19 @@ OutputDatafile::~OutputDatafile()
 void OutputDatafile::saveDataEveryEnterKey(Mat& current_image, Mat& bin_image, DoF6i dof6, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, double fps)
 {
 	//その都度保存するためのディレクトリを作成(c82)
-	char filepath_output[NOC];
-	sprintf_s(filepath_output, "data/%s/%d", directoryName, save_count);
-	_mkdir(filepath_output);
+	//char filepath_output[NOC];
+	//sprintf_s(filepath_output, "data/%s/%d", directoryName, save_count);
+	//_mkdir(filepath_output);
 
 	//現在の画像を保存
-	char filepath_currentimage[NOC];
-	sprintf_s(filepath_currentimage, "data/%s/%d/current_image-%02d.jpg", directoryName, save_count, save_count);
-	imwrite(filepath_currentimage, current_image);
+	//char filepath_currentimage[NOC];
+	//sprintf_s(filepath_currentimage, "data/%s/%d/current_image-%02d.jpg", directoryName, save_count, save_count);
+	//imwrite(filepath_currentimage, current_image);
 
 	//差分を計算した二値画像を保存
-	char filepath_binimage[NOC];
-	sprintf_s(filepath_binimage, "data/%s/%d/background_image-%02d.jpg", directoryName, save_count, save_count);
-	imwrite(filepath_binimage, bin_image);
+	//char filepath_binimage[NOC];
+	//sprintf_s(filepath_binimage, "data/%s/%d/background_image-%02d.jpg", directoryName, save_count, save_count);
+	//imwrite(filepath_binimage, bin_image);
 
 	//点群情報を保存
 	FILE *point_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
