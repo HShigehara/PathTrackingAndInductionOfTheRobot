@@ -223,7 +223,7 @@ void System::checkDirectory(const char* check_dirname)
 /*!
 * @brief System::makeDirectory().ディレクトリを作成
 */
-void System::makeDirectory()
+void System::makeDirectoryBasedDate()
 {
 	//フォルダ名を区別するために時刻を取得しておく(c4)
 	SYSTEMTIME st;

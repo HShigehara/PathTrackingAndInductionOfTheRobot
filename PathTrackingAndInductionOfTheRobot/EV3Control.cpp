@@ -145,6 +145,6 @@ ControlParamd EV3Control::getAverageVelocityAndYaw()
 		before4_average = before3_average;
 		before5_average = before4_average;
 	}
-	cout << "[Velocity, Yaw] => " << "[ " << current_average.velocity << " , " << current_average.yaw << " ]" << endl;
+	cout << "[Velocity, Yaw] => " << "[ " << round(current_average.velocity) << " , " << round(current_average.yaw) << " ]" << endl;
 	return current_average;
 }

@@ -40,6 +40,8 @@ public:
 	int neighborhood;
 	int closing_times;
 	Mat getUnitMask(Mat& input_binimage);
+
+	void openCVSettingTrackbar(const string trackbar_name);
 };
 
 /* インクルードガードの終了 */

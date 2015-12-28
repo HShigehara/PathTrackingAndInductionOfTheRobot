@@ -244,3 +244,13 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	//showImage("TEST", input_binimage);
 	return input_binimage;
 }
+
+void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
+{
+	//タイヤも含めて前面の点群を取得する
+	namedWindow(trackbar_name, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	createTrackbar("Threshold", trackbar_name, &th, 255);
+	createTrackbar("Median", trackbar_name, &neighborhood, 15);
+	createTrackbar("Closing", trackbar_name, &closing_times, 15);
+	return;
+}

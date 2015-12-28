@@ -90,7 +90,7 @@ int main()
 
 		kinect.initialize(); //Kinectの初期化
 		sys.checkDirectory(basedirectory_name); //base_directoryが存在するか確認し，存在しなければ作成(c81)
-		sys.makeDirectory(); //起動時刻をフォルダ名にしてフォルダを作成
+		sys.makeDirectoryBasedDate(); //起動時刻をフォルダ名にしてフォルダを作成
 		
 		//動画を保存するために利用する(c40)
 		//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも
@@ -139,14 +139,15 @@ int main()
 			//imgproc.showImage("Original - Flip", flip_image); //Kinectから取得した画像を表示
 			
 			//タイヤも含めて前面の点群を取得する
-			namedWindow(param_windowname, CV_WINDOW_KEEPRATIO);
-			createTrackbar("Threshold(0-255)", param_windowname, &imgproc.th, 255);
-			createTrackbar("Neighborhood Level(0-10)", param_windowname, &imgproc.neighborhood, 10);
-			createTrackbar("Closing Times Level(0-10)", param_windowname, &imgproc.closing_times, 10);
+			//namedWindow(param_windowname, CV_WINDOW_KEEPRATIO);
+			//createTrackbar("Threshold(0-255)", param_windowname, &imgproc.th, 255);
+			//createTrackbar("Neighborhood Level(0-10)", param_windowname, &imgproc.neighborhood, 10);
+			//createTrackbar("Closing Times Level(0-10)", param_windowname, &imgproc.closing_times, 10);
+			imgproc.openCVSettingTrackbar(maskbinimage_windowname);
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image/*, imgproc.th, imgproc.med, imgproc.cnt*/);
 			//ユニット部だけ切り取る(c77)
 			//bin_image = imgproc.getUnitMask(bin_image);
-			imgproc.showImage(/*maskbinimage_windowname*/"修正後マスク画像", bin_image); //確認用に切り取った画像を表示する
+			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
 			
 			//ポイントクラウドの取得(c57)
 			cloud = kinect.getPointCloud(bin_image); //ポイントクラウドの取得(c57)．切り取った画像をもとにする
@@ -155,9 +156,9 @@ int main()
 			cout << "Original PointCloud Size\t=>\t" << cloud->size() << endl;
 
 
-			namedWindow("PCL", CV_WINDOW_KEEPRATIO);
-			createTrackbar("thresh", "PCL", &pointcloudlibrary.th,1000);
-			createTrackbar("tol", "PCL", &pointcloudlibrary.tor, 1000);
+			//namedWindow("PCL", CV_WINDOW_KEEPRATIO);
+			//createTrackbar("thresh", "PCL", &pointcloudlibrary.th,1000);
+			//createTrackbar("tol", "PCL", &pointcloudlibrary.tor, 1000);
 
 
 			//PCLの処理
