@@ -35,13 +35,14 @@ public:
 	
 	void loadInternalCameraParameter(const string cameraParamFile); //!<カメラキャリブレーションによって得られたパラメータを適用する(c54)
 	Mat getUndistortionImage(Mat& inputOriginalImage); //!<キャリブレーションデータを用いてKinectから取得した画像を補正する(c71)
-	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image/*, int threshold, int neighborhood, int closing_times*/); //!<背景差分によって得られた二値画像(c75)
-	int th; //!<二値化するときの閾値(c82)
-	int neighborhood;
-	int closing_times;
-	Mat getUnitMask(Mat& input_binimage);
+	Mat getBackgroundSubstractionBinImage(Mat& current_image, Mat& backgound_gray_image); //!<背景差分によって得られた二値画像(c75)
 
-	void openCVSettingTrackbar(const string trackbar_name);
+	void openCVSettingTrackbar(const string trackbar_name); //!<画像処理関連のトラックバーを表示するメソッド
+	int th; //!<二値化するときの閾値(c82)
+	int neighborhood; //!<平滑化を行うときの近傍
+	int closing_times; //!<クロージングを行う回数
+
+	Mat getUnitMask(Mat& input_binimage); //!<EV3のユニット部のみのマスク画像を取得するメソッド
 
 	void outputImageSelectDirectory(int save_count, char* original_dirpath, char* save_filename, Mat& output_image); //画像を指定したディレクトリに保存(c86)
 };

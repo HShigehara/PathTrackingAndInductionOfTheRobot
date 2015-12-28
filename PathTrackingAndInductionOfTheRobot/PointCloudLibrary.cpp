@@ -44,15 +44,8 @@ PointCloudLibrary::~PointCloudLibrary()
 }
 
 /*!
- * @brief メソッドPointCloudLibrary::initializePointCloudViewer().ポイントクラウドビューアーを初期化するメソッド(c57)
- * @param string cloudviewer_name
+ * @brief メソッドPointCloudLibrary::initializePCLVisualizer()．PCL Visualizerの初期化を行うメソッド
  */
-void PointCloudLibrary::initializePointCloudViewer(string cloudviewer_name)
-{
-	viewer = new pcl::visualization::CloudViewer(cloudviewer_name);
-	return;
-}
-
 void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
 {
 	visualizer = new pcl::visualization::PCLVisualizer(pclvisualizer_name); //PCLVisualizerのウインドウ名

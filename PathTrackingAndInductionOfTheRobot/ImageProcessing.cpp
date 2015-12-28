@@ -121,42 +121,48 @@ Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 /*!
  * @brief メソッドImageProcessing::getBackgroundSubstractionBinImage()．背景差分によって得られた二値画像(c75)
  * @param cv::Mat& current_image, cv::Mat& background_image 
- * @return cv::Mat median_bin_image
+ * @return cv::Mat closing_image
  */
-Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image/*, int threshold, int neighborhood, int closing_times*/)
+Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image)
 {
 	Mat current_gray_image; //!<現在のグレースケール画像(c75)
 	Mat diff_gray_image; //!<背景差分画像(c74)
 	Mat diff_bin_image; //!<背景差分画像の二値画像(c75)
 	Mat median_bin_image; //!<背景差分画像の二値画像を平滑化したもの(c75)
-	//Mat opening_image; //(仮)
-	Mat closing_image;
+	Mat closing_image; //!<クロージング処理御用変数
 
 	cvtColor(current_image, current_gray_image, CV_BGR2GRAY); //現フレームの画像をグレースケールに
 	absdiff(current_gray_image, background_gray_image, diff_gray_image); //差分画像取得
 	//showImage("差分画像", diff_gray_image);
 	
-	//EV3用
-	//threshold(diff_gray_image, diff_bin_image, /*13*/20, 255, THRESH_BINARY); //二値化
-	////showImage("二値画像", diff_bin_image);
-	//medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去
-	////showImage("平滑化処理後", median_bin_image);
-	////morphologyEx(median_bin_image, opening_image, MORPH_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理
-	//morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 7); //クロージング(膨張→収縮)処理．穴埋めに使われる
-	////showImage("穴埋め処理後", closing_image);
-
-
 	threshold(diff_gray_image, diff_bin_image, th, 255, THRESH_BINARY); //二値化
 	//showImage("二値画像", diff_bin_image);
 	medianBlur(diff_bin_image, median_bin_image, 2*neighborhood+1); //ノイズ除去
 	//showImage("平滑化処理後", median_bin_image);
-	//morphologyEx(median_bin_image, opening_image, MORPH_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理
 	morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 2*closing_times+1); //クロージング(膨張→収縮)処理．穴埋めに使われる
 	//showImage("穴埋め処理後", closing_image);
+
 	return closing_image;
-	//return median_bin_image;
 }
 
+/*!
+ * @brief メソッドImageProcessing::openCVSettingTrackbar()．OpenCVのトラックバーを表示するメソッド
+ */
+void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
+{
+	//タイヤも含めて前面の点群を取得する
+	namedWindow(trackbar_name, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	createTrackbar("Threshold", trackbar_name, &th, 255);
+	createTrackbar("Median", trackbar_name, &neighborhood, 15);
+	createTrackbar("Closing", trackbar_name, &closing_times, 15);
+	return;
+}
+
+/*!
+ * @brief メソッドImageProcessing::getUnitMask()．EV3のユニット部のみのマスク画像を取得するメソッド
+ * @param cv::Mat& input_binimage
+ * @return cv::Mat input_binimage
+ */
 Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 {
 	int x_min;
@@ -245,15 +251,6 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	return input_binimage;
 }
 
-void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
-{
-	//タイヤも含めて前面の点群を取得する
-	namedWindow(trackbar_name, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
-	createTrackbar("Threshold", trackbar_name, &th, 255);
-	createTrackbar("Median", trackbar_name, &neighborhood, 15);
-	createTrackbar("Closing", trackbar_name, &closing_times, 15);
-	return;
-}
 
 void ImageProcessing::outputImageSelectDirectory(int save_count, char* original_dirpath, char* save_filename, Mat& output_image)
 {

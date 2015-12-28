@@ -33,6 +33,7 @@ public:
 	void startMessage(); //!<プログラム開始時のメッセージを表示(c26)
 	void endMessage(int cNum); //!<プログラム終了時のメッセージを表示(c38)
 	void endMessage(); //!<プログラム終了時のメッセージを表示(c63)
+	void showHelpMessage(); //!<キー入力に関するヘルプを表示(c86)
 
 	void startTimer(); //!<タイマーを開始(c65)
 	void endTimer(); //!<タイマーを終了(c65)
@@ -42,9 +43,8 @@ public:
 	double fps; //!<フレームレート
 	double sum_time; //!<処理の合計時間
 
-
 	void checkDirectory(const char* check_dirname); //!<引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81)
-	void makeDirectoryBasedDate(); //ディレクトリの作成
+	void makeDirectoryBasedDate(); //!<日付に基づいたディレクトリの作成
 	void makeDirectory(char* original_path, int create_dirnum); //!<指定したディレクトリ以下に新しいディレクトリを作成する(
 	void removeDirectory(/*int cNum*/); //!<取得したデータが不要だった場合ディレクトリを削除する
 	

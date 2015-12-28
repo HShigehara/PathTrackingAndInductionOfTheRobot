@@ -38,11 +38,9 @@ void System::startMessage()
 {
 	cout << "==================================================================" << endl;
 	cout << " Starting the Program...." << endl;
-	//cout << " Please Enclose the Object You Want to Track." << endl;
 	cout << " If You Enter a 'q' Key, the Program Terminates." << endl;
 	cout << " If You Enter a 'r' Key, the Program Restart." << endl;
 	cout << " Each Time You Enter a 'p' Key, Then Save The Data." << endl;
-	//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;
 	cout << "\n";
 	cout << " Switching of Point Cloud Processing." << endl;
 	cout << "  Pass Through Filter \t\t -> \t Enter 'x' Key." << endl;
@@ -50,6 +48,8 @@ void System::startMessage()
 	cout << "  Remove Outlier \t\t -> \t Enter 'v' Key." << endl;
 	cout << "  Moving Least Square \t\t -> \t Enter 'b' Key." << endl;
 	cout << "  Extract Plane & Clustering \t -> \t Enter 'n' Key." << endl;
+	cout << "\n";
+	cout << "If You Watch This Message Again, Please Enter 'h' Key." << endl;
 	cout << "==================================================================" << endl;
 
 	return;
@@ -82,6 +82,26 @@ void System::endMessage()
 	return;
 }
 
+/*!
+ * @brief メソッドSystem::showHelpMessage()．ヘルプメッセージを表示する
+ */
+void System::showHelpMessage()
+{
+	cout << "==================================================================" << endl;
+	cout << " If You Enter a 'q' Key, the Program Terminates." << endl;
+	cout << " If You Enter a 'r' Key, the Program Restart." << endl;
+	cout << " Each Time You Enter a 'p' Key, Then Save The Data." << endl;
+	cout << "\n";
+	cout << " Switching of Point Cloud Processing." << endl;
+	cout << "  Pass Through Filter \t\t -> \t Enter 'x' Key." << endl;
+	cout << "  Downsampling \t\t\t -> \t Enter 'c' Key." << endl;
+	cout << "  Remove Outlier \t\t -> \t Enter 'v' Key." << endl;
+	cout << "  Moving Least Square \t\t -> \t Enter 'b' Key." << endl;
+	cout << "  Extract Plane & Clustering \t -> \t Enter 'n' Key." << endl;
+	cout << "==================================================================" << endl;
+
+	return;
+}
 /*!
  * @brief メソッドcountdownTimer()．タイマーによるカウントダウン
  * @param int time_sec 
