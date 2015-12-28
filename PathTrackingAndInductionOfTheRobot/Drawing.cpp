@@ -288,11 +288,11 @@ void Drawing::gnuplotScriptCoG(const string* cogFileName)
 /*!
  * @brief メソッドDrawing::gnuplotScriptEV3Unit()．EV3のユニットに関するデータファイルをプロットするスクリプトを生成するメソッド(c78)
  */
-void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
+void Drawing::gnuplotScriptEV3Unit(char* original_dirpath, char* output_filename, Eigen::Vector3f coefficient_plane)
 {
 	FILE *fp; //ファイルストリームを開く
 	char filepath_splot_ev3[NOC];
-	sprintf_s(filepath_splot_ev3, "data/%s/%d/splot_ev3-%02d.plt", directoryName, save_count, save_count);
+	sprintf_s(filepath_splot_ev3, "%s/%s-%02d.plt", original_dirpath, output_filename, save_count);
 	fopen_s(&fp, filepath_splot_ev3, "w"); //ファイルを開く
 
 	//(c78)
@@ -304,7 +304,7 @@ void Drawing::gnuplotScriptEV3Unit(Eigen::Vector3f coefficient_plane)
 	fprintf_s(fp, "set ylabel \"Y-axis\"\n");
 	fprintf_s(fp, "set zlabel \"Z-axis\"\n");
 	fprintf_s(fp, "set title \"PointCloud Plane(LSM) Centroid\"\n");
-	fprintf_s(fp, "splot \"dof6-%02d.dat\" pointsize 5,%f*x+%f*y+%f,\"point-%02d.dat\" every 5\n",save_count, coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z(), save_count);
+	fprintf_s(fp, "splot \"6dof-%02d.dat\" pointsize 5,%f*x+%f*y+%f,\"pointcloud-%02d.dat\" every 5\n",save_count, coefficient_plane.x(),coefficient_plane.y(),coefficient_plane.z(), save_count);
 
 	//(c78)
 	//_pclose(splot_ev3unit);

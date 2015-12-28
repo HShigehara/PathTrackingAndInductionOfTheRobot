@@ -61,6 +61,9 @@ public:
 	bool statisticaloutlierremoval_flag;
 	bool mls_flag;
 	bool extractplane_flag;
+
+	void outputPointCloud(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
+	void outputPointCloudPLY(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
 };
 
 /* インクルードガードの終了 */

@@ -28,6 +28,9 @@ EV3Control::EV3Control()
 	before5_average = { 0 };
 	count_average = 0;
 	flag_average = false;
+
+	save_flag = false;
+
 }
 
 /*!
@@ -91,7 +94,7 @@ void EV3Control::getVelocity()
 	return;
 }
 
-ControlParamd EV3Control::getAverageVelocityAndYaw()
+void EV3Control::getAverageVelocityAndYaw()
 {
 	//最初の5フレームはデータを保存するだけ
 	if (flag_average == false){ //5フレームの間の処理
@@ -146,5 +149,56 @@ ControlParamd EV3Control::getAverageVelocityAndYaw()
 		before5_average = before4_average;
 	}
 	cout << "[Velocity, Yaw] => " << "[ " << round(current_average.velocity) << " , " << round(current_average.yaw) << " ]" << endl;
-	return current_average;
+	return;
+}
+
+void EV3Control::output6DoF(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
+{
+	//6DoF情報を保存
+	FILE *dof6_fp; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用
+	char filepath_dof6[NOC];
+	sprintf_s(filepath_dof6, "%s/%s-%02d.dat", original_dirpath, output_filename, save_count);
+	fopen_s(&dof6_fp, filepath_dof6, "w");
+	fprintf_s(dof6_fp, "%d %d %d %d %d %d %d\n", ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, outputPointCloud->size());
+	fclose(dof6_fp);
+
+	return;
+}
+
+void EV3Control::output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr & outputPointCloud)
+{
+	FILE *dof6con_fp;
+	char filepath_dof6con[NOC];
+	sprintf_s(filepath_dof6con, "%s/%s.csv", original_dirpath, output_filename);
+	fopen_s(&dof6con_fp, filepath_dof6con, "a");
+	if (save_flag == false){
+		fprintf(dof6con_fp, "x,y,z,Yaw,Roll,Pitch,Data Size\n");
+	}
+	fprintf_s(dof6con_fp, "%d,%d,%d,%d,%d,%d,%d\n", ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, outputPointCloud->size());
+	fclose(dof6con_fp);
+
+	return;
+}
+
+void EV3Control::outputEV3RouteContinuous(char* original_dirpath, char* output_filename)
+{
+	//保存用のファイル作成
+	FILE *ev3route;
+	char filepath_ev3route[NOC];
+	sprintf_s(filepath_ev3route, "%s/%s.dat", original_dirpath, output_filename);
+	fopen_s(&ev3route, filepath_ev3route, "a"); //ファイルオープン
+	fprintf_s(ev3route, "%d %d %d\n", ev3_6dof.x, ev3_6dof.y, ev3_6dof.z); //データをファイルに書き込む
+	fclose(ev3route);
+}
+
+void EV3Control::outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename)
+{
+	FILE *time_averagevandyaw;
+	char filepath_timeaveragevandyaw[NOC];
+	sprintf_s(filepath_timeaveragevandyaw, "%s/%s.dat", original_dirpath, output_filename);
+	fopen_s(&time_averagevandyaw, filepath_timeaveragevandyaw, "a");
+	fprintf_s(time_averagevandyaw, "%f %f %f\n", sumtime_ms / 1000.0, current_average.velocity, current_average.yaw);
+	fclose(time_averagevandyaw);
+
+	return;
 }

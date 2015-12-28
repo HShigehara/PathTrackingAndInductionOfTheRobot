@@ -382,3 +382,27 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 
 	return cloud_normals;
 }
+
+void PointCloudLibrary::outputPointCloud(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
+{
+	FILE *point_fp; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用
+	char output_filepath[NOC];
+	sprintf_s(output_filepath, "%s/%s-%02d.dat", original_dirpath, output_filename, save_count);
+	fopen_s(&point_fp, output_filepath, "w"); //
+	for (int i = 1; i < outputPointCloud->size(); i++){
+		fprintf_s(point_fp, "%f %f %f\n", outputPointCloud->points[i].x, outputPointCloud->points[i].y, outputPointCloud->points[i].z); //ファイルに出力
+	}
+	fclose(point_fp);
+	
+	return;
+}
+
+void PointCloudLibrary::outputPointCloudPLY(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
+{
+	//PointCloudを保存する
+	char filepath_pointcloud[NOC];
+	sprintf_s(filepath_pointcloud, "%s/%s-%02d.ply", original_dirpath, output_filename, save_count);
+	pcl::io::savePLYFileASCII(filepath_pointcloud, *outputPointCloud);
+
+	return;
+}

@@ -75,5 +75,5 @@ using namespace cv; //!<名前空間
 #define WIDTH 640 //!<画像の幅
 #define HEIGHT 480 //!<画像の高さ
 #define ALLPIXEL WIDTH*HEIGHT //!<1フレームの全ピクセル数
-#define NOC 64 //!<Number of Characters．(ファイルの名前を付けるときの文字数制限)
+#define NOC 128 //!<Number of Characters．(ファイルの名前を付けるときの文字数制限)
 #define OUTPUTDATA_MAX 10000 //!<出力するデータの上限

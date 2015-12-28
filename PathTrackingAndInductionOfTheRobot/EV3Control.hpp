@@ -38,11 +38,19 @@ public:
 	double velocity; //!<速度(c85)
 	bool flag_velocity; //最初の1フレームのためのフラグ
 
-	ControlParamd getAverageVelocityAndYaw();
+	void getAverageVelocityAndYaw();
 	ControlParamd current_average;
 	
 	int count_average;
 	bool flag_average;
+
+	void output6DoF(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
+	void output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud);
+	bool save_flag; //!<6DoF情報を出力するフラグ
+
+	void outputEV3RouteContinuous(char* original_dirpath, char* output_filename);
+	void outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename);
+
 };
 /* インクルードガードの終了 */
 #endif /* __EV3CONTROL_HPP__ */
