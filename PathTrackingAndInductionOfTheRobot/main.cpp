@@ -189,13 +189,25 @@ int main()
 			ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, lsm.attitude_angle); //6DoFをまとめる
 			
 			//EV3の速度を計算(c85)
-			ev3control.getVelocity(); //速度を計算
+			//ev3control.getVelocity(); //速度を計算
 
 			//法線を計算(c84)
 			//cloud_normals = pointcloudlibrary.getSurfaceNormals(cloud); //法線を計算(c84)
 			cout << "==========================================================================================" << endl;
 			//===================================== PCLで行う処理終了 =====================================
 
+			//===================================== 点群表示開始 =====================================
+			//Kinectから取得した点群を描画
+			//pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
+			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
+			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
+			//点群の表示
+			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
+			//PCLVisualizerに描画した点群を削除する
+			pointcloudlibrary.visualizer->removePointCloud("show cloud");
+			pointcloudlibrary.visualizer->removeShape("sphere");
+			//===================================== 点群表示終了 =====================================
+			
 			//===================================== キー入力関連開始 =====================================
 			//終了のためのキー入力チェック兼表示のためのウェイトタイム
 			kinect.key = waitKey(1); //OpenCVのウインドウを表示し続ける
@@ -231,34 +243,25 @@ int main()
 				sys.showHelpMessage(); //ヘルプメッセージの表示
 			}
 			//===================================== キー入力関連終了 =====================================
-
-			//===================================== フラグがtrueのとき実行する処理の開始 =====================================
-			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
-			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
-				//outputdatafile.saveDataContinuously(sys.sum_time, ev3control.ev3_6dof, current);
-				ev3control.getAverageVelocityAndYaw(); //平均速度とヨー角を計算する
-				ev3control.outputEV3RouteContinuous(base_dirname, "ev3route"); //EV3の軌道をファイルに出力
-				ev3control.outputControlInformation(sys.sum_time, base_dirname, "time-averagevandyaw"); //時間と平均速度・平均ヨー角を出力
-			}
-			//===================================== フラグがtrueのとき実行する処理の終了 =====================================
-
-			//===================================== 点群表示開始 =====================================
-			//Kinectから取得した点群を描画
-			//pointcloudlibrary.visualizer->addPointCloudNormals<pcl::PointXYZRGB, pcl::Normal>(cloud, cloud_normals, 30, 10, "normals");
-			pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, "sphere"); //平均座標に球を描画
-			pointcloudlibrary.visualizer->addPointCloud(cloud, "show cloud"); //点群を描画
-			//点群の表示
-			pointcloudlibrary.visualizer->spinOnce(); //PCLVisualizerを描画
-			//PCLVisualizerに描画した点群を削除する
-			pointcloudlibrary.visualizer->removePointCloud("show cloud");
-			pointcloudlibrary.visualizer->removeShape("sphere");
-			//===================================== 点群表示終了 =====================================
-
+			
 			//===================================== 処理時間計測 =====================================
 			sys.endTimer(); //タイマーを終了(c65)
 			cout << sys.getProcessTimeinMiliseconds() << "[ms], " << sys.getFrameRate() << " fps" << "\n" << endl;
 			sys.sum_time = sys.sum_time + sys.getProcessTimeinMiliseconds(); //合計時間を計算
 			//===================================== 処理時間計測 =====================================
+
+			//===================================== フラグがtrueのとき実行する処理の開始 =====================================
+			//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)
+			if (saveev3route_flag == true){ //フラグがtrueであれば，平均座標の軌道を保存する(c82)
+				//outputdatafile.saveDataContinuously(sys.sum_time, ev3control.ev3_6dof, current);
+				//EV3の速度を計算(c85)
+				ev3control.getVelocityinSec(sys.getProcessTimeinMiliseconds()); //速度を計算
+				ev3control.getAverageVelocityAndYaw(); //平均速度とヨー角を計算する
+				ev3control.outputEV3RouteContinuous(base_dirname, "ev3route"); //EV3の軌道をファイルに出力
+				ev3control.outputControlInformation(sys.sum_time, base_dirname, "time-averagevandyaw"); //時間と平均速度・平均ヨー角を出力
+				ev3control.outputControlInformation(); //EV3の速度とヨー角をファイルに出力
+			}
+			//===================================== フラグがtrueのとき実行する処理の終了 =====================================
 
 			//system("cls"); //コンソール内の表示をリセット(c64)
 		}

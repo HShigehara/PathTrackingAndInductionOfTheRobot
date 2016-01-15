@@ -32,7 +32,7 @@ public:
 	void set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle); //!<最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する(c80)
 	DoF6i ev3_6dof; //!<EV3の6自由度(c80)
 
-	void getVelocity(); //!<EV3の速度を計算する(c85)
+	void getVelocityinSec(double time_ms); //!<EV3の速度を計算する(c85)
 	DoF6i before; //!<前フレームの6DoF情報
 	DoF6i current; //!<現フレームの6DoF情報
 	double velocity; //!<速度v(c85)
@@ -49,6 +49,7 @@ public:
 	bool save_flag; //!<6DoF情報を出力するかチェックするためのフラグ
 	void outputEV3RouteContinuous(char* original_dirpath, char* output_filename); //!<EV3の走行軌道を保存する
 	void outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename); //!<EV3の制御情報を出力する
+	void outputControlInformation(); //!<EV3に必要な速度とヨー角をファイルに出力
 };
 
 /* インクルードガードの終了 */

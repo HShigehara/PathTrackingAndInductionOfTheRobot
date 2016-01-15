@@ -62,23 +62,29 @@ void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCl
 /*!
  * @brief メソッドEV3Control::getVelocity()．EV3の速度を計算するメソッド
  */
-void EV3Control::getVelocity()
+void EV3Control::getVelocityinSec(double time_ms)
 {
+	double k = 1000 / time_ms; //1秒あたりの速度に変換
 	if (flag_velocity == false){ //1フレーム目の処理
 		before = ev3_6dof; //速度の計算に必要な座標を保存
 		flag_velocity = true; //フラグをtrueにする
 	}
 	else{ //2フレーム目以降の処理
 		current = ev3_6dof; //現在の値を格納
+		//1フレームあたりの速度を計算
 		velocity = sqrt(pow((current.x-before.x),2)+pow((current.y-before.y),2)+pow((current.z-before.z),2));
+		//1秒あたりの速度に変換
+		velocity = velocity * k;
 		before = current; //現在の情報を過去の情報に更新する
 	}
-	cout << "Velocity => " << velocity << "[mm/frame]" << endl; //確認用
+	//cout << "Velocity => " << velocity << "[mm/sec]" << endl; //確認用
 	return;
 }
 
 void EV3Control::getAverageVelocityAndYaw()
 {
+	//double k = 1000.0 / time_ms; //このkを速度とヨー角にかけることで，1秒あたりの処理の場合に変換する
+
 	//最初の5フレームはデータを保存するだけ
 	if (flag_average == false){ //5フレームの間の処理
 		if (count_average == 0){ //1フレーム目の処理
@@ -125,8 +131,8 @@ void EV3Control::getAverageVelocityAndYaw()
 		before4_average = before3_average;
 		before5_average = before4_average;
 	}
-	cout << "5 Frame Average [Velocity, Yaw] => " << endl;// << "[ " << round(current_average.velocity) << " , " << round(current_average.yaw) << " ]" << endl;
-	cout << current_average.velocity << endl;
+	cout << "5 Frame Average [Velocity, Yaw] => " << "[ " << round(current_average.velocity) << " , " << round(current_average.yaw) << " ]" << endl;
+	//cout << current_average.velocity << endl;
 	return;
 }
 
@@ -192,5 +198,17 @@ void EV3Control::outputControlInformation(double sumtime_ms, char* original_dirp
 	fprintf_s(time_averagevandyaw, "%f %f %f\n", sumtime_ms / 1000.0, current_average.velocity, current_average.yaw);
 	fclose(time_averagevandyaw);
 
+	return;
+}
+
+/*!
+ * @brief メソッドEV3Control::outputControlInformation()．EV3に必要な速度とヨー角をファイルに出力
+ */
+void EV3Control::outputControlInformation()
+{
+	FILE *v_yaw;
+	fopen_s(&v_yaw, "C:\\eclipse\\workspace\\EV3ControlServer\\vyaw.dat", "w");
+	fprintf_s(v_yaw, "%f %f\n", current_average.velocity, current_average.yaw);
+	fclose(v_yaw);
 	return;
 }
