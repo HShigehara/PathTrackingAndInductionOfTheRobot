@@ -1,5 +1,10 @@
 \section{stdafx.\-h ファイル}
 \label{stdafx_8h}\index{stdafx.\-h@{stdafx.\-h}}
+
+
+標準のシステム，インクルードファイル，または参照回数が多く，かつあまり変更されない，プロジェクト専用のインクルードファイルを記述する．  
+
+
 {\ttfamily \#include $<$iostream$>$}\\*
 {\ttfamily \#include $<$sstream$>$}\\*
 {\ttfamily \#include $<$fstream$>$}\\*
@@ -40,9 +45,17 @@
 {\ttfamily \#include $<$pcl\textbackslash{}filters\textbackslash{}extract\-\_\-indices.\-h$>$}\\*
 {\ttfamily \#include $<$pcl\textbackslash{}features\textbackslash{}normal\-\_\-3d.\-h$>$}\\*
 {\ttfamily \#include $<$pcl\textbackslash{}segmentation\textbackslash{}extract\-\_\-clusters.\-h$>$}\\*
+{\ttfamily \#include $<$pcl\textbackslash{}features\textbackslash{}integral\-\_\-image\-\_\-normal.\-h$>$}\\*
 {\ttfamily \#include $<$boost\textbackslash{}thread\textbackslash{}thread.\-hpp$>$}\\*
 {\ttfamily \#include $<$pcl\textbackslash{}registration\textbackslash{}icp.\-h$>$}\\*
 {\ttfamily \#include $<$pcl\textbackslash{}\-P\-C\-L\-Point\-Field.\-h$>$}\\*
+stdafx.\-h の依存先関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stdafx_8h__incl}
+\end{center}
+\end{figure}
 \subsection*{マクロ定義}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,10 +67,21 @@
 \begin{DoxyCompactList}\small\item\em 画像の高さ \end{DoxyCompactList}\item 
 \#define {\bf A\-L\-L\-P\-I\-X\-E\-L}~{\bf W\-I\-D\-T\-H}$\ast${\bf H\-E\-I\-G\-H\-T}
 \begin{DoxyCompactList}\small\item\em 1フレームの全ピクセル数 \end{DoxyCompactList}\item 
-\#define {\bf N\-O\-C}~64
-\begin{DoxyCompactList}\small\item\em Number of Characters．(ファイルの名前を付けるときの文字数制限) \end{DoxyCompactList}\item 
-\#define {\bf O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}~10000
-\begin{DoxyCompactList}\small\item\em 出力するデータの上限 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf N\-O\-C}~128
+\begin{DoxyCompactList}\small\item\em Number of Characters．(ファイルの名前を付けるときの文字数制限) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{詳解}
+標準のシステム，インクルードファイル，または参照回数が多く，かつあまり変更されない，プロジェクト専用のインクルードファイルを記述する． \begin{DoxyDate}{日付}
+2015.\-11.\-22 
+\end{DoxyDate}
+\begin{DoxyAuthor}{著者}
+H.\-Shigehara 
+\end{DoxyAuthor}
+
+
+ {\bf stdafx.\-h} に定義があります。
+
 
 
 \subsection{マクロ定義詳解}
@@ -66,7 +90,7 @@
 \subsubsection[{\-\_\-\-C\-R\-T\-\_\-\-S\-E\-C\-U\-R\-E\-\_\-\-N\-O\-\_\-\-W\-A\-R\-N\-I\-N\-G\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-C\-R\-T\-\_\-\-S\-E\-C\-U\-R\-E\-\_\-\-N\-O\-\_\-\-W\-A\-R\-N\-I\-N\-G\-S}\label{stdafx_8h_af08ec37a8c99d747fb60fa15bc28678b}
 
 
- stdafx.\-h の 8 行目に定義があります。
+ stdafx.\-h の 11 行目に定義があります。
 
 \index{stdafx.\-h@{stdafx.\-h}!A\-L\-L\-P\-I\-X\-E\-L@{A\-L\-L\-P\-I\-X\-E\-L}}
 \index{A\-L\-L\-P\-I\-X\-E\-L@{A\-L\-L\-P\-I\-X\-E\-L}!stdafx.h@{stdafx.\-h}}
@@ -77,7 +101,7 @@
 
 
 
- stdafx.\-h の 78 行目に定義があります。
+ stdafx.\-h の 80 行目に定義があります。
 
 \index{stdafx.\-h@{stdafx.\-h}!H\-E\-I\-G\-H\-T@{H\-E\-I\-G\-H\-T}}
 \index{H\-E\-I\-G\-H\-T@{H\-E\-I\-G\-H\-T}!stdafx.h@{stdafx.\-h}}
@@ -88,33 +112,22 @@
 
 
 
- stdafx.\-h の 77 行目に定義があります。
+ stdafx.\-h の 79 行目に定義があります。
 
 \index{stdafx.\-h@{stdafx.\-h}!N\-O\-C@{N\-O\-C}}
 \index{N\-O\-C@{N\-O\-C}!stdafx.h@{stdafx.\-h}}
-\subsubsection[{N\-O\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-O\-C~64}\label{stdafx_8h_a5d8ba032e2fdf7b2561f508164124f3e}
+\subsubsection[{N\-O\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-O\-C~128}\label{stdafx_8h_a5d8ba032e2fdf7b2561f508164124f3e}
 
 
 Number of Characters．(ファイルの名前を付けるときの文字数制限) 
 
 
 
- stdafx.\-h の 79 行目に定義があります。
+ stdafx.\-h の 81 行目に定義があります。
 
 
 
-参照元 Drawing\-::gnuplot\-Script(), Drawing\-::gnuplot\-Script\-Co\-G(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), System\-::make\-Directory(), System\-::open\-Directory(), System\-::output\-All\-Data(), System\-::output\-Video(), Drawing\-::plot3\-D\-Real\-Time(), System\-::remove\-Directory(), System\-::save\-Data\-Continuously(), System\-::save\-Data\-Every\-Enter\-Key().
-
-\index{stdafx.\-h@{stdafx.\-h}!O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X@{O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}}
-\index{O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X@{O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}!stdafx.h@{stdafx.\-h}}
-\subsubsection[{O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X~10000}\label{stdafx_8h_af962cd28db9fad108f1e02b7f90192b7}
-
-
-出力するデータの上限 
-
-
-
- stdafx.\-h の 80 行目に定義があります。
+参照元 Drawing\-::gnuplot\-Script\-E\-V3(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-Time2\-V(), Drawing\-::gnuplot\-Script\-Time2\-Yaw(), main(), System\-::make\-Directory(), System\-::make\-Directory\-Based\-Date(), System\-::open\-Directory(), E\-V3\-Control\-::output6\-Do\-F(), E\-V3\-Control\-::output6\-Do\-F\-Continuous(), E\-V3\-Control\-::output\-Control\-Information(), E\-V3\-Control\-::output\-E\-V3\-Route\-Continuous(), Image\-Processing\-::output\-Image\-Select\-Directory(), Point\-Cloud\-Library\-::output\-Point\-Cloud(), Point\-Cloud\-Library\-::output\-Point\-Cloud\-P\-L\-Y(), System\-::output\-Video(), System\-::remove\-Directory() (計17項目).
 
 \index{stdafx.\-h@{stdafx.\-h}!W\-I\-D\-T\-H@{W\-I\-D\-T\-H}}
 \index{W\-I\-D\-T\-H@{W\-I\-D\-T\-H}!stdafx.h@{stdafx.\-h}}
@@ -125,5 +138,5 @@ $<$名前空間
 
 画像の幅 
 
- stdafx.\-h の 76 行目に定義があります。
+ stdafx.\-h の 78 行目に定義があります。
 

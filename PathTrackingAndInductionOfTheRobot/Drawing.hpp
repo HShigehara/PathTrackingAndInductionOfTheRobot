@@ -1,6 +1,5 @@
 ﻿/*
  * @file Drawing.hpp 
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief gnuplot処理関連のクラスのヘッダ
  * @date 2014.12.10
  * @author H.Shigehara
@@ -20,9 +19,9 @@
 class Drawing
 {
 private:
-	FILE *gnuplot; //プロット用
-	FILE *gpr; //リアルタイム出力用のプロット(c43)
-	bool first = true; //
+	FILE *gnuplot; //!<プロット用
+	FILE *gpr; //!<リアルタイム出力用のプロット(c43)
+	bool first = true; //!<1回目をチェックするためのフラグ
 	int plotMode = 1; //!<gnuplotのスクリプトをファイルに出力する際に，計測する対象の状況に応じて値の範囲を変更する.中心固定用(1)，縦移動用(2)，横移動用(3)(c46)，自動縮尺(4)(c47)
 
 	//int save_count;
@@ -36,7 +35,6 @@ public:
 
 	void gnuplotScriptTime2V(); //!<時間と速度のプロット
 	void gnuplotScriptTime2Yaw(); //!<時間とヨー角のプロット
-
 };
 
 /* インクルードガードの終了 */

@@ -1,6 +1,5 @@
 ﻿/*
  * @file PathTrackingAndInductionOfTheRobot.h
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 距離データを取得し画像として表示するプログラムのヘッダファイル
  * @date 2014.10.15
  * @author H.Shigehara
@@ -12,47 +11,70 @@
 
 //よく使うヘッダはstdafx.hに
 /* 構造体 */
-typedef struct Point3{ //抽出された座標を保存する構造体(c37)
-	int x;
-	int y;
-	USHORT z;
+/*!
+ * @struct Point3
+ * @brief 抽出された座標を保存する構造体(c37)
+ */
+typedef struct Point3{
+	int x; //!<x座標
+	int y; //!<y座標
+	USHORT z; //!<z座標
 }Point3ius;
 
-typedef struct outputData{ //ファイルに出力するデータ群(c41)
-	double totalTime;
-	float x;
-	float y;
-	float z;
+/*!
+ * @struct outputData
+ * @brief ファイルに出力するデータ群(c41)
+ */
+typedef struct outputData{
+	double totalTime; //!<合計時間
+	float x; //!<x座標
+	float y; //!<y座標
+	float z; //!<z座標
 }outputData;
 
-//姿勢構造体の定義(c78)
+/*!
+ * @struct DoF6d
+ * @brief 姿勢構造体の定義(c78)．doule型
+ */
 typedef struct DoF6d{
-	double x; //x座標
-	double y; //y座標
-	double z; //z座標
-	double yaw; //y軸回転
-	double roll; //z軸回転
-	double pitch; //x軸回転
+	double x; //!<x座標
+	double y; //!<y座標
+	double z; //!<z座標
+	double yaw; //!<ヨー角
+	double roll; //!<ロール角
+	double pitch; //!<ピッチ角
 }DoF6d;
 
+/*!
+ * @struct DoF6i
+ * @brief姿勢構造体の定義．int型
+ */
 typedef struct DoF6i{
-	int x;
-	int y;
-	int z;
-	int yaw;
-	int roll;
-	int pitch;
+	int x; //!<x座標
+	int y; //!<y座標
+	int z; //!<z座標
+	int yaw; //!<ヨー角
+	int roll; //!<ロール角
+	int pitch; //!<ピッチ角
 }DoF6i;
 
+/*!
+ * @struct AttitudeAngle
+ * @brief 姿勢角
+ */
 typedef struct AttitudeAngle{
-	double yaw;
-	double roll;
-	double pitch;
+	double yaw; //!<ヨー角
+	double roll; //!<ロール角
+	double pitch; //!<ピッチ角
 }AttitudeAngle3d;
 
+/*!
+ * @struct ControlParamd
+ * @brief 走行制御用構造体．double型
+ */
 typedef struct ControlParamd{
-	double velocity;
-	double yaw;
+	double velocity; //!<速度
+	double yaw; //!<ヨー角
 }ControlParamd;
 
 /* グローバル変数 */

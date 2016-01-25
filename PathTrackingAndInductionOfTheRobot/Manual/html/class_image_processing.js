@@ -6,6 +6,8 @@ var class_image_processing =
     [ "getUndistortionImage", "class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c", null ],
     [ "getUnitMask", "class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1", null ],
     [ "loadInternalCameraParameter", "class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c", null ],
+    [ "openCVSettingTrackbar", "class_image_processing.html#a36d146288e958736fd803fde49c064af", null ],
+    [ "outputImageSelectDirectory", "class_image_processing.html#ac2a3a10ecc09a2be23b2cc673cee1e0c", null ],
     [ "showImage", "class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685", null ],
     [ "showImageTogether", "class_image_processing.html#aece5b6cebfe47d9f65ce589168686189", null ],
     [ "showImageTogether", "class_image_processing.html#a6651b85571d04f5f05d530a0c760f562", null ],

@@ -8,201 +8,236 @@
 \contentsline {subsection}{\numberline {3.1.2}メンバ詳解}{5}
 \contentsline {subsubsection}{\numberline {3.1.2.1}pitch}{5}
 \contentsline {subsubsection}{\numberline {3.1.2.2}roll}{5}
-\contentsline {subsubsection}{\numberline {3.1.2.3}yaw}{5}
-\contentsline {section}{\numberline {3.2}Do\discretionary {-}{}{}F 構造体}{6}
+\contentsline {subsubsection}{\numberline {3.1.2.3}yaw}{6}
+\contentsline {section}{\numberline {3.2}Control\discretionary {-}{}{}Paramd 構造体}{6}
 \contentsline {subsection}{\numberline {3.2.1}詳解}{6}
 \contentsline {subsection}{\numberline {3.2.2}メンバ詳解}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.1}pitch}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.2}roll}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.3}x}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.4}y}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.5}yaw}{6}
-\contentsline {subsubsection}{\numberline {3.2.2.6}z}{7}
-\contentsline {section}{\numberline {3.3}Drawing クラス}{7}
+\contentsline {subsubsection}{\numberline {3.2.2.1}velocity}{6}
+\contentsline {subsubsection}{\numberline {3.2.2.2}yaw}{6}
+\contentsline {section}{\numberline {3.3}Do\discretionary {-}{}{}F6d 構造体}{6}
 \contentsline {subsection}{\numberline {3.3.1}詳解}{7}
-\contentsline {subsection}{\numberline {3.3.2}構築子と解体子}{7}
-\contentsline {subsubsection}{\numberline {3.3.2.1}Drawing}{7}
-\contentsline {subsubsection}{\numberline {3.3.2.2}$\sim $\discretionary {-}{}{}Drawing}{8}
-\contentsline {subsection}{\numberline {3.3.3}関数詳解}{8}
-\contentsline {subsubsection}{\numberline {3.3.3.1}gnuplot\discretionary {-}{}{}Script}{8}
-\contentsline {subsubsection}{\numberline {3.3.3.2}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}Co\discretionary {-}{}{}G}{9}
-\contentsline {subsubsection}{\numberline {3.3.3.3}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Route}{10}
-\contentsline {subsubsection}{\numberline {3.3.3.4}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Unit}{10}
-\contentsline {subsubsection}{\numberline {3.3.3.5}plot3\discretionary {-}{}{}D}{11}
-\contentsline {subsubsection}{\numberline {3.3.3.6}plot3\discretionary {-}{}{}D\discretionary {-}{}{}Real\discretionary {-}{}{}Time}{12}
-\contentsline {section}{\numberline {3.4}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control クラス}{13}
-\contentsline {subsection}{\numberline {3.4.1}詳解}{13}
-\contentsline {subsection}{\numberline {3.4.2}構築子と解体子}{13}
-\contentsline {subsubsection}{\numberline {3.4.2.1}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control}{13}
-\contentsline {subsubsection}{\numberline {3.4.2.2}$\sim $\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control}{13}
-\contentsline {subsection}{\numberline {3.4.3}関数詳解}{14}
-\contentsline {subsubsection}{\numberline {3.4.3.1}set6\discretionary {-}{}{}Do\discretionary {-}{}{}F\discretionary {-}{}{}E\discretionary {-}{}{}V3}{14}
-\contentsline {subsection}{\numberline {3.4.4}メンバ詳解}{14}
-\contentsline {subsubsection}{\numberline {3.4.4.1}ev3\discretionary {-}{}{}\_\discretionary {-}{}{}6dof}{14}
-\contentsline {section}{\numberline {3.5}Image\discretionary {-}{}{}Processing クラス}{14}
-\contentsline {subsection}{\numberline {3.5.1}詳解}{15}
-\contentsline {subsection}{\numberline {3.5.2}構築子と解体子}{15}
-\contentsline {subsubsection}{\numberline {3.5.2.1}Image\discretionary {-}{}{}Processing}{15}
-\contentsline {subsubsection}{\numberline {3.5.2.2}$\sim $\discretionary {-}{}{}Image\discretionary {-}{}{}Processing}{16}
-\contentsline {subsection}{\numberline {3.5.3}関数詳解}{16}
-\contentsline {subsubsection}{\numberline {3.5.3.1}get\discretionary {-}{}{}Background\discretionary {-}{}{}Substraction\discretionary {-}{}{}Bin\discretionary {-}{}{}Image}{16}
-\contentsline {subsubsection}{\numberline {3.5.3.2}get\discretionary {-}{}{}Undistortion\discretionary {-}{}{}Image}{17}
-\contentsline {subsubsection}{\numberline {3.5.3.3}get\discretionary {-}{}{}Unit\discretionary {-}{}{}Mask}{17}
-\contentsline {subsubsection}{\numberline {3.5.3.4}load\discretionary {-}{}{}Internal\discretionary {-}{}{}Camera\discretionary {-}{}{}Parameter}{18}
-\contentsline {subsubsection}{\numberline {3.5.3.5}show\discretionary {-}{}{}Image}{18}
-\contentsline {subsubsection}{\numberline {3.5.3.6}show\discretionary {-}{}{}Image\discretionary {-}{}{}Together}{19}
-\contentsline {subsubsection}{\numberline {3.5.3.7}show\discretionary {-}{}{}Image\discretionary {-}{}{}Together}{19}
-\contentsline {subsection}{\numberline {3.5.4}メンバ詳解}{20}
-\contentsline {subsubsection}{\numberline {3.5.4.1}closing\discretionary {-}{}{}\_\discretionary {-}{}{}times}{20}
-\contentsline {subsubsection}{\numberline {3.5.4.2}neighborhood}{20}
-\contentsline {subsubsection}{\numberline {3.5.4.3}th}{20}
-\contentsline {section}{\numberline {3.6}Kinect クラス}{20}
-\contentsline {subsection}{\numberline {3.6.1}詳解}{21}
-\contentsline {subsection}{\numberline {3.6.2}構築子と解体子}{21}
-\contentsline {subsubsection}{\numberline {3.6.2.1}Kinect}{21}
-\contentsline {subsubsection}{\numberline {3.6.2.2}$\sim $\discretionary {-}{}{}Kinect}{21}
-\contentsline {subsection}{\numberline {3.6.3}関数詳解}{21}
-\contentsline {subsubsection}{\numberline {3.6.3.1}create\discretionary {-}{}{}Instance}{21}
-\contentsline {subsubsection}{\numberline {3.6.3.2}draw\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Image}{22}
-\contentsline {subsubsection}{\numberline {3.6.3.3}get\discretionary {-}{}{}Distance}{22}
-\contentsline {subsubsection}{\numberline {3.6.3.4}get\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud}{22}
-\contentsline {subsubsection}{\numberline {3.6.3.5}initialize}{23}
-\contentsline {subsection}{\numberline {3.6.4}メンバ詳解}{24}
-\contentsline {subsubsection}{\numberline {3.6.4.1}actual\discretionary {-}{}{}Extracted\discretionary {-}{}{}Num}{24}
-\contentsline {subsubsection}{\numberline {3.6.4.2}key}{24}
-\contentsline {subsubsection}{\numberline {3.6.4.3}stream\discretionary {-}{}{}Event}{24}
-\contentsline {section}{\numberline {3.7}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method クラス}{24}
-\contentsline {subsection}{\numberline {3.7.1}詳解}{25}
-\contentsline {subsection}{\numberline {3.7.2}構築子と解体子}{25}
-\contentsline {subsubsection}{\numberline {3.7.2.1}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method}{25}
-\contentsline {subsubsection}{\numberline {3.7.2.2}$\sim $\discretionary {-}{}{}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method}{25}
-\contentsline {subsection}{\numberline {3.7.3}関数詳解}{25}
-\contentsline {subsubsection}{\numberline {3.7.3.1}calc\discretionary {-}{}{}Yaw\discretionary {-}{}{}Roll\discretionary {-}{}{}Pitch}{25}
-\contentsline {subsubsection}{\numberline {3.7.3.2}get\discretionary {-}{}{}Coefficient}{26}
-\contentsline {section}{\numberline {3.8}output\discretionary {-}{}{}Data 構造体}{26}
-\contentsline {subsection}{\numberline {3.8.1}詳解}{27}
-\contentsline {subsection}{\numberline {3.8.2}メンバ詳解}{27}
-\contentsline {subsubsection}{\numberline {3.8.2.1}total\discretionary {-}{}{}Time}{27}
-\contentsline {subsubsection}{\numberline {3.8.2.2}x}{27}
-\contentsline {subsubsection}{\numberline {3.8.2.3}y}{27}
-\contentsline {subsubsection}{\numberline {3.8.2.4}z}{27}
-\contentsline {section}{\numberline {3.9}Point3 構造体}{27}
-\contentsline {subsection}{\numberline {3.9.1}詳解}{27}
-\contentsline {subsection}{\numberline {3.9.2}メンバ詳解}{28}
-\contentsline {subsubsection}{\numberline {3.9.2.1}x}{28}
-\contentsline {subsubsection}{\numberline {3.9.2.2}y}{28}
-\contentsline {subsubsection}{\numberline {3.9.2.3}z}{28}
-\contentsline {section}{\numberline {3.10}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library クラス}{28}
-\contentsline {subsection}{\numberline {3.10.1}詳解}{29}
-\contentsline {subsection}{\numberline {3.10.2}構築子と解体子}{29}
-\contentsline {subsubsection}{\numberline {3.10.2.1}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{29}
-\contentsline {subsubsection}{\numberline {3.10.2.2}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{29}
-\contentsline {subsubsection}{\numberline {3.10.2.3}$\sim $\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{30}
-\contentsline {subsection}{\numberline {3.10.3}関数詳解}{30}
-\contentsline {subsubsection}{\numberline {3.10.3.1}down\discretionary {-}{}{}Sampling\discretionary {-}{}{}Using\discretionary {-}{}{}Voxel\discretionary {-}{}{}Grid\discretionary {-}{}{}Filter}{30}
-\contentsline {subsubsection}{\numberline {3.10.3.2}flag\discretionary {-}{}{}Checker}{31}
-\contentsline {subsubsection}{\numberline {3.10.3.3}get\discretionary {-}{}{}Centroid\discretionary {-}{}{}Coordinate3d}{31}
-\contentsline {subsubsection}{\numberline {3.10.3.4}get\discretionary {-}{}{}Extract\discretionary {-}{}{}Plane\discretionary {-}{}{}And\discretionary {-}{}{}Clustering}{32}
-\contentsline {subsubsection}{\numberline {3.10.3.5}get\discretionary {-}{}{}Surface\discretionary {-}{}{}Normals}{33}
-\contentsline {subsubsection}{\numberline {3.10.3.6}initialize\discretionary {-}{}{}P\discretionary {-}{}{}C\discretionary {-}{}{}L\discretionary {-}{}{}Visualizer}{34}
-\contentsline {subsubsection}{\numberline {3.10.3.7}initialize\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Viewer}{34}
-\contentsline {subsubsection}{\numberline {3.10.3.8}load\discretionary {-}{}{}P\discretionary {-}{}{}L\discretionary {-}{}{}Y}{34}
-\contentsline {subsubsection}{\numberline {3.10.3.9}pass\discretionary {-}{}{}Through\discretionary {-}{}{}Filter}{35}
-\contentsline {subsubsection}{\numberline {3.10.3.10}radius\discretionary {-}{}{}Outlier\discretionary {-}{}{}Removal}{35}
-\contentsline {subsubsection}{\numberline {3.10.3.11}remove\discretionary {-}{}{}Outlier}{36}
-\contentsline {subsubsection}{\numberline {3.10.3.12}smoothing\discretionary {-}{}{}Using\discretionary {-}{}{}Moving\discretionary {-}{}{}Least\discretionary {-}{}{}Square}{36}
-\contentsline {subsection}{\numberline {3.10.4}メンバ詳解}{37}
-\contentsline {subsubsection}{\numberline {3.10.4.1}centroid}{37}
-\contentsline {subsubsection}{\numberline {3.10.4.2}downsampling\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{37}
-\contentsline {subsubsection}{\numberline {3.10.4.3}extractplane\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{37}
-\contentsline {subsubsection}{\numberline {3.10.4.4}mls\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{37}
-\contentsline {subsubsection}{\numberline {3.10.4.5}model}{38}
-\contentsline {subsubsection}{\numberline {3.10.4.6}passthrough\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{38}
-\contentsline {subsubsection}{\numberline {3.10.4.7}statisticaloutlierremoval\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{38}
-\contentsline {subsubsection}{\numberline {3.10.4.8}viewer}{38}
-\contentsline {subsubsection}{\numberline {3.10.4.9}visualizer}{38}
-\contentsline {section}{\numberline {3.11}System クラス}{38}
-\contentsline {subsection}{\numberline {3.11.1}詳解}{39}
-\contentsline {subsection}{\numberline {3.11.2}構築子と解体子}{39}
-\contentsline {subsubsection}{\numberline {3.11.2.1}System}{39}
-\contentsline {subsubsection}{\numberline {3.11.2.2}$\sim $\discretionary {-}{}{}System}{40}
-\contentsline {subsection}{\numberline {3.11.3}関数詳解}{40}
-\contentsline {subsubsection}{\numberline {3.11.3.1}alternatives}{40}
-\contentsline {subsubsection}{\numberline {3.11.3.2}check\discretionary {-}{}{}Directory}{40}
-\contentsline {subsubsection}{\numberline {3.11.3.3}countdown\discretionary {-}{}{}Timer}{41}
-\contentsline {subsubsection}{\numberline {3.11.3.4}end\discretionary {-}{}{}Message}{41}
-\contentsline {subsubsection}{\numberline {3.11.3.5}end\discretionary {-}{}{}Message}{42}
-\contentsline {subsubsection}{\numberline {3.11.3.6}end\discretionary {-}{}{}Timer}{42}
-\contentsline {subsubsection}{\numberline {3.11.3.7}get\discretionary {-}{}{}Frame\discretionary {-}{}{}Rate}{42}
-\contentsline {subsubsection}{\numberline {3.11.3.8}get\discretionary {-}{}{}Process\discretionary {-}{}{}Timein\discretionary {-}{}{}Miliseconds}{43}
-\contentsline {subsubsection}{\numberline {3.11.3.9}make\discretionary {-}{}{}Directory}{43}
-\contentsline {subsubsection}{\numberline {3.11.3.10}open\discretionary {-}{}{}Directory}{44}
-\contentsline {subsubsection}{\numberline {3.11.3.11}output\discretionary {-}{}{}All\discretionary {-}{}{}Data}{44}
-\contentsline {subsubsection}{\numberline {3.11.3.12}output\discretionary {-}{}{}Video}{45}
-\contentsline {subsubsection}{\numberline {3.11.3.13}remove\discretionary {-}{}{}Directory}{45}
-\contentsline {subsubsection}{\numberline {3.11.3.14}save\discretionary {-}{}{}Data\discretionary {-}{}{}Continuously}{46}
-\contentsline {subsubsection}{\numberline {3.11.3.15}save\discretionary {-}{}{}Data\discretionary {-}{}{}Every\discretionary {-}{}{}Enter\discretionary {-}{}{}Key}{46}
-\contentsline {subsubsection}{\numberline {3.11.3.16}start\discretionary {-}{}{}Message}{47}
-\contentsline {subsubsection}{\numberline {3.11.3.17}start\discretionary {-}{}{}Timer}{47}
-\contentsline {subsection}{\numberline {3.11.4}メンバ詳解}{47}
-\contentsline {subsubsection}{\numberline {3.11.4.1}save\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{48}
-\contentsline {chapter}{\numberline {4}ファイル詳解}{49}
-\contentsline {section}{\numberline {4.1}Drawing.\discretionary {-}{}{}cpp ファイル}{49}
-\contentsline {section}{\numberline {4.2}Drawing.\discretionary {-}{}{}hpp ファイル}{49}
-\contentsline {section}{\numberline {4.3}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control.\discretionary {-}{}{}cpp ファイル}{49}
-\contentsline {section}{\numberline {4.4}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control.\discretionary {-}{}{}hpp ファイル}{49}
-\contentsline {section}{\numberline {4.5}Image\discretionary {-}{}{}Processing.\discretionary {-}{}{}cpp ファイル}{50}
-\contentsline {section}{\numberline {4.6}Image\discretionary {-}{}{}Processing.\discretionary {-}{}{}hpp ファイル}{50}
-\contentsline {section}{\numberline {4.7}Kinect.\discretionary {-}{}{}cpp ファイル}{50}
-\contentsline {section}{\numberline {4.8}Kinect.\discretionary {-}{}{}hpp ファイル}{50}
-\contentsline {subsection}{\numberline {4.8.1}マクロ定義詳解}{50}
-\contentsline {subsubsection}{\numberline {4.8.1.1}E\discretionary {-}{}{}R\discretionary {-}{}{}R\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}H\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}K}{50}
-\contentsline {subsection}{\numberline {4.8.2}変数詳解}{51}
-\contentsline {subsubsection}{\numberline {4.8.2.1}C\discretionary {-}{}{}A\discretionary {-}{}{}M\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}O\discretionary {-}{}{}L\discretionary {-}{}{}U\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N}{51}
-\contentsline {section}{\numberline {4.9}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method.\discretionary {-}{}{}cpp ファイル}{51}
-\contentsline {section}{\numberline {4.10}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method.\discretionary {-}{}{}hpp ファイル}{51}
-\contentsline {section}{\numberline {4.11}main.\discretionary {-}{}{}cpp ファイル}{51}
-\contentsline {subsection}{\numberline {4.11.1}関数詳解}{52}
-\contentsline {subsubsection}{\numberline {4.11.1.1}main}{52}
-\contentsline {subsubsection}{\numberline {4.11.1.2}on\discretionary {-}{}{}Mouse}{56}
-\contentsline {subsection}{\numberline {4.11.2}変数詳解}{56}
-\contentsline {subsubsection}{\numberline {4.11.2.1}directory\discretionary {-}{}{}Name}{56}
-\contentsline {subsubsection}{\numberline {4.11.2.2}image}{56}
-\contentsline {subsubsection}{\numberline {4.11.2.3}origin}{57}
-\contentsline {subsubsection}{\numberline {4.11.2.4}save\discretionary {-}{}{}\_\discretionary {-}{}{}count}{57}
-\contentsline {subsubsection}{\numberline {4.11.2.5}selection}{57}
-\contentsline {subsubsection}{\numberline {4.11.2.6}select\discretionary {-}{}{}Object}{57}
-\contentsline {subsubsection}{\numberline {4.11.2.7}track\discretionary {-}{}{}Object}{57}
-\contentsline {section}{\numberline {4.12}Mouse.\discretionary {-}{}{}cpp ファイル}{57}
-\contentsline {subsection}{\numberline {4.12.1}関数詳解}{57}
-\contentsline {subsubsection}{\numberline {4.12.1.1}on\discretionary {-}{}{}Mouse}{57}
-\contentsline {section}{\numberline {4.13}Path\discretionary {-}{}{}Tracking\discretionary {-}{}{}And\discretionary {-}{}{}Induction\discretionary {-}{}{}Of\discretionary {-}{}{}The\discretionary {-}{}{}Robot.\discretionary {-}{}{}hpp ファイル}{58}
-\contentsline {subsection}{\numberline {4.13.1}型定義詳解}{59}
-\contentsline {subsubsection}{\numberline {4.13.1.1}Attitude\discretionary {-}{}{}Angle3d}{59}
-\contentsline {subsubsection}{\numberline {4.13.1.2}Do\discretionary {-}{}{}F6d}{59}
-\contentsline {subsubsection}{\numberline {4.13.1.3}output\discretionary {-}{}{}Data}{59}
-\contentsline {subsubsection}{\numberline {4.13.1.4}Point3ius}{59}
-\contentsline {subsection}{\numberline {4.13.2}関数詳解}{59}
-\contentsline {subsubsection}{\numberline {4.13.2.1}on\discretionary {-}{}{}Mouse}{59}
-\contentsline {subsection}{\numberline {4.13.3}変数詳解}{59}
-\contentsline {subsubsection}{\numberline {4.13.3.1}directory\discretionary {-}{}{}Name}{59}
-\contentsline {subsubsection}{\numberline {4.13.3.2}image}{60}
-\contentsline {subsubsection}{\numberline {4.13.3.3}origin}{60}
-\contentsline {subsubsection}{\numberline {4.13.3.4}save\discretionary {-}{}{}\_\discretionary {-}{}{}count}{60}
-\contentsline {subsubsection}{\numberline {4.13.3.5}selection}{60}
-\contentsline {subsubsection}{\numberline {4.13.3.6}select\discretionary {-}{}{}Object}{60}
-\contentsline {subsubsection}{\numberline {4.13.3.7}track\discretionary {-}{}{}Object}{60}
-\contentsline {section}{\numberline {4.14}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library.\discretionary {-}{}{}cpp ファイル}{60}
-\contentsline {section}{\numberline {4.15}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library.\discretionary {-}{}{}hpp ファイル}{60}
-\contentsline {section}{\numberline {4.16}stdafx.\discretionary {-}{}{}cpp ファイル}{61}
-\contentsline {section}{\numberline {4.17}stdafx.\discretionary {-}{}{}h ファイル}{61}
-\contentsline {subsection}{\numberline {4.17.1}マクロ定義詳解}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.1}\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}O\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}W\discretionary {-}{}{}A\discretionary {-}{}{}R\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}G\discretionary {-}{}{}S}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.2}A\discretionary {-}{}{}L\discretionary {-}{}{}L\discretionary {-}{}{}P\discretionary {-}{}{}I\discretionary {-}{}{}X\discretionary {-}{}{}E\discretionary {-}{}{}L}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.3}H\discretionary {-}{}{}E\discretionary {-}{}{}I\discretionary {-}{}{}G\discretionary {-}{}{}H\discretionary {-}{}{}T}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.4}N\discretionary {-}{}{}O\discretionary {-}{}{}C}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.5}O\discretionary {-}{}{}U\discretionary {-}{}{}T\discretionary {-}{}{}P\discretionary {-}{}{}U\discretionary {-}{}{}T\discretionary {-}{}{}D\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}X}{62}
-\contentsline {subsubsection}{\numberline {4.17.1.6}W\discretionary {-}{}{}I\discretionary {-}{}{}D\discretionary {-}{}{}T\discretionary {-}{}{}H}{62}
-\contentsline {section}{\numberline {4.18}System.\discretionary {-}{}{}cpp ファイル}{63}
-\contentsline {section}{\numberline {4.19}System.\discretionary {-}{}{}hpp ファイル}{63}
-\contentsline {chapter}{索引}{64}
+\contentsline {subsection}{\numberline {3.3.2}メンバ詳解}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.1}pitch}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.2}roll}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.3}x}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.4}y}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.5}yaw}{7}
+\contentsline {subsubsection}{\numberline {3.3.2.6}z}{8}
+\contentsline {section}{\numberline {3.4}Do\discretionary {-}{}{}F6i 構造体}{8}
+\contentsline {subsection}{\numberline {3.4.1}詳解}{8}
+\contentsline {subsection}{\numberline {3.4.2}メンバ詳解}{8}
+\contentsline {subsubsection}{\numberline {3.4.2.1}pitch}{8}
+\contentsline {subsubsection}{\numberline {3.4.2.2}roll}{8}
+\contentsline {subsubsection}{\numberline {3.4.2.3}x}{9}
+\contentsline {subsubsection}{\numberline {3.4.2.4}y}{9}
+\contentsline {subsubsection}{\numberline {3.4.2.5}yaw}{9}
+\contentsline {subsubsection}{\numberline {3.4.2.6}z}{9}
+\contentsline {section}{\numberline {3.5}Drawing クラス}{9}
+\contentsline {subsection}{\numberline {3.5.1}詳解}{10}
+\contentsline {subsection}{\numberline {3.5.2}構築子と解体子}{10}
+\contentsline {subsubsection}{\numberline {3.5.2.1}Drawing}{10}
+\contentsline {subsubsection}{\numberline {3.5.2.2}$\sim $\discretionary {-}{}{}Drawing}{10}
+\contentsline {subsection}{\numberline {3.5.3}関数詳解}{10}
+\contentsline {subsubsection}{\numberline {3.5.3.1}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}E\discretionary {-}{}{}V3}{10}
+\contentsline {subsubsection}{\numberline {3.5.3.2}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Route}{11}
+\contentsline {subsubsection}{\numberline {3.5.3.3}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}Time2\discretionary {-}{}{}V}{11}
+\contentsline {subsubsection}{\numberline {3.5.3.4}gnuplot\discretionary {-}{}{}Script\discretionary {-}{}{}Time2\discretionary {-}{}{}Yaw}{11}
+\contentsline {section}{\numberline {3.6}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control クラス}{12}
+\contentsline {subsection}{\numberline {3.6.1}詳解}{13}
+\contentsline {subsection}{\numberline {3.6.2}構築子と解体子}{13}
+\contentsline {subsubsection}{\numberline {3.6.2.1}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control}{13}
+\contentsline {subsubsection}{\numberline {3.6.2.2}$\sim $\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control}{13}
+\contentsline {subsection}{\numberline {3.6.3}関数詳解}{13}
+\contentsline {subsubsection}{\numberline {3.6.3.1}get\discretionary {-}{}{}Average\discretionary {-}{}{}Velocity\discretionary {-}{}{}And\discretionary {-}{}{}Yaw}{13}
+\contentsline {subsubsection}{\numberline {3.6.3.2}get\discretionary {-}{}{}Velocityin\discretionary {-}{}{}Sec}{14}
+\contentsline {subsubsection}{\numberline {3.6.3.3}output6\discretionary {-}{}{}Do\discretionary {-}{}{}F}{14}
+\contentsline {subsubsection}{\numberline {3.6.3.4}output6\discretionary {-}{}{}Do\discretionary {-}{}{}F\discretionary {-}{}{}Continuous}{14}
+\contentsline {subsubsection}{\numberline {3.6.3.5}output\discretionary {-}{}{}Control\discretionary {-}{}{}Information}{16}
+\contentsline {subsubsection}{\numberline {3.6.3.6}output\discretionary {-}{}{}Control\discretionary {-}{}{}Information}{16}
+\contentsline {subsubsection}{\numberline {3.6.3.7}output\discretionary {-}{}{}E\discretionary {-}{}{}V3\discretionary {-}{}{}Route\discretionary {-}{}{}Continuous}{16}
+\contentsline {subsubsection}{\numberline {3.6.3.8}set6\discretionary {-}{}{}Do\discretionary {-}{}{}F\discretionary {-}{}{}E\discretionary {-}{}{}V3}{17}
+\contentsline {subsection}{\numberline {3.6.4}メンバ詳解}{17}
+\contentsline {subsubsection}{\numberline {3.6.4.1}before}{17}
+\contentsline {subsubsection}{\numberline {3.6.4.2}count\discretionary {-}{}{}\_\discretionary {-}{}{}average}{17}
+\contentsline {subsubsection}{\numberline {3.6.4.3}current}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.4}current\discretionary {-}{}{}\_\discretionary {-}{}{}average}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.5}ev3\discretionary {-}{}{}\_\discretionary {-}{}{}6dof}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.6}flag\discretionary {-}{}{}\_\discretionary {-}{}{}average}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.7}flag\discretionary {-}{}{}\_\discretionary {-}{}{}velocity}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.8}save\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{18}
+\contentsline {subsubsection}{\numberline {3.6.4.9}velocity}{18}
+\contentsline {section}{\numberline {3.7}Image\discretionary {-}{}{}Processing クラス}{19}
+\contentsline {subsection}{\numberline {3.7.1}詳解}{19}
+\contentsline {subsection}{\numberline {3.7.2}構築子と解体子}{20}
+\contentsline {subsubsection}{\numberline {3.7.2.1}Image\discretionary {-}{}{}Processing}{20}
+\contentsline {subsubsection}{\numberline {3.7.2.2}$\sim $\discretionary {-}{}{}Image\discretionary {-}{}{}Processing}{20}
+\contentsline {subsection}{\numberline {3.7.3}関数詳解}{20}
+\contentsline {subsubsection}{\numberline {3.7.3.1}get\discretionary {-}{}{}Background\discretionary {-}{}{}Substraction\discretionary {-}{}{}Bin\discretionary {-}{}{}Image}{20}
+\contentsline {subsubsection}{\numberline {3.7.3.2}get\discretionary {-}{}{}Undistortion\discretionary {-}{}{}Image}{20}
+\contentsline {subsubsection}{\numberline {3.7.3.3}get\discretionary {-}{}{}Unit\discretionary {-}{}{}Mask}{21}
+\contentsline {subsubsection}{\numberline {3.7.3.4}load\discretionary {-}{}{}Internal\discretionary {-}{}{}Camera\discretionary {-}{}{}Parameter}{21}
+\contentsline {subsubsection}{\numberline {3.7.3.5}open\discretionary {-}{}{}C\discretionary {-}{}{}V\discretionary {-}{}{}Setting\discretionary {-}{}{}Trackbar}{22}
+\contentsline {subsubsection}{\numberline {3.7.3.6}output\discretionary {-}{}{}Image\discretionary {-}{}{}Select\discretionary {-}{}{}Directory}{22}
+\contentsline {subsubsection}{\numberline {3.7.3.7}show\discretionary {-}{}{}Image}{22}
+\contentsline {subsubsection}{\numberline {3.7.3.8}show\discretionary {-}{}{}Image\discretionary {-}{}{}Together}{23}
+\contentsline {subsubsection}{\numberline {3.7.3.9}show\discretionary {-}{}{}Image\discretionary {-}{}{}Together}{23}
+\contentsline {subsection}{\numberline {3.7.4}メンバ詳解}{23}
+\contentsline {subsubsection}{\numberline {3.7.4.1}closing\discretionary {-}{}{}\_\discretionary {-}{}{}times}{23}
+\contentsline {subsubsection}{\numberline {3.7.4.2}neighborhood}{24}
+\contentsline {subsubsection}{\numberline {3.7.4.3}th}{24}
+\contentsline {section}{\numberline {3.8}Kinect クラス}{24}
+\contentsline {subsection}{\numberline {3.8.1}詳解}{25}
+\contentsline {subsection}{\numberline {3.8.2}構築子と解体子}{25}
+\contentsline {subsubsection}{\numberline {3.8.2.1}Kinect}{25}
+\contentsline {subsubsection}{\numberline {3.8.2.2}$\sim $\discretionary {-}{}{}Kinect}{25}
+\contentsline {subsection}{\numberline {3.8.3}関数詳解}{25}
+\contentsline {subsubsection}{\numberline {3.8.3.1}create\discretionary {-}{}{}Instance}{25}
+\contentsline {subsubsection}{\numberline {3.8.3.2}draw\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Image}{25}
+\contentsline {subsubsection}{\numberline {3.8.3.3}get\discretionary {-}{}{}Distance}{26}
+\contentsline {subsubsection}{\numberline {3.8.3.4}get\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud}{26}
+\contentsline {subsubsection}{\numberline {3.8.3.5}initialize}{26}
+\contentsline {subsection}{\numberline {3.8.4}メンバ詳解}{27}
+\contentsline {subsubsection}{\numberline {3.8.4.1}actual\discretionary {-}{}{}Extracted\discretionary {-}{}{}Num}{27}
+\contentsline {subsubsection}{\numberline {3.8.4.2}key}{27}
+\contentsline {subsubsection}{\numberline {3.8.4.3}stream\discretionary {-}{}{}Event}{27}
+\contentsline {section}{\numberline {3.9}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method クラス}{27}
+\contentsline {subsection}{\numberline {3.9.1}詳解}{28}
+\contentsline {subsection}{\numberline {3.9.2}構築子と解体子}{28}
+\contentsline {subsubsection}{\numberline {3.9.2.1}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method}{28}
+\contentsline {subsubsection}{\numberline {3.9.2.2}$\sim $\discretionary {-}{}{}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method}{28}
+\contentsline {subsection}{\numberline {3.9.3}関数詳解}{28}
+\contentsline {subsubsection}{\numberline {3.9.3.1}calc\discretionary {-}{}{}Yaw\discretionary {-}{}{}Roll\discretionary {-}{}{}Pitch}{28}
+\contentsline {subsubsection}{\numberline {3.9.3.2}get\discretionary {-}{}{}Coefficient}{29}
+\contentsline {subsection}{\numberline {3.9.4}メンバ詳解}{29}
+\contentsline {subsubsection}{\numberline {3.9.4.1}attitude\discretionary {-}{}{}\_\discretionary {-}{}{}angle}{29}
+\contentsline {subsubsection}{\numberline {3.9.4.2}coefficient\discretionary {-}{}{}\_\discretionary {-}{}{}plane}{30}
+\contentsline {section}{\numberline {3.10}output\discretionary {-}{}{}Data 構造体}{30}
+\contentsline {subsection}{\numberline {3.10.1}詳解}{30}
+\contentsline {subsection}{\numberline {3.10.2}メンバ詳解}{30}
+\contentsline {subsubsection}{\numberline {3.10.2.1}total\discretionary {-}{}{}Time}{30}
+\contentsline {subsubsection}{\numberline {3.10.2.2}x}{30}
+\contentsline {subsubsection}{\numberline {3.10.2.3}y}{30}
+\contentsline {subsubsection}{\numberline {3.10.2.4}z}{31}
+\contentsline {section}{\numberline {3.11}Point3 構造体}{31}
+\contentsline {subsection}{\numberline {3.11.1}詳解}{31}
+\contentsline {subsection}{\numberline {3.11.2}メンバ詳解}{31}
+\contentsline {subsubsection}{\numberline {3.11.2.1}x}{31}
+\contentsline {subsubsection}{\numberline {3.11.2.2}y}{31}
+\contentsline {subsubsection}{\numberline {3.11.2.3}z}{31}
+\contentsline {section}{\numberline {3.12}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library クラス}{32}
+\contentsline {subsection}{\numberline {3.12.1}詳解}{33}
+\contentsline {subsection}{\numberline {3.12.2}構築子と解体子}{33}
+\contentsline {subsubsection}{\numberline {3.12.2.1}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{33}
+\contentsline {subsubsection}{\numberline {3.12.2.2}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{33}
+\contentsline {subsubsection}{\numberline {3.12.2.3}$\sim $\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library}{34}
+\contentsline {subsection}{\numberline {3.12.3}関数詳解}{34}
+\contentsline {subsubsection}{\numberline {3.12.3.1}down\discretionary {-}{}{}Sampling\discretionary {-}{}{}Using\discretionary {-}{}{}Voxel\discretionary {-}{}{}Grid\discretionary {-}{}{}Filter}{34}
+\contentsline {subsubsection}{\numberline {3.12.3.2}flag\discretionary {-}{}{}Checker}{34}
+\contentsline {subsubsection}{\numberline {3.12.3.3}get\discretionary {-}{}{}Centroid\discretionary {-}{}{}Coordinate3d}{35}
+\contentsline {subsubsection}{\numberline {3.12.3.4}get\discretionary {-}{}{}Extract\discretionary {-}{}{}Plane\discretionary {-}{}{}And\discretionary {-}{}{}Clustering}{35}
+\contentsline {subsubsection}{\numberline {3.12.3.5}get\discretionary {-}{}{}Surface\discretionary {-}{}{}Normals}{36}
+\contentsline {subsubsection}{\numberline {3.12.3.6}initialize\discretionary {-}{}{}P\discretionary {-}{}{}C\discretionary {-}{}{}L\discretionary {-}{}{}Visualizer}{36}
+\contentsline {subsubsection}{\numberline {3.12.3.7}load\discretionary {-}{}{}P\discretionary {-}{}{}L\discretionary {-}{}{}Y}{37}
+\contentsline {subsubsection}{\numberline {3.12.3.8}output\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud}{37}
+\contentsline {subsubsection}{\numberline {3.12.3.9}output\discretionary {-}{}{}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}P\discretionary {-}{}{}L\discretionary {-}{}{}Y}{37}
+\contentsline {subsubsection}{\numberline {3.12.3.10}pass\discretionary {-}{}{}Through\discretionary {-}{}{}Filter}{38}
+\contentsline {subsubsection}{\numberline {3.12.3.11}radius\discretionary {-}{}{}Outlier\discretionary {-}{}{}Removal}{38}
+\contentsline {subsubsection}{\numberline {3.12.3.12}remove\discretionary {-}{}{}Outlier}{38}
+\contentsline {subsubsection}{\numberline {3.12.3.13}smoothing\discretionary {-}{}{}Using\discretionary {-}{}{}Moving\discretionary {-}{}{}Least\discretionary {-}{}{}Square}{40}
+\contentsline {subsection}{\numberline {3.12.4}メンバ詳解}{40}
+\contentsline {subsubsection}{\numberline {3.12.4.1}centroid}{40}
+\contentsline {subsubsection}{\numberline {3.12.4.2}downsampling\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.3}extractplane\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.4}mls\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.5}model}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.6}passthrough\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.7}statisticaloutlierremoval\discretionary {-}{}{}\_\discretionary {-}{}{}flag}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.8}th}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.9}tor}{41}
+\contentsline {subsubsection}{\numberline {3.12.4.10}visualizer}{42}
+\contentsline {section}{\numberline {3.13}System クラス}{42}
+\contentsline {subsection}{\numberline {3.13.1}詳解}{43}
+\contentsline {subsection}{\numberline {3.13.2}構築子と解体子}{43}
+\contentsline {subsubsection}{\numberline {3.13.2.1}System}{43}
+\contentsline {subsubsection}{\numberline {3.13.2.2}$\sim $\discretionary {-}{}{}System}{43}
+\contentsline {subsection}{\numberline {3.13.3}関数詳解}{43}
+\contentsline {subsubsection}{\numberline {3.13.3.1}alternatives}{43}
+\contentsline {subsubsection}{\numberline {3.13.3.2}check\discretionary {-}{}{}Directory}{44}
+\contentsline {subsubsection}{\numberline {3.13.3.3}countdown\discretionary {-}{}{}Timer}{44}
+\contentsline {subsubsection}{\numberline {3.13.3.4}end\discretionary {-}{}{}Message}{44}
+\contentsline {subsubsection}{\numberline {3.13.3.5}end\discretionary {-}{}{}Message}{45}
+\contentsline {subsubsection}{\numberline {3.13.3.6}end\discretionary {-}{}{}Timer}{45}
+\contentsline {subsubsection}{\numberline {3.13.3.7}get\discretionary {-}{}{}Frame\discretionary {-}{}{}Rate}{45}
+\contentsline {subsubsection}{\numberline {3.13.3.8}get\discretionary {-}{}{}Process\discretionary {-}{}{}Timein\discretionary {-}{}{}Miliseconds}{46}
+\contentsline {subsubsection}{\numberline {3.13.3.9}make\discretionary {-}{}{}Directory}{46}
+\contentsline {subsubsection}{\numberline {3.13.3.10}make\discretionary {-}{}{}Directory\discretionary {-}{}{}Based\discretionary {-}{}{}Date}{46}
+\contentsline {subsubsection}{\numberline {3.13.3.11}open\discretionary {-}{}{}Directory}{47}
+\contentsline {subsubsection}{\numberline {3.13.3.12}output\discretionary {-}{}{}Video}{47}
+\contentsline {subsubsection}{\numberline {3.13.3.13}remove\discretionary {-}{}{}Directory}{47}
+\contentsline {subsubsection}{\numberline {3.13.3.14}show\discretionary {-}{}{}Help\discretionary {-}{}{}Message}{48}
+\contentsline {subsubsection}{\numberline {3.13.3.15}start\discretionary {-}{}{}Message}{48}
+\contentsline {subsubsection}{\numberline {3.13.3.16}start\discretionary {-}{}{}Timer}{48}
+\contentsline {subsection}{\numberline {3.13.4}メンバ詳解}{48}
+\contentsline {subsubsection}{\numberline {3.13.4.1}fps}{49}
+\contentsline {subsubsection}{\numberline {3.13.4.2}sum\discretionary {-}{}{}\_\discretionary {-}{}{}time}{49}
+\contentsline {subsubsection}{\numberline {3.13.4.3}time}{49}
+\contentsline {chapter}{\numberline {4}ファイル詳解}{51}
+\contentsline {section}{\numberline {4.1}Drawing.\discretionary {-}{}{}cpp ファイル}{51}
+\contentsline {section}{\numberline {4.2}Drawing.\discretionary {-}{}{}hpp ファイル}{51}
+\contentsline {section}{\numberline {4.3}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control.\discretionary {-}{}{}cpp ファイル}{52}
+\contentsline {section}{\numberline {4.4}E\discretionary {-}{}{}V3\discretionary {-}{}{}Control.\discretionary {-}{}{}hpp ファイル}{52}
+\contentsline {section}{\numberline {4.5}Image\discretionary {-}{}{}Processing.\discretionary {-}{}{}cpp ファイル}{53}
+\contentsline {section}{\numberline {4.6}Image\discretionary {-}{}{}Processing.\discretionary {-}{}{}hpp ファイル}{54}
+\contentsline {section}{\numberline {4.7}Kinect.\discretionary {-}{}{}cpp ファイル}{54}
+\contentsline {section}{\numberline {4.8}Kinect.\discretionary {-}{}{}hpp ファイル}{55}
+\contentsline {subsection}{\numberline {4.8.1}マクロ定義詳解}{56}
+\contentsline {subsubsection}{\numberline {4.8.1.1}E\discretionary {-}{}{}R\discretionary {-}{}{}R\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}H\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}K}{56}
+\contentsline {subsection}{\numberline {4.8.2}変数詳解}{56}
+\contentsline {subsubsection}{\numberline {4.8.2.1}C\discretionary {-}{}{}A\discretionary {-}{}{}M\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}O\discretionary {-}{}{}L\discretionary {-}{}{}U\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N}{56}
+\contentsline {section}{\numberline {4.9}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method.\discretionary {-}{}{}cpp ファイル}{56}
+\contentsline {section}{\numberline {4.10}Least\discretionary {-}{}{}Square\discretionary {-}{}{}Method.\discretionary {-}{}{}hpp ファイル}{57}
+\contentsline {section}{\numberline {4.11}main.\discretionary {-}{}{}cpp ファイル}{57}
+\contentsline {subsection}{\numberline {4.11.1}関数詳解}{58}
+\contentsline {subsubsection}{\numberline {4.11.1.1}main}{58}
+\contentsline {subsubsection}{\numberline {4.11.1.2}on\discretionary {-}{}{}Mouse}{60}
+\contentsline {subsection}{\numberline {4.11.2}変数詳解}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.1}directory\discretionary {-}{}{}Name}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.2}image}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.3}origin}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.4}selection}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.5}select\discretionary {-}{}{}Object}{60}
+\contentsline {subsubsection}{\numberline {4.11.2.6}track\discretionary {-}{}{}Object}{61}
+\contentsline {section}{\numberline {4.12}Mouse.\discretionary {-}{}{}cpp ファイル}{61}
+\contentsline {subsection}{\numberline {4.12.1}関数詳解}{61}
+\contentsline {subsubsection}{\numberline {4.12.1.1}on\discretionary {-}{}{}Mouse}{61}
+\contentsline {section}{\numberline {4.13}Path\discretionary {-}{}{}Tracking\discretionary {-}{}{}And\discretionary {-}{}{}Induction\discretionary {-}{}{}Of\discretionary {-}{}{}The\discretionary {-}{}{}Robot.\discretionary {-}{}{}hpp ファイル}{62}
+\contentsline {subsection}{\numberline {4.13.1}型定義詳解}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.1}Attitude\discretionary {-}{}{}Angle3d}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.2}Control\discretionary {-}{}{}Paramd}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.3}Do\discretionary {-}{}{}F6d}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.4}Do\discretionary {-}{}{}F6i}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.5}output\discretionary {-}{}{}Data}{63}
+\contentsline {subsubsection}{\numberline {4.13.1.6}Point3ius}{63}
+\contentsline {subsection}{\numberline {4.13.2}関数詳解}{63}
+\contentsline {subsubsection}{\numberline {4.13.2.1}on\discretionary {-}{}{}Mouse}{63}
+\contentsline {subsection}{\numberline {4.13.3}変数詳解}{63}
+\contentsline {subsubsection}{\numberline {4.13.3.1}directory\discretionary {-}{}{}Name}{63}
+\contentsline {subsubsection}{\numberline {4.13.3.2}image}{63}
+\contentsline {subsubsection}{\numberline {4.13.3.3}origin}{64}
+\contentsline {subsubsection}{\numberline {4.13.3.4}selection}{64}
+\contentsline {subsubsection}{\numberline {4.13.3.5}select\discretionary {-}{}{}Object}{64}
+\contentsline {subsubsection}{\numberline {4.13.3.6}track\discretionary {-}{}{}Object}{64}
+\contentsline {section}{\numberline {4.14}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library.\discretionary {-}{}{}cpp ファイル}{64}
+\contentsline {section}{\numberline {4.15}Point\discretionary {-}{}{}Cloud\discretionary {-}{}{}Library.\discretionary {-}{}{}hpp ファイル}{65}
+\contentsline {section}{\numberline {4.16}stdafx.\discretionary {-}{}{}cpp ファイル}{65}
+\contentsline {section}{\numberline {4.17}stdafx.\discretionary {-}{}{}h ファイル}{65}
+\contentsline {subsection}{\numberline {4.17.1}詳解}{67}
+\contentsline {subsection}{\numberline {4.17.2}マクロ定義詳解}{67}
+\contentsline {subsubsection}{\numberline {4.17.2.1}\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}E\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}O\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}W\discretionary {-}{}{}A\discretionary {-}{}{}R\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}G\discretionary {-}{}{}S}{67}
+\contentsline {subsubsection}{\numberline {4.17.2.2}A\discretionary {-}{}{}L\discretionary {-}{}{}L\discretionary {-}{}{}P\discretionary {-}{}{}I\discretionary {-}{}{}X\discretionary {-}{}{}E\discretionary {-}{}{}L}{67}
+\contentsline {subsubsection}{\numberline {4.17.2.3}H\discretionary {-}{}{}E\discretionary {-}{}{}I\discretionary {-}{}{}G\discretionary {-}{}{}H\discretionary {-}{}{}T}{67}
+\contentsline {subsubsection}{\numberline {4.17.2.4}N\discretionary {-}{}{}O\discretionary {-}{}{}C}{67}
+\contentsline {subsubsection}{\numberline {4.17.2.5}W\discretionary {-}{}{}I\discretionary {-}{}{}D\discretionary {-}{}{}T\discretionary {-}{}{}H}{67}
+\contentsline {section}{\numberline {4.18}System.\discretionary {-}{}{}cpp ファイル}{68}
+\contentsline {section}{\numberline {4.19}System.\discretionary {-}{}{}hpp ファイル}{68}
+\contentsline {chapter}{索引}{70}

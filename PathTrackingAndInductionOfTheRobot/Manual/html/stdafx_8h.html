@@ -106,6 +106,9 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <div class="title">stdafx.h ファイル</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>標準のシステム，インクルードファイル，または参照回数が多く，かつあまり変更されない，プロジェクト専用のインクルードファイルを記述する．  
+<a href="#details">[詳解]</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;fstream&gt;</code><br/>
@@ -146,9 +149,15 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <code>#include &lt;pcl\filters\extract_indices.h&gt;</code><br/>
 <code>#include &lt;pcl\features\normal_3d.h&gt;</code><br/>
 <code>#include &lt;pcl\segmentation\extract_clusters.h&gt;</code><br/>
+<code>#include &lt;pcl\features\integral_image_normal.h&gt;</code><br/>
 <code>#include &lt;boost\thread\thread.hpp&gt;</code><br/>
 <code>#include &lt;pcl\registration\icp.h&gt;</code><br/>
 <code>#include &lt;pcl\PCLPointField.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+stdafx.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stdafx_8h__incl.png" border="0" usemap="#stdafx_8h" alt=""/></div>
+</div>
 </div>
 <p><a href="stdafx_8h_source.html">[ソースコード]</a></p>
 <table class="memberdecls">
@@ -165,14 +174,17 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <tr class="memitem:ada27e1c35871e9e6118bd9818362f01e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdafx_8h.html#ada27e1c35871e9e6118bd9818362f01e">ALLPIXEL</a>&#160;&#160;&#160;<a class="el" href="stdafx_8h.html#a241aeeb764887ae5e3de58b98f04b16d">WIDTH</a>*<a class="el" href="stdafx_8h.html#aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</a></td></tr>
 <tr class="memdesc:ada27e1c35871e9e6118bd9818362f01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">1フレームの全ピクセル数  <a href="#ada27e1c35871e9e6118bd9818362f01e">[詳解]</a><br/></td></tr>
 <tr class="separator:ada27e1c35871e9e6118bd9818362f01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d8ba032e2fdf7b2561f508164124f3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:a5d8ba032e2fdf7b2561f508164124f3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>&#160;&#160;&#160;128</td></tr>
 <tr class="memdesc:a5d8ba032e2fdf7b2561f508164124f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of Characters．(ファイルの名前を付けるときの文字数制限)  <a href="#a5d8ba032e2fdf7b2561f508164124f3e">[詳解]</a><br/></td></tr>
 <tr class="separator:a5d8ba032e2fdf7b2561f508164124f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af962cd28db9fad108f1e02b7f90192b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stdafx_8h.html#af962cd28db9fad108f1e02b7f90192b7">OUTPUTDATA_MAX</a>&#160;&#160;&#160;10000</td></tr>
-<tr class="memdesc:af962cd28db9fad108f1e02b7f90192b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力するデータの上限  <a href="#af962cd28db9fad108f1e02b7f90192b7">[詳解]</a><br/></td></tr>
-<tr class="separator:af962cd28db9fad108f1e02b7f90192b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">マクロ定義詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>標準のシステム，インクルードファイル，または参照回数が多く，かつあまり変更されない，プロジェクト専用のインクルードファイルを記述する． </p>
+<dl class="section date"><dt>日付</dt><dd>2015.11.22 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>H.Shigehara </dd></dl>
+
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> に定義があります。</p>
+</div><h2 class="groupheader">マクロ定義詳解</h2>
 <a class="anchor" id="af08ec37a8c99d747fb60fa15bc28678b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +195,7 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
       </table>
 </div><div class="memdoc">
 
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00008">8</a> 行目に定義があります。</p>
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00011">11</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -199,7 +211,7 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 
 <p>1フレームの全ピクセル数 </p>
 
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00078">78</a> 行目に定義があります。</p>
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00080">80</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -215,7 +227,7 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 
 <p>画像の高さ </p>
 
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00077">77</a> 行目に定義があります。</p>
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00079">79</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -224,32 +236,16 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NOC&#160;&#160;&#160;64</td>
+          <td class="memname">#define NOC&#160;&#160;&#160;128</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Number of Characters．(ファイルの名前を付けるときの文字数制限) </p>
 
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00079">79</a> 行目に定義があります。</p>
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00081">81</a> 行目に定義があります。</p>
 
-<p>参照元 <a class="el" href="_drawing_8cpp_source.html#l00105">Drawing::gnuplotScript()</a>, <a class="el" href="_drawing_8cpp_source.html#l00249">Drawing::gnuplotScriptCoG()</a>, <a class="el" href="_drawing_8cpp_source.html#l00316">Drawing::gnuplotScriptEV3Route()</a>, <a class="el" href="_drawing_8cpp_source.html#l00291">Drawing::gnuplotScriptEV3Unit()</a>, <a class="el" href="_system_8cpp_source.html#l00227">System::makeDirectory()</a>, <a class="el" href="_system_8cpp_source.html#l00290">System::openDirectory()</a>, <a class="el" href="_system_8cpp_source.html#l00304">System::outputAllData()</a>, <a class="el" href="_system_8cpp_source.html#l00334">System::outputVideo()</a>, <a class="el" href="_drawing_8cpp_source.html#l00199">Drawing::plot3DRealTime()</a>, <a class="el" href="_system_8cpp_source.html#l00244">System::removeDirectory()</a>, <a class="el" href="_system_8cpp_source.html#l00409">System::saveDataContinuously()</a>, <a class="el" href="_system_8cpp_source.html#l00351">System::saveDataEveryEnterKey()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="af962cd28db9fad108f1e02b7f90192b7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OUTPUTDATA_MAX&#160;&#160;&#160;10000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>出力するデータの上限 </p>
-
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00080">80</a> 行目に定義があります。</p>
+<p>参照元 <a class="el" href="_drawing_8cpp_source.html#l00049">Drawing::gnuplotScriptEV3()</a>, <a class="el" href="_drawing_8cpp_source.html#l00072">Drawing::gnuplotScriptEV3Route()</a>, <a class="el" href="_drawing_8cpp_source.html#l00093">Drawing::gnuplotScriptTime2V()</a>, <a class="el" href="_drawing_8cpp_source.html#l00110">Drawing::gnuplotScriptTime2Yaw()</a>, <a class="el" href="main_8cpp_source.html#l00036">main()</a>, <a class="el" href="_system_8cpp_source.html#l00266">System::makeDirectory()</a>, <a class="el" href="_system_8cpp_source.html#l00247">System::makeDirectoryBasedDate()</a>, <a class="el" href="_system_8cpp_source.html#l00324">System::openDirectory()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00150">EV3Control::output6DoF()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00169">EV3Control::output6DoFContinuous()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00208">EV3Control::outputControlInformation()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00189">EV3Control::outputEV3RouteContinuous()</a>, <a class="el" href="_image_processing_8cpp_source.html#l00266">ImageProcessing::outputImageSelectDirectory()</a>, <a class="el" href="_point_cloud_library_8cpp_source.html#l00404">PointCloudLibrary::outputPointCloud()</a>, <a class="el" href="_point_cloud_library_8cpp_source.html#l00425">PointCloudLibrary::outputPointCloudPLY()</a>, <a class="el" href="_system_8cpp_source.html#l00339">System::outputVideo()</a>, <a class="el" href="_system_8cpp_source.html#l00278">System::removeDirectory()</a> (計17項目).</p>
 
 </div>
 </div>
@@ -266,7 +262,7 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <p>&lt;名前空間 </p>
 <p>画像の幅 </p>
 
-<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00076">76</a> 行目に定義があります。</p>
+<p> <a class="el" href="stdafx_8h_source.html">stdafx.h</a> の <a class="el" href="stdafx_8h_source.html#l00078">78</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -275,8 +271,8 @@ $(document).ready(function(){initNavTree('stdafx_8h.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="stdafx_8h.html">stdafx.h</a></li>
-    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <li class="navelem"><a class="el" href="dir_45aeffd6702719c5f3cbf0d005461816.html">SkyDrive</a></li><li class="navelem"><a class="el" href="dir_a0d9d77de56eed61b71feb2adefbb47d.html">ShigeLab</a></li><li class="navelem"><a class="el" href="dir_89d32e4e26b9b93c85c915e3b07e88b7.html">Programming</a></li><li class="navelem"><a class="el" href="dir_f222f4b39d8b1349931d836df5dbea5a.html">Master</a></li><li class="navelem"><a class="el" href="dir_3890cccb326c0ee1b484a4cf99bcc311.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="dir_d2cbe6861c52eb610edd18736eb43ce0.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="stdafx_8h.html">stdafx.h</a></li>
+    <li class="footer">2016年01月25日(月) 12時00分33秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -114,6 +114,13 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
  <a href="class_e_v3_control.html#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a>&gt;</code></p>
+<div class="dynheader">
+EV3Control 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control__coll__graph.png" border="0" usemap="#_e_v3_control_coll__map" alt="Collaboration graph"/></div>
+<map name="_e_v3_control_coll__map" id="_e_v3_control_coll__map">
+<area shape="rect" id="node2" href="struct_control_paramd.html" title="走行制御用構造体．double型 " alt="" coords="5,5,63,25"/><area shape="rect" id="node3" href="struct_do_f6i.html" title="姿勢構造体の定義．int型 " alt="" coords="87,5,125,25"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
@@ -126,17 +133,62 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
 <tr class="memitem:a8ef402279dc736292ae0cf780dd3aed8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a8ef402279dc736292ae0cf780dd3aed8">set6DoFEV3</a> (pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud, Point3d centroid, <a class="el" href="struct_attitude_angle.html">AttitudeAngle</a> attitude_angle)</td></tr>
 <tr class="memdesc:a8ef402279dc736292ae0cf780dd3aed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する(c80)  <a href="#a8ef402279dc736292ae0cf780dd3aed8">[詳解]</a><br/></td></tr>
 <tr class="separator:a8ef402279dc736292ae0cf780dd3aed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a206f5da82bb48c5ddae1906b9206d773"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a206f5da82bb48c5ddae1906b9206d773">getVelocityinSec</a> (double time_ms)</td></tr>
+<tr class="memdesc:a206f5da82bb48c5ddae1906b9206d773"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3の速度を計算する(c85)  <a href="#a206f5da82bb48c5ddae1906b9206d773">[詳解]</a><br/></td></tr>
+<tr class="separator:a206f5da82bb48c5ddae1906b9206d773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2231f75bbba634cbb018ec9bf2de75a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a2231f75bbba634cbb018ec9bf2de75a0">getAverageVelocityAndYaw</a> ()</td></tr>
+<tr class="memdesc:a2231f75bbba634cbb018ec9bf2de75a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">平均の速度とヨー角を計算する  <a href="#a2231f75bbba634cbb018ec9bf2de75a0">[詳解]</a><br/></td></tr>
+<tr class="separator:a2231f75bbba634cbb018ec9bf2de75a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afce936155dcdef2787d31741b2bb1868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#afce936155dcdef2787d31741b2bb1868">output6DoF</a> (int save_count, char *original_dirpath, char *output_filename, pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;outputPointCloud)</td></tr>
+<tr class="memdesc:afce936155dcdef2787d31741b2bb1868"><td class="mdescLeft">&#160;</td><td class="mdescRight">現フレームの6DoF情報をファイルに出力する  <a href="#afce936155dcdef2787d31741b2bb1868">[詳解]</a><br/></td></tr>
+<tr class="separator:afce936155dcdef2787d31741b2bb1868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8308b078e6fce216a0b5e8e6a502e7ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a8308b078e6fce216a0b5e8e6a502e7ab">output6DoFContinuous</a> (char *original_dirpath, char *output_filename, pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;outputPointCloud)</td></tr>
+<tr class="memdesc:a8308b078e6fce216a0b5e8e6a502e7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">キーを入力したときの6DoF情報を連続してcsv形式で保存する  <a href="#a8308b078e6fce216a0b5e8e6a502e7ab">[詳解]</a><br/></td></tr>
+<tr class="separator:a8308b078e6fce216a0b5e8e6a502e7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d5b0e6707c302de24db329116f2142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a03d5b0e6707c302de24db329116f2142">outputEV3RouteContinuous</a> (char *original_dirpath, char *output_filename)</td></tr>
+<tr class="memdesc:a03d5b0e6707c302de24db329116f2142"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3の走行軌道を保存する  <a href="#a03d5b0e6707c302de24db329116f2142">[詳解]</a><br/></td></tr>
+<tr class="separator:a03d5b0e6707c302de24db329116f2142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bec8596128f406b0a90a6b206e1fd67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a6bec8596128f406b0a90a6b206e1fd67">outputControlInformation</a> (double sumtime_ms, char *original_dirpath, char *output_filename)</td></tr>
+<tr class="memdesc:a6bec8596128f406b0a90a6b206e1fd67"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3の制御情報を出力する  <a href="#a6bec8596128f406b0a90a6b206e1fd67">[詳解]</a><br/></td></tr>
+<tr class="separator:a6bec8596128f406b0a90a6b206e1fd67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0d9cabcbc3e9af6398b89d7de9bce91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#ab0d9cabcbc3e9af6398b89d7de9bce91">outputControlInformation</a> ()</td></tr>
+<tr class="memdesc:ab0d9cabcbc3e9af6398b89d7de9bce91"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3に必要な速度とヨー角をファイルに出力  <a href="#ab0d9cabcbc3e9af6398b89d7de9bce91">[詳解]</a><br/></td></tr>
+<tr class="separator:ab0d9cabcbc3e9af6398b89d7de9bce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 公開変数類</h2></td></tr>
-<tr class="memitem:a146d50ba64a58289ef7776013d21c4a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a></td></tr>
-<tr class="memdesc:a146d50ba64a58289ef7776013d21c4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3の6自由度(c80)  <a href="#a146d50ba64a58289ef7776013d21c4a0">[詳解]</a><br/></td></tr>
-<tr class="separator:a146d50ba64a58289ef7776013d21c4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeff38f95194c020c3c1c5c3ef6bd994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_do_f6i.html">DoF6i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#adeff38f95194c020c3c1c5c3ef6bd994">ev3_6dof</a></td></tr>
+<tr class="memdesc:adeff38f95194c020c3c1c5c3ef6bd994"><td class="mdescLeft">&#160;</td><td class="mdescRight">EV3の6自由度(c80)  <a href="#adeff38f95194c020c3c1c5c3ef6bd994">[詳解]</a><br/></td></tr>
+<tr class="separator:adeff38f95194c020c3c1c5c3ef6bd994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcbe063497900efa4d94b3a46edb688"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_do_f6i.html">DoF6i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#aadcbe063497900efa4d94b3a46edb688">before</a></td></tr>
+<tr class="memdesc:aadcbe063497900efa4d94b3a46edb688"><td class="mdescLeft">&#160;</td><td class="mdescRight">前フレームの6DoF情報  <a href="#aadcbe063497900efa4d94b3a46edb688">[詳解]</a><br/></td></tr>
+<tr class="separator:aadcbe063497900efa4d94b3a46edb688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0407cbbddf22869f450b954d56c79c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_do_f6i.html">DoF6i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a0407cbbddf22869f450b954d56c79c16">current</a></td></tr>
+<tr class="memdesc:a0407cbbddf22869f450b954d56c79c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">現フレームの6DoF情報  <a href="#a0407cbbddf22869f450b954d56c79c16">[詳解]</a><br/></td></tr>
+<tr class="separator:a0407cbbddf22869f450b954d56c79c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dbcb2b713381b2c050523b3a946af0a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a3dbcb2b713381b2c050523b3a946af0a">velocity</a></td></tr>
+<tr class="memdesc:a3dbcb2b713381b2c050523b3a946af0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度v(c85)  <a href="#a3dbcb2b713381b2c050523b3a946af0a">[詳解]</a><br/></td></tr>
+<tr class="separator:a3dbcb2b713381b2c050523b3a946af0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a353439722104f9c309920d0c0a1491de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a353439722104f9c309920d0c0a1491de">flag_velocity</a></td></tr>
+<tr class="memdesc:a353439722104f9c309920d0c0a1491de"><td class="mdescLeft">&#160;</td><td class="mdescRight">最初の1フレームのためのフラグ  <a href="#a353439722104f9c309920d0c0a1491de">[詳解]</a><br/></td></tr>
+<tr class="separator:a353439722104f9c309920d0c0a1491de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506596061888dfd4afc965d20fed26a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_control_paramd.html">ControlParamd</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a506596061888dfd4afc965d20fed26a8">current_average</a></td></tr>
+<tr class="memdesc:a506596061888dfd4afc965d20fed26a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の平均の速度とヨー角  <a href="#a506596061888dfd4afc965d20fed26a8">[詳解]</a><br/></td></tr>
+<tr class="separator:a506596061888dfd4afc965d20fed26a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094ccebd1c4d6b6432743fd7284ebea8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a094ccebd1c4d6b6432743fd7284ebea8">count_average</a></td></tr>
+<tr class="memdesc:a094ccebd1c4d6b6432743fd7284ebea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度とヨー角の過去5フレーム分の平均を取るために最初の5フレームをカウントするための変数  <a href="#a094ccebd1c4d6b6432743fd7284ebea8">[詳解]</a><br/></td></tr>
+<tr class="separator:a094ccebd1c4d6b6432743fd7284ebea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e70076fc9fb9085b55be1a3a7be187"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#a07e70076fc9fb9085b55be1a3a7be187">flag_average</a></td></tr>
+<tr class="memdesc:a07e70076fc9fb9085b55be1a3a7be187"><td class="mdescLeft">&#160;</td><td class="mdescRight">始めの5フレーム分用  <a href="#a07e70076fc9fb9085b55be1a3a7be187">[詳解]</a><br/></td></tr>
+<tr class="separator:a07e70076fc9fb9085b55be1a3a7be187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd8dd38a39186e10013869fa4236605"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v3_control.html#abdd8dd38a39186e10013869fa4236605">save_flag</a></td></tr>
+<tr class="memdesc:abdd8dd38a39186e10013869fa4236605"><td class="mdescLeft">&#160;</td><td class="mdescRight">6DoF情報を出力するかチェックするためのフラグ  <a href="#abdd8dd38a39186e10013869fa4236605">[詳解]</a><br/></td></tr>
+<tr class="separator:abdd8dd38a39186e10013869fa4236605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>EV3を制御するためのクラス </p>
 
-<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00019">19</a> 行目に定義があります。</p>
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00018">18</a> 行目に定義があります。</p>
 </div><h2 class="groupheader">構築子と解体子</h2>
 <a class="anchor" id="a030f467b372dee725bb176d0b7cea259"></a>
 <div class="memitem">
@@ -154,11 +206,10 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
 <p>コンストラクタ </p>
 <p>メソッドEV3Control::EV3Control().コンストラクタ </p>
 
-<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00016">16</a> 行目に定義があります。</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//コンストラクタはなし</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00015">15</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00035">before</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00042">count_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00036">current</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00041">current_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00043">flag_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00038">flag_velocity</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00048">save_flag</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a68c7fd119aa2f422f9eebbe9318e8ab9"></a>
@@ -177,14 +228,337 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
 <p>デストラクタ </p>
 <p>メソッドEV3Control::EV3Control().コンストラクタ </p>
 
-<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00024">24</a> 行目に定義があります。</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//デストラクタはなし</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-</div><!-- fragment -->
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00038">38</a> 行目に定義があります。</p>
+
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="a2231f75bbba634cbb018ec9bf2de75a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::getAverageVelocityAndYaw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>平均の速度とヨー角を計算する </p>
+<p>メソッドEV3Control::getAverageVelocityAndYaw()．速度とヨー角を取得するメソッド </p>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00089">89</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00042">count_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00041">current_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00043">flag_average</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00037">velocity</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00076">ControlParamd::velocity</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00056">DoF6i::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00077">ControlParamd::yaw</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0_icgraph.png" border="0" usemap="#class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0_icgraph" id="class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="148,7,187,27"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a206f5da82bb48c5ddae1906b9206d773"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::getVelocityinSec </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time_ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EV3の速度を計算する(c85) </p>
+<p>メソッドEV3Control::getVelocity()．EV3の速度を計算するメソッド</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_ms</td><td>double型．1フレームの処理時間 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00067">67</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00035">before</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00036">current</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00038">flag_velocity</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00037">velocity</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00053">DoF6i::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00054">DoF6i::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00055">DoF6i::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773_icgraph.png" border="0" usemap="#class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773_icgraph" id="class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="141,5,180,25"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afce936155dcdef2787d31741b2bb1868"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::output6DoF </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>save_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>original_dirpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>output_filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;&#160;</td>
+          <td class="paramname"><em>outputPointCloud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現フレームの6DoF情報をファイルに出力する </p>
+<p>メソッドEV3Control::output6Dof()．現フレームの6DoF情報をファイルに出力する</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">save_count</td><td>int型．保存したカウント </td></tr>
+    <tr><td class="paramname">original_dirpath</td><td>char*型．基となるディレクトリ名 </td></tr>
+    <tr><td class="paramname">output_filename</td><td>char*型．出力するファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00150">150</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="stdafx_8h_source.html#l00081">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00058">DoF6i::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00057">DoF6i::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00053">DoF6i::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00054">DoF6i::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00056">DoF6i::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00055">DoF6i::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_afce936155dcdef2787d31741b2bb1868_icgraph.png" border="0" usemap="#class_e_v3_control_afce936155dcdef2787d31741b2bb1868_icgraph" alt=""/></div>
+<map name="class_e_v3_control_afce936155dcdef2787d31741b2bb1868_icgraph" id="class_e_v3_control_afce936155dcdef2787d31741b2bb1868_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="131,5,169,25"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8308b078e6fce216a0b5e8e6a502e7ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::output6DoFContinuous </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>original_dirpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>output_filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;&#160;</td>
+          <td class="paramname"><em>outputPointCloud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キーを入力したときの6DoF情報を連続してcsv形式で保存する </p>
+<p>メソッドEV3Control::output6DoFContinuous()．キーを入力したときの6DoF情報を連続してcsv形式で保存する</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">original_dirpath</td><td>char*型．基となるディレクトリ名 </td></tr>
+    <tr><td class="paramname">output_filename</td><td>char*型．出力するファイル名 </td></tr>
+    <tr><td class="paramname">&amp;inputPointCloud</td><td>pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00169">169</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="stdafx_8h_source.html#l00081">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00058">DoF6i::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00057">DoF6i::roll</a>, <a class="el" href="_e_v3_control_8hpp_source.html#l00048">save_flag</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00053">DoF6i::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00054">DoF6i::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00056">DoF6i::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00055">DoF6i::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab_icgraph.png" border="0" usemap="#class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab_icgraph" id="class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="157,5,196,25"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6bec8596128f406b0a90a6b206e1fd67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::outputControlInformation </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sumtime_ms</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>original_dirpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>output_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EV3の制御情報を出力する </p>
+<p>メソッドEV3Control::outputControlInformation()．EV3の制御情報を出力する</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sumtime_ms</td><td>double型．合計時間 </td></tr>
+    <tr><td class="paramname">original_dirpath</td><td>char*型．基となるディレクトリ名 </td></tr>
+    <tr><td class="paramname">output_filename</td><td>char*型．出力するファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00208">208</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00041">current_average</a>, <a class="el" href="stdafx_8h_source.html#l00081">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00076">ControlParamd::velocity</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00077">ControlParamd::yaw</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67_icgraph.png" border="0" usemap="#class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67_icgraph" id="class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="135,7,173,27"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0d9cabcbc3e9af6398b89d7de9bce91"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::outputControlInformation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EV3に必要な速度とヨー角をファイルに出力 </p>
+<p>メソッドEV3Control::outputControlInformation()．EV3に必要な速度とヨー角をファイルに出力 </p>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00223">223</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00041">current_average</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00076">ControlParamd::velocity</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00077">ControlParamd::yaw</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a03d5b0e6707c302de24db329116f2142"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EV3Control::outputEV3RouteContinuous </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>original_dirpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>output_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EV3の走行軌道を保存する </p>
+<p>メソッドEV3Control::outputEV3RouteContinuous()．EV3の走行軌道を保存する</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">original_dirpath</td><td>char*型．基となるディレクトリ名 </td></tr>
+    <tr><td class="paramname">output_filename</td><td>char*型．出力するファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00189">189</a> 行目に定義があります。</p>
+
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="stdafx_8h_source.html#l00081">NOC</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00053">DoF6i::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00054">DoF6i::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00055">DoF6i::z</a>.</p>
+
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a03d5b0e6707c302de24db329116f2142_icgraph.png" border="0" usemap="#class_e_v3_control_a03d5b0e6707c302de24db329116f2142_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a03d5b0e6707c302de24db329116f2142_icgraph" id="class_e_v3_control_a03d5b0e6707c302de24db329116f2142_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="140,7,179,27"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a8ef402279dc736292ae0cf780dd3aed8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -219,65 +593,190 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
 <p>メソッドEV3Control::set6DoFEV3()．最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する</p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr</td><td>&amp;inputPointCloud, Point3d centroid, <a class="el" href="struct_attitude_angle.html">AttitudeAngle</a> attitude_angle </td></tr>
+    <tr><td class="paramname">&amp;inputPointCloud</td><td>pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr型．入力するポイントクラウド </td></tr>
+    <tr><td class="paramname">centroid</td><td>Point3d型．重心座標 </td></tr>
+    <tr><td class="paramname">attitude_angle</td><td>AttitudeAngle型．姿勢角 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00033">33</a> 行目に定義があります。</p>
+<p> <a class="el" href="_e_v3_control_8cpp_source.html">EV3Control.cpp</a> の <a class="el" href="_e_v3_control_8cpp_source.html#l00049">49</a> 行目に定義があります。</p>
 
-<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00028">ev3_6dof</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00035">DoF::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00041">AttitudeAngle::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00034">DoF::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00040">AttitudeAngle::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">DoF::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">DoF::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00033">DoF::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00039">AttitudeAngle::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">DoF::z</a>.</p>
+<p>参照先 <a class="el" href="_e_v3_control_8hpp_source.html#l00032">ev3_6dof</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00058">DoF6i::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00068">AttitudeAngle::pitch</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00057">DoF6i::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00067">AttitudeAngle::roll</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00053">DoF6i::x</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00054">DoF6i::y</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00056">DoF6i::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00066">AttitudeAngle::yaw</a>, <a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00055">DoF6i::z</a>.</p>
 
-<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//FILE *fp;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//char filepath_measuredata[NOC];</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">//sprintf_s(filepath_measuredata, &quot;data/%s/measuredata.dat&quot;, directoryName);</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//fopen_s(&amp;fp, filepath_measuredata, &quot;w&quot;);</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a> = centroid.x;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a> = centroid.y;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a> = centroid.z;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">yaw</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">roll</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a> = attitude_angle.<a class="code" href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">pitch</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;[ &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">x</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">y</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">z</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">yaw</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">roll</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code" href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">ev3_6dof</a>.<a class="code" href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">pitch</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; inputPointCloud-&gt;size() &lt;&lt; <span class="stringliteral">&quot; ]&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//fprintf_s(fp, &quot;[\tX\tY\tZ\tYaw\tRoll\tPitch\tPointCloudNum\t]\n&quot;);</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//fprintf_s(fp, &quot;%f\t%f\t%f\t%f\t%f\t%f\t%d\n&quot;, ev3_6dof.x, ev3_6dof.y, ev3_6dof.z, ev3_6dof.yaw, ev3_6dof.roll, ev3_6dof.pitch, inputPointCloud-&gt;size());</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">//fclose(fp);</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}<div class="ttc" id="struct_do_f_html_abfbe7d3335c98676e382a99d206b7509"><div class="ttname"><a href="struct_do_f.html#abfbe7d3335c98676e382a99d206b7509">DoF::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00031">PathTrackingAndInductionOfTheRobot.hpp:31</a></div></div>
-<div class="ttc" id="struct_attitude_angle_html_ae41ffc4738b93a5ce00141fb8b535c74"><div class="ttname"><a href="struct_attitude_angle.html#ae41ffc4738b93a5ce00141fb8b535c74">AttitudeAngle::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00040">PathTrackingAndInductionOfTheRobot.hpp:40</a></div></div>
-<div class="ttc" id="struct_do_f_html_ad50a401c21ed40b7419edd1c1b6d194c"><div class="ttname"><a href="struct_do_f.html#ad50a401c21ed40b7419edd1c1b6d194c">DoF::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00033">PathTrackingAndInductionOfTheRobot.hpp:33</a></div></div>
-<div class="ttc" id="struct_attitude_angle_html_a9a2b52b89e0f763cef36b623962ff998"><div class="ttname"><a href="struct_attitude_angle.html#a9a2b52b89e0f763cef36b623962ff998">AttitudeAngle::yaw</a></div><div class="ttdeci">double yaw</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00039">PathTrackingAndInductionOfTheRobot.hpp:39</a></div></div>
-<div class="ttc" id="struct_do_f_html_ae281b05a1f55ab36e1648638d5de595c"><div class="ttname"><a href="struct_do_f.html#ae281b05a1f55ab36e1648638d5de595c">DoF::roll</a></div><div class="ttdeci">double roll</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00034">PathTrackingAndInductionOfTheRobot.hpp:34</a></div></div>
-<div class="ttc" id="struct_do_f_html_a85425df1c7f31461d90068c6f65f014d"><div class="ttname"><a href="struct_do_f.html#a85425df1c7f31461d90068c6f65f014d">DoF::z</a></div><div class="ttdeci">double z</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00032">PathTrackingAndInductionOfTheRobot.hpp:32</a></div></div>
-<div class="ttc" id="struct_attitude_angle_html_ad8f6b5c2dc91fff26166d9b8516abf2c"><div class="ttname"><a href="struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c">AttitudeAngle::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00041">PathTrackingAndInductionOfTheRobot.hpp:41</a></div></div>
-<div class="ttc" id="struct_do_f_html_ade12f9d2e1670795f645919e6ff013ef"><div class="ttname"><a href="struct_do_f.html#ade12f9d2e1670795f645919e6ff013ef">DoF::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00030">PathTrackingAndInductionOfTheRobot.hpp:30</a></div></div>
-<div class="ttc" id="struct_do_f_html_aafd25e3441a352a3feaa072fe58c61ab"><div class="ttname"><a href="struct_do_f.html#aafd25e3441a352a3feaa072fe58c61ab">DoF::pitch</a></div><div class="ttdeci">double pitch</div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00035">PathTrackingAndInductionOfTheRobot.hpp:35</a></div></div>
-<div class="ttc" id="class_e_v3_control_html_a146d50ba64a58289ef7776013d21c4a0"><div class="ttname"><a href="class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0">EV3Control::ev3_6dof</a></div><div class="ttdeci">DoF6d ev3_6dof</div><div class="ttdoc">EV3の6自由度(c80) </div><div class="ttdef"><b>Definition:</b> <a href="_e_v3_control_8hpp_source.html#l00028">EV3Control.hpp:28</a></div></div>
-</div><!-- fragment -->
+<p>参照元 <a class="el" href="main_8cpp_source.html#l00036">main()</a>.</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8_icgraph.png" border="0" usemap="#class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8_icgraph" alt=""/></div>
+<map name="class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8_icgraph" id="class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8_icgraph">
+<area shape="rect" id="node2" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="関数main() " alt="" coords="132,5,171,25"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <h2 class="groupheader">メンバ詳解</h2>
-<a class="anchor" id="a146d50ba64a58289ef7776013d21c4a0"></a>
+<a class="anchor" id="aadcbe063497900efa4d94b3a46edb688"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_path_tracking_and_induction_of_the_robot_8hpp.html#a33b77e4ea1c0ec898f240665aba2a93c">DoF6d</a> EV3Control::ev3_6dof</td>
+          <td class="memname"><a class="el" href="struct_do_f6i.html">DoF6i</a> EV3Control::before</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>前フレームの6DoF情報 </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00035">35</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00067">getVelocityinSec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a094ccebd1c4d6b6432743fd7284ebea8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EV3Control::count_average</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>速度とヨー角の過去5フレーム分の平均を取るために最初の5フレームをカウントするための変数 </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00042">42</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00089">getAverageVelocityAndYaw()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0407cbbddf22869f450b954d56c79c16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_do_f6i.html">DoF6i</a> EV3Control::current</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現フレームの6DoF情報 </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00036">36</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00067">getVelocityinSec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a506596061888dfd4afc965d20fed26a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_control_paramd.html">ControlParamd</a> EV3Control::current_average</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の平均の速度とヨー角 </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00041">41</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00089">getAverageVelocityAndYaw()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00208">outputControlInformation()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adeff38f95194c020c3c1c5c3ef6bd994"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_do_f6i.html">DoF6i</a> EV3Control::ev3_6dof</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>EV3の6自由度(c80) </p>
 
-<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00028">28</a> 行目に定義があります。</p>
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00032">32</a> 行目に定義があります。</p>
 
-<p>参照元 <a class="el" href="main_8cpp_source.html#l00039">main()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00033">set6DoFEV3()</a>.</p>
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00089">getAverageVelocityAndYaw()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00067">getVelocityinSec()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00150">output6DoF()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00169">output6DoFContinuous()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00189">outputEV3RouteContinuous()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00049">set6DoFEV3()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a07e70076fc9fb9085b55be1a3a7be187"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EV3Control::flag_average</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>始めの5フレーム分用 </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00043">43</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00089">getAverageVelocityAndYaw()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a353439722104f9c309920d0c0a1491de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EV3Control::flag_velocity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最初の1フレームのためのフラグ </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00038">38</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00067">getVelocityinSec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abdd8dd38a39186e10013869fa4236605"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EV3Control::save_flag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>6DoF情報を出力するかチェックするためのフラグ </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00048">48</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00015">EV3Control()</a>, <a class="el" href="main_8cpp_source.html#l00036">main()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00169">output6DoFContinuous()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3dbcb2b713381b2c050523b3a946af0a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double EV3Control::velocity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>速度v(c85) </p>
+
+<p> <a class="el" href="_e_v3_control_8hpp_source.html">EV3Control.hpp</a> の <a class="el" href="_e_v3_control_8hpp_source.html#l00037">37</a> 行目に定義があります。</p>
+
+<p>参照元 <a class="el" href="_e_v3_control_8cpp_source.html#l00089">getAverageVelocityAndYaw()</a>, <a class="el" href="_e_v3_control_8cpp_source.html#l00067">getVelocityinSec()</a>.</p>
 
 </div>
 </div>
@@ -291,7 +790,7 @@ $(document).ready(function(){initNavTree('class_e_v3_control.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_e_v3_control.html">EV3Control</a></li>
-    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <li class="footer">2016年01月25日(月) 12時00分33秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

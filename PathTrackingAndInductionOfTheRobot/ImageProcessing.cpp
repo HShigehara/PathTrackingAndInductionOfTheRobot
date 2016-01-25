@@ -1,6 +1,5 @@
 ﻿/*
  * @file ImageProcessing.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 画像処理を行うためのメソッド群
  * @date 2014.10.17
  * @author H.Shigehara
@@ -30,9 +29,10 @@ ImageProcessing::~ImageProcessing()
 }
 
 /*!
-* @brief メソッドImageProcessing::showImage().cv::Matを表示
-* @param std::string windowName, cv::Mat& input_image
-*/
+ * @brief メソッドImageProcessing::showImage().cv::Matを表示
+ * @param windowName std::string型．表示するウインドウ名
+ * @param &input_image cv::Mat型．入力画像
+ */
 void ImageProcessing::showImage(string windowName, Mat& input_image)
 {
 	namedWindow(windowName, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
@@ -41,9 +41,10 @@ void ImageProcessing::showImage(string windowName, Mat& input_image)
 }
 
 /*!
-* @brief メソッドImageProcessing::showTogetherImage().2つのcv::Matを1つのウインドウに表示
-* @param cv::Mat& image1, cv::Mat& image2
-*/
+ * @brief メソッドImageProcessing::showTogetherImage().2つのcv::Matを1つのウインドウに表示
+ * @param &image1 cv::Mat型．入力画像1
+ * @param &image2 cv::Mat型．入力画像2
+ */
 void ImageProcessing::showImageTogether(Mat& image1, Mat& image2)
 {
 	//ウインドウ名と合成画像を定義
@@ -64,9 +65,11 @@ void ImageProcessing::showImageTogether(Mat& image1, Mat& image2)
 }
 
 /*!
-* @brief メソッドImageProcessing::showTogetherImage().3つのcv::Matを1つのウインドウに表示
-* @param cv::Mat& image1, cv::Mat& image2, cv::Mat& image3
-*/
+ * @brief メソッドImageProcessing::showTogetherImage().3つのcv::Matを1つのウインドウに表示
+ * @param &image1 cv::Mat型．入力画像1
+ * @param &image2 cv::Mat型．入力画像2
+ * @param &image3 cv::Mat型．入力画像3
+ */
 void ImageProcessing::showImageTogether(Mat& image1, Mat& image2, Mat& image3)
 {
 	//ウインドウ名と合成画像を定義
@@ -90,7 +93,7 @@ void ImageProcessing::showImageTogether(Mat& image1, Mat& image2, Mat& image3)
 
 /*!
  * @brief ImageProcessing::loadInternalCameraParam().カメラキャリブレーションによって得られたカメラパラメータを適用するメソッド(c54)
- * @param const string cameraParamFile
+ * @param cameraParamFile const string型．入力したいカメラパラメータのファイル名
  */
 void ImageProcessing::loadInternalCameraParameter(const string cameraParamFile)
 {
@@ -106,8 +109,8 @@ void ImageProcessing::loadInternalCameraParameter(const string cameraParamFile)
 
 /*!
  * @brief メソッドImageProcessing::getUndistortionImage()．キャリブレーションデータを用いてKinectから取得した画像を補正する
- * @param cv::Mat& inputOriginalImage
- * @return cv::Mat undistortionImage
+ * @param &inputOriginalImage cv::Mat型．キャリブレーションを行いたい入力画像
+ * @return undistortionImage cv::Mat型．キャリブレーション後の画像
  */
 Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 {
@@ -120,8 +123,9 @@ Mat ImageProcessing::getUndistortionImage(Mat& inputOriginalImage)
 
 /*!
  * @brief メソッドImageProcessing::getBackgroundSubstractionBinImage()．背景差分によって得られた二値画像(c75)
- * @param cv::Mat& current_image, cv::Mat& background_image 
- * @return cv::Mat closing_image
+ * @param &current_image cv::Mat型．現フレームの入力画像
+ * @param &background_image cv::Mat型．背景画像の入力
+ * @return closing_image cv::Mat型．出力画像
  */
 Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& background_gray_image)
 {
@@ -147,6 +151,7 @@ Mat ImageProcessing::getBackgroundSubstractionBinImage(Mat& current_image, Mat& 
 
 /*!
  * @brief メソッドImageProcessing::openCVSettingTrackbar()．OpenCVのトラックバーを表示するメソッド
+ * @param trackbar_name const string型．OpenCVでマスク画像を設定するためのトラックバー名
  */
 void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
 {
@@ -160,8 +165,8 @@ void ImageProcessing::openCVSettingTrackbar(const string trackbar_name)
 
 /*!
  * @brief メソッドImageProcessing::getUnitMask()．EV3のユニット部のみのマスク画像を取得するメソッド
- * @param cv::Mat& input_binimage
- * @return cv::Mat input_binimage
+ * @param &input_binimage cv::Mat型．入力画像(二値画像)
+ * @return input_binimage cv::Mat型．出力画像(マスク処理された二値画像)
  */
 Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 {
@@ -251,7 +256,13 @@ Mat ImageProcessing::getUnitMask(Mat& input_binimage)
 	return input_binimage;
 }
 
-
+/*!
+ * @brief メソッドImageProcessing::outputImageSelectDirectory()．出力したディレクトリにファイルを出力するメソッド
+ * @param save_count int型．保存数のカウント
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param save_filename char*．出力するファイル名
+ * @param &output_image cv::Mat型．出力する画像
+ */
 void ImageProcessing::outputImageSelectDirectory(int save_count, char* original_dirpath, char* save_filename, Mat& output_image)
 {
 	char output_path[NOC];

@@ -1,6 +1,5 @@
 ﻿/*
  * @file Kinect.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief Kinectを扱うためのメソッド群
  * @date 2014.10.15
  * @author H.Shigehara
@@ -75,9 +74,9 @@ void Kinect::initialize()
 }
 
 /*!
- * @brief メソッドKinect::drawRGBImage(Mat& image).RGBカメラの処理
- * @param cv::Mat& image
- * @return cv::Mat image
+ * @brief メソッドKinect::drawRGBImage().RGBカメラの処理
+ * @param image cv::Mat&．入力画像
+ * @return image cv::Mat．出力画像
  */
 Mat Kinect::drawRGBImage(Mat& image)
 {
@@ -103,9 +102,9 @@ Mat Kinect::drawRGBImage(Mat& image)
 }
 
 /*
- * @brief メソッドKinect::setDepthImage(Mat& Mat_image).デプス画像を取得するメソッド(c57)
- * @param cv::Mat& Mat_image
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr points
+ * @brief メソッドKinect::setDepthImage().デプス画像を取得するメソッド(c57)
+ * @param Mat_image cv::Mat&．入力画像
+ * @return points pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr Kinect::getPointCloud(Mat& Mat_image)
 {

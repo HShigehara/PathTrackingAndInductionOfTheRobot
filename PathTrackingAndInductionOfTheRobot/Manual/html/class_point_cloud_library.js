@@ -6,11 +6,12 @@ var class_point_cloud_library =
     [ "downSamplingUsingVoxelGridFilter", "class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99", null ],
     [ "flagChecker", "class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd", null ],
     [ "getCentroidCoordinate3d", "class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78", null ],
-    [ "getExtractPlaneAndClustering", "class_point_cloud_library.html#a02bfccb26f68ce7498f0054f7bdd5517", null ],
+    [ "getExtractPlaneAndClustering", "class_point_cloud_library.html#a222d6644e01b9925d923d58eb7ea1522", null ],
     [ "getSurfaceNormals", "class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610", null ],
     [ "initializePCLVisualizer", "class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4", null ],
-    [ "initializePointCloudViewer", "class_point_cloud_library.html#a7539694c0625f14897552f4536008757", null ],
     [ "loadPLY", "class_point_cloud_library.html#a4cbedddc1feb21c4653d128de7dcd690", null ],
+    [ "outputPointCloud", "class_point_cloud_library.html#ac46bf4f8f9f819b8418e989fcb88f2e8", null ],
+    [ "outputPointCloudPLY", "class_point_cloud_library.html#a450a5b18fa99c06b091fc68fe57bbea7", null ],
     [ "passThroughFilter", "class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902", null ],
     [ "radiusOutlierRemoval", "class_point_cloud_library.html#a3731df64289fac15009df853c94bc537", null ],
     [ "removeOutlier", "class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36", null ],
@@ -22,6 +23,7 @@ var class_point_cloud_library =
     [ "model", "class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417", null ],
     [ "passthrough_flag", "class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf", null ],
     [ "statisticaloutlierremoval_flag", "class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b", null ],
-    [ "viewer", "class_point_cloud_library.html#a43d9e8806ab9f7e52782604020922339", null ],
+    [ "th", "class_point_cloud_library.html#a57b46fb5c545028d0dcdab0808f169fb", null ],
+    [ "tor", "class_point_cloud_library.html#ab5309a4bc712ded75c797a40e565d829", null ],
     [ "visualizer", "class_point_cloud_library.html#a00af6b104220e288f26c2d6f890ccd86", null ]
 ];

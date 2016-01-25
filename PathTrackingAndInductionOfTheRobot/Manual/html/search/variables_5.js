@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['key',['key',['../class_kinect.html#afe9df20df1f2538ac9ce8b61c409095a',1,'Kinect']]]
+  ['flag_5faverage',['flag_average',['../class_e_v3_control.html#a07e70076fc9fb9085b55be1a3a7be187',1,'EV3Control']]],
+  ['flag_5fvelocity',['flag_velocity',['../class_e_v3_control.html#a353439722104f9c309920d0c0a1491de',1,'EV3Control']]],
+  ['fps',['fps',['../class_system.html#a1339ce8aca0b83646a5879b4068c4ddb',1,'System']]]
 ];

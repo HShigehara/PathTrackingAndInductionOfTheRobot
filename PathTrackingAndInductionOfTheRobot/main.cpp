@@ -1,6 +1,5 @@
 ﻿/*
  * @file main.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief main関数
  * @date 2014.10.15
  * @author H.Shigehara
@@ -31,34 +30,34 @@ void onMouse(int event, int x, int y, int flags, void* param); //!<マウス操�
 
 /*!
  * @brief 関数main()
- * @param なし
- * @return なし
+ * @return 0 正常終了
+ * @return -1 異常終了
  */
 int main()
 {
 	RETRY: //goto文．再計測をやり直す場合
 	//インスタンスの生成
-	Kinect kinect; //!<Kinectクラスのインスタンスを生成
-	System sys; //!<システム的なメソッドをまとめているクラス
-	ImageProcessing imgproc; //!<Imageprocessingクラスのインスタンスを生成
-	Drawing draw; //!<drawingクラスのインスタンスを生成
-	LeastSquareMethod lsm; //!<最小二乗法を行うクラスのインスタンスを生成(c49)
-	PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //!<PointCloudLibraryクラスのインスタンスを生成(c57)
-	EV3Control ev3control; //!<EV3を制御する用のクラスを作成(c80)
+	Kinect kinect; //Kinectクラスのインスタンスを生成
+	System sys; //システム的なメソッドをまとめているクラス
+	ImageProcessing imgproc; //Imageprocessingクラスのインスタンスを生成
+	Drawing draw; //drawingクラスのインスタンスを生成
+	LeastSquareMethod lsm; //最小二乗法を行うクラスのインスタンスを生成(c49)
+	PointCloudLibrary pointcloudlibrary(/*false*/true, /*false*/true, /*false*/true, false, false/*true*/); //PointCloudLibraryクラスのインスタンスを生成(c57)
+	EV3Control ev3control; //EV3を制御する用のクラスを作成(c80)
 
 	//変数の宣言
-	bool saveev3route_flag = false; //!<EV3の軌道を保存するためのフラグ(c82)
-	int save_count = 0; //!<pキーを入力するたびに何回保存したかを数える変数
+	bool saveev3route_flag = false; //EV3の軌道を保存するためのフラグ(c82)
+	int save_count = 0; //pキーを入力するたびに何回保存したかを数える変数
 
 	//画像関係の変数
-	Mat flip_image; //!<確認用の反転した画像
-	Mat current_image; //!<現在のフレームの画像(c75)
-	Mat bin_image; //!<背景差分によって得られた二値画像(c75)
-	Mat background_image; //!<背景画像(c75)
-	Mat background_gray_image; //!<背景画像を二値化した画像
+	Mat flip_image; //確認用の反転した画像
+	Mat current_image; //現在のフレームの画像(c75)
+	Mat bin_image; //背景差分によって得られた二値画像(c75)
+	Mat background_image; //背景画像(c75)
+	Mat background_gray_image; //背景画像を二値化した画像
 
 	//ポイントクラウド関係の変数(c57)
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //!<処理を受け取る点群
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; //処理を受け取る点群
 	//pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>); //!<法線を格納する変数(c84)
 
 	//EV3ユニットの平面の係数(c78)

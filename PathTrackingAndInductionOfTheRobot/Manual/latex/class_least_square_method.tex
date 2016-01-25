@@ -9,6 +9,15 @@
 
 {\ttfamily \#include $<$Least\-Square\-Method.\-hpp$>$}
 
+
+
+Least\-Square\-Method 連携図\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=96pt]{class_least_square_method__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,14 +27,21 @@
 \begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
 Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
 \begin{DoxyCompactList}\small\item\em 最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド \end{DoxyCompactList}\item 
-{\bf Attitude\-Angle3d} {\bf calc\-Yaw\-Roll\-Pitch} (Eigen\-::\-Vector3f coefficient\-\_\-plane)
+{\bf Attitude\-Angle3d} {\bf calc\-Yaw\-Roll\-Pitch} (Eigen\-::\-Vector3f {\bf coefficient\-\_\-plane})
 \begin{DoxyCompactList}\small\item\em 最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\-::\-Vector3f {\bf coefficient\-\_\-plane}
+\begin{DoxyCompactList}\small\item\em 平面の係数 \end{DoxyCompactList}\item 
+{\bf Attitude\-Angle3d} {\bf attitude\-\_\-angle}
+\begin{DoxyCompactList}\small\item\em 姿勢角(c78) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
 最小二乗法を行うクラス 
 
- Least\-Square\-Method.\-hpp の 20 行目に定義があります。
+ Least\-Square\-Method.\-hpp の 19 行目に定義があります。
 
 
 
@@ -43,14 +59,8 @@ Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Po
 
 メソッド\-Least\-Square\-Method\-::\-Least\-Square\-Method().コンストラクタ 
 
- Least\-Square\-Method.\-cpp の 16 行目に定義があります。
+ Least\-Square\-Method.\-cpp の 15 行目に定義があります。
 
-
-\begin{DoxyCode}
-17 \{
-18     \textcolor{comment}{//繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ}
-19 \}
-\end{DoxyCode}
 \index{Least\-Square\-Method@{Least\-Square\-Method}!$\sim$\-Least\-Square\-Method@{$\sim$\-Least\-Square\-Method}}
 \index{$\sim$\-Least\-Square\-Method@{$\sim$\-Least\-Square\-Method}!LeastSquareMethod@{Least\-Square\-Method}}
 \subsubsection[{$\sim$\-Least\-Square\-Method}]{\setlength{\rightskip}{0pt plus 5cm}Least\-Square\-Method\-::$\sim$\-Least\-Square\-Method (
@@ -64,14 +74,8 @@ Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Po
 
 メソッド\-Least\-Square\-Method\-::$\sim$\-Least\-Square\-Method().デストラクタ 
 
- Least\-Square\-Method.\-cpp の 24 行目に定義があります。
+ Least\-Square\-Method.\-cpp の 23 行目に定義があります。
 
-
-\begin{DoxyCode}
-25 \{
-26     \textcolor{comment}{//デストラクタ}
-27 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
@@ -86,7 +90,17 @@ Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Po
 
 最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する 
 
-メソッド\-Least\-Square\-Method\-::calc\-Yaw\-Roll\-Pitch()．最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する 
+メソッド\-Least\-Square\-Method\-::calc\-Yaw\-Roll\-Pitch()．最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する
+
+
+\begin{DoxyParams}{引数}
+{\em coefficient\-\_\-plane} & Eigen\-::\-Vector3f．平面の係数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+attitude\-\_\-angle\-\_\-deg Attitude\-Angle3d型．姿勢角[deg] 
+\end{DoxyReturn}
+
 
  Least\-Square\-Method.\-cpp の 77 行目に定義があります。
 
@@ -99,25 +113,16 @@ Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Po
 参照元 main().
 
 
-\begin{DoxyCode}
-78 \{
-79     AttitudeAngle3d attitude\_angle\_rad; \textcolor{comment}{//姿勢角(ラジアン)}
-80     AttitudeAngle3d attitude\_angle\_deg; \textcolor{comment}{//姿勢角(度)}
-81 
-82     \textcolor{comment}{//ヨー角の計算}
-83     attitude\_angle\_rad.yaw = -atan(coefficient\_plane.x());
-84     attitude\_angle\_deg.yaw = attitude\_angle\_rad.yaw / M\_PI * 180.0;
-85 
-86     \textcolor{comment}{//ロール角の計算}
-87     attitude\_angle\_rad.roll = atan2(-coefficient\_plane.x(), coefficient\_plane.y());
-88     attitude\_angle\_deg.roll = attitude\_angle\_rad.roll / M\_PI * 180.0;
-89 
-90     \textcolor{comment}{//ピッチ角の計算}
-91     attitude\_angle\_rad.pitch = atan2(1, coefficient\_plane.y());
-92     attitude\_angle\_deg.pitch = attitude\_angle\_rad.pitch / M\_PI * 180.0;
-93 
-94     \textcolor{keywordflow}{return} attitude\_angle\_deg;
-95 \}\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_least_square_method_adf062bbbd7b380abc5f24d3a09d39e47_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Least\-Square\-Method@{Least\-Square\-Method}!get\-Coefficient@{get\-Coefficient}}
 \index{get\-Coefficient@{get\-Coefficient}!LeastSquareMethod@{Least\-Square\-Method}}
 \subsubsection[{get\-Coefficient}]{\setlength{\rightskip}{0pt plus 5cm}Eigen\-::\-Vector3f Least\-Square\-Method\-::get\-Coefficient (
@@ -133,60 +138,68 @@ Eigen\-::\-Vector3f {\bf get\-Coefficient} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Po
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-A\-R\-G\-B$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-A\-R\-G\-B$>$\-::\-Ptr型．入力するポイントクラウド \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-Eigen\-::\-Vector3f coefficient\-\_\-plane 
+coefficient\-\_\-plane Eigen\-::\-Vector3f型．平面の係数 
 \end{DoxyReturn}
 
 
- Least\-Square\-Method.\-cpp の 34 行目に定義があります。
+ Least\-Square\-Method.\-cpp の 33 行目に定義があります。
+
+
+
+参照先 coefficient\-\_\-plane.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-35 \{
-36     Eigen::Vector3f coefficient\_plane(0.0, 0.0, 0.0);
-37     Eigen::Matrix3f m1;
-38     m1.Zero();
-39     Eigen::Vector3f m2(0.0, 0.0, 0.0);
-40 
-41     \textcolor{comment}{//3×3行列 S=[Sxx Sxy Sx;Sxy Syy Sy;Sx Sy inputPointCloud->size()]の初期化}
-42     \textcolor{keywordtype}{double} Szz = 0, Sxz = 0, Syz = 0, Sz = 0, Sxx = 0, Sxy = 0, Sx = 0, Syy = 0, Sy = 0;
-43     \textcolor{comment}{//最小二乗法によって求めたA=[a b c]'の要素の初期化}
-44     \textcolor{comment}{//double a = 0, b = 0, c = 0;}
-45     \textcolor{comment}{//cout << "input Size => " << inputPointCloud->size() << endl;}
-46     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < inputPointCloud->size(); i++)\{ \textcolor{comment}{//それぞれの要素の計算}
-47         Szz = Szz + inputPointCloud->points[i].z * inputPointCloud->points[i].z;
-48         Sxz = Sxz + inputPointCloud->points[i].x * inputPointCloud->points[i].z;
-49         Syz = Syz + inputPointCloud->points[i].y * inputPointCloud->points[i].z;
-50         Sz = Sz + inputPointCloud->points[i].z;
-51         Sxx = Sxx + inputPointCloud->points[i].x * inputPointCloud->points[i].x;
-52         Sxy = Sxy + inputPointCloud->points[i].x * inputPointCloud->points[i].y;
-53         Sx = Sx + inputPointCloud->points[i].x;
-54         Syy = Syy + inputPointCloud->points[i].y * inputPointCloud->points[i].y;
-55         Sy = Sy + inputPointCloud->points[i].y;
-56     \}
-57 
-58     m1 << Sxx, Sxy, Sx,
-59         Sxy, Syy, Sy,
-60         Sx, Sy, inputPointCloud->size();
-61     \textcolor{comment}{//cout << "m1 => \(\backslash\)n" << m1 << endl;}
-62     \textcolor{comment}{//cout << "m1\_inverse => \(\backslash\)n" << m1.inverse() << endl;}
-63 
-64     m2 << Sxz, Syz, Sz;
-65     \textcolor{comment}{//cout << "m2 => \(\backslash\)n" << m2 << endl;}
-66 
-67     coefficient\_plane = m1.inverse() * m2;
-68     \textcolor{comment}{//cout << "coefficient\_plane => \(\backslash\)n" << coefficient\_plane << endl;}
-69 
-70     \textcolor{keywordflow}{return} coefficient\_plane;
-71 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_least_square_method_a19559c76884063927045732a38fe043b_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{メンバ詳解}
+\index{Least\-Square\-Method@{Least\-Square\-Method}!attitude\-\_\-angle@{attitude\-\_\-angle}}
+\index{attitude\-\_\-angle@{attitude\-\_\-angle}!LeastSquareMethod@{Least\-Square\-Method}}
+\subsubsection[{attitude\-\_\-angle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attitude\-Angle3d} Least\-Square\-Method\-::attitude\-\_\-angle}\label{class_least_square_method_a1ceee2394280e7d14411644de171782c}
+
+
+姿勢角(c78) 
+
+
+
+ Least\-Square\-Method.\-hpp の 31 行目に定義があります。
+
+
+
+参照元 main().
+
+\index{Least\-Square\-Method@{Least\-Square\-Method}!coefficient\-\_\-plane@{coefficient\-\_\-plane}}
+\index{coefficient\-\_\-plane@{coefficient\-\_\-plane}!LeastSquareMethod@{Least\-Square\-Method}}
+\subsubsection[{coefficient\-\_\-plane}]{\setlength{\rightskip}{0pt plus 5cm}Eigen\-::\-Vector3f Least\-Square\-Method\-::coefficient\-\_\-plane}\label{class_least_square_method_a3b3f2a5f264c576367c3fb3e5d70dcf2}
+
+
+平面の係数 
+
+
+
+ Least\-Square\-Method.\-hpp の 29 行目に定義があります。
+
+
+
+参照元 get\-Coefficient(), main().
+
 
 
 このクラス詳解は次のファイルから抽出されました\-:\begin{DoxyCompactItemize}

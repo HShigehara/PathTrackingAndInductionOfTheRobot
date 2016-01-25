@@ -10,14 +10,15 @@ var class_system =
     [ "endTimer", "class_system.html#a178a7a315866961f208b6cab6c2d7e88", null ],
     [ "getFrameRate", "class_system.html#a584a2b655a935ea404937cf8f11ab43c", null ],
     [ "getProcessTimeinMiliseconds", "class_system.html#a5f235cfc9736103d150e9dbeee82e543", null ],
-    [ "makeDirectory", "class_system.html#ab047a364bb881c7bd701973bc6abbe12", null ],
+    [ "makeDirectory", "class_system.html#a4e8e357a7875f40a86cee5cfdad6b6ed", null ],
+    [ "makeDirectoryBasedDate", "class_system.html#a6353709a74c9a12a3b1c8e365db5f51e", null ],
     [ "openDirectory", "class_system.html#a9016157380cb3dfe6637731daf2e3b4b", null ],
-    [ "outputAllData", "class_system.html#a8fc3a3a3f3015727df3b352b23829440", null ],
     [ "outputVideo", "class_system.html#a95bbdc3e7877f2d919f4d92dc4a79367", null ],
     [ "removeDirectory", "class_system.html#a3523df6c59162a85350b41a065efa3dd", null ],
-    [ "saveDataContinuously", "class_system.html#afe5cdbb8dc2bef6cb584ba554e314e5f", null ],
-    [ "saveDataEveryEnterKey", "class_system.html#a4cdb1dd5b5cddd739cc23627a4875cf0", null ],
+    [ "showHelpMessage", "class_system.html#af0fc7b12dc7342e2109a9aa3894b9bbe", null ],
     [ "startMessage", "class_system.html#a15325f6b106b804af8432d102945535c", null ],
     [ "startTimer", "class_system.html#ac62488af6f94b96aa37988c54e19074f", null ],
-    [ "save_flag", "class_system.html#a8dc5ce644873f9846cb21195674186f8", null ]
+    [ "fps", "class_system.html#a1339ce8aca0b83646a5879b4068c4ddb", null ],
+    [ "sum_time", "class_system.html#aab7a0fe9f9f094ab4462a6f0e5765d92", null ],
+    [ "time", "class_system.html#aa9e002a5f2f169e37c545b76ee67e724", null ]
 ];

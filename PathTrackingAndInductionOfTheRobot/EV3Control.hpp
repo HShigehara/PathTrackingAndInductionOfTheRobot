@@ -1,6 +1,5 @@
 /*
 * @file EV3Control.hpp
-* @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
 * @brief EV3を制御するためのクラスのヘッダ
 * @date 2015.12.15
 * @author H.Shigehara

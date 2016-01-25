@@ -1,7 +1,9 @@
 var annotated =
 [
     [ "AttitudeAngle", "struct_attitude_angle.html", "struct_attitude_angle" ],
-    [ "DoF", "struct_do_f.html", "struct_do_f" ],
+    [ "ControlParamd", "struct_control_paramd.html", "struct_control_paramd" ],
+    [ "DoF6d", "struct_do_f6d.html", "struct_do_f6d" ],
+    [ "DoF6i", "struct_do_f6i.html", "struct_do_f6i" ],
     [ "Drawing", "class_drawing.html", "class_drawing" ],
     [ "EV3Control", "class_e_v3_control.html", "class_e_v3_control" ],
     [ "ImageProcessing", "class_image_processing.html", "class_image_processing" ],

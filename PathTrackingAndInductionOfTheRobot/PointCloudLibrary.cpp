@@ -1,6 +1,5 @@
 ﻿/*
  * @file PointCloudLibrary.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief PCL関連の処理を行うクラス
  * @date 2015.10.30
  * @author H.Shigehara
@@ -20,7 +19,10 @@ PointCloudLibrary::PointCloudLibrary()
 
 /*!
  * @brief メソッドPointCloudLibrary::PointCloudLibrary().コンストラクタ(c64)
- * @param bool flag_removeOutlier, bool flag_downsampling, bool flag_MLS, bool flag_extractPlane
+ * @param flag_removeOutlier bool型．外れ値除去のためのフラグ変数
+ * @param flag_downsampling bool型．ダウンサンプリングのためのフラグ変数
+ * @param flag_MLS bool型．MLSのためのフラグ変数
+ * @param flag_extractPlane bool型．平面検出のためのフラグ変数
  */
 PointCloudLibrary::PointCloudLibrary(bool passthroughflag, bool downsamplingflag, bool statisticaloutlierremovalflag, bool mlsflag, bool extractplaneflag)
 {
@@ -45,6 +47,7 @@ PointCloudLibrary::~PointCloudLibrary()
 
 /*!
  * @brief メソッドPointCloudLibrary::initializePCLVisualizer()．PCL Visualizerの初期化を行うメソッド
+ * @param pclvisualizer_name string型．PCL Visualizerの名前
  */
 void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
 {
@@ -59,7 +62,7 @@ void PointCloudLibrary::initializePCLVisualizer(string pclvisualizer_name)
 
 /*!
  * @brief メソッドPointCloudLibrary::loadPLY()．plyファイルを読み込む
- * @param char* ply_name
+ * @param ply_name char*型．読み込みたい.plyファイルの名前
  */
 void PointCloudLibrary::loadPLY(char* ply_name)
 {
@@ -94,8 +97,11 @@ void PointCloudLibrary::flagChecker()
 }
 /*!
  * @brief メソッドPointCloudLibrary::passThroughFilter().パススルーフィルタ
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param　&inputPointCloud  pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @param axis char*型．フィルタをかけたい軸の名前
+ * @param min float型．フィルターの調整用の最小変数
+ * @param max float型．フィルターの調整用の最大変数
+ * @return filtered  pcl::PointCloud<pcl::PointXYZ>::Ptr型．フィルタ処理後のポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::passThroughFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, char* axis, float min, float max)
 {
@@ -115,8 +121,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::passThroughFilter(pcl:
 
 /*!
  * @brief メソッドPointCloudLibrary::removeOutlier()．外れ値を除去するメソッド(c59)
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @return filtered pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::removeOutlier(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
@@ -137,8 +143,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::removeOutlier(pcl::Poi
 
 /*!
  * @brief メソッドPointCloudLibrary::radiusOutlierRemoval()．外れ値を除去するメソッド(c60)
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @return filtered pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::radiusOutlierRemoval(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
@@ -158,8 +164,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::radiusOutlierRemoval(p
 
 /*!
  * @brief メソッドPointCloudLibrary::downSamplingUsingVoxelGridFilter()．ダウンサンプリング処理を行うメソッド(c59)
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @param leafSizeX float型．xのリーフサイズ
+ * @param leafSizeY float型．yのリーフサイズ
+ * @param leafSizeZ float型．zのリーフサイズ
+ * @return filtered pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::downSamplingUsingVoxelGridFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, float leafSizeX, float leafSizeY, float leafSizeZ)
 {
@@ -180,8 +189,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::downSamplingUsingVoxel
 
 /*!
  * @brief メソッドPointCloudLibrary::smoothingUsingMovingLeastSquare()．スムージングを行うメソッド(c60)
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @param compute_normals bool型．法線を計算するかどうか
+ * @param polynominal_fit bool型．チェックするためのフラグ
+ * @param radius double型．半径
+ * @return filtered pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::smoothingUsingMovingLeastSquare(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool compute_normals, bool polynomial_fit, double radius)
 {
@@ -205,8 +217,14 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::smoothingUsingMovingLe
 
 /*!
  * @brief メソッドPointCloudLibrary::extractPlane().平面を検出するメソッド
- * @param pcl::PointCloud<pcl::PointXYZ>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::PointXYZ>::Ptr filtered
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZ>::Ptr型．入力するポイントクラウド
+ * @param optimize bool型．最適化するかどうかのフラグ
+ * @param maxIterations int型．最大繰り返し回数
+ * @param negative1 bool型．抽出範囲を除くか保持するかのフラグ
+ * @param negative2 bool型．抽出範囲を除くか保持するかのフラグ
+ * @param minClusterSize int型．クラスタの最小サイズ
+ * @param maxClusterSizer int型．クラスタの最大サイズ
+ * @return filtered pcl::PointCloud<pcl::PointXYZ>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClustering(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, bool optimize, int maxIterations,/* double threshold, */bool negative1, bool negative2,/* double tolerance, */int minClusterSize, int maxClusterSize)
 {
@@ -307,8 +325,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudLibrary::getExtractPlaneAndClus
 
 /*!
  * @brief メソッドgetCentroidCoordinate
- * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
- * @return Point3f centroid
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr型．入力するポイントクラウド
+ * @return centroid Point3f型．抽出した範囲の重心
  */
 Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
@@ -355,8 +373,8 @@ Point3d PointCloudLibrary::getCentroidCoordinate3d(pcl::PointCloud<pcl::PointXYZ
 
 /*!
  * @brief メソッドPointCloudLibrary::getSurfaceNormals()．法線を計算する
- * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud
- * @return pcl::PointCloud<pcl::Normal>::Ptr cloud_normals
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr型．入力するポイントクラウド
+ * @return cloud_normals pcl::PointCloud<pcl::Normal>::Ptr型．出力するポイントクラウド
  */
 pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
@@ -378,6 +396,10 @@ pcl::PointCloud<pcl::Normal>::Ptr PointCloudLibrary::getSurfaceNormals(pcl::Poin
 
 /*!
  * @brief メソッドPointCloudLibrary::outputPointCloud()．時間と速度のプロット
+ * @param save_count int型．保存数のカウント
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
+ * @param &outputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr型．入力するポイントクラウド
  */
 void PointCloudLibrary::outputPointCloud(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {
@@ -395,6 +417,10 @@ void PointCloudLibrary::outputPointCloud(int save_count, char* original_dirpath,
 
 /*!
  * @brief メソッドPointCloudLibrary::outputPointCloudPLY()．時間とヨー角のプロット
+ * @param save_count int型．保存数のカウント
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
+ * @param &outputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr型．出力するポイントクラウド
  */
 void PointCloudLibrary::outputPointCloudPLY(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {

@@ -1,6 +1,5 @@
 ﻿/*
  * @file main.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief Mouseを扱うためのメソッド群
  * @date 2015.05.11
  * @author H.Shigehara
@@ -9,6 +8,14 @@
 /* ヘッダファイルのインクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
 
+/*!
+ * @brief メソッドonMouse()．マウス左クリックで座標を取得するメソッド
+ * @param event int 型．イベント
+ * @param x int型．x座標
+ * @param y int型．y座標
+ * @param flags int型．フラグ
+ * @param param void*型．その他パラメータ
+ */
 void onMouse(int event, int x, int y, int flags, void* param)
 {
 	if (selectObject)

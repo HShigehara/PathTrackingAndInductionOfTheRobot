@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['save_5fcount',['save_count',['../main_8cpp.html#aacae5d304dcef5f6bbf0fe5030e50626',1,'save_count():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#aacae5d304dcef5f6bbf0fe5030e50626',1,'save_count():&#160;main.cpp']]],
-  ['save_5fflag',['save_flag',['../class_system.html#a8dc5ce644873f9846cb21195674186f8',1,'System']]],
-  ['selection',['selection',['../main_8cpp.html#a15633c47538e3790df1e008a7f6dbfea',1,'selection():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#a15633c47538e3790df1e008a7f6dbfea',1,'selection():&#160;main.cpp']]],
-  ['selectobject',['selectObject',['../main_8cpp.html#a71a276a0dc4ef6aa35740b58f10bcb39',1,'selectObject():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#a71a276a0dc4ef6aa35740b58f10bcb39',1,'selectObject():&#160;main.cpp']]],
-  ['statisticaloutlierremoval_5fflag',['statisticaloutlierremoval_flag',['../class_point_cloud_library.html#a25f7509ec80771a394266cc98c117a9b',1,'PointCloudLibrary']]],
-  ['streamevent',['streamEvent',['../class_kinect.html#a975c1de77489cffc0728ae9817e127c2',1,'Kinect']]]
+  ['passthrough_5fflag',['passthrough_flag',['../class_point_cloud_library.html#a29aa3ebced9106bfc070d557efdbdbcf',1,'PointCloudLibrary']]],
+  ['pitch',['pitch',['../struct_do_f6d.html#a704ba95616e9709286fd32af023cf67f',1,'DoF6d::pitch()'],['../struct_do_f6i.html#a94d24304247e6b983487738ad8028ca6',1,'DoF6i::pitch()'],['../struct_attitude_angle.html#ad8f6b5c2dc91fff26166d9b8516abf2c',1,'AttitudeAngle::pitch()']]]
 ];

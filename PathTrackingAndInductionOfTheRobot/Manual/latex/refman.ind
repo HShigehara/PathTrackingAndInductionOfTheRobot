@@ -1,447 +1,519 @@
 \begin{theindex}
 
   \item {$\sim$\-Drawing}
-    \subitem {Drawing}, 8
+    \subitem {Drawing}, 10
   \item {$\sim$\-E\-V3\-Control}
     \subitem {E\-V3\-Control}, 13
   \item {$\sim$\-Image\-Processing}
-    \subitem {Image\-Processing}, 15
+    \subitem {Image\-Processing}, 20
   \item {$\sim$\-Kinect}
-    \subitem {Kinect}, 21
+    \subitem {Kinect}, 25
   \item {$\sim$\-Least\-Square\-Method}
-    \subitem {Least\-Square\-Method}, 25
+    \subitem {Least\-Square\-Method}, 28
   \item {$\sim$\-Point\-Cloud\-Library}
-    \subitem {Point\-Cloud\-Library}, 30
+    \subitem {Point\-Cloud\-Library}, 34
   \item {$\sim$\-System}
-    \subitem {System}, 39
+    \subitem {System}, 43
   \item {\-\_\-\-C\-R\-T\-\_\-\-S\-E\-C\-U\-R\-E\-\_\-\-N\-O\-\_\-\-W\-A\-R\-N\-I\-N\-G\-S}
-    \subitem {stdafx.\-h}, 62
+    \subitem {stdafx.\-h}, 67
 
   \indexspace
 
   \item {A\-L\-L\-P\-I\-X\-E\-L}
-    \subitem {stdafx.\-h}, 62
+    \subitem {stdafx.\-h}, 67
   \item {actual\-Extracted\-Num}
-    \subitem {Kinect}, 24
+    \subitem {Kinect}, 27
   \item {alternatives}
-    \subitem {System}, 40
+    \subitem {System}, 43
+  \item {attitude\-\_\-angle}
+    \subitem {Least\-Square\-Method}, 29
   \item {Attitude\-Angle}, 5
     \subitem {pitch}, 5
     \subitem {roll}, 5
     \subitem {yaw}, 5
   \item {Attitude\-Angle3d}
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+
+  \indexspace
+
+  \item {before}
+    \subitem {E\-V3\-Control}, 17
 
   \indexspace
 
   \item {C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}
-    \subitem {Kinect.\-hpp}, 51
+    \subitem {Kinect.\-hpp}, 56
   \item {calc\-Yaw\-Roll\-Pitch}
-    \subitem {Least\-Square\-Method}, 25
+    \subitem {Least\-Square\-Method}, 28
   \item {centroid}
-    \subitem {Point\-Cloud\-Library}, 37
+    \subitem {Point\-Cloud\-Library}, 40
   \item {check\-Directory}
-    \subitem {System}, 40
+    \subitem {System}, 44
   \item {closing\-\_\-times}
-    \subitem {Image\-Processing}, 20
+    \subitem {Image\-Processing}, 23
+  \item {coefficient\-\_\-plane}
+    \subitem {Least\-Square\-Method}, 29
+  \item {Control\-Paramd}, 6
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+    \subitem {velocity}, 6
+    \subitem {yaw}, 6
+  \item {count\-\_\-average}
+    \subitem {E\-V3\-Control}, 17
   \item {countdown\-Timer}
-    \subitem {System}, 41
+    \subitem {System}, 44
   \item {create\-Instance}
-    \subitem {Kinect}, 21
+    \subitem {Kinect}, 25
+  \item {current}
+    \subitem {E\-V3\-Control}, 17
+  \item {current\-\_\-average}
+    \subitem {E\-V3\-Control}, 18
 
   \indexspace
 
   \item {directory\-Name}
-    \subitem {main.\-cpp}, 56
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
-  \item {Do\-F}, 6
-    \subitem {pitch}, 6
-    \subitem {roll}, 6
-    \subitem {x}, 6
-    \subitem {y}, 6
-    \subitem {yaw}, 6
-    \subitem {z}, 6
-  \item {Do\-F6d}
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+  \item {Do\-F6d}, 6
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+    \subitem {pitch}, 7
+    \subitem {roll}, 7
+    \subitem {x}, 7
+    \subitem {y}, 7
+    \subitem {yaw}, 7
+    \subitem {z}, 7
+  \item {Do\-F6i}, 8
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+    \subitem {pitch}, 8
+    \subitem {roll}, 8
+    \subitem {x}, 8
+    \subitem {y}, 9
+    \subitem {yaw}, 9
+    \subitem {z}, 9
   \item {down\-Sampling\-Using\-Voxel\-Grid\-Filter}
-    \subitem {Point\-Cloud\-Library}, 30
+    \subitem {Point\-Cloud\-Library}, 34
   \item {downsampling\-\_\-flag}
-    \subitem {Point\-Cloud\-Library}, 37
+    \subitem {Point\-Cloud\-Library}, 40
   \item {draw\-R\-G\-B\-Image}
-    \subitem {Kinect}, 22
-  \item {Drawing}, 7
-    \subitem {$\sim$\-Drawing}, 8
-    \subitem {Drawing}, 7
-    \subitem {gnuplot\-Script}, 8
-    \subitem {gnuplot\-Script\-Co\-G}, 9
+    \subitem {Kinect}, 25
+  \item {Drawing}, 9
+    \subitem {$\sim$\-Drawing}, 10
+    \subitem {Drawing}, 10
+    \subitem {gnuplot\-Script\-E\-V3}, 10
     \subitem {gnuplot\-Script\-E\-V3\-Route}, 10
-    \subitem {gnuplot\-Script\-E\-V3\-Unit}, 10
-    \subitem {plot3\-D}, 11
-    \subitem {plot3\-D\-Real\-Time}, 12
-  \item {Drawing.\-cpp}, 49
-  \item {Drawing.\-hpp}, 49
+    \subitem {gnuplot\-Script\-Time2\-V}, 11
+    \subitem {gnuplot\-Script\-Time2\-Yaw}, 11
+  \item {Drawing.\-cpp}, 51
+  \item {Drawing.\-hpp}, 51
 
   \indexspace
 
   \item {E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}
-    \subitem {Kinect.\-hpp}, 50
-  \item {E\-V3\-Control}, 13
+    \subitem {Kinect.\-hpp}, 56
+  \item {E\-V3\-Control}, 12
     \subitem {$\sim$\-E\-V3\-Control}, 13
+    \subitem {before}, 17
+    \subitem {count\-\_\-average}, 17
+    \subitem {current}, 17
+    \subitem {current\-\_\-average}, 18
     \subitem {E\-V3\-Control}, 13
-    \subitem {ev3\-\_\-6dof}, 14
+    \subitem {ev3\-\_\-6dof}, 18
     \subitem {E\-V3\-Control}, 13
-    \subitem {set6\-Do\-F\-E\-V3}, 14
-  \item {E\-V3\-Control.\-cpp}, 49
-  \item {E\-V3\-Control.\-hpp}, 49
+    \subitem {flag\-\_\-average}, 18
+    \subitem {flag\-\_\-velocity}, 18
+    \subitem {get\-Average\-Velocity\-And\-Yaw}, 13
+    \subitem {get\-Velocityin\-Sec}, 14
+    \subitem {output6\-Do\-F}, 14
+    \subitem {output6\-Do\-F\-Continuous}, 14
+    \subitem {output\-Control\-Information}, 16
+    \subitem {output\-E\-V3\-Route\-Continuous}, 16
+    \subitem {save\-\_\-flag}, 18
+    \subitem {set6\-Do\-F\-E\-V3}, 17
+    \subitem {velocity}, 18
+  \item {E\-V3\-Control.\-cpp}, 52
+  \item {E\-V3\-Control.\-hpp}, 52
   \item {end\-Message}
-    \subitem {System}, 41, 42
+    \subitem {System}, 44, 45
   \item {end\-Timer}
-    \subitem {System}, 42
+    \subitem {System}, 45
   \item {ev3\-\_\-6dof}
-    \subitem {E\-V3\-Control}, 14
+    \subitem {E\-V3\-Control}, 18
   \item {extractplane\-\_\-flag}
-    \subitem {Point\-Cloud\-Library}, 37
+    \subitem {Point\-Cloud\-Library}, 41
 
   \indexspace
 
+  \item {flag\-\_\-average}
+    \subitem {E\-V3\-Control}, 18
+  \item {flag\-\_\-velocity}
+    \subitem {E\-V3\-Control}, 18
   \item {flag\-Checker}
-    \subitem {Point\-Cloud\-Library}, 30
+    \subitem {Point\-Cloud\-Library}, 34
+  \item {fps}
+    \subitem {System}, 48
 
   \indexspace
 
+  \item {get\-Average\-Velocity\-And\-Yaw}
+    \subitem {E\-V3\-Control}, 13
   \item {get\-Background\-Substraction\-Bin\-Image}
-    \subitem {Image\-Processing}, 16
+    \subitem {Image\-Processing}, 20
   \item {get\-Centroid\-Coordinate3d}
-    \subitem {Point\-Cloud\-Library}, 31
+    \subitem {Point\-Cloud\-Library}, 35
   \item {get\-Coefficient}
-    \subitem {Least\-Square\-Method}, 25
+    \subitem {Least\-Square\-Method}, 29
   \item {get\-Distance}
-    \subitem {Kinect}, 22
+    \subitem {Kinect}, 26
   \item {get\-Extract\-Plane\-And\-Clustering}
-    \subitem {Point\-Cloud\-Library}, 32
+    \subitem {Point\-Cloud\-Library}, 35
   \item {get\-Frame\-Rate}
-    \subitem {System}, 42
+    \subitem {System}, 45
   \item {get\-Point\-Cloud}
-    \subitem {Kinect}, 22
+    \subitem {Kinect}, 26
   \item {get\-Process\-Timein\-Miliseconds}
-    \subitem {System}, 43
+    \subitem {System}, 46
   \item {get\-Surface\-Normals}
-    \subitem {Point\-Cloud\-Library}, 33
+    \subitem {Point\-Cloud\-Library}, 36
   \item {get\-Undistortion\-Image}
-    \subitem {Image\-Processing}, 16
+    \subitem {Image\-Processing}, 20
   \item {get\-Unit\-Mask}
-    \subitem {Image\-Processing}, 17
-  \item {gnuplot\-Script}
-    \subitem {Drawing}, 8
-  \item {gnuplot\-Script\-Co\-G}
-    \subitem {Drawing}, 9
+    \subitem {Image\-Processing}, 21
+  \item {get\-Velocityin\-Sec}
+    \subitem {E\-V3\-Control}, 14
+  \item {gnuplot\-Script\-E\-V3}
+    \subitem {Drawing}, 10
   \item {gnuplot\-Script\-E\-V3\-Route}
     \subitem {Drawing}, 10
-  \item {gnuplot\-Script\-E\-V3\-Unit}
-    \subitem {Drawing}, 10
+  \item {gnuplot\-Script\-Time2\-V}
+    \subitem {Drawing}, 11
+  \item {gnuplot\-Script\-Time2\-Yaw}
+    \subitem {Drawing}, 11
 
   \indexspace
 
   \item {H\-E\-I\-G\-H\-T}
-    \subitem {stdafx.\-h}, 62
+    \subitem {stdafx.\-h}, 67
 
   \indexspace
 
   \item {image}
-    \subitem {main.\-cpp}, 56
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
-  \item {Image\-Processing}, 14
-    \subitem {$\sim$\-Image\-Processing}, 15
-    \subitem {closing\-\_\-times}, 20
-    \subitem {get\-Background\-Substraction\-Bin\-Image}, 16
-    \subitem {get\-Undistortion\-Image}, 16
-    \subitem {get\-Unit\-Mask}, 17
-    \subitem {Image\-Processing}, 15
-    \subitem {Image\-Processing}, 15
-    \subitem {load\-Internal\-Camera\-Parameter}, 18
-    \subitem {neighborhood}, 20
-    \subitem {show\-Image}, 18
-    \subitem {show\-Image\-Together}, 19
-    \subitem {th}, 20
-  \item {Image\-Processing.\-cpp}, 50
-  \item {Image\-Processing.\-hpp}, 50
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+  \item {Image\-Processing}, 19
+    \subitem {$\sim$\-Image\-Processing}, 20
+    \subitem {closing\-\_\-times}, 23
+    \subitem {get\-Background\-Substraction\-Bin\-Image}, 20
+    \subitem {get\-Undistortion\-Image}, 20
+    \subitem {get\-Unit\-Mask}, 21
+    \subitem {Image\-Processing}, 20
+    \subitem {Image\-Processing}, 20
+    \subitem {load\-Internal\-Camera\-Parameter}, 21
+    \subitem {neighborhood}, 24
+    \subitem {open\-C\-V\-Setting\-Trackbar}, 21
+    \subitem {output\-Image\-Select\-Directory}, 22
+    \subitem {show\-Image}, 22
+    \subitem {show\-Image\-Together}, 23
+    \subitem {th}, 24
+  \item {Image\-Processing.\-cpp}, 53
+  \item {Image\-Processing.\-hpp}, 54
   \item {initialize}
-    \subitem {Kinect}, 23
+    \subitem {Kinect}, 26
   \item {initialize\-P\-C\-L\-Visualizer}
-    \subitem {Point\-Cloud\-Library}, 34
-  \item {initialize\-Point\-Cloud\-Viewer}
-    \subitem {Point\-Cloud\-Library}, 34
+    \subitem {Point\-Cloud\-Library}, 36
 
   \indexspace
 
   \item {key}
-    \subitem {Kinect}, 24
-  \item {Kinect}, 20
-    \subitem {$\sim$\-Kinect}, 21
-    \subitem {actual\-Extracted\-Num}, 24
-    \subitem {create\-Instance}, 21
-    \subitem {draw\-R\-G\-B\-Image}, 22
-    \subitem {get\-Distance}, 22
-    \subitem {get\-Point\-Cloud}, 22
-    \subitem {initialize}, 23
-    \subitem {key}, 24
-    \subitem {Kinect}, 21
-    \subitem {stream\-Event}, 24
-  \item {Kinect.\-cpp}, 50
-  \item {Kinect.\-hpp}, 50
-    \subitem {C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}, 51
-    \subitem {E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}, 50
+    \subitem {Kinect}, 27
+  \item {Kinect}, 24
+    \subitem {$\sim$\-Kinect}, 25
+    \subitem {actual\-Extracted\-Num}, 27
+    \subitem {create\-Instance}, 25
+    \subitem {draw\-R\-G\-B\-Image}, 25
+    \subitem {get\-Distance}, 26
+    \subitem {get\-Point\-Cloud}, 26
+    \subitem {initialize}, 26
+    \subitem {key}, 27
+    \subitem {Kinect}, 25
+    \subitem {stream\-Event}, 27
+  \item {Kinect.\-cpp}, 54
+  \item {Kinect.\-hpp}, 55
+    \subitem {C\-A\-M\-E\-R\-A\-\_\-\-R\-E\-S\-O\-L\-U\-T\-I\-O\-N}, 56
+    \subitem {E\-R\-R\-O\-R\-\_\-\-C\-H\-E\-C\-K}, 56
 
   \indexspace
 
-  \item {Least\-Square\-Method}, 24
-    \subitem {$\sim$\-Least\-Square\-Method}, 25
-    \subitem {calc\-Yaw\-Roll\-Pitch}, 25
-    \subitem {get\-Coefficient}, 25
-    \subitem {Least\-Square\-Method}, 25
-    \subitem {Least\-Square\-Method}, 25
-  \item {Least\-Square\-Method.\-cpp}, 51
-  \item {Least\-Square\-Method.\-hpp}, 51
+  \item {Least\-Square\-Method}, 27
+    \subitem {$\sim$\-Least\-Square\-Method}, 28
+    \subitem {attitude\-\_\-angle}, 29
+    \subitem {calc\-Yaw\-Roll\-Pitch}, 28
+    \subitem {coefficient\-\_\-plane}, 29
+    \subitem {get\-Coefficient}, 29
+    \subitem {Least\-Square\-Method}, 28
+    \subitem {Least\-Square\-Method}, 28
+  \item {Least\-Square\-Method.\-cpp}, 56
+  \item {Least\-Square\-Method.\-hpp}, 57
   \item {load\-Internal\-Camera\-Parameter}
-    \subitem {Image\-Processing}, 18
+    \subitem {Image\-Processing}, 21
   \item {load\-P\-L\-Y}
-    \subitem {Point\-Cloud\-Library}, 34
+    \subitem {Point\-Cloud\-Library}, 36
 
   \indexspace
 
   \item {main}
-    \subitem {main.\-cpp}, 52
-  \item {main.\-cpp}, 51
-    \subitem {directory\-Name}, 56
-    \subitem {image}, 56
-    \subitem {main}, 52
-    \subitem {on\-Mouse}, 56
-    \subitem {origin}, 56
-    \subitem {save\-\_\-count}, 57
-    \subitem {select\-Object}, 57
-    \subitem {selection}, 57
-    \subitem {track\-Object}, 57
+    \subitem {main.\-cpp}, 58
+  \item {main.\-cpp}, 57
+    \subitem {directory\-Name}, 60
+    \subitem {image}, 60
+    \subitem {main}, 58
+    \subitem {on\-Mouse}, 59
+    \subitem {origin}, 60
+    \subitem {select\-Object}, 60
+    \subitem {selection}, 60
+    \subitem {track\-Object}, 60
   \item {make\-Directory}
-    \subitem {System}, 43
+    \subitem {System}, 46
+  \item {make\-Directory\-Based\-Date}
+    \subitem {System}, 46
   \item {mls\-\_\-flag}
-    \subitem {Point\-Cloud\-Library}, 37
+    \subitem {Point\-Cloud\-Library}, 41
   \item {model}
-    \subitem {Point\-Cloud\-Library}, 37
-  \item {Mouse.\-cpp}, 57
-    \subitem {on\-Mouse}, 57
+    \subitem {Point\-Cloud\-Library}, 41
+  \item {Mouse.\-cpp}, 61
+    \subitem {on\-Mouse}, 61
 
   \indexspace
 
   \item {N\-O\-C}
-    \subitem {stdafx.\-h}, 62
+    \subitem {stdafx.\-h}, 67
   \item {neighborhood}
-    \subitem {Image\-Processing}, 20
+    \subitem {Image\-Processing}, 24
 
   \indexspace
 
-  \item {O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}
-    \subitem {stdafx.\-h}, 62
   \item {on\-Mouse}
-    \subitem {main.\-cpp}, 56
-    \subitem {Mouse.\-cpp}, 57
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
+    \subitem {main.\-cpp}, 59
+    \subitem {Mouse.\-cpp}, 61
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+  \item {open\-C\-V\-Setting\-Trackbar}
+    \subitem {Image\-Processing}, 21
   \item {open\-Directory}
-    \subitem {System}, 44
+    \subitem {System}, 47
   \item {origin}
-    \subitem {main.\-cpp}, 56
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 60
-  \item {output\-All\-Data}
-    \subitem {System}, 44
-  \item {output\-Data}, 26
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
-    \subitem {total\-Time}, 27
-    \subitem {x}, 27
-    \subitem {y}, 27
-    \subitem {z}, 27
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+  \item {output6\-Do\-F}
+    \subitem {E\-V3\-Control}, 14
+  \item {output6\-Do\-F\-Continuous}
+    \subitem {E\-V3\-Control}, 14
+  \item {output\-Control\-Information}
+    \subitem {E\-V3\-Control}, 16
+  \item {output\-Data}, 30
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+    \subitem {total\-Time}, 30
+    \subitem {x}, 30
+    \subitem {y}, 30
+    \subitem {z}, 30
+  \item {output\-E\-V3\-Route\-Continuous}
+    \subitem {E\-V3\-Control}, 16
+  \item {output\-Image\-Select\-Directory}
+    \subitem {Image\-Processing}, 22
+  \item {output\-Point\-Cloud}
+    \subitem {Point\-Cloud\-Library}, 37
+  \item {output\-Point\-Cloud\-P\-L\-Y}
+    \subitem {Point\-Cloud\-Library}, 37
   \item {output\-Video}
-    \subitem {System}, 45
+    \subitem {System}, 47
 
   \indexspace
 
   \item {pass\-Through\-Filter}
-    \subitem {Point\-Cloud\-Library}, 35
-  \item {passthrough\-\_\-flag}
     \subitem {Point\-Cloud\-Library}, 38
-  \item {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 58
-    \subitem {Attitude\-Angle3d}, 59
-    \subitem {directory\-Name}, 59
-    \subitem {Do\-F6d}, 59
-    \subitem {image}, 59
-    \subitem {on\-Mouse}, 59
-    \subitem {origin}, 60
-    \subitem {output\-Data}, 59
-    \subitem {Point3ius}, 59
-    \subitem {save\-\_\-count}, 60
-    \subitem {select\-Object}, 60
-    \subitem {selection}, 60
-    \subitem {track\-Object}, 60
+  \item {passthrough\-\_\-flag}
+    \subitem {Point\-Cloud\-Library}, 41
+  \item {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 62
+    \subitem {Attitude\-Angle3d}, 63
+    \subitem {Control\-Paramd}, 63
+    \subitem {directory\-Name}, 63
+    \subitem {Do\-F6d}, 63
+    \subitem {Do\-F6i}, 63
+    \subitem {image}, 63
+    \subitem {on\-Mouse}, 63
+    \subitem {origin}, 63
+    \subitem {output\-Data}, 63
+    \subitem {Point3ius}, 63
+    \subitem {select\-Object}, 64
+    \subitem {selection}, 64
+    \subitem {track\-Object}, 64
   \item {pitch}
     \subitem {Attitude\-Angle}, 5
-    \subitem {Do\-F}, 6
-  \item {plot3\-D}
-    \subitem {Drawing}, 11
-  \item {plot3\-D\-Real\-Time}
-    \subitem {Drawing}, 12
-  \item {Point3}, 27
-    \subitem {x}, 28
-    \subitem {y}, 28
-    \subitem {z}, 28
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 8
+  \item {Point3}, 31
+    \subitem {x}, 31
+    \subitem {y}, 31
+    \subitem {z}, 31
   \item {Point3ius}
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 59
-  \item {Point\-Cloud\-Library}, 28
-    \subitem {$\sim$\-Point\-Cloud\-Library}, 30
-    \subitem {centroid}, 37
-    \subitem {down\-Sampling\-Using\-Voxel\-Grid\-Filter}, 30
-    \subitem {downsampling\-\_\-flag}, 37
-    \subitem {extractplane\-\_\-flag}, 37
-    \subitem {flag\-Checker}, 30
-    \subitem {get\-Centroid\-Coordinate3d}, 31
-    \subitem {get\-Extract\-Plane\-And\-Clustering}, 32
-    \subitem {get\-Surface\-Normals}, 33
-    \subitem {initialize\-P\-C\-L\-Visualizer}, 34
-    \subitem {initialize\-Point\-Cloud\-Viewer}, 34
-    \subitem {load\-P\-L\-Y}, 34
-    \subitem {mls\-\_\-flag}, 37
-    \subitem {model}, 37
-    \subitem {pass\-Through\-Filter}, 35
-    \subitem {passthrough\-\_\-flag}, 38
-    \subitem {Point\-Cloud\-Library}, 29
-    \subitem {Point\-Cloud\-Library}, 29
-    \subitem {radius\-Outlier\-Removal}, 35
-    \subitem {remove\-Outlier}, 36
-    \subitem {smoothing\-Using\-Moving\-Least\-Square}, 36
-    \subitem {statisticaloutlierremoval\-\_\-flag}, 38
-    \subitem {viewer}, 38
-    \subitem {visualizer}, 38
-  \item {Point\-Cloud\-Library.\-cpp}, 60
-  \item {Point\-Cloud\-Library.\-hpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 63
+  \item {Point\-Cloud\-Library}, 32
+    \subitem {$\sim$\-Point\-Cloud\-Library}, 34
+    \subitem {centroid}, 40
+    \subitem {down\-Sampling\-Using\-Voxel\-Grid\-Filter}, 34
+    \subitem {downsampling\-\_\-flag}, 40
+    \subitem {extractplane\-\_\-flag}, 41
+    \subitem {flag\-Checker}, 34
+    \subitem {get\-Centroid\-Coordinate3d}, 35
+    \subitem {get\-Extract\-Plane\-And\-Clustering}, 35
+    \subitem {get\-Surface\-Normals}, 36
+    \subitem {initialize\-P\-C\-L\-Visualizer}, 36
+    \subitem {load\-P\-L\-Y}, 36
+    \subitem {mls\-\_\-flag}, 41
+    \subitem {model}, 41
+    \subitem {output\-Point\-Cloud}, 37
+    \subitem {output\-Point\-Cloud\-P\-L\-Y}, 37
+    \subitem {pass\-Through\-Filter}, 38
+    \subitem {passthrough\-\_\-flag}, 41
+    \subitem {Point\-Cloud\-Library}, 33
+    \subitem {Point\-Cloud\-Library}, 33
+    \subitem {radius\-Outlier\-Removal}, 38
+    \subitem {remove\-Outlier}, 38
+    \subitem {smoothing\-Using\-Moving\-Least\-Square}, 40
+    \subitem {statisticaloutlierremoval\-\_\-flag}, 41
+    \subitem {th}, 41
+    \subitem {tor}, 41
+    \subitem {visualizer}, 42
+  \item {Point\-Cloud\-Library.\-cpp}, 64
+  \item {Point\-Cloud\-Library.\-hpp}, 65
 
   \indexspace
 
   \item {radius\-Outlier\-Removal}
-    \subitem {Point\-Cloud\-Library}, 35
+    \subitem {Point\-Cloud\-Library}, 38
   \item {remove\-Directory}
-    \subitem {System}, 45
+    \subitem {System}, 47
   \item {remove\-Outlier}
-    \subitem {Point\-Cloud\-Library}, 36
+    \subitem {Point\-Cloud\-Library}, 38
   \item {roll}
     \subitem {Attitude\-Angle}, 5
-    \subitem {Do\-F}, 6
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 8
 
   \indexspace
 
-  \item {save\-\_\-count}
-    \subitem {main.\-cpp}, 57
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 60
   \item {save\-\_\-flag}
-    \subitem {System}, 47
-  \item {save\-Data\-Continuously}
-    \subitem {System}, 45
-  \item {save\-Data\-Every\-Enter\-Key}
-    \subitem {System}, 46
+    \subitem {E\-V3\-Control}, 18
   \item {select\-Object}
-    \subitem {main.\-cpp}, 57
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 60
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 64
   \item {selection}
-    \subitem {main.\-cpp}, 57
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 60
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 64
   \item {set6\-Do\-F\-E\-V3}
-    \subitem {E\-V3\-Control}, 14
+    \subitem {E\-V3\-Control}, 17
+  \item {show\-Help\-Message}
+    \subitem {System}, 48
   \item {show\-Image}
-    \subitem {Image\-Processing}, 18
+    \subitem {Image\-Processing}, 22
   \item {show\-Image\-Together}
-    \subitem {Image\-Processing}, 19
+    \subitem {Image\-Processing}, 23
   \item {smoothing\-Using\-Moving\-Least\-Square}
-    \subitem {Point\-Cloud\-Library}, 36
+    \subitem {Point\-Cloud\-Library}, 40
   \item {start\-Message}
-    \subitem {System}, 47
+    \subitem {System}, 48
   \item {start\-Timer}
-    \subitem {System}, 47
+    \subitem {System}, 48
   \item {statisticaloutlierremoval\-\_\-flag}
-    \subitem {Point\-Cloud\-Library}, 38
-  \item {stdafx.\-cpp}, 61
-  \item {stdafx.\-h}, 61
+    \subitem {Point\-Cloud\-Library}, 41
+  \item {stdafx.\-cpp}, 65
+  \item {stdafx.\-h}, 65
     \subitem {\-\_\-\-C\-R\-T\-\_\-\-S\-E\-C\-U\-R\-E\-\_\-\-N\-O\-\_\-\-W\-A\-R\-N\-I\-N\-G\-S}, 
-		62
-    \subitem {A\-L\-L\-P\-I\-X\-E\-L}, 62
-    \subitem {H\-E\-I\-G\-H\-T}, 62
-    \subitem {N\-O\-C}, 62
-    \subitem {O\-U\-T\-P\-U\-T\-D\-A\-T\-A\-\_\-\-M\-A\-X}, 62
-    \subitem {W\-I\-D\-T\-H}, 62
+		67
+    \subitem {A\-L\-L\-P\-I\-X\-E\-L}, 67
+    \subitem {H\-E\-I\-G\-H\-T}, 67
+    \subitem {N\-O\-C}, 67
+    \subitem {W\-I\-D\-T\-H}, 67
   \item {stream\-Event}
-    \subitem {Kinect}, 24
-  \item {System}, 38
-    \subitem {$\sim$\-System}, 39
-    \subitem {alternatives}, 40
-    \subitem {check\-Directory}, 40
-    \subitem {countdown\-Timer}, 41
-    \subitem {end\-Message}, 41, 42
-    \subitem {end\-Timer}, 42
-    \subitem {get\-Frame\-Rate}, 42
-    \subitem {get\-Process\-Timein\-Miliseconds}, 43
-    \subitem {make\-Directory}, 43
-    \subitem {open\-Directory}, 44
-    \subitem {output\-All\-Data}, 44
-    \subitem {output\-Video}, 45
-    \subitem {remove\-Directory}, 45
-    \subitem {save\-\_\-flag}, 47
-    \subitem {save\-Data\-Continuously}, 45
-    \subitem {save\-Data\-Every\-Enter\-Key}, 46
-    \subitem {start\-Message}, 47
-    \subitem {start\-Timer}, 47
-    \subitem {System}, 39
-  \item {System.\-cpp}, 63
-  \item {System.\-hpp}, 63
+    \subitem {Kinect}, 27
+  \item {sum\-\_\-time}
+    \subitem {System}, 49
+  \item {System}, 42
+    \subitem {$\sim$\-System}, 43
+    \subitem {alternatives}, 43
+    \subitem {check\-Directory}, 44
+    \subitem {countdown\-Timer}, 44
+    \subitem {end\-Message}, 44, 45
+    \subitem {end\-Timer}, 45
+    \subitem {fps}, 48
+    \subitem {get\-Frame\-Rate}, 45
+    \subitem {get\-Process\-Timein\-Miliseconds}, 46
+    \subitem {make\-Directory}, 46
+    \subitem {make\-Directory\-Based\-Date}, 46
+    \subitem {open\-Directory}, 47
+    \subitem {output\-Video}, 47
+    \subitem {remove\-Directory}, 47
+    \subitem {show\-Help\-Message}, 48
+    \subitem {start\-Message}, 48
+    \subitem {start\-Timer}, 48
+    \subitem {sum\-\_\-time}, 49
+    \subitem {System}, 43
+    \subitem {time}, 49
+  \item {System.\-cpp}, 68
+  \item {System.\-hpp}, 68
 
   \indexspace
 
   \item {th}
-    \subitem {Image\-Processing}, 20
+    \subitem {Image\-Processing}, 24
+    \subitem {Point\-Cloud\-Library}, 41
+  \item {time}
+    \subitem {System}, 49
+  \item {tor}
+    \subitem {Point\-Cloud\-Library}, 41
   \item {total\-Time}
-    \subitem {output\-Data}, 27
+    \subitem {output\-Data}, 30
   \item {track\-Object}
-    \subitem {main.\-cpp}, 57
-    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 60
+    \subitem {main.\-cpp}, 60
+    \subitem {Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}, 64
 
   \indexspace
 
-  \item {viewer}
-    \subitem {Point\-Cloud\-Library}, 38
+  \item {velocity}
+    \subitem {Control\-Paramd}, 6
+    \subitem {E\-V3\-Control}, 18
   \item {visualizer}
-    \subitem {Point\-Cloud\-Library}, 38
+    \subitem {Point\-Cloud\-Library}, 42
 
   \indexspace
 
   \item {W\-I\-D\-T\-H}
-    \subitem {stdafx.\-h}, 62
+    \subitem {stdafx.\-h}, 67
 
   \indexspace
 
   \item {x}
-    \subitem {Do\-F}, 6
-    \subitem {output\-Data}, 27
-    \subitem {Point3}, 28
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 8
+    \subitem {output\-Data}, 30
+    \subitem {Point3}, 31
 
   \indexspace
 
   \item {y}
-    \subitem {Do\-F}, 6
-    \subitem {output\-Data}, 27
-    \subitem {Point3}, 28
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 9
+    \subitem {output\-Data}, 30
+    \subitem {Point3}, 31
   \item {yaw}
     \subitem {Attitude\-Angle}, 5
-    \subitem {Do\-F}, 6
+    \subitem {Control\-Paramd}, 6
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 9
 
   \indexspace
 
   \item {z}
-    \subitem {Do\-F}, 6
-    \subitem {output\-Data}, 27
-    \subitem {Point3}, 28
+    \subitem {Do\-F6d}, 7
+    \subitem {Do\-F6i}, 9
+    \subitem {output\-Data}, 30
+    \subitem {Point3}, 31
 
 \end{theindex}

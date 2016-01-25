@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['image',['image',['../main_8cpp.html#aabb27b8973575043030df51be47cd24a',1,'image():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#aabb27b8973575043030df51be47cd24a',1,'image():&#160;main.cpp']]]
+  ['ev3_5f6dof',['ev3_6dof',['../class_e_v3_control.html#adeff38f95194c020c3c1c5c3ef6bd994',1,'EV3Control']]],
+  ['extractplane_5fflag',['extractplane_flag',['../class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43',1,'PointCloudLibrary']]]
 ];

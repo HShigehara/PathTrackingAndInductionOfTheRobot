@@ -9,6 +9,15 @@ E\-V3を制御するためのクラス
 
 {\ttfamily \#include $<$E\-V3\-Control.\-hpp$>$}
 
+
+
+E\-V3\-Control 連携図\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=134pt]{class_e_v3_control__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,18 +26,48 @@ E\-V3を制御するためのクラス
 {\bf $\sim$\-E\-V3\-Control} ()
 \begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
 void {\bf set6\-Do\-F\-E\-V3} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, Point3d centroid, {\bf Attitude\-Angle} attitude\-\_\-angle)
-\begin{DoxyCompactList}\small\item\em 最小二乗法によって求めた平均座標と位置を\-E\-V3の制御のために構造体に格納する(c80) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 最小二乗法によって求めた平均座標と位置を\-E\-V3の制御のために構造体に格納する(c80) \end{DoxyCompactList}\item 
+void {\bf get\-Velocityin\-Sec} (double time\-\_\-ms)
+\begin{DoxyCompactList}\small\item\em E\-V3の速度を計算する(c85) \end{DoxyCompactList}\item 
+void {\bf get\-Average\-Velocity\-And\-Yaw} ()
+\begin{DoxyCompactList}\small\item\em 平均の速度とヨー角を計算する \end{DoxyCompactList}\item 
+void {\bf output6\-Do\-F} (int save\-\_\-count, char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename, pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&output\-Point\-Cloud)
+\begin{DoxyCompactList}\small\item\em 現フレームの6\-Do\-F情報をファイルに出力する \end{DoxyCompactList}\item 
+void {\bf output6\-Do\-F\-Continuous} (char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename, pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&output\-Point\-Cloud)
+\begin{DoxyCompactList}\small\item\em キーを入力したときの6\-Do\-F情報を連続してcsv形式で保存する \end{DoxyCompactList}\item 
+void {\bf output\-E\-V3\-Route\-Continuous} (char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename)
+\begin{DoxyCompactList}\small\item\em E\-V3の走行軌道を保存する \end{DoxyCompactList}\item 
+void {\bf output\-Control\-Information} (double sumtime\-\_\-ms, char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename)
+\begin{DoxyCompactList}\small\item\em E\-V3の制御情報を出力する \end{DoxyCompactList}\item 
+void {\bf output\-Control\-Information} ()
+\begin{DoxyCompactList}\small\item\em E\-V3に必要な速度とヨー角をファイルに出力 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{公開変数類}
 \begin{DoxyCompactItemize}
 \item 
-{\bf Do\-F6d} {\bf ev3\-\_\-6dof}
-\begin{DoxyCompactList}\small\item\em E\-V3の6自由度(c80) \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf Do\-F6i} {\bf ev3\-\_\-6dof}
+\begin{DoxyCompactList}\small\item\em E\-V3の6自由度(c80) \end{DoxyCompactList}\item 
+{\bf Do\-F6i} {\bf before}
+\begin{DoxyCompactList}\small\item\em 前フレームの6\-Do\-F情報 \end{DoxyCompactList}\item 
+{\bf Do\-F6i} {\bf current}
+\begin{DoxyCompactList}\small\item\em 現フレームの6\-Do\-F情報 \end{DoxyCompactList}\item 
+double {\bf velocity}
+\begin{DoxyCompactList}\small\item\em 速度v(c85) \end{DoxyCompactList}\item 
+bool {\bf flag\-\_\-velocity}
+\begin{DoxyCompactList}\small\item\em 最初の1フレームのためのフラグ \end{DoxyCompactList}\item 
+{\bf Control\-Paramd} {\bf current\-\_\-average}
+\begin{DoxyCompactList}\small\item\em 現在の平均の速度とヨー角 \end{DoxyCompactList}\item 
+int {\bf count\-\_\-average}
+\begin{DoxyCompactList}\small\item\em 速度とヨー角の過去5フレーム分の平均を取るために最初の5フレームをカウントするための変数 \end{DoxyCompactList}\item 
+bool {\bf flag\-\_\-average}
+\begin{DoxyCompactList}\small\item\em 始めの5フレーム分用 \end{DoxyCompactList}\item 
+bool {\bf save\-\_\-flag}
+\begin{DoxyCompactList}\small\item\em 6\-Do\-F情報を出力するかチェックするためのフラグ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
 E\-V3を制御するためのクラス 
 
- E\-V3\-Control.\-hpp の 19 行目に定義があります。
+ E\-V3\-Control.\-hpp の 18 行目に定義があります。
 
 
 
@@ -46,14 +85,12 @@ E\-V3を制御するためのクラス
 
 メソッド\-E\-V3\-Control\-::\-E\-V3\-Control().コンストラクタ 
 
- E\-V3\-Control.\-cpp の 16 行目に定義があります。
+ E\-V3\-Control.\-cpp の 15 行目に定義があります。
 
 
-\begin{DoxyCode}
-17 \{
-18     \textcolor{comment}{//コンストラクタはなし}
-19 \}
-\end{DoxyCode}
+
+参照先 before, count\-\_\-average, current, current\-\_\-average, flag\-\_\-average, flag\-\_\-velocity, save\-\_\-flag.
+
 \index{E\-V3\-Control@{E\-V3\-Control}!$\sim$\-E\-V3\-Control@{$\sim$\-E\-V3\-Control}}
 \index{$\sim$\-E\-V3\-Control@{$\sim$\-E\-V3\-Control}!EV3Control@{E\-V3\-Control}}
 \subsubsection[{$\sim$\-E\-V3\-Control}]{\setlength{\rightskip}{0pt plus 5cm}E\-V3\-Control\-::$\sim$\-E\-V3\-Control (
@@ -67,17 +104,291 @@ E\-V3を制御するためのクラス
 
 メソッド\-E\-V3\-Control\-::\-E\-V3\-Control().コンストラクタ 
 
- E\-V3\-Control.\-cpp の 24 行目に定義があります。
+ E\-V3\-Control.\-cpp の 38 行目に定義があります。
 
-
-\begin{DoxyCode}
-25 \{
-26     \textcolor{comment}{//デストラクタはなし}
-27 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
+\index{E\-V3\-Control@{E\-V3\-Control}!get\-Average\-Velocity\-And\-Yaw@{get\-Average\-Velocity\-And\-Yaw}}
+\index{get\-Average\-Velocity\-And\-Yaw@{get\-Average\-Velocity\-And\-Yaw}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{get\-Average\-Velocity\-And\-Yaw}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::get\-Average\-Velocity\-And\-Yaw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0}
+
+
+平均の速度とヨー角を計算する 
+
+メソッド\-E\-V3\-Control\-::get\-Average\-Velocity\-And\-Yaw()．速度とヨー角を取得するメソッド 
+
+ E\-V3\-Control.\-cpp の 89 行目に定義があります。
+
+
+
+参照先 count\-\_\-average, current\-\_\-average, ev3\-\_\-6dof, flag\-\_\-average, velocity, Control\-Paramd\-::velocity, Do\-F6i\-::yaw, Control\-Paramd\-::yaw.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_e_v3_control_a2231f75bbba634cbb018ec9bf2de75a0_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{E\-V3\-Control@{E\-V3\-Control}!get\-Velocityin\-Sec@{get\-Velocityin\-Sec}}
+\index{get\-Velocityin\-Sec@{get\-Velocityin\-Sec}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{get\-Velocityin\-Sec}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::get\-Velocityin\-Sec (
+\begin{DoxyParamCaption}
+\item[{double}]{time\-\_\-ms}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773}
+
+
+E\-V3の速度を計算する(c85) 
+
+メソッド\-E\-V3\-Control\-::get\-Velocity()．\-E\-V3の速度を計算するメソッド
+
+
+\begin{DoxyParams}{引数}
+{\em time\-\_\-ms} & double型．1フレームの処理時間 \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 67 行目に定義があります。
+
+
+
+参照先 before, current, ev3\-\_\-6dof, flag\-\_\-velocity, velocity, Do\-F6i\-::x, Do\-F6i\-::y, Do\-F6i\-::z.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_e_v3_control_a206f5da82bb48c5ddae1906b9206d773_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{E\-V3\-Control@{E\-V3\-Control}!output6\-Do\-F@{output6\-Do\-F}}
+\index{output6\-Do\-F@{output6\-Do\-F}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{output6\-Do\-F}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::output6\-Do\-F (
+\begin{DoxyParamCaption}
+\item[{int}]{save\-\_\-count, }
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename, }
+\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{output\-Point\-Cloud}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_afce936155dcdef2787d31741b2bb1868}
+
+
+現フレームの6\-Do\-F情報をファイルに出力する 
+
+メソッド\-E\-V3\-Control\-::output6\-Dof()．現フレームの6\-Do\-F情報をファイルに出力する
+
+
+\begin{DoxyParams}{引数}
+{\em save\-\_\-count} & int型．保存したカウント \\
+\hline
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 150 行目に定義があります。
+
+
+
+参照先 ev3\-\_\-6dof, N\-O\-C, Do\-F6i\-::pitch, Do\-F6i\-::roll, Do\-F6i\-::x, Do\-F6i\-::y, Do\-F6i\-::yaw, Do\-F6i\-::z.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{class_e_v3_control_afce936155dcdef2787d31741b2bb1868_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{E\-V3\-Control@{E\-V3\-Control}!output6\-Do\-F\-Continuous@{output6\-Do\-F\-Continuous}}
+\index{output6\-Do\-F\-Continuous@{output6\-Do\-F\-Continuous}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{output6\-Do\-F\-Continuous}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::output6\-Do\-F\-Continuous (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename, }
+\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{output\-Point\-Cloud}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab}
+
+
+キーを入力したときの6\-Do\-F情報を連続してcsv形式で保存する 
+
+メソッド\-E\-V3\-Control\-::output6\-Do\-F\-Continuous()．キーを入力したときの6\-Do\-F情報を連続してcsv形式で保存する
+
+
+\begin{DoxyParams}{引数}
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 169 行目に定義があります。
+
+
+
+参照先 ev3\-\_\-6dof, N\-O\-C, Do\-F6i\-::pitch, Do\-F6i\-::roll, save\-\_\-flag, Do\-F6i\-::x, Do\-F6i\-::y, Do\-F6i\-::yaw, Do\-F6i\-::z.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{class_e_v3_control_a8308b078e6fce216a0b5e8e6a502e7ab_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{E\-V3\-Control@{E\-V3\-Control}!output\-Control\-Information@{output\-Control\-Information}}
+\index{output\-Control\-Information@{output\-Control\-Information}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{output\-Control\-Information}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::output\-Control\-Information (
+\begin{DoxyParamCaption}
+\item[{double}]{sumtime\-\_\-ms, }
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67}
+
+
+E\-V3の制御情報を出力する 
+
+メソッド\-E\-V3\-Control\-::output\-Control\-Information()．\-E\-V3の制御情報を出力する
+
+
+\begin{DoxyParams}{引数}
+{\em sumtime\-\_\-ms} & double型．合計時間 \\
+\hline
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 208 行目に定義があります。
+
+
+
+参照先 current\-\_\-average, N\-O\-C, Control\-Paramd\-::velocity, Control\-Paramd\-::yaw.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_e_v3_control_a6bec8596128f406b0a90a6b206e1fd67_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{E\-V3\-Control@{E\-V3\-Control}!output\-Control\-Information@{output\-Control\-Information}}
+\index{output\-Control\-Information@{output\-Control\-Information}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{output\-Control\-Information}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::output\-Control\-Information (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_ab0d9cabcbc3e9af6398b89d7de9bce91}
+
+
+E\-V3に必要な速度とヨー角をファイルに出力 
+
+メソッド\-E\-V3\-Control\-::output\-Control\-Information()．\-E\-V3に必要な速度とヨー角をファイルに出力 
+
+ E\-V3\-Control.\-cpp の 223 行目に定義があります。
+
+
+
+参照先 current\-\_\-average, Control\-Paramd\-::velocity, Control\-Paramd\-::yaw.
+
+\index{E\-V3\-Control@{E\-V3\-Control}!output\-E\-V3\-Route\-Continuous@{output\-E\-V3\-Route\-Continuous}}
+\index{output\-E\-V3\-Route\-Continuous@{output\-E\-V3\-Route\-Continuous}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{output\-E\-V3\-Route\-Continuous}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::output\-E\-V3\-Route\-Continuous (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename}
+\end{DoxyParamCaption}
+)}\label{class_e_v3_control_a03d5b0e6707c302de24db329116f2142}
+
+
+E\-V3の走行軌道を保存する 
+
+メソッド\-E\-V3\-Control\-::output\-E\-V3\-Route\-Continuous()．\-E\-V3の走行軌道を保存する
+
+
+\begin{DoxyParams}{引数}
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+\end{DoxyParams}
+
+
+ E\-V3\-Control.\-cpp の 189 行目に定義があります。
+
+
+
+参照先 ev3\-\_\-6dof, N\-O\-C, Do\-F6i\-::x, Do\-F6i\-::y, Do\-F6i\-::z.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_e_v3_control_a03d5b0e6707c302de24db329116f2142_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{E\-V3\-Control@{E\-V3\-Control}!set6\-Do\-F\-E\-V3@{set6\-Do\-F\-E\-V3}}
 \index{set6\-Do\-F\-E\-V3@{set6\-Do\-F\-E\-V3}!EV3Control@{E\-V3\-Control}}
 \subsubsection[{set6\-Do\-F\-E\-V3}]{\setlength{\rightskip}{0pt plus 5cm}void E\-V3\-Control\-::set6\-Do\-F\-E\-V3 (
@@ -95,64 +406,173 @@ E\-V3を制御するためのクラス
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr} & \&input\-Point\-Cloud, Point3d centroid, \doxyref{Attitude\-Angle}{p.}{struct_attitude_angle} attitude\-\_\-angle \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+{\em centroid} & Point3d型．重心座標 \\
+\hline
+{\em attitude\-\_\-angle} & Attitude\-Angle型．姿勢角 \\
 \hline
 \end{DoxyParams}
 
 
- E\-V3\-Control.\-cpp の 33 行目に定義があります。
+ E\-V3\-Control.\-cpp の 49 行目に定義があります。
 
 
 
-参照先 ev3\-\_\-6dof, Do\-F\-::pitch, Attitude\-Angle\-::pitch, Do\-F\-::roll, Attitude\-Angle\-::roll, Do\-F\-::x, Do\-F\-::y, Do\-F\-::yaw, Attitude\-Angle\-::yaw, Do\-F\-::z.
+参照先 ev3\-\_\-6dof, Do\-F6i\-::pitch, Attitude\-Angle\-::pitch, Do\-F6i\-::roll, Attitude\-Angle\-::roll, Do\-F6i\-::x, Do\-F6i\-::y, Do\-F6i\-::yaw, Attitude\-Angle\-::yaw, Do\-F6i\-::z.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-34 \{
-35     \textcolor{comment}{//FILE *fp;}
-36     \textcolor{comment}{//char filepath\_measuredata[NOC];}
-37     \textcolor{comment}{//sprintf\_s(filepath\_measuredata, "data/%s/measuredata.dat", directoryName);}
-38     \textcolor{comment}{//fopen\_s(&fp, filepath\_measuredata, "w");}
-39 
-40     ev3_6dof.x = centroid.x;
-41     ev3_6dof.y = centroid.y;
-42     ev3_6dof.z = centroid.z;
-43     ev3_6dof.yaw = attitude\_angle.yaw;
-44     ev3_6dof.roll = attitude\_angle.roll;
-45     ev3_6dof.pitch = attitude\_angle.pitch;
-46     cout << \textcolor{stringliteral}{"[X, Y, Z, Yaw, Roll, Pitch, PointCloudNum]"} << endl;
-47     cout << \textcolor{stringliteral}{"[ "} << ev3_6dof.x << \textcolor{stringliteral}{", "} << ev3_6dof.y << \textcolor{stringliteral}{", "} << ev3_6dof.z << \textcolor{stringliteral}{", "} << 
-      ev3_6dof.yaw << \textcolor{stringliteral}{", "} << ev3_6dof.roll << \textcolor{stringliteral}{", "} << ev3_6dof.pitch << \textcolor{stringliteral}{", "} << inputPointCloud->size() << \textcolor{stringliteral}{" ]"} 
-      << endl;
-48 
-49     \textcolor{comment}{//fprintf\_s(fp, "[\(\backslash\)tX\(\backslash\)tY\(\backslash\)tZ\(\backslash\)tYaw\(\backslash\)tRoll\(\backslash\)tPitch\(\backslash\)tPointCloudNum\(\backslash\)t]\(\backslash\)n");}
-50     \textcolor{comment}{//fprintf\_s(fp, "%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%f\(\backslash\)t%d\(\backslash\)n", ev3\_6dof.x, ev3\_6dof.y, ev3\_6dof.z, ev3\_6dof.yaw,
-       ev3\_6dof.roll, ev3\_6dof.pitch, inputPointCloud->size());}
-51 
-52     \textcolor{comment}{//fclose(fp);}
-53     \textcolor{keywordflow}{return};
-54 \}\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_e_v3_control_a8ef402279dc736292ae0cf780dd3aed8_icgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{メンバ詳解}
+\index{E\-V3\-Control@{E\-V3\-Control}!before@{before}}
+\index{before@{before}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{before}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Do\-F6i} E\-V3\-Control\-::before}\label{class_e_v3_control_aadcbe063497900efa4d94b3a46edb688}
+
+
+前フレームの6\-Do\-F情報 
+
+
+
+ E\-V3\-Control.\-hpp の 35 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Velocityin\-Sec().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!count\-\_\-average@{count\-\_\-average}}
+\index{count\-\_\-average@{count\-\_\-average}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{count\-\_\-average}]{\setlength{\rightskip}{0pt plus 5cm}int E\-V3\-Control\-::count\-\_\-average}\label{class_e_v3_control_a094ccebd1c4d6b6432743fd7284ebea8}
+
+
+速度とヨー角の過去5フレーム分の平均を取るために最初の5フレームをカウントするための変数 
+
+
+
+ E\-V3\-Control.\-hpp の 42 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Average\-Velocity\-And\-Yaw().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!current@{current}}
+\index{current@{current}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Do\-F6i} E\-V3\-Control\-::current}\label{class_e_v3_control_a0407cbbddf22869f450b954d56c79c16}
+
+
+現フレームの6\-Do\-F情報 
+
+
+
+ E\-V3\-Control.\-hpp の 36 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Velocityin\-Sec().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!current\-\_\-average@{current\-\_\-average}}
+\index{current\-\_\-average@{current\-\_\-average}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{current\-\_\-average}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Control\-Paramd} E\-V3\-Control\-::current\-\_\-average}\label{class_e_v3_control_a506596061888dfd4afc965d20fed26a8}
+
+
+現在の平均の速度とヨー角 
+
+
+
+ E\-V3\-Control.\-hpp の 41 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Average\-Velocity\-And\-Yaw(), output\-Control\-Information().
+
 \index{E\-V3\-Control@{E\-V3\-Control}!ev3\-\_\-6dof@{ev3\-\_\-6dof}}
 \index{ev3\-\_\-6dof@{ev3\-\_\-6dof}!EV3Control@{E\-V3\-Control}}
-\subsubsection[{ev3\-\_\-6dof}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Do\-F6d} E\-V3\-Control\-::ev3\-\_\-6dof}\label{class_e_v3_control_a146d50ba64a58289ef7776013d21c4a0}
+\subsubsection[{ev3\-\_\-6dof}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Do\-F6i} E\-V3\-Control\-::ev3\-\_\-6dof}\label{class_e_v3_control_adeff38f95194c020c3c1c5c3ef6bd994}
 
 
 E\-V3の6自由度(c80) 
 
 
 
- E\-V3\-Control.\-hpp の 28 行目に定義があります。
+ E\-V3\-Control.\-hpp の 32 行目に定義があります。
 
 
 
-参照元 main(), set6\-Do\-F\-E\-V3().
+参照元 get\-Average\-Velocity\-And\-Yaw(), get\-Velocityin\-Sec(), output6\-Do\-F(), output6\-Do\-F\-Continuous(), output\-E\-V3\-Route\-Continuous(), set6\-Do\-F\-E\-V3().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!flag\-\_\-average@{flag\-\_\-average}}
+\index{flag\-\_\-average@{flag\-\_\-average}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{flag\-\_\-average}]{\setlength{\rightskip}{0pt plus 5cm}bool E\-V3\-Control\-::flag\-\_\-average}\label{class_e_v3_control_a07e70076fc9fb9085b55be1a3a7be187}
+
+
+始めの5フレーム分用 
+
+
+
+ E\-V3\-Control.\-hpp の 43 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Average\-Velocity\-And\-Yaw().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!flag\-\_\-velocity@{flag\-\_\-velocity}}
+\index{flag\-\_\-velocity@{flag\-\_\-velocity}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{flag\-\_\-velocity}]{\setlength{\rightskip}{0pt plus 5cm}bool E\-V3\-Control\-::flag\-\_\-velocity}\label{class_e_v3_control_a353439722104f9c309920d0c0a1491de}
+
+
+最初の1フレームのためのフラグ 
+
+
+
+ E\-V3\-Control.\-hpp の 38 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), get\-Velocityin\-Sec().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!save\-\_\-flag@{save\-\_\-flag}}
+\index{save\-\_\-flag@{save\-\_\-flag}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{save\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool E\-V3\-Control\-::save\-\_\-flag}\label{class_e_v3_control_abdd8dd38a39186e10013869fa4236605}
+
+
+6\-Do\-F情報を出力するかチェックするためのフラグ 
+
+
+
+ E\-V3\-Control.\-hpp の 48 行目に定義があります。
+
+
+
+参照元 E\-V3\-Control(), main(), output6\-Do\-F\-Continuous().
+
+\index{E\-V3\-Control@{E\-V3\-Control}!velocity@{velocity}}
+\index{velocity@{velocity}!EV3Control@{E\-V3\-Control}}
+\subsubsection[{velocity}]{\setlength{\rightskip}{0pt plus 5cm}double E\-V3\-Control\-::velocity}\label{class_e_v3_control_a3dbcb2b713381b2c050523b3a946af0a}
+
+
+速度v(c85) 
+
+
+
+ E\-V3\-Control.\-hpp の 37 行目に定義があります。
+
+
+
+参照元 get\-Average\-Velocity\-And\-Yaw(), get\-Velocityin\-Sec().
 
 
 

@@ -2,6 +2,11 @@
 \label{class_system}\index{System@{System}}
 
 
+システム関連の処理を行うクラス  
+
+
+
+
 {\ttfamily \#include $<$System.\-hpp$>$}
 
 \subsection*{公開メンバ関数}
@@ -19,6 +24,8 @@ void {\bf end\-Message} (int c\-Num)
 \begin{DoxyCompactList}\small\item\em プログラム終了時のメッセージを表示(c38) \end{DoxyCompactList}\item 
 void {\bf end\-Message} ()
 \begin{DoxyCompactList}\small\item\em プログラム終了時のメッセージを表示(c63) \end{DoxyCompactList}\item 
+void {\bf show\-Help\-Message} ()
+\begin{DoxyCompactList}\small\item\em キー入力に関するヘルプを表示(c86) \end{DoxyCompactList}\item 
 void {\bf start\-Timer} ()
 \begin{DoxyCompactList}\small\item\em タイマーを開始(c65) \end{DoxyCompactList}\item 
 void {\bf end\-Timer} ()
@@ -29,33 +36,33 @@ double {\bf get\-Frame\-Rate} ()
 \begin{DoxyCompactList}\small\item\em フレームレートを取得.\-start\-Timer()とend\-Timer()が実行されていることが前提(c65) \end{DoxyCompactList}\item 
 void {\bf check\-Directory} (const char $\ast$check\-\_\-dirname)
 \begin{DoxyCompactList}\small\item\em 引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81) \end{DoxyCompactList}\item 
-void {\bf make\-Directory} ()
-\begin{DoxyCompactList}\small\item\em \doxyref{System\-::make\-Directory()}{p.}{class_system_ab047a364bb881c7bd701973bc6abbe12}.ディレクトリを作成 \end{DoxyCompactList}\item 
+void {\bf make\-Directory\-Based\-Date} ()
+\begin{DoxyCompactList}\small\item\em 日付に基づいたディレクトリの作成 \end{DoxyCompactList}\item 
+void {\bf make\-Directory} (char $\ast$original\-\_\-path, int create\-\_\-dirnum)
+\begin{DoxyCompactList}\small\item\em 指定したディレクトリ以下に新しいディレクトリを作成する( \end{DoxyCompactList}\item 
 void {\bf remove\-Directory} ()
 \begin{DoxyCompactList}\small\item\em 取得したデータが不要だった場合ディレクトリを削除する \end{DoxyCompactList}\item 
 int {\bf alternatives} ()
 \begin{DoxyCompactList}\small\item\em 数字の入力をチェックする \end{DoxyCompactList}\item 
 void {\bf open\-Directory} ()
 \begin{DoxyCompactList}\small\item\em ディレクトリを開く(c38) \end{DoxyCompactList}\item 
-void {\bf output\-All\-Data} (const string $\ast$output\-Data\-Name, {\bf output\-Data} $\ast${\bf output\-Data}, int count\-Data\-Num)
-\begin{DoxyCompactList}\small\item\em データをファイルに書き出すメソッド(c41) \end{DoxyCompactList}\item 
 Video\-Writer {\bf output\-Video} (const string $\ast$output\-Video\-Name)
-\begin{DoxyCompactList}\small\item\em 動画を出力する \end{DoxyCompactList}\item 
-void {\bf save\-Data\-Every\-Enter\-Key} (Mat \&current\-\_\-image, Mat \&bin\-\_\-image, {\bf Do\-F6d} dof6, pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
-\begin{DoxyCompactList}\small\item\em メソッド\-System\-::save\-Data\-Every\-Enter\-Key()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する． \end{DoxyCompactList}\item 
-void {\bf save\-Data\-Continuously} ({\bf Do\-F6d} centroid)
-\begin{DoxyCompactList}\small\item\em メソッド\-System\-::save\-Data\-Continuously()．pキーが入力されたら，平均座標を出力(c82) @param Do\-F6d centroid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 動画を出力する \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{公開変数類}
 \begin{DoxyCompactItemize}
 \item 
-bool {\bf save\-\_\-flag}
-\begin{DoxyCompactList}\small\item\em 6\-Do\-F情報を出力するフラグ \end{DoxyCompactList}\end{DoxyCompactItemize}
+double {\bf time}
+\begin{DoxyCompactList}\small\item\em 処理時間の結果 \end{DoxyCompactList}\item 
+double {\bf fps}
+\begin{DoxyCompactList}\small\item\em フレームレート \end{DoxyCompactList}\item 
+double {\bf sum\-\_\-time}
+\begin{DoxyCompactList}\small\item\em 処理の合計時間 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
+システム関連の処理を行うクラス 
 
-
- System.\-hpp の 17 行目に定義があります。
+ System.\-hpp の 19 行目に定義があります。
 
 
 
@@ -73,22 +80,12 @@ bool {\bf save\-\_\-flag}
 
 \doxyref{System\-::\-System()}{p.}{class_system_ae317936c9bcf1374d61745572e0f2f8a}.コンストラクタ 
 
- System.\-cpp の 16 行目に定義があります。
+ System.\-cpp の 15 行目に定義があります。
 
 
 
-参照先 save\-\_\-flag.
+参照先 fps, sum\-\_\-time, time.
 
-
-\begin{DoxyCode}
-17 \{
-18     FlagStartTimer = \textcolor{keyword}{false}; \textcolor{comment}{//スタート用のタイマーが実行されたかのフラグを初期化(c65)}
-19     FlagEndTimer = \textcolor{keyword}{false}; \textcolor{comment}{//終了用のタイマーが実行されたかのフラグを初期化(c65)}
-20     time = 0.0; \textcolor{comment}{//時間計測用の変数を初期化(c65)}
-21     \textcolor{comment}{//save\_count = 0; //保存用カウント用の変数を初期化(c82)}
-22     save_flag = \textcolor{keyword}{false};
-23 \}
-\end{DoxyCode}
 \index{System@{System}!$\sim$\-System@{$\sim$\-System}}
 \index{$\sim$\-System@{$\sim$\-System}!System@{System}}
 \subsubsection[{$\sim$\-System}]{\setlength{\rightskip}{0pt plus 5cm}System\-::$\sim$\-System (
@@ -104,12 +101,6 @@ bool {\bf save\-\_\-flag}
 
  System.\-cpp の 28 行目に定義があります。
 
-
-\begin{DoxyCode}
-29 \{
-30     \textcolor{comment}{//デストラクタの処理はなし}
-31 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
@@ -127,43 +118,27 @@ bool {\bf save\-\_\-flag}
 \doxyref{System\-::alternatives()}{p.}{class_system_ae6d222fb43f36cb2db3fb7d0bbed1c20}.Yes/\-Noの2択のチェック(c21)
 
 \begin{DoxyReturn}{戻り値}
-check\-Num 
+check\-Num int型．\-Yesか\-Noの値 
 \end{DoxyReturn}
 $<$0か1をチェックするための変数(c27).このメソッドのみで有効な変数(c30) 
 
- System.\-cpp の 261 行目に定義があります。
+ System.\-cpp の 295 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-262 \{
-263     \textcolor{keywordtype}{char} checkNum; 
-264 
-265     cout << \textcolor{stringliteral}{"1. Yes"} << endl;
-266     cout << \textcolor{stringliteral}{"0. No"} << endl;
-267     cin >> checkNum;
-268     cout << \textcolor{stringliteral}{"\(\backslash\)n"};
-269 
-270     \textcolor{keywordflow}{while} (1)
-271     \{
-272         \textcolor{keywordflow}{if} (checkNum == \textcolor{charliteral}{'0'})\{
-273             \textcolor{keywordflow}{return} (atoi(&checkNum));
-274         \}
-275         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (checkNum == \textcolor{charliteral}{'1'})\{
-276             \textcolor{keywordflow}{return} (atoi(&checkNum));
-277         \}
-278         \textcolor{keywordflow}{else}\{
-279             cout << \textcolor{stringliteral}{"Please Input 1 or 0."} << endl;
-280             cout << \textcolor{stringliteral}{"1. Yes"} << endl;
-281             cout << \textcolor{stringliteral}{"0. No"} << endl;
-282             cin >> checkNum;
-283         \}
-284     \}
-285 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_system_ae6d222fb43f36cb2db3fb7d0bbed1c20_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!check\-Directory@{check\-Directory}}
 \index{check\-Directory@{check\-Directory}!System@{System}}
 \subsubsection[{check\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::check\-Directory (
@@ -179,29 +154,28 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 
 
 \begin{DoxyParams}{引数}
-{\em string} & checkdir\-\_\-name \\
+{\em checkdir\-\_\-name} & const char$\ast$型．ディレクトリ名 \\
 \hline
 \end{DoxyParams}
 
 
- System.\-cpp の 213 行目に定義があります。
+ System.\-cpp の 233 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-214 \{
-215     \textcolor{keyword}{struct }stat st;
-216     \textcolor{keywordtype}{int} re = stat(check\_dirname, &st);
-217     \textcolor{keywordflow}{if} (re != 0)\{
-218         \_mkdir(check\_dirname);
-219         cout << \textcolor{stringliteral}{"Make "} << check\_dirname << \textcolor{stringliteral}{". "} << endl;
-220     \}
-221     \textcolor{keywordflow}{return};
-222 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_system_a2f2eb72dffbb596c530ca149fd8830cd_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!countdown\-Timer@{countdown\-Timer}}
 \index{countdown\-Timer@{countdown\-Timer}!System@{System}}
 \subsubsection[{countdown\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::countdown\-Timer (
@@ -217,64 +191,28 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 
 
 \begin{DoxyParams}{引数}
-{\em int} & time\-\_\-sec \\
+{\em time\-\_\-sec} & int型．カウントダウンしたい時間[sec] \\
 \hline
 \end{DoxyParams}
 
 
- System.\-cpp の 88 行目に定義があります。
+ System.\-cpp の 108 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-89 \{
-90     \textcolor{keywordtype}{string} playfile\_name;
-91     \textcolor{keywordflow}{while} (time\_sec > 0)\{
-92         cout << time\_sec << \textcolor{stringliteral}{" seconds"} << \textcolor{stringliteral}{"\(\backslash\)r"};
-93         \textcolor{keywordflow}{switch} (time\_sec)
-94         \{
-95         \textcolor{keywordflow}{case} 1: 
-96             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count1.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-97             \textcolor{keywordflow}{break};
-98         \textcolor{keywordflow}{case} 2: 
-99             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count2.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-100             \textcolor{keywordflow}{break};
-101         \textcolor{keywordflow}{case} 3:
-102             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count3.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-103             \textcolor{keywordflow}{break};
-104         \textcolor{keywordflow}{case} 4:
-105             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count4.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-106             \textcolor{keywordflow}{break};
-107         \textcolor{keywordflow}{case} 5:
-108             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count5.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-109             \textcolor{keywordflow}{break};
-110         \textcolor{keywordflow}{case} 6:
-111             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count6.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-112             \textcolor{keywordflow}{break};
-113         \textcolor{keywordflow}{case} 7:
-114             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count7.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-115             \textcolor{keywordflow}{break};
-116         \textcolor{keywordflow}{case} 8:
-117             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count8.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-118             \textcolor{keywordflow}{break};
-119         \textcolor{keywordflow}{case} 9:
-120             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count9.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-121             \textcolor{keywordflow}{break};
-122         \textcolor{keywordflow}{case} 10:
-123             PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/count10.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-124             \textcolor{keywordflow}{break};
-125         \textcolor{keywordflow}{default}: \textcolor{keywordflow}{break};
-126         \}
-127         Sleep(1000);
-128         time\_sec = time\_sec - 1;
-129     \}
-130     cout << \textcolor{stringliteral}{"\(\backslash\)n"};
-131     \textcolor{keywordflow}{return};
-132 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_system_afce9f814824cbcb337abe755883f764c_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!end\-Message@{end\-Message}}
 \index{end\-Message@{end\-Message}!System@{System}}
 \subsubsection[{end\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::end\-Message (
@@ -299,19 +237,27 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 参照元 main().
 
 
-\begin{DoxyCode}
-61 \{
-62     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-63     cout << \textcolor{stringliteral}{"Closing the Program...."} << endl;
-64     \textcolor{keywordflow}{if} (cNum == 1)\{
-65         cout << \textcolor{stringliteral}{"Data Has Been Output to \(\backslash\)"data/"} << directoryName << \textcolor{stringliteral}{"\(\backslash\)"."} << endl;
-66         openDirectory();
-67     \}
-68     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-69     
-70     \textcolor{keywordflow}{return};
-71 \}
-\end{DoxyCode}
+
+呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_system_aba9d00b32578f2ea574bf67078db4aa7_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_system_aba9d00b32578f2ea574bf67078db4aa7_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!end\-Message@{end\-Message}}
 \index{end\-Message@{end\-Message}!System@{System}}
 \subsubsection[{end\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::end\-Message (
@@ -327,15 +273,6 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 
  System.\-cpp の 76 行目に定義があります。
 
-
-\begin{DoxyCode}
-77 \{
-78     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-79     cout << \textcolor{stringliteral}{"Closing the Program...."} << endl;
-80     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-81     \textcolor{keywordflow}{return};
-82 \}
-\end{DoxyCode}
 \index{System@{System}!end\-Timer@{end\-Timer}}
 \index{end\-Timer@{end\-Timer}!System@{System}}
 \subsubsection[{end\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::end\-Timer (
@@ -349,27 +286,27 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 
 メソッドend\-Timer().タイマーを終了する 
 
- System.\-cpp の 148 行目に定義があります。
+ System.\-cpp の 168 行目に定義があります。
+
+
+
+参照先 time.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-149 \{
-150     \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{true})\{
-151         end = getTickCount();
-152         time = (end - start) * f;
-153         FlagEndTimer = \textcolor{keyword}{true};
-154     \}
-155     \textcolor{keywordflow}{else}\{
-156         cerr << \textcolor{stringliteral}{"Before you use endTimer() method, please run the System::startTimer()."} << endl;
-157         exit(-1);
-158     \}
-159     \textcolor{keywordflow}{return};
-160 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{class_system_a178a7a315866961f208b6cab6c2d7e88_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!get\-Frame\-Rate@{get\-Frame\-Rate}}
 \index{get\-Frame\-Rate@{get\-Frame\-Rate}!System@{System}}
 \subsubsection[{get\-Frame\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}double System\-::get\-Frame\-Rate (
@@ -384,38 +321,31 @@ $<$0か1をチェックするための変数(c27).このメソッドのみで有
 メソッドget\-Frame\-Rate().フレームレートを取得する(c65)
 
 \begin{DoxyReturn}{戻り値}
-double time 
+time double型．フレームレート取得時間 
 \end{DoxyReturn}
 
 
- System.\-cpp の 189 行目に定義があります。
+ System.\-cpp の 209 行目に定義があります。
+
+
+
+参照先 fps, time.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-190 \{
-191     \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{true} && FlagEndTimer == \textcolor{keyword}{true})\{
-192         fps = 1000.0 / time;
-193         \textcolor{keywordflow}{return} fps;
-194     \}
-195     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{false} && FlagEndTimer == \textcolor{keyword}{true})\{
-196         cerr << \textcolor{stringliteral}{"Before you use getFrameRate() method, please run the System::startTimer()."} << endl;
-197         exit(-1);
-198     \}
-199     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{true} && FlagEndTimer == \textcolor{keyword}{false})\{
-200         cerr << \textcolor{stringliteral}{"Before you use getFrameRate() method, please run the System::endTimer()."} << endl;
-201         exit(-1);
-202     \}
-203     \textcolor{keywordflow}{else}\{
-204         cerr << \textcolor{stringliteral}{"Before you use getFrameRate() method, please run the System::startTimer() and
-       System::endTimer()."} << endl;
-205         exit(-1);
-206     \}
-207 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_system_a584a2b655a935ea404937cf8f11ab43c_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!get\-Process\-Timein\-Miliseconds@{get\-Process\-Timein\-Miliseconds}}
 \index{get\-Process\-Timein\-Miliseconds@{get\-Process\-Timein\-Miliseconds}!System@{System}}
 \subsubsection[{get\-Process\-Timein\-Miliseconds}]{\setlength{\rightskip}{0pt plus 5cm}double System\-::get\-Process\-Timein\-Miliseconds (
@@ -430,53 +360,89 @@ double time
 メソッドget\-Time().計測した時間を取得する(c65)
 
 \begin{DoxyReturn}{戻り値}
-double time 
+time double型．処理時間． 
 \end{DoxyReturn}
 
 
- System.\-cpp の 166 行目に定義があります。
+ System.\-cpp の 186 行目に定義があります。
+
+
+
+参照先 time.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-167 \{
-168     \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{true} && FlagEndTimer == \textcolor{keyword}{true})\{
-169         \textcolor{keywordflow}{return} time;
-170     \}
-171     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (FlagStartTimer == \textcolor{keyword}{false} && FlagEndTimer == \textcolor{keyword}{true})\{
-172         cerr << \textcolor{stringliteral}{"Before you use getProcessTimeinMiliseconds() method, please run the System::startTimer()."}
-       << endl;
-173         exit(-1);
-174     \}
-175     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (FlagStartTimer==\textcolor{keyword}{true} && FlagEndTimer == \textcolor{keyword}{false})\{
-176         cerr << \textcolor{stringliteral}{"Before you use getProcessTimeinMiliseconds() method, please run the System::endTimer()."} <
-      < endl;
-177         exit(-1);
-178     \}
-179     \textcolor{keywordflow}{else}\{
-180         cerr << \textcolor{stringliteral}{"Before you use getProcessTimeinMiliseconds() method, please run the System::startTimer()
-       and System::endTimer()."} << endl;
-181         exit(-1);
-182     \}
-183 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{class_system_a5f235cfc9736103d150e9dbeee82e543_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!make\-Directory@{make\-Directory}}
 \index{make\-Directory@{make\-Directory}!System@{System}}
 \subsubsection[{make\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::make\-Directory (
 \begin{DoxyParamCaption}
+\item[{char $\ast$}]{original\-\_\-path, }
+\item[{int}]{create\-\_\-dirnum}
+\end{DoxyParamCaption}
+)}\label{class_system_a4e8e357a7875f40a86cee5cfdad6b6ed}
+
+
+指定したディレクトリ以下に新しいディレクトリを作成する( 
+
+\doxyref{System\-::make\-Directory()}{p.}{class_system_a4e8e357a7875f40a86cee5cfdad6b6ed}．指定したディレクトリ以下に新しいディレクトリを作成する
+
+
+\begin{DoxyParams}{引数}
+{\em original\-\_\-path} & char$\ast$型．指定したベースとなるディレクトリ \\
+\hline
+{\em create\-\_\-dirnum} & int型．ディレクトリ番号 \\
+\hline
+\end{DoxyParams}
+
+
+ System.\-cpp の 266 行目に定義があります。
+
+
+
+参照先 N\-O\-C.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_system_a4e8e357a7875f40a86cee5cfdad6b6ed_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{System@{System}!make\-Directory\-Based\-Date@{make\-Directory\-Based\-Date}}
+\index{make\-Directory\-Based\-Date@{make\-Directory\-Based\-Date}!System@{System}}
+\subsubsection[{make\-Directory\-Based\-Date}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::make\-Directory\-Based\-Date (
+\begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{class_system_ab047a364bb881c7bd701973bc6abbe12}
+)}\label{class_system_a6353709a74c9a12a3b1c8e365db5f51e}
 
 
-\doxyref{System\-::make\-Directory()}{p.}{class_system_ab047a364bb881c7bd701973bc6abbe12}.ディレクトリを作成 
+日付に基づいたディレクトリの作成 
 
+\doxyref{System\-::make\-Directory()}{p.}{class_system_a4e8e357a7875f40a86cee5cfdad6b6ed}.ディレクトリを作成 
 
-
- System.\-cpp の 227 行目に定義があります。
+ System.\-cpp の 247 行目に定義があります。
 
 
 
@@ -487,21 +453,16 @@ double time
 参照元 main().
 
 
-\begin{DoxyCode}
-228 \{
-229     \textcolor{comment}{//フォルダ名を区別するために時刻を取得しておく(c4)}
-230     SYSTEMTIME st;
-231     \textcolor{keywordtype}{char} savedirpath[NOC];
-232 
-233     GetLocalTime(&st);
-234     sprintf\_s(directoryName, \textcolor{stringliteral}{"[%4d%02d%02d]%02d%02d%02d"}, st.wYear, st.wMonth, st.wDay, st.wHour, st.
-      wMinute, st.wSecond);
-235     sprintf\_s(savedirpath, \textcolor{stringliteral}{"data/%s"}, directoryName);
-236     \_mkdir(savedirpath);
-237 
-238     \textcolor{keywordflow}{return};
-239 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_system_a6353709a74c9a12a3b1c8e365db5f51e_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!open\-Directory@{open\-Directory}}
 \index{open\-Directory@{open\-Directory}!System@{System}}
 \subsubsection[{open\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::open\-Directory (
@@ -515,7 +476,7 @@ double time
 
 System\-::open\-Direectory().出力したディレクトリを開く(c39) 
 
- System.\-cpp の 290 行目に定義があります。
+ System.\-cpp の 324 行目に定義があります。
 
 
 
@@ -526,75 +487,16 @@ System\-::open\-Direectory().出力したディレクトリを開く(c39)
 参照元 end\-Message().
 
 
-\begin{DoxyCode}
-291 \{
-292     cout << \textcolor{stringliteral}{"Opening This Directory."} << endl;
-293     \textcolor{keywordtype}{char} openDirectoryCommand[NOC]; \textcolor{comment}{//自動で開くウインドウのパス}
-294     sprintf\_s(openDirectoryCommand, \textcolor{stringliteral}{"explorer \(\backslash\)"data\(\backslash\)\(\backslash\)%s\(\backslash\)""}, directoryName); \textcolor{comment}{//ディレクトリを開くコマンド}
-295     system(openDirectoryCommand); \textcolor{comment}{//ディレクトリを開くコマンドを実行}
-296 
-297     \textcolor{keywordflow}{return};
-298 \}
-\end{DoxyCode}
-\index{System@{System}!output\-All\-Data@{output\-All\-Data}}
-\index{output\-All\-Data@{output\-All\-Data}!System@{System}}
-\subsubsection[{output\-All\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::output\-All\-Data (
-\begin{DoxyParamCaption}
-\item[{const string $\ast$}]{output\-Data\-Name, }
-\item[{{\bf output\-Data} $\ast$}]{output\-Data, }
-\item[{int}]{count\-Data\-Num}
-\end{DoxyParamCaption}
-)}\label{class_system_a8fc3a3a3f3015727df3b352b23829440}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{class_system_a9016157380cb3dfe6637731daf2e3b4b_icgraph}
+\end{center}
+\end{figure}
 
 
-データをファイルに書き出すメソッド(c41) 
-
-System\-::output\-Data().データをファイルに書き出すメソッド(c41)
-
-
-\begin{DoxyParams}{引数}
-{\em output\-Data\-Name,\doxyref{output\-Data}{p.}{structoutput_data},count\-Data\-Num} & \\
-\hline
-\end{DoxyParams}
-$<$抽出した座標の距離(c7)
-
-$<$ファイルポインタの初期化(c7)
-
-$<$データファイル出力の際のパス(c37) 
-
- System.\-cpp の 304 行目に定義があります。
-
-
-
-参照先 directory\-Name, N\-O\-C.
-
-
-\begin{DoxyCode}
-305 \{
-306     \textcolor{comment}{//ファイルポインタ}
-307     FILE *extractedCoordinate; 
-308     extractedCoordinate = NULL; 
-309 
-310     \textcolor{comment}{//(X,Y,Z)データ格納用のファイル}
-311     \textcolor{keywordtype}{char} outputDataPath[NOC]; 
-312     
-313     sprintf\_s(outputDataPath, \textcolor{stringliteral}{"%s/%s"}, directoryName, outputDataName); \textcolor{comment}{//(c7)}
-314     fopen\_s(&extractedCoordinate, outputDataPath, \textcolor{stringliteral}{"w"}); \textcolor{comment}{//(c7)}
-315     \textcolor{keywordflow}{if} (outputDataPath == NULL)\{ \textcolor{comment}{//ファイルオープンエラー処理(c40)}
-316         cerr << outputDataPath << \textcolor{stringliteral}{" is Not Opened."};
-317         exit(1);
-318     \}
-319 
-320     \textcolor{comment}{//ファイルに出力する処理(c42)}
-321     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 2; i < countDataNum - 15; i++)\{ \textcolor{comment}{//最初と最後のいくつかのデータをファイルに出力しない(c41)}
-322         fprintf\_s(extractedCoordinate, \textcolor{stringliteral}{"%f %f %f %f\(\backslash\)n"}, outputData[i].totalTime, outputData[i].x, 
-      outputData[i].y, outputData[i].z);
-323     \}
-324     fclose(extractedCoordinate); \textcolor{comment}{//(c8)}
-325 
-326     \textcolor{keywordflow}{return};
-327 \}
-\end{DoxyCode}
 \index{System@{System}!output\-Video@{output\-Video}}
 \index{output\-Video@{output\-Video}!System@{System}}
 \subsubsection[{output\-Video}]{\setlength{\rightskip}{0pt plus 5cm}Video\-Writer System\-::output\-Video (
@@ -610,36 +512,20 @@ $<$データファイル出力の際のパス(c37)
 
 
 \begin{DoxyParams}{引数}
-{\em camera\-Param\-File} & \\
+{\em output\-Video\-Name} & const string$\ast$型．出力したい動画のファイル名 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-Video\-Writer writer 
+writer Video\-Writer型．出力する動画の情報 
 \end{DoxyReturn}
 $<$動画出力時のパス(c38) 
 
- System.\-cpp の 334 行目に定義があります。
+ System.\-cpp の 339 行目に定義があります。
 
 
 
 参照先 directory\-Name, N\-O\-C.
 
-
-\begin{DoxyCode}
-335 \{
-336     \textcolor{comment}{//動画を出力(c40)}
-337     \textcolor{keywordtype}{char} outputVideoPath[NOC]; 
-338     sprintf\_s(outputVideoPath, \textcolor{stringliteral}{"%s/%s"}, directoryName, outputVideoName); \textcolor{comment}{//(c38)}
-339     \textcolor{comment}{//VideoWriter writer(outputVideoPath, /*CV\_FOURCC('D','I','B','
-       ')*/-1/*CV\_FOURCC('X','V','I','D')*//*CV\_FOURCC('P','M','I','1')*/, 20, /*Size(WIDTH, HEIGHT)*/Size(640, 480), true); //動画に出力.録画が必要なときはコメントアウト(c35)}
-340     VideoWriter writer(outputVideoPath, \textcolor{comment}{/*CV\_FOURCC('D','I','B',' ')*/}-1\textcolor{comment}{/*CV\_FOURCC('X','V','I','D')*/}\textcolor{comment}{/*
-      CV\_FOURCC('P','M','I','1')*/}, 20, \textcolor{comment}{/*Size(WIDTH, HEIGHT)*/}Size(640, 480), \textcolor{keyword}{true}); \textcolor{comment}{//動画に出力.録画が必要なときはコメントアウト(c35)}
-341     \textcolor{keywordflow}{if} (!writer.isOpened())\{ \textcolor{comment}{//オープンエラー処理(c40)}
-342         cerr << outputVideoPath << \textcolor{stringliteral}{" is Not Opened."} << endl;
-343     \}
-344     \textcolor{keywordflow}{return} (writer);
-345 \}
-\end{DoxyCode}
 \index{System@{System}!remove\-Directory@{remove\-Directory}}
 \index{remove\-Directory@{remove\-Directory}!System@{System}}
 \subsubsection[{remove\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::remove\-Directory (
@@ -653,7 +539,7 @@ $<$動画出力時のパス(c38)
 
 \doxyref{System\-::remove\-Directory()}{p.}{class_system_a3523df6c59162a85350b41a065efa3dd}.ディレクトリを削除(c21) 
 
- System.\-cpp の 244 行目に定義があります。
+ System.\-cpp の 278 行目に定義があります。
 
 
 
@@ -664,150 +550,46 @@ $<$動画出力時のパス(c38)
 参照元 main().
 
 
-\begin{DoxyCode}
-245 \{
-246     \textcolor{keywordtype}{char} rmdirCommand[NOC]; \textcolor{comment}{//ディレクトリを削除するコマンド(c21).変数名を変更&このメソッドのみで有効な変数(c30)}
-247 
-248     \textcolor{comment}{//ディレクトリを削除する}
-249     cout << directoryName << endl;
-250     sprintf\_s(rmdirCommand, \textcolor{stringliteral}{"rmdir /s /q \(\backslash\)"data\(\backslash\)\(\backslash\)%s\(\backslash\)""}, directoryName); \textcolor{comment}{//
-      ディレクトリの削除コマンドを書く．パスは[\(\backslash\)"\(\backslash\)"]で囲み，階層があるときは[\(\backslash\)\(\backslash\)]で書く}
-251     system(rmdirCommand);
-252     cout << \textcolor{stringliteral}{"Not Save.\(\backslash\)n"} << endl;
-253 
-254     \textcolor{keywordflow}{return};
-255 \}
-\end{DoxyCode}
-\index{System@{System}!save\-Data\-Continuously@{save\-Data\-Continuously}}
-\index{save\-Data\-Continuously@{save\-Data\-Continuously}!System@{System}}
-\subsubsection[{save\-Data\-Continuously}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::save\-Data\-Continuously (
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_system_a3523df6c59162a85350b41a065efa3dd_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{System@{System}!show\-Help\-Message@{show\-Help\-Message}}
+\index{show\-Help\-Message@{show\-Help\-Message}!System@{System}}
+\subsubsection[{show\-Help\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::show\-Help\-Message (
 \begin{DoxyParamCaption}
-\item[{{\bf Do\-F6d}}]{centroid}
+{}
 \end{DoxyParamCaption}
-)}\label{class_system_afe5cdbb8dc2bef6cb584ba554e314e5f}
+)}\label{class_system_af0fc7b12dc7342e2109a9aa3894b9bbe}
 
 
-メソッド\-System\-::save\-Data\-Continuously()．pキーが入力されたら，平均座標を出力(c82) @param Do\-F6d centroid 
+キー入力に関するヘルプを表示(c86) 
 
+メソッド\-System\-::show\-Help\-Message()．ヘルプメッセージを表示する 
 
-
- System.\-cpp の 409 行目に定義があります。
-
-
-
-参照先 directory\-Name, N\-O\-C, Do\-F\-::x, Do\-F\-::y, Do\-F\-::z.
+ System.\-cpp の 87 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-410 \{
-411     \textcolor{comment}{//保存用のファイル作成}
-412     FILE *ev3route;
-413     \textcolor{keywordtype}{char} filepath\_ev3route[NOC];
-414     sprintf\_s(filepath\_ev3route, \textcolor{stringliteral}{"data/%s/ev3route.dat"}, directoryName);
-415     fopen\_s(&ev3route, filepath\_ev3route, \textcolor{stringliteral}{"a"}); \textcolor{comment}{//ファイルオープン}
-416     fprintf\_s(ev3route, \textcolor{stringliteral}{"%f %f %f\(\backslash\)n"}, centroid.x, centroid.y, centroid.z); \textcolor{comment}{//データをファイルに書き込む}
-417 
-418     fclose(ev3route);
-419     \textcolor{keywordflow}{return};
-420 \}\end{DoxyCode}
-\index{System@{System}!save\-Data\-Every\-Enter\-Key@{save\-Data\-Every\-Enter\-Key}}
-\index{save\-Data\-Every\-Enter\-Key@{save\-Data\-Every\-Enter\-Key}!System@{System}}
-\subsubsection[{save\-Data\-Every\-Enter\-Key}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::save\-Data\-Every\-Enter\-Key (
-\begin{DoxyParamCaption}
-\item[{Mat \&}]{current\-\_\-image, }
-\item[{Mat \&}]{bin\-\_\-image, }
-\item[{{\bf Do\-F6d}}]{dof6, }
-\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{input\-Point\-Cloud}
-\end{DoxyParamCaption}
-)}\label{class_system_a4cdb1dd5b5cddd739cc23627a4875cf0}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_system_af0fc7b12dc7342e2109a9aa3894b9bbe_icgraph}
+\end{center}
+\end{figure}
 
 
-メソッド\-System\-::save\-Data\-Every\-Enter\-Key()．連続で計測している際にpキーを入力するとその時点のデータを新しいディレクトリに保存する． 
-
-
-\begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & current\-\_\-image, cv\-::\-Mat\& bin\-\_\-image, Do\-F6d dof6, pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr \&input\-Point\-Cloud \\
-\hline
-\end{DoxyParams}
-
-
- System.\-cpp の 351 行目に定義があります。
-
-
-
-参照先 directory\-Name, N\-O\-C, Do\-F\-::pitch, Do\-F\-::roll, save\-\_\-count, save\-\_\-flag, Do\-F\-::x, Do\-F\-::y, Do\-F\-::yaw, Do\-F\-::z.
-
-
-
-参照元 main().
-
-
-\begin{DoxyCode}
-352 \{
-353     \textcolor{comment}{//その都度保存するためのディレクトリを作成(c82)}
-354     \textcolor{keywordtype}{char} filepath\_output[NOC];
-355     sprintf\_s(filepath\_output, \textcolor{stringliteral}{"data/%s/%d"}, directoryName, save_count);
-356     \_mkdir(filepath\_output);
-357 
-358     \textcolor{comment}{//現在の画像を保存}
-359     \textcolor{keywordtype}{char} filepath\_currentimage[NOC];
-360     sprintf\_s(filepath\_currentimage, \textcolor{stringliteral}{"data/%s/%d/current\_image-%02d.jpg"}, 
-      directoryName, save_count, save_count);
-361     imwrite(filepath\_currentimage, current\_image);
-362     
-363     \textcolor{comment}{//差分を計算した二値画像を保存}
-364     \textcolor{keywordtype}{char} filepath\_binimage[NOC];
-365     sprintf\_s(filepath\_binimage, \textcolor{stringliteral}{"data/%s/%d/background\_image-%02d.jpg"}, 
-      directoryName, save_count, save_count);
-366     imwrite(filepath\_binimage, bin\_image);
-367 
-368     \textcolor{comment}{//点群情報を保存}
-369     FILE *point\_fp; \textcolor{comment}{//最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用}
-370     \textcolor{keywordtype}{char} filepath\_point[NOC];
-371     sprintf\_s(filepath\_point, \textcolor{stringliteral}{"data/%s/%d/point-%02d.dat"}, directoryName, 
-      save_count, save_count);
-372     fopen\_s(&point\_fp, filepath\_point, \textcolor{stringliteral}{"w"}); \textcolor{comment}{//}
-373     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < inputPointCloud->size(); i++)\{
-374         fprintf\_s(point\_fp, \textcolor{stringliteral}{"%f %f %f\(\backslash\)n"}, inputPointCloud->points[i].x, inputPointCloud->points[i].y, 
-      inputPointCloud->points[i].z); \textcolor{comment}{//ファイルに出力}
-375     \}
-376     fclose(point\_fp);
-377 
-378     \textcolor{comment}{//6DoF情報を保存}
-379     FILE *dof6\_fp; \textcolor{comment}{//最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用}
-380     \textcolor{keywordtype}{char} filepath\_dof6[NOC];
-381     sprintf\_s(filepath\_dof6, \textcolor{stringliteral}{"data/%s/%d/dof6-%02d.dat"}, directoryName, 
-      save_count, save_count);
-382     fopen\_s(&dof6\_fp, filepath\_dof6, \textcolor{stringliteral}{"w"});
-383     fprintf\_s(dof6\_fp, \textcolor{stringliteral}{"%f %f %f %f %f %f %d\(\backslash\)n"}, dof6.x, dof6.y, dof6.z, dof6.
-      yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
-384     fclose(dof6\_fp);
-385 
-386     \textcolor{comment}{//6DoF情報を続けて保存する}
-387     FILE *dof6con\_fp;
-388     \textcolor{keywordtype}{char} filepath\_dof6con[NOC];
-389     sprintf\_s(filepath\_dof6con, \textcolor{stringliteral}{"data/%s/dof6con.csv"}, directoryName);
-390     fopen\_s(&dof6con\_fp, filepath\_dof6con, \textcolor{stringliteral}{"a"});
-391     \textcolor{keywordflow}{if} (save_flag == \textcolor{keyword}{false})\{
-392         fprintf(dof6\_fp, \textcolor{stringliteral}{"x,y,z,Yaw,Roll,Pitch,Data Size\(\backslash\)n"});
-393     \}
-394     fprintf\_s(dof6\_fp, \textcolor{stringliteral}{"%f,%f,%f,%f,%f,%f,%d\(\backslash\)n"}, dof6.x, dof6.y, dof6.z, dof6.
-      yaw, dof6.roll, dof6.pitch, inputPointCloud->size());
-395     fclose(dof6con\_fp);
-396 
-397     \textcolor{comment}{//PointCloudを保存する}
-398     \textcolor{keywordtype}{char} filepath\_pointcloud[NOC];
-399     sprintf\_s(filepath\_pointcloud, \textcolor{stringliteral}{"data/%s/%d/pointcloud-%02d.ply"}, 
-      directoryName, save_count, save_count);
-400     pcl::io::savePLYFileASCII(filepath\_pointcloud, *inputPointCloud);
-401     
-402     \textcolor{keywordflow}{return};
-403 \}
-\end{DoxyCode}
 \index{System@{System}!start\-Message@{start\-Message}}
 \index{start\-Message@{start\-Message}!System@{System}}
 \subsubsection[{start\-Message}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::start\-Message (
@@ -828,27 +610,16 @@ $<$動画出力時のパス(c38)
 参照元 main().
 
 
-\begin{DoxyCode}
-37 \{
-38     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-39     cout << \textcolor{stringliteral}{" Starting the Program...."} << endl;
-40     \textcolor{comment}{//cout << " Please Enclose the Object You Want to Track." << endl;}
-41     cout << \textcolor{stringliteral}{" If You Enter a 'q' Key, the Program Terminates."} << endl;
-42     cout << \textcolor{stringliteral}{" If You Enter a 'r' Key, the Program Restart."} << endl;
-43     cout << \textcolor{stringliteral}{" Each Time You Enter a 'p' Key, Then Save The Data."} << endl;
-44     \textcolor{comment}{//cout << " To Initialize Tracking, Re-Select the Object with Mouse." << endl;}
-45     cout << \textcolor{stringliteral}{"\(\backslash\)n"};
-46     cout << \textcolor{stringliteral}{" Switching of Point Cloud Processing."} << endl;
-47     cout << \textcolor{stringliteral}{"  Pass Through Filter \(\backslash\)t\(\backslash\)t -> \(\backslash\)t Enter 'x' Key."} << endl;
-48     cout << \textcolor{stringliteral}{"  Downsampling \(\backslash\)t\(\backslash\)t\(\backslash\)t -> \(\backslash\)t Enter 'c' Key."} << endl;
-49     cout << \textcolor{stringliteral}{"  Remove Outlier \(\backslash\)t\(\backslash\)t -> \(\backslash\)t Enter 'v' Key."} << endl;
-50     cout << \textcolor{stringliteral}{"  Moving Least Square \(\backslash\)t\(\backslash\)t -> \(\backslash\)t Enter 'b' Key."} << endl;
-51     cout << \textcolor{stringliteral}{"  Extract Plane & Clustering \(\backslash\)t -> \(\backslash\)t Enter 'n' Key."} << endl;
-52     cout << \textcolor{stringliteral}{"=================================================================="} << endl;
-53 
-54     \textcolor{keywordflow}{return};
-55 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_system_a15325f6b106b804af8432d102945535c_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{System@{System}!start\-Timer@{start\-Timer}}
 \index{start\-Timer@{start\-Timer}!System@{System}}
 \subsubsection[{start\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}void System\-::start\-Timer (
@@ -862,38 +633,70 @@ $<$動画出力時のパス(c38)
 
 メソッドstart\-Timer().タイマーを開始する 
 
- System.\-cpp の 137 行目に定義があります。
+ System.\-cpp の 157 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-138 \{
-139     f = 1000.0 / getTickFrequency();
-140     start = getTickCount(); \textcolor{comment}{//スタート}
-141     FlagStartTimer = \textcolor{keyword}{true}; \textcolor{comment}{//スタート用のタイマーが実行されたのでフラグをtrueに}
-142     \textcolor{keywordflow}{return};
-143 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{class_system_ac62488af6f94b96aa37988c54e19074f_icgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{メンバ詳解}
-\index{System@{System}!save\-\_\-flag@{save\-\_\-flag}}
-\index{save\-\_\-flag@{save\-\_\-flag}!System@{System}}
-\subsubsection[{save\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool System\-::save\-\_\-flag}\label{class_system_a8dc5ce644873f9846cb21195674186f8}
+\index{System@{System}!fps@{fps}}
+\index{fps@{fps}!System@{System}}
+\subsubsection[{fps}]{\setlength{\rightskip}{0pt plus 5cm}double System\-::fps}\label{class_system_a1339ce8aca0b83646a5879b4068c4ddb}
 
 
-6\-Do\-F情報を出力するフラグ 
-
-
-
- System.\-hpp の 62 行目に定義があります。
+フレームレート 
 
 
 
-参照元 main(), save\-Data\-Every\-Enter\-Key(), System().
+ System.\-hpp の 45 行目に定義があります。
+
+
+
+参照元 get\-Frame\-Rate(), System().
+
+\index{System@{System}!sum\-\_\-time@{sum\-\_\-time}}
+\index{sum\-\_\-time@{sum\-\_\-time}!System@{System}}
+\subsubsection[{sum\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double System\-::sum\-\_\-time}\label{class_system_aab7a0fe9f9f094ab4462a6f0e5765d92}
+
+
+処理の合計時間 
+
+
+
+ System.\-hpp の 46 行目に定義があります。
+
+
+
+参照元 main(), System().
+
+\index{System@{System}!time@{time}}
+\index{time@{time}!System@{System}}
+\subsubsection[{time}]{\setlength{\rightskip}{0pt plus 5cm}double System\-::time}\label{class_system_aa9e002a5f2f169e37c545b76ee67e724}
+
+
+処理時間の結果 
+
+
+
+ System.\-hpp の 44 行目に定義があります。
+
+
+
+参照元 end\-Timer(), get\-Frame\-Rate(), get\-Process\-Timein\-Miliseconds(), System().
 
 
 

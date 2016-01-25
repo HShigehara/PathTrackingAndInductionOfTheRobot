@@ -1,12 +1,11 @@
 ﻿/*
  * @file System.hpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief kinect処理のクラスのヘッダ
  * @date 2014.12.19
  * @author H.Shigehara
  */
 
-/* */
+/* インクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
 #include "System.hpp"
 
@@ -104,7 +103,7 @@ void System::showHelpMessage()
 }
 /*!
  * @brief メソッドcountdownTimer()．タイマーによるカウントダウン
- * @param int time_sec 
+ * @param time_sec int型．カウントダウンしたい時間[sec]
  */
 void System::countdownTimer(int time_sec)
 {
@@ -182,7 +181,7 @@ void System::endTimer()
 
 /*!
 * @brief メソッドgetTime().計測した時間を取得する(c65)
-* @return double time
+* @return time double型．処理時間．
 */
 double System::getProcessTimeinMiliseconds()
 {
@@ -205,7 +204,7 @@ double System::getProcessTimeinMiliseconds()
 
 /*!
 * @brief メソッドgetFrameRate().フレームレートを取得する(c65)
-* @return double time
+* @return time double型．フレームレート取得時間
 */
 double System::getFrameRate()
 {
@@ -229,7 +228,7 @@ double System::getFrameRate()
 
 /*!
  * @brief System::checkDirectory()．ファイルやディレクトリがあるかチェックし，無ければ作成する(c81)
- * @param string checkdir_name
+ * @param checkdir_name const char*型．ディレクトリ名
  */
 void System::checkDirectory(const char* check_dirname)
 {
@@ -261,6 +260,8 @@ void System::makeDirectoryBasedDate()
 
 /*!
  * @brief System::makeDirectory()．指定したディレクトリ以下に新しいディレクトリを作成する
+ * @param original_path char*型．指定したベースとなるディレクトリ
+ * @param create_dirnum int型．ディレクトリ番号
  */
 void System::makeDirectory(char* original_path, int create_dirnum)
 {
@@ -289,7 +290,7 @@ void System::removeDirectory()
 
 /*!
 * @brief System::alternatives().Yes/Noの2択のチェック(c21)
-* @return checkNum
+* @return checkNum int型．YesかNoの値
 */
 int System::alternatives()
 {
@@ -332,8 +333,8 @@ void System::openDirectory()
 
 /*!
 * @brief System::outputVideo().動作確認用に動画を出力するメソッド
-* @param cameraParamFile
-* @return VideoWriter writer
+* @param outputVideoName const string*型．出力したい動画のファイル名
+* @return writer VideoWriter型．出力する動画の情報
 */
 VideoWriter System::outputVideo(const string* outputVideoName)
 {

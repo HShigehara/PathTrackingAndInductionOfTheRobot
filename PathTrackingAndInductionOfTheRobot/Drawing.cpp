@@ -1,6 +1,5 @@
 ﻿/*
  * @file DrawingMethod.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 経路をプロットするためのメソッド群
  * @date 2014.10.24
  * @author H.Shigehara
@@ -42,6 +41,10 @@ Drawing::~Drawing()
 
 /*!
  * @brief メソッドDrawing::gnuplotScriptEV3()．EV3の点群をプロットするスクリプトを生成するメソッド(c78)
+ * @param save_count int型．データの保存数のカウント
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
+ * @param coefficient_plane Eigen::Vector3f型．平面の係数
  */
 void Drawing::gnuplotScriptEV3(int save_count, char* original_dirpath, char* output_filename, Eigen::Vector3f coefficient_plane)
 {
@@ -63,6 +66,8 @@ void Drawing::gnuplotScriptEV3(int save_count, char* original_dirpath, char* out
 
 /*!
  * @brief メソッドDrawing::gnuplotScriptEV3Route()．EV3の軌道をプロットするためのスクリプト
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
  */
 void Drawing::gnuplotScriptEV3Route(char* original_dirpath, char* output_filename)
 {
@@ -82,6 +87,9 @@ void Drawing::gnuplotScriptEV3Route(char* original_dirpath, char* output_filenam
 	return;
 }
 
+/*!
+ * @brief メソッドDrawing::gnuplotScriptTime2V()．時間と速度の関係をプロットするためのスクリプト
+ */
 void Drawing::gnuplotScriptTime2V()
 {
 	FILE *fp;
@@ -96,6 +104,9 @@ void Drawing::gnuplotScriptTime2V()
 	return;
 }
 
+/*!
+ * @brief メソッドDrawing::gnuplotScriptTime2Yaw()．時間とヨー角の関係をプロットするためのスクリプト
+ */
 void Drawing::gnuplotScriptTime2Yaw()
 {
 	FILE *fp;

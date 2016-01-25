@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kinect',['Kinect',['../class_kinect.html',1,'']]]
+  ['imageprocessing',['ImageProcessing',['../class_image_processing.html',1,'']]]
 ];

@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['height',['HEIGHT',['../stdafx_8h.html#aed89bd71aee8be823e8a20ec4e093c1e',1,'stdafx.h']]]
+  ['getaveragevelocityandyaw',['getAverageVelocityAndYaw',['../class_e_v3_control.html#a2231f75bbba634cbb018ec9bf2de75a0',1,'EV3Control']]],
+  ['getbackgroundsubstractionbinimage',['getBackgroundSubstractionBinImage',['../class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0',1,'ImageProcessing']]],
+  ['getcentroidcoordinate3d',['getCentroidCoordinate3d',['../class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78',1,'PointCloudLibrary']]],
+  ['getcoefficient',['getCoefficient',['../class_least_square_method.html#a19559c76884063927045732a38fe043b',1,'LeastSquareMethod']]],
+  ['getdistance',['getDistance',['../class_kinect.html#a9f34af278ca313094fdf472298c3433f',1,'Kinect']]],
+  ['getextractplaneandclustering',['getExtractPlaneAndClustering',['../class_point_cloud_library.html#a222d6644e01b9925d923d58eb7ea1522',1,'PointCloudLibrary']]],
+  ['getframerate',['getFrameRate',['../class_system.html#a584a2b655a935ea404937cf8f11ab43c',1,'System']]],
+  ['getpointcloud',['getPointCloud',['../class_kinect.html#a26f88eae66c74699487869d10adb0945',1,'Kinect']]],
+  ['getprocesstimeinmiliseconds',['getProcessTimeinMiliseconds',['../class_system.html#a5f235cfc9736103d150e9dbeee82e543',1,'System']]],
+  ['getsurfacenormals',['getSurfaceNormals',['../class_point_cloud_library.html#a08edbe28c7fbc3f0f9b1e857d45ac610',1,'PointCloudLibrary']]],
+  ['getundistortionimage',['getUndistortionImage',['../class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c',1,'ImageProcessing']]],
+  ['getunitmask',['getUnitMask',['../class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1',1,'ImageProcessing']]],
+  ['getvelocityinsec',['getVelocityinSec',['../class_e_v3_control.html#a206f5da82bb48c5ddae1906b9206d773',1,'EV3Control']]],
+  ['gnuplotscriptev3',['gnuplotScriptEV3',['../class_drawing.html#a98e39cb40a24d5909954c17fc1eaaa4f',1,'Drawing']]],
+  ['gnuplotscriptev3route',['gnuplotScriptEV3Route',['../class_drawing.html#ac6357919dea1fea41ae447837abcd16b',1,'Drawing']]],
+  ['gnuplotscripttime2v',['gnuplotScriptTime2V',['../class_drawing.html#aa1da1f33436ebf7bfc05cf7453a6395e',1,'Drawing']]],
+  ['gnuplotscripttime2yaw',['gnuplotScriptTime2Yaw',['../class_drawing.html#a4f7e39ba7325c4311761db832d680407',1,'Drawing']]]
 ];

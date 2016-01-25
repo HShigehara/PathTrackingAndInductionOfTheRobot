@@ -1,6 +1,5 @@
 ﻿/*
  * @file LeastSquareMethod.cpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 最小二乗法を行うためのメソッド群
  * @date 2015.07.16
  * @author H.Shigehara
@@ -28,8 +27,8 @@ LeastSquareMethod::~LeastSquareMethod()
 
 /*!
  * @brief メソッドLeastSquareMethod::getCoefficient()．最小二乗法によって平面ax+by+c=0の係数[a b c]'を求めるメソッド
- * @param pcl::PointCloud<pcl::PointXYARGB>::Ptr &inputPointCloud
- * @return Eigen::Vector3f coefficient_plane
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYARGB>::Ptr型．入力するポイントクラウド 
+ * @return coefficient_plane Eigen::Vector3f型．平面の係数
  */
 Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud)
 {
@@ -72,7 +71,8 @@ Eigen::Vector3f LeastSquareMethod::getCoefficient(pcl::PointCloud<pcl::PointXYZR
 
 /*!
  * @brief メソッドLeastSquareMethod::calcYawRollPitch()．最小二乗法によって求めた[a b c]'を用いて平面の姿勢を計算する
- *
+ * @param coefficient_plane Eigen::Vector3f．平面の係数
+ * @return attitude_angle_deg AttitudeAngle3d型．姿勢角[deg]
  */
 AttitudeAngle3d LeastSquareMethod::calcYawRollPitch(Eigen::Vector3f coefficient_plane)
 {

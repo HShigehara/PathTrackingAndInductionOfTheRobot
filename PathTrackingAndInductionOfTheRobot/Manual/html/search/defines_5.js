@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outputdata_5fmax',['OUTPUTDATA_MAX',['../stdafx_8h.html#af962cd28db9fad108f1e02b7f90192b7',1,'stdafx.h']]]
+  ['width',['WIDTH',['../stdafx_8h.html#a241aeeb764887ae5e3de58b98f04b16d',1,'stdafx.h']]]
 ];

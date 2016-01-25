@@ -1,6 +1,5 @@
 /*
 * @file EV3Control.cpp
-* @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
 * @brief EV3を制御するためのメソッド群
 * @date 2015.12.15
 * @author H.Shigehara
@@ -43,7 +42,9 @@ EV3Control::~EV3Control()
 
 /*!
  * @brief メソッドEV3Control::set6DoFEV3()．最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する
- * @param pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr型．入力するポイントクラウド
+ * @param centroid Point3d型．重心座標
+ * @param attitude_angle AttitudeAngle型．姿勢角
  */
 void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud, Point3d centroid, AttitudeAngle attitude_angle)
 {
@@ -61,6 +62,7 @@ void EV3Control::set6DoFEV3(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCl
 
 /*!
  * @brief メソッドEV3Control::getVelocity()．EV3の速度を計算するメソッド
+ * @param time_ms double型．1フレームの処理時間
  */
 void EV3Control::getVelocityinSec(double time_ms)
 {
@@ -81,6 +83,9 @@ void EV3Control::getVelocityinSec(double time_ms)
 	return;
 }
 
+/*!
+ * @brief メソッドEV3Control::getAverageVelocityAndYaw()．速度とヨー角を取得するメソッド
+ */
 void EV3Control::getAverageVelocityAndYaw()
 {
 	//double k = 1000.0 / time_ms; //このkを速度とヨー角にかけることで，1秒あたりの処理の場合に変換する
@@ -138,6 +143,9 @@ void EV3Control::getAverageVelocityAndYaw()
 
 /*!
  * @brief メソッドEV3Control::output6Dof()．現フレームの6DoF情報をファイルに出力する
+ * @param save_count int型．保存したカウント
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
  */
 void EV3Control::output6DoF(int save_count, char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {
@@ -154,8 +162,11 @@ void EV3Control::output6DoF(int save_count, char* original_dirpath, char* output
 
 /*!
  * @brief メソッドEV3Control::output6DoFContinuous()．キーを入力したときの6DoF情報を連続してcsv形式で保存する
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
+ * @param &inputPointCloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr
  */
-void EV3Control::output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr & outputPointCloud)
+void EV3Control::output6DoFContinuous(char* original_dirpath, char* output_filename, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &outputPointCloud)
 {
 	FILE *dof6con_fp;
 	char filepath_dof6con[NOC];
@@ -172,6 +183,8 @@ void EV3Control::output6DoFContinuous(char* original_dirpath, char* output_filen
 
 /*!
  * @brief メソッドEV3Control::outputEV3RouteContinuous()．EV3の走行軌道を保存する
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
  */
 void EV3Control::outputEV3RouteContinuous(char* original_dirpath, char* output_filename)
 {
@@ -188,6 +201,9 @@ void EV3Control::outputEV3RouteContinuous(char* original_dirpath, char* output_f
 
 /*!
  * @brief メソッドEV3Control::outputControlInformation()．EV3の制御情報を出力する
+ * @param sumtime_ms double型．合計時間
+ * @param original_dirpath char*型．基となるディレクトリ名
+ * @param output_filename char*型．出力するファイル名
  */
 void EV3Control::outputControlInformation(double sumtime_ms, char* original_dirpath, char* output_filename)
 {

@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['endmessage',['endMessage',['../class_system.html#aba9d00b32578f2ea574bf67078db4aa7',1,'System::endMessage(int cNum)'],['../class_system.html#a106b76482db29cedc46d4f46b34f3d35',1,'System::endMessage()']]],
-  ['endtimer',['endTimer',['../class_system.html#a178a7a315866961f208b6cab6c2d7e88',1,'System']]],
-  ['error_5fcheck',['ERROR_CHECK',['../_kinect_8hpp.html#a60155ea06e80f9ce19fbf58d043f3287',1,'Kinect.hpp']]],
-  ['ev3_5f6dof',['ev3_6dof',['../class_e_v3_control.html#a146d50ba64a58289ef7776013d21c4a0',1,'EV3Control']]],
-  ['ev3control',['EV3Control',['../class_e_v3_control.html',1,'EV3Control'],['../class_e_v3_control.html#a030f467b372dee725bb176d0b7cea259',1,'EV3Control::EV3Control()']]],
-  ['ev3control_2ecpp',['EV3Control.cpp',['../_e_v3_control_8cpp.html',1,'']]],
-  ['ev3control_2ehpp',['EV3Control.hpp',['../_e_v3_control_8hpp.html',1,'']]],
-  ['extractplane_5fflag',['extractplane_flag',['../class_point_cloud_library.html#a76c829d2feea3efcb84449a0c360ec43',1,'PointCloudLibrary']]]
+  ['directoryname',['directoryName',['../main_8cpp.html#abefb498e9a643f68bb3d37c22953ddad',1,'directoryName():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#abefb498e9a643f68bb3d37c22953ddad',1,'directoryName():&#160;main.cpp']]],
+  ['dof6d',['DoF6d',['../struct_do_f6d.html',1,'DoF6d'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#a608e4a4060a4103cf873589760899c58',1,'DoF6d():&#160;PathTrackingAndInductionOfTheRobot.hpp']]],
+  ['dof6i',['DoF6i',['../struct_do_f6i.html',1,'DoF6i'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#aa28654a9c31353e880f337592327be7a',1,'DoF6i():&#160;PathTrackingAndInductionOfTheRobot.hpp']]],
+  ['downsampling_5fflag',['downsampling_flag',['../class_point_cloud_library.html#a6bb70f323f325576a505c45edd1f2ebe',1,'PointCloudLibrary']]],
+  ['downsamplingusingvoxelgridfilter',['downSamplingUsingVoxelGridFilter',['../class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99',1,'PointCloudLibrary']]],
+  ['drawing',['Drawing',['../class_drawing.html',1,'Drawing'],['../class_drawing.html#a9fb3a5b171cda26bb4dfccce875642c3',1,'Drawing::Drawing()']]],
+  ['drawing_2ecpp',['Drawing.cpp',['../_drawing_8cpp.html',1,'']]],
+  ['drawing_2ehpp',['Drawing.hpp',['../_drawing_8hpp.html',1,'']]],
+  ['drawrgbimage',['drawRGBImage',['../class_kinect.html#a00f185eb803cc53eb6273000913d9892',1,'Kinect']]]
 ];

@@ -1,6 +1,5 @@
 ﻿/*
  * @file KinectMethod.hpp
- * @link https://github.com/HShigehara/PathTPATHTRACKINGANDINDUCTIONTHEROBOTrackingAndInductionOfTheRobot.git
  * @brief kinect処理のクラスのヘッダ
  * @date 2014.12.10
  * @author H.Shigehara
@@ -52,7 +51,7 @@ public:
 	
 	HANDLE streamEvent; //!<RGB,Depthカメラのフレーム更新イベントを待つためのイベントハンドル
 	int key; //!<ウィンドウ表示のウェイトタイム格納変数
-	int actualExtractedNum; //実際に距離が抽出された数(0以外だった数)(c31)
+	int actualExtractedNum; //!<実際に距離が抽出された数(0以外だった数)(c31)
 };
 
 /* インクルードガードの終了 */

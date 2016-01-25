@@ -28,23 +28,27 @@ Mat {\bf get\-Undistortion\-Image} (Mat \&input\-Original\-Image)
 \begin{DoxyCompactList}\small\item\em キャリブレーションデータを用いて\-Kinectから取得した画像を補正する(c71) \end{DoxyCompactList}\item 
 Mat {\bf get\-Background\-Substraction\-Bin\-Image} (Mat \&current\-\_\-image, Mat \&backgound\-\_\-gray\-\_\-image)
 \begin{DoxyCompactList}\small\item\em 背景差分によって得られた二値画像(c75) \end{DoxyCompactList}\item 
+void {\bf open\-C\-V\-Setting\-Trackbar} (const string trackbar\-\_\-name)
+\begin{DoxyCompactList}\small\item\em 画像処理関連のトラックバーを表示するメソッド \end{DoxyCompactList}\item 
 Mat {\bf get\-Unit\-Mask} (Mat \&input\-\_\-binimage)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em E\-V3のユニット部のみのマスク画像を取得するメソッド \end{DoxyCompactList}\item 
+void {\bf output\-Image\-Select\-Directory} (int save\-\_\-count, char $\ast$original\-\_\-dirpath, char $\ast$save\-\_\-filename, Mat \&output\-\_\-image)
+\begin{DoxyCompactList}\small\item\em メソッド\-Image\-Processing\-::output\-Image\-Select\-Directory()．出力したディレクトリにファイルを出力するメソッド \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{公開変数類}
 \begin{DoxyCompactItemize}
 \item 
 int {\bf th}
 \begin{DoxyCompactList}\small\item\em 二値化するときの閾値(c82) \end{DoxyCompactList}\item 
 int {\bf neighborhood}
-\item 
+\begin{DoxyCompactList}\small\item\em 平滑化を行うときの近傍 \end{DoxyCompactList}\item 
 int {\bf closing\-\_\-times}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em クロージングを行う回数 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
 画像処理用のクラス 
 
- Image\-Processing.\-hpp の 20 行目に定義があります。
+ Image\-Processing.\-hpp の 19 行目に定義があります。
 
 
 
@@ -62,21 +66,12 @@ int {\bf closing\-\_\-times}
 
 メソッド\-Image\-Processing\-::\-Image\-Processing().コンストラクタ 
 
- Image\-Processing.\-cpp の 16 行目に定義があります。
+ Image\-Processing.\-cpp の 15 行目に定義があります。
 
 
 
 参照先 closing\-\_\-times, neighborhood, th.
 
-
-\begin{DoxyCode}
-17 \{
-18     \textcolor{comment}{//コンストラクタは今のところなし}
-19     th = 13; \textcolor{comment}{//閾値の初期値(c82)}
-20     neighborhood = 2;
-21     closing_times = 3;
-22 \}
-\end{DoxyCode}
 \index{Image\-Processing@{Image\-Processing}!$\sim$\-Image\-Processing@{$\sim$\-Image\-Processing}}
 \index{$\sim$\-Image\-Processing@{$\sim$\-Image\-Processing}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{$\sim$\-Image\-Processing}]{\setlength{\rightskip}{0pt plus 5cm}Image\-Processing\-::$\sim$\-Image\-Processing (
@@ -90,14 +85,8 @@ int {\bf closing\-\_\-times}
 
 メソッド\-Image\-Processing\-::$\sim$\-Image\-Processing().デストラクタ 
 
- Image\-Processing.\-cpp の 27 行目に定義があります。
+ Image\-Processing.\-cpp の 26 行目に定義があります。
 
-
-\begin{DoxyCode}
-28 \{
-29     \textcolor{comment}{//デストラクタは今のところなし}
-30 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
@@ -117,11 +106,13 @@ int {\bf closing\-\_\-times}
 
 
 \begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & current\-\_\-image, cv\-::\-Mat\& background\-\_\-image \\
+{\em \&current\-\_\-image} & cv\-::\-Mat型．現フレームの入力画像 \\
+\hline
+{\em \&background\-\_\-image} & cv\-::\-Mat型．背景画像の入力 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-cv\-::\-Mat median\-\_\-bin\-\_\-image 
+closing\-\_\-image cv\-::\-Mat型．出力画像 
 \end{DoxyReturn}
 $<$現在のグレースケール画像(c75)
 
@@ -129,9 +120,11 @@ $<$背景差分画像(c74)
 
 $<$背景差分画像の二値画像(c75)
 
-$<$背景差分画像の二値画像を平滑化したもの(c75) 
+$<$背景差分画像の二値画像を平滑化したもの(c75)
 
- Image\-Processing.\-cpp の 126 行目に定義があります。
+$<$クロージング処理御用変数 
+
+ Image\-Processing.\-cpp の 130 行目に定義があります。
 
 
 
@@ -142,38 +135,16 @@ $<$背景差分画像の二値画像を平滑化したもの(c75)
 参照元 main().
 
 
-\begin{DoxyCode}
-127 \{
-128     Mat current\_gray\_image; 
-129     Mat diff\_gray\_image; 
-130     Mat diff\_bin\_image; 
-131     Mat median\_bin\_image; 
-132     \textcolor{comment}{//Mat opening\_image; //(仮)}
-133     Mat closing\_image;
-134 
-135     cvtColor(current\_image, current\_gray\_image, CV\_BGR2GRAY); \textcolor{comment}{//現フレームの画像をグレースケールに}
-136     absdiff(current\_gray\_image, background\_gray\_image, diff\_gray\_image); \textcolor{comment}{//差分画像取得}
-137     \textcolor{comment}{//showImage("差分画像", diff\_gray\_image);}
-138     
-139     \textcolor{comment}{//EV3用}
-140     \textcolor{comment}{//threshold(diff\_gray\_image, diff\_bin\_image, /*13*/20, 255, THRESH\_BINARY); //二値化}
-142 \textcolor{comment}{}    \textcolor{comment}{//medianBlur(diff\_bin\_image, median\_bin\_image, 7); //ノイズ除去}
-145 \textcolor{comment}{}    \textcolor{comment}{//morphologyEx(median\_bin\_image, closing\_image, MORPH\_CLOSE, Mat(), Point(-1, -1), 7);
-       //クロージング(膨張→収縮)処理．穴埋めに使われる}
-147 \textcolor{comment}{}
-148 
-149     threshold(diff\_gray\_image, diff\_bin\_image, th, 255, THRESH\_BINARY); \textcolor{comment}{//二値化}
-150     \textcolor{comment}{//showImage("二値画像", diff\_bin\_image);}
-151     medianBlur(diff\_bin\_image, median\_bin\_image, 2*neighborhood+1); \textcolor{comment}{//ノイズ除去}
-152     \textcolor{comment}{//showImage("平滑化処理後", median\_bin\_image);}
-153     \textcolor{comment}{//morphologyEx(median\_bin\_image, opening\_image, MORPH\_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理}
-154     morphologyEx(median\_bin\_image, closing\_image, MORPH\_CLOSE, Mat(), Point(-1, -1), 2*
-      closing_times+1); \textcolor{comment}{//クロージング(膨張→収縮)処理．穴埋めに使われる}
-155     \textcolor{comment}{//showImage("穴埋め処理後", closing\_image);}
-156     \textcolor{keywordflow}{return} closing\_image;
-157     \textcolor{comment}{//return median\_bin\_image;}
-158 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_image_processing_ae7dc0c506adedb62687e15f0a1b1c7f0_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Image\-Processing@{Image\-Processing}!get\-Undistortion\-Image@{get\-Undistortion\-Image}}
 \index{get\-Undistortion\-Image@{get\-Undistortion\-Image}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{get\-Undistortion\-Image}]{\setlength{\rightskip}{0pt plus 5cm}Mat Image\-Processing\-::get\-Undistortion\-Image (
@@ -189,30 +160,31 @@ $<$背景差分画像の二値画像を平滑化したもの(c75)
 
 
 \begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & input\-Original\-Image \\
+{\em \&input\-Original\-Image} & cv\-::\-Mat型．キャリブレーションを行いたい入力画像 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-cv\-::\-Mat undistortion\-Image 
+undistortion\-Image cv\-::\-Mat型．キャリブレーション後の画像 
 \end{DoxyReturn}
 
 
- Image\-Processing.\-cpp の 112 行目に定義があります。
+ Image\-Processing.\-cpp の 115 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-113 \{
-114     Mat undistotionImage;
-115 
-116     undistort(inputOriginalImage, undistotionImage, internal\_cameraparam, distortion\_coefficients, Mat());
-117     
-118     \textcolor{keywordflow}{return} undistotionImage;
-119 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_image_processing_a5fa5bf016a9d7f946919d0a34a47031c_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Image\-Processing@{Image\-Processing}!get\-Unit\-Mask@{get\-Unit\-Mask}}
 \index{get\-Unit\-Mask@{get\-Unit\-Mask}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{get\-Unit\-Mask}]{\setlength{\rightskip}{0pt plus 5cm}Mat Image\-Processing\-::get\-Unit\-Mask (
@@ -222,98 +194,22 @@ cv\-::\-Mat undistortion\-Image
 )}\label{class_image_processing_a691c472c29caaab27924bd469a2ea1f1}
 
 
- Image\-Processing.\-cpp の 160 行目に定義があります。
+E\-V3のユニット部のみのマスク画像を取得するメソッド 
+
+メソッド\-Image\-Processing\-::get\-Unit\-Mask()．\-E\-V3のユニット部のみのマスク画像を取得するメソッド
 
 
-\begin{DoxyCode}
-161 \{
-162     \textcolor{keywordtype}{int} x\_min;
-163     \textcolor{keywordtype}{int} x\_border1;
-164     \textcolor{keywordtype}{int} x\_border2;
-165     \textcolor{keywordtype}{int} x\_max;
-166     \textcolor{keywordtype}{int} y\_min;
-167     \textcolor{keywordtype}{int} y\_border;
-168     \textcolor{keywordtype}{int} y\_max;
-169 
-170     \textcolor{keywordtype}{bool} ymin\_check = \textcolor{keyword}{false}; \textcolor{comment}{//y\_minが見つかっていないとき}
-171 
-172     \textcolor{comment}{//xの最大値と最小値の計測}
-173     x\_min = input\_binimage.cols;
-174     x\_max = 0;
-175     \textcolor{comment}{//yの最大値と最小値の計測}
-176     y\_min = 0;
-177     y\_max = 0;
-178 
-179     \textcolor{comment}{//xとyの最大値と最小値を探す}
-180     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < input\_binimage.rows;y++)\{
-181         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < input\_binimage.cols;x++)\{
-182             \textcolor{keywordflow}{if} (input\_binimage.at<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}>(y, x) == 255) \textcolor{comment}{//白ピクセルなら特定の処理を行う}
-183             \{
-184                 \textcolor{keywordflow}{if} (x\_min > x)\{
-185                     x\_min = x;
-186                 \}
-187                 \textcolor{keywordflow}{if} (x\_max < x)\{
-188                     x\_max = x;
-189                 \}
-190                 \textcolor{keywordflow}{if} (ymin\_check == \textcolor{keyword}{false})\{ \textcolor{comment}{//y\_minがみつかっていなければ．一度しか実行されない}
-191                     y\_min = y; \textcolor{comment}{//そのときのyを保存}
-192                     ymin\_check = \textcolor{keyword}{true}; \textcolor{comment}{//フラグをtrueにする}
-193                 \}
-194                 \textcolor{keywordflow}{if} (y\_max < y)\{ \textcolor{comment}{//現代の最大より新しいyが大きければ}
-195                     y\_max = y; \textcolor{comment}{//新しいyを最大値とする}
-196                 \}
-197             \}
-198         \}
-199     \}
-200     cout << \textcolor{stringliteral}{"x\_min => "} << x\_min << \textcolor{stringliteral}{", x\_max => "} << x\_max << \textcolor{stringliteral}{", y\_min => "} << y\_min << \textcolor{stringliteral}{", y\_max => "} << 
-      y\_max << endl;
-201 
-202     \textcolor{comment}{//x方向の切り取り}
-203     x\_border1 = (x\_min + x\_max) * \textcolor{comment}{/*0.18*/}0.17;
-204     x\_border2 = (x\_min + x\_max) * \textcolor{comment}{/*0.82*/}0.83;
-205     \textcolor{comment}{//左部を白にする}
-206     \textcolor{comment}{/*for (int y = 0; y < input\_binimage.rows; y++)\{}
-207 \textcolor{comment}{        for (int x = x\_min; x < x\_border1; x++)\{}
-208 \textcolor{comment}{            if (input\_binimage.at<unsigned char>(y, x) == 255)\{}
-209 \textcolor{comment}{                input\_binimage.at<unsigned char>(y, x) = 0;}
-210 \textcolor{comment}{            \}}
-211 \textcolor{comment}{        \}}
-212 \textcolor{comment}{    \}}
-213 \textcolor{comment}{    //右部を白にする}
-214 \textcolor{comment}{    for (int y = 0; y < input\_binimage.rows; y++)\{}
-215 \textcolor{comment}{        for (int x = x\_border2; x < x\_max; x++)\{}
-216 \textcolor{comment}{            if (input\_binimage.at<unsigned char>(y, x) == 255)\{}
-217 \textcolor{comment}{                input\_binimage.at<unsigned char>(y, x) = 0;}
-218 \textcolor{comment}{            \}}
-219 \textcolor{comment}{        \}}
-220 \textcolor{comment}{    \}*/}
-221     \textcolor{comment}{//imwrite("before\_cut.jpg", input\_binimage);}
-222     \textcolor{comment}{//上限と下限からカットするボーダーを決定する}
-223     y\_border = (y\_max + y\_min) * \textcolor{comment}{/*0.45*/}0.47; \textcolor{comment}{//影の影響でy\_maxが増えるため少し大きめに設定するのが良い }
-224     \textcolor{comment}{//下部を白にする}
-225     \textcolor{keywordtype}{int} step;
-226     step = 30;
-227     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = y\_min; y < y\_min + step; y++)\{
-228         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < input\_binimage.cols; x++)\{
-229             \textcolor{keywordflow}{if} (input\_binimage.at<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}>(y, x) == 255)\{
-230                 input\_binimage.at<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}>(y, x) = 0;
-231             \}
-232         \}
-233     \}
-234 
-235     \textcolor{comment}{//下部の切り取り}
-236     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = y\_border; y <= y\_max; y++)\{
-237         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < input\_binimage.cols; x++)\{
-238             \textcolor{keywordflow}{if} (input\_binimage.at<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}>(y, x) == 255)\{
-239                 input\_binimage.at<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}>(y, x) = 0;
-240             \}
-241         \}
-242     \}
-243 
-244     \textcolor{comment}{//showImage("TEST", input\_binimage);}
-245     \textcolor{keywordflow}{return} input\_binimage;
-246 \}
-\end{DoxyCode}
+\begin{DoxyParams}{引数}
+{\em \&input\-\_\-binimage} & cv\-::\-Mat型．入力画像(二値画像) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+input\-\_\-binimage cv\-::\-Mat型．出力画像(マスク処理された二値画像) 
+\end{DoxyReturn}
+
+
+ Image\-Processing.\-cpp の 171 行目に定義があります。
+
 \index{Image\-Processing@{Image\-Processing}!load\-Internal\-Camera\-Parameter@{load\-Internal\-Camera\-Parameter}}
 \index{load\-Internal\-Camera\-Parameter@{load\-Internal\-Camera\-Parameter}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{load\-Internal\-Camera\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::load\-Internal\-Camera\-Parameter (
@@ -329,30 +225,117 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 
 
 \begin{DoxyParams}{引数}
-{\em const} & string camera\-Param\-File \\
+{\em camera\-Param\-File} & const string型．入力したいカメラパラメータのファイル名 \\
 \hline
 \end{DoxyParams}
 
 
- Image\-Processing.\-cpp の 95 行目に定義があります。
+ Image\-Processing.\-cpp の 98 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-96 \{
-97     \textcolor{comment}{//xmlファイルの読み込み}
-98     FileStorage fs(cameraParamFile, FileStorage::READ); \textcolor{comment}{//読み込みモード}
-99     \textcolor{comment}{//内部パラメータの読み込み}
-100     fs[\textcolor{stringliteral}{"camera\_matrix"}] >> internal\_cameraparam; \textcolor{comment}{//内部パラメータを読み込む}
-101     fs[\textcolor{stringliteral}{"distortion\_coefficients"}] >> distortion\_coefficients; \textcolor{comment}{//歪み係数を読み込む}
-102 
-103     cout << \textcolor{stringliteral}{"loaded "} << cameraParamFile << \textcolor{stringliteral}{". "} << endl;
-104     \textcolor{keywordflow}{return};
-105 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_image_processing_a58862a0cb31373a4d1a9d6a89fdd8e6c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Image\-Processing@{Image\-Processing}!open\-C\-V\-Setting\-Trackbar@{open\-C\-V\-Setting\-Trackbar}}
+\index{open\-C\-V\-Setting\-Trackbar@{open\-C\-V\-Setting\-Trackbar}!ImageProcessing@{Image\-Processing}}
+\subsubsection[{open\-C\-V\-Setting\-Trackbar}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::open\-C\-V\-Setting\-Trackbar (
+\begin{DoxyParamCaption}
+\item[{const string}]{trackbar\-\_\-name}
+\end{DoxyParamCaption}
+)}\label{class_image_processing_a36d146288e958736fd803fde49c064af}
+
+
+画像処理関連のトラックバーを表示するメソッド 
+
+メソッド\-Image\-Processing\-::open\-C\-V\-Setting\-Trackbar()．\-Open\-C\-Vのトラックバーを表示するメソッド
+
+
+\begin{DoxyParams}{引数}
+{\em trackbar\-\_\-name} & const string型．\-Open\-C\-Vでマスク画像を設定するためのトラックバー名 \\
+\hline
+\end{DoxyParams}
+
+
+ Image\-Processing.\-cpp の 156 行目に定義があります。
+
+
+
+参照先 closing\-\_\-times, neighborhood, th.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_image_processing_a36d146288e958736fd803fde49c064af_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Image\-Processing@{Image\-Processing}!output\-Image\-Select\-Directory@{output\-Image\-Select\-Directory}}
+\index{output\-Image\-Select\-Directory@{output\-Image\-Select\-Directory}!ImageProcessing@{Image\-Processing}}
+\subsubsection[{output\-Image\-Select\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::output\-Image\-Select\-Directory (
+\begin{DoxyParamCaption}
+\item[{int}]{save\-\_\-count, }
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{save\-\_\-filename, }
+\item[{Mat \&}]{output\-\_\-image}
+\end{DoxyParamCaption}
+)}\label{class_image_processing_ac2a3a10ecc09a2be23b2cc673cee1e0c}
+
+
+メソッド\-Image\-Processing\-::output\-Image\-Select\-Directory()．出力したディレクトリにファイルを出力するメソッド 
+
+
+\begin{DoxyParams}{引数}
+{\em save\-\_\-count} & int型．保存数のカウント \\
+\hline
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em save\-\_\-filename} & char$\ast$．出力するファイル名 \\
+\hline
+{\em \&output\-\_\-image} & cv\-::\-Mat型．出力する画像 \\
+\hline
+\end{DoxyParams}
+
+
+ Image\-Processing.\-cpp の 266 行目に定義があります。
+
+
+
+参照先 N\-O\-C.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_image_processing_ac2a3a10ecc09a2be23b2cc673cee1e0c_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Image\-Processing@{Image\-Processing}!show\-Image@{show\-Image}}
 \index{show\-Image@{show\-Image}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{show\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::show\-Image (
@@ -369,7 +352,9 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 
 
 \begin{DoxyParams}{引数}
-{\em std\-::string} & window\-Name, cv\-::\-Mat\& input\-\_\-image \\
+{\em window\-Name} & std\-::string型．表示するウインドウ名 \\
+\hline
+{\em \&input\-\_\-image} & cv\-::\-Mat型．入力画像 \\
 \hline
 \end{DoxyParams}
 
@@ -381,13 +366,16 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 参照元 main(), show\-Image\-Together().
 
 
-\begin{DoxyCode}
-37 \{
-38     namedWindow(windowName, CV\_WINDOW\_AUTOSIZE | CV\_WINDOW\_FREERATIO);
-39     imshow(windowName, input\_image);
-40     \textcolor{keywordflow}{return};
-41 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{class_image_processing_a77b6912e1d1182d29a7c8a8c639bb685_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Image\-Processing@{Image\-Processing}!show\-Image\-Together@{show\-Image\-Together}}
 \index{show\-Image\-Together@{show\-Image\-Together}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{show\-Image\-Together}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::show\-Image\-Together (
@@ -404,37 +392,30 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 
 
 \begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & image1, cv\-::\-Mat\& image2 \\
+{\em \&image1} & cv\-::\-Mat型．入力画像1 \\
+\hline
+{\em \&image2} & cv\-::\-Mat型．入力画像2 \\
 \hline
 \end{DoxyParams}
 
 
- Image\-Processing.\-cpp の 47 行目に定義があります。
+ Image\-Processing.\-cpp の 48 行目に定義があります。
 
 
 
 参照先 show\-Image().
 
 
-\begin{DoxyCode}
-48 \{
-49     \textcolor{comment}{//ウインドウ名と合成画像を定義}
-50     \textcolor{keywordtype}{char}* window\_name = \textcolor{stringliteral}{"処理結果"};
-51     \textcolor{keywordtype}{int} win\_width = image1.cols + image2.cols;
-52     \textcolor{keywordtype}{int} win\_height = max(image1.rows, image2.rows); \textcolor{comment}{//ウインドウの高さは高い方に合わせる}
-53     Mat all\_img(Size(win\_width, win\_height), CV\_8UC3);
-54 
-55     \textcolor{comment}{//画像を合成}
-56     Mat roi1(all\_img, Rect(0, 0, image1.cols, image1.rows));
-57     Mat roi2(all\_img, Rect(image1.cols, 0, image2.cols, image2.rows));
-58     image1.copyTo(roi1);
-59     image2.copyTo(roi2);
-60 
-61     showImage(window\_name, all\_img); \textcolor{comment}{//合成した画像を表示}
-62 
-63     \textcolor{keywordflow}{return};
-64 \}
-\end{DoxyCode}
+
+呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{class_image_processing_aece5b6cebfe47d9f65ce589168686189_cgraph}
+\end{center}
+\end{figure}
+
+
 \index{Image\-Processing@{Image\-Processing}!show\-Image\-Together@{show\-Image\-Together}}
 \index{show\-Image\-Together@{show\-Image\-Together}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{show\-Image\-Together}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Processing\-::show\-Image\-Together (
@@ -452,39 +433,32 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 
 
 \begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & image1, cv\-::\-Mat\& image2, cv\-::\-Mat\& image3 \\
+{\em \&image1} & cv\-::\-Mat型．入力画像1 \\
+\hline
+{\em \&image2} & cv\-::\-Mat型．入力画像2 \\
+\hline
+{\em \&image3} & cv\-::\-Mat型．入力画像3 \\
 \hline
 \end{DoxyParams}
 
 
- Image\-Processing.\-cpp の 70 行目に定義があります。
+ Image\-Processing.\-cpp の 73 行目に定義があります。
 
 
 
 参照先 show\-Image().
 
 
-\begin{DoxyCode}
-71 \{
-72     \textcolor{comment}{//ウインドウ名と合成画像を定義}
-73     \textcolor{keywordtype}{char}* window\_name = \textcolor{stringliteral}{"処理結果"};
-74     \textcolor{keywordtype}{int} win\_width = image1.cols + image2.cols + image3.cols;
-75     \textcolor{keywordtype}{int} win\_height = max(\{ image1.rows, image2.rows, image3.rows \}); \textcolor{comment}{//ウインドウの高さは高い方に合わせる}
-76     Mat all\_img(Size(win\_width, win\_height), CV\_8UC3);
-77 
-78     \textcolor{comment}{//画像を合成}
-79     Mat roi1(all\_img, Rect(0, 0, image1.cols, image1.rows));
-80     Mat roi2(all\_img, Rect(image1.cols, 0, image2.cols, image2.rows));
-81     Mat roi3(all\_img, Rect(image1.cols + image2.cols, 0, image3.cols, image3.rows));
-82     image1.copyTo(roi1);
-83     image2.copyTo(roi2);
-84     image3.copyTo(roi3);
-85 
-86     showImage(window\_name, all\_img); \textcolor{comment}{//合成した画像を表示}
-87 
-88     \textcolor{keywordflow}{return};
-89 \}
-\end{DoxyCode}
+
+呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{class_image_processing_a6651b85571d04f5f05d530a0c760f562_cgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{メンバ詳解}
@@ -493,22 +467,30 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 \subsubsection[{closing\-\_\-times}]{\setlength{\rightskip}{0pt plus 5cm}int Image\-Processing\-::closing\-\_\-times}\label{class_image_processing_ab2722ccf525edb1d42a45b7f6f530051}
 
 
- Image\-Processing.\-hpp の 41 行目に定義があります。
+クロージングを行う回数 
 
 
 
-参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), main().
+ Image\-Processing.\-hpp の 42 行目に定義があります。
+
+
+
+参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), open\-C\-V\-Setting\-Trackbar().
 
 \index{Image\-Processing@{Image\-Processing}!neighborhood@{neighborhood}}
 \index{neighborhood@{neighborhood}!ImageProcessing@{Image\-Processing}}
 \subsubsection[{neighborhood}]{\setlength{\rightskip}{0pt plus 5cm}int Image\-Processing\-::neighborhood}\label{class_image_processing_a4047a0099a07190f555c5c99d311ee42}
 
 
- Image\-Processing.\-hpp の 40 行目に定義があります。
+平滑化を行うときの近傍 
 
 
 
-参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), main().
+ Image\-Processing.\-hpp の 41 行目に定義があります。
+
+
+
+参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), open\-C\-V\-Setting\-Trackbar().
 
 \index{Image\-Processing@{Image\-Processing}!th@{th}}
 \index{th@{th}!ImageProcessing@{Image\-Processing}}
@@ -519,11 +501,11 @@ Image\-Processing\-::load\-Internal\-Camera\-Param().カメラキャリブレー
 
 
 
- Image\-Processing.\-hpp の 39 行目に定義があります。
+ Image\-Processing.\-hpp の 40 行目に定義があります。
 
 
 
-参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), main().
+参照元 get\-Background\-Substraction\-Bin\-Image(), Image\-Processing(), open\-C\-V\-Setting\-Trackbar().
 
 
 

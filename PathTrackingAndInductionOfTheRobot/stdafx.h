@@ -1,7 +1,10 @@
-﻿// stdafx.h : 標準のシステム インクルード ファイルのインクルード ファイル、または
-// 参照回数が多く、かつあまり変更されない、プロジェクト専用のインクルード ファイル
-// を記述します。
-//
+﻿/*!
+ * @file stdafx.h
+ * @brief 標準のシステム，インクルードファイル，または参照回数が多く，かつあまり変更されない，プロジェクト専用のインクルードファイルを記述する．
+ * @date 2015.11.22
+ * @author H.Shigehara
+ */
+
 
 #pragma once
 
@@ -23,17 +26,17 @@ using namespace std; //!<名前空間
 #include <sys/stat.h> //!<ファイルやディレクトリの存在を確認するためのヘッダ(c81)
 
 /* NuiApi.hの前にWindows.hをインクルードする */
-#include <Windows.h>
-#include <mmsystem.h>
-#include <NuiApi.h>
+#include <Windows.h> //!<Windows API
+#include <mmsystem.h> //!<サウンド再生用
+#include <NuiApi.h> //!<NuiApi
 
 /* OpenCV関連のインクルード */
-#include <opencv2\opencv.hpp>
-#include <opencv2\core\core.hpp>
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
-#include <opencv2\video\tracking.hpp> //!<動画のトラッキングを行うためのライブラリ(c25)
-#include <opencv2\flann\flann.hpp>
+#include <opencv2\opencv.hpp> //!<OpenCVの標準
+#include <opencv2\core\core.hpp> //!<OpenCVのコア
+#include <opencv2\highgui\highgui.hpp> //!<OpenCVのGUI
+#include <opencv2\imgproc\imgproc.hpp> //!<OpenCVの画像処理
+#include <opencv2\video\tracking.hpp> //!<OpenCVの動画トラッキング(c25)
+#include <opencv2\flann\flann.hpp> //!<OpenCVのFLANN
 using namespace cv; //!<名前空間
 
 /* PCL関連のインクルード */

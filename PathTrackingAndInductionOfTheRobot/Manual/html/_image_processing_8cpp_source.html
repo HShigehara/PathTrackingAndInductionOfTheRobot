@@ -106,29 +106,28 @@ $(document).ready(function(){initNavTree('_image_processing_8cpp_source.html',''
 <div class="contents">
 <a href="_image_processing_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file ImageProcessing.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @brief 画像処理を行うためのメソッド群</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @date 2014.10.17</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* ヘッダファイルのインクルード */</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_image_processing_8hpp.html">ImageProcessing.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">   16</a></span>&#160;<a class="code" href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">ImageProcessing::ImageProcessing</a>()</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//コンストラクタは今のところなし</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">th</a> = 13; <span class="comment">//閾値の初期値(c82)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">neighborhood</a> = 2;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">closing_times</a> = 3;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">   27</a></span>&#160;<a class="code" href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">ImageProcessing::~ImageProcessing</a>()</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//デストラクタは今のところなし</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @brief 画像処理を行うためのメソッド群</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @date 2014.10.17</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/* ヘッダファイルのインクルード */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_image_processing_8hpp.html">ImageProcessing.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">   15</a></span>&#160;<a class="code" href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">ImageProcessing::ImageProcessing</a>()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">//コンストラクタは今のところなし</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">th</a> = 13; <span class="comment">//閾値の初期値(c82)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">neighborhood</a> = 2;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">closing_times</a> = 3;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">   26</a></span>&#160;<a class="code" href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">ImageProcessing::~ImageProcessing</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//デストラクタは今のところなし</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">ImageProcessing::showImage</a>(<span class="keywordtype">string</span> windowName, Mat&amp; input_image)</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    namedWindow(windowName, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);</div>
@@ -136,204 +135,218 @@ $(document).ready(function(){initNavTree('_image_processing_8cpp_source.html',''
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a>(Mat&amp; image1, Mat&amp; image2)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//ウインドウ名と合成画像を定義</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">char</span>* window_name = <span class="stringliteral">&quot;処理結果&quot;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> win_width = image1.cols + image2.cols;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> win_height = max(image1.rows, image2.rows); <span class="comment">//ウインドウの高さは高い方に合わせる</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Mat all_img(Size(win_width, win_height), CV_8UC3);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">//画像を合成</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    Mat roi1(all_img, Rect(0, 0, image1.cols, image1.rows));</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Mat roi2(all_img, Rect(image1.cols, 0, image2.cols, image2.rows));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    image1.copyTo(roi1);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    image2.copyTo(roi2);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">showImage</a>(window_name, all_img); <span class="comment">//合成した画像を表示</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_image_processing.html#a6651b85571d04f5f05d530a0c760f562">   70</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a>(Mat&amp; image1, Mat&amp; image2, Mat&amp; image3)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">//ウインドウ名と合成画像を定義</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">char</span>* window_name = <span class="stringliteral">&quot;処理結果&quot;</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">int</span> win_width = image1.cols + image2.cols + image3.cols;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">int</span> win_height = max({ image1.rows, image2.rows, image3.rows }); <span class="comment">//ウインドウの高さは高い方に合わせる</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    Mat all_img(Size(win_width, win_height), CV_8UC3);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">//画像を合成</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    Mat roi1(all_img, Rect(0, 0, image1.cols, image1.rows));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    Mat roi2(all_img, Rect(image1.cols, 0, image2.cols, image2.rows));</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Mat roi3(all_img, Rect(image1.cols + image2.cols, 0, image3.cols, image3.rows));</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    image1.copyTo(roi1);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    image2.copyTo(roi2);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    image3.copyTo(roi3);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">showImage</a>(window_name, all_img); <span class="comment">//合成した画像を表示</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a>(Mat&amp; image1, Mat&amp; image2)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//ウインドウ名と合成画像を定義</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span>* window_name = <span class="stringliteral">&quot;処理結果&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> win_width = image1.cols + image2.cols;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> win_height = max(image1.rows, image2.rows); <span class="comment">//ウインドウの高さは高い方に合わせる</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    Mat all_img(Size(win_width, win_height), CV_8UC3);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">//画像を合成</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Mat roi1(all_img, Rect(0, 0, image1.cols, image1.rows));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Mat roi2(all_img, Rect(image1.cols, 0, image2.cols, image2.rows));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    image1.copyTo(roi1);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    image2.copyTo(roi2);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">showImage</a>(window_name, all_img); <span class="comment">//合成した画像を表示</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_image_processing.html#a6651b85571d04f5f05d530a0c760f562">   73</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a>(Mat&amp; image1, Mat&amp; image2, Mat&amp; image3)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">//ウインドウ名と合成画像を定義</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">char</span>* window_name = <span class="stringliteral">&quot;処理結果&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> win_width = image1.cols + image2.cols + image3.cols;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> win_height = max({ image1.rows, image2.rows, image3.rows }); <span class="comment">//ウインドウの高さは高い方に合わせる</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    Mat all_img(Size(win_width, win_height), CV_8UC3);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">//画像を合成</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    Mat roi1(all_img, Rect(0, 0, image1.cols, image1.rows));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Mat roi2(all_img, Rect(image1.cols, 0, image2.cols, image2.rows));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    Mat roi3(all_img, Rect(image1.cols + image2.cols, 0, image3.cols, image3.rows));</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    image1.copyTo(roi1);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    image2.copyTo(roi2);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    image3.copyTo(roi3);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">showImage</a>(window_name, all_img); <span class="comment">//合成した画像を表示</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">ImageProcessing::loadInternalCameraParameter</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> cameraParamFile)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//xmlファイルの読み込み</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    FileStorage fs(cameraParamFile, FileStorage::READ); <span class="comment">//読み込みモード</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//内部パラメータの読み込み</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    fs[<span class="stringliteral">&quot;camera_matrix&quot;</span>] &gt;&gt; internal_cameraparam; <span class="comment">//内部パラメータを読み込む</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    fs[<span class="stringliteral">&quot;distortion_coefficients&quot;</span>] &gt;&gt; distortion_coefficients; <span class="comment">//歪み係数を読み込む</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;loaded &quot;</span> &lt;&lt; cameraParamFile &lt;&lt; <span class="stringliteral">&quot;. &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">  112</a></span>&#160;Mat <a class="code" href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">ImageProcessing::getUndistortionImage</a>(Mat&amp; inputOriginalImage)</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    Mat undistotionImage;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    undistort(inputOriginalImage, undistotionImage, internal_cameraparam, distortion_coefficients, Mat());</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> undistotionImage;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">  126</a></span>&#160;Mat <a class="code" href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">ImageProcessing::getBackgroundSubstractionBinImage</a>(Mat&amp; current_image, Mat&amp; background_gray_image<span class="comment">/*, int threshold, int neighborhood, int closing_times*/</span>)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    Mat current_gray_image; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    Mat diff_gray_image; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    Mat diff_bin_image; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    Mat median_bin_image; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">//Mat opening_image; //(仮)</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    Mat closing_image;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    cvtColor(current_image, current_gray_image, CV_BGR2GRAY); <span class="comment">//現フレームの画像をグレースケールに</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    absdiff(current_gray_image, background_gray_image, diff_gray_image); <span class="comment">//差分画像取得</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">//showImage(&quot;差分画像&quot;, diff_gray_image);</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">//EV3用</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">//threshold(diff_gray_image, diff_bin_image, /*13*/20, 255, THRESH_BINARY); //二値化</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"></span>    <span class="comment">//medianBlur(diff_bin_image, median_bin_image, 7); //ノイズ除去</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment"></span>    <span class="comment">//morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 7); //クロージング(膨張→収縮)処理．穴埋めに使われる</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">   98</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">ImageProcessing::loadInternalCameraParameter</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> cameraParamFile)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">//xmlファイルの読み込み</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    FileStorage fs(cameraParamFile, FileStorage::READ); <span class="comment">//読み込みモード</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">//内部パラメータの読み込み</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    fs[<span class="stringliteral">&quot;camera_matrix&quot;</span>] &gt;&gt; internal_cameraparam; <span class="comment">//内部パラメータを読み込む</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    fs[<span class="stringliteral">&quot;distortion_coefficients&quot;</span>] &gt;&gt; distortion_coefficients; <span class="comment">//歪み係数を読み込む</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;loaded &quot;</span> &lt;&lt; cameraParamFile &lt;&lt; <span class="stringliteral">&quot;. &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">  115</a></span>&#160;Mat <a class="code" href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">ImageProcessing::getUndistortionImage</a>(Mat&amp; inputOriginalImage)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    Mat undistotionImage;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    undistort(inputOriginalImage, undistotionImage, internal_cameraparam, distortion_coefficients, Mat());</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> undistotionImage;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">  130</a></span>&#160;Mat <a class="code" href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">ImageProcessing::getBackgroundSubstractionBinImage</a>(Mat&amp; current_image, Mat&amp; background_gray_image)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    Mat current_gray_image; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    Mat diff_gray_image; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    Mat diff_bin_image; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    Mat median_bin_image; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    Mat closing_image; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    cvtColor(current_image, current_gray_image, CV_BGR2GRAY); <span class="comment">//現フレームの画像をグレースケールに</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    absdiff(current_gray_image, background_gray_image, diff_gray_image); <span class="comment">//差分画像取得</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">//showImage(&quot;差分画像&quot;, diff_gray_image);</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    threshold(diff_gray_image, diff_bin_image, <a class="code" href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">th</a>, 255, THRESH_BINARY); <span class="comment">//二値化</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">//showImage(&quot;二値画像&quot;, diff_bin_image);</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    medianBlur(diff_bin_image, median_bin_image, 2*<a class="code" href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">neighborhood</a>+1); <span class="comment">//ノイズ除去</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">//showImage(&quot;平滑化処理後&quot;, median_bin_image);</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 2*<a class="code" href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">closing_times</a>+1); <span class="comment">//クロージング(膨張→収縮)処理．穴埋めに使われる</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">//showImage(&quot;穴埋め処理後&quot;, closing_image);</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    threshold(diff_gray_image, diff_bin_image, <a class="code" href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">th</a>, 255, THRESH_BINARY); <span class="comment">//二値化</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">//showImage(&quot;二値画像&quot;, diff_bin_image);</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    medianBlur(diff_bin_image, median_bin_image, 2*<a class="code" href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">neighborhood</a>+1); <span class="comment">//ノイズ除去</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">//showImage(&quot;平滑化処理後&quot;, median_bin_image);</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">//morphologyEx(median_bin_image, opening_image, MORPH_OPEN, Mat(), Point(-1, -1), 5); //オープニング(縮小→膨張)処理</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    morphologyEx(median_bin_image, closing_image, MORPH_CLOSE, Mat(), Point(-1, -1), 2*<a class="code" href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">closing_times</a>+1); <span class="comment">//クロージング(膨張→収縮)処理．穴埋めに使われる</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">//showImage(&quot;穴埋め処理後&quot;, closing_image);</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> closing_image;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">//return median_bin_image;</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">  160</a></span>&#160;Mat <a class="code" href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">ImageProcessing::getUnitMask</a>(Mat&amp; input_binimage)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">int</span> x_min;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordtype">int</span> x_border1;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">int</span> x_border2;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">int</span> x_max;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">int</span> y_min;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">int</span> y_border;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">int</span> y_max;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">bool</span> ymin_check = <span class="keyword">false</span>; <span class="comment">//y_minが見つかっていないとき</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">//xの最大値と最小値の計測</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    x_min = input_binimage.cols;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    x_max = 0;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">//yの最大値と最小値の計測</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    y_min = 0;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    y_max = 0;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">//xとyの最大値と最小値を探す</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input_binimage.rows;y++){</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols;x++){</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255) <span class="comment">//白ピクセルなら特定の処理を行う</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <span class="keywordflow">if</span> (x_min &gt; x){</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    x_min = x;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">if</span> (x_max &lt; x){</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    x_max = x;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">if</span> (ymin_check == <span class="keyword">false</span>){ <span class="comment">//y_minがみつかっていなければ．一度しか実行されない</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    y_min = y; <span class="comment">//そのときのyを保存</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    ymin_check = <span class="keyword">true</span>; <span class="comment">//フラグをtrueにする</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">if</span> (y_max &lt; y){ <span class="comment">//現代の最大より新しいyが大きければ</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    y_max = y; <span class="comment">//新しいyを最大値とする</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;x_min =&gt; &quot;</span> &lt;&lt; x_min &lt;&lt; <span class="stringliteral">&quot;, x_max =&gt; &quot;</span> &lt;&lt; x_max &lt;&lt; <span class="stringliteral">&quot;, y_min =&gt; &quot;</span> &lt;&lt; y_min &lt;&lt; <span class="stringliteral">&quot;, y_max =&gt; &quot;</span> &lt;&lt; y_max &lt;&lt; endl;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">//x方向の切り取り</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    x_border1 = (x_min + x_max) * <span class="comment">/*0.18*/</span>0.17;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    x_border2 = (x_min + x_max) * <span class="comment">/*0.82*/</span>0.83;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="comment">//左部を白にする</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">/*for (int y = 0; y &lt; input_binimage.rows; y++){</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">        for (int x = x_min; x &lt; x_border1; x++){</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">            if (input_binimage.at&lt;unsigned char&gt;(y, x) == 255){</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">                input_binimage.at&lt;unsigned char&gt;(y, x) = 0;</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">    //右部を白にする</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">    for (int y = 0; y &lt; input_binimage.rows; y++){</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">        for (int x = x_border2; x &lt; x_max; x++){</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">            if (input_binimage.at&lt;unsigned char&gt;(y, x) == 255){</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">                input_binimage.at&lt;unsigned char&gt;(y, x) = 0;</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">    }*/</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">//imwrite(&quot;before_cut.jpg&quot;, input_binimage);</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">//上限と下限からカットするボーダーを決定する</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    y_border = (y_max + y_min) * <span class="comment">/*0.45*/</span>0.47; <span class="comment">//影の影響でy_maxが増えるため少し大きめに設定するのが良い </span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">//下部を白にする</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">int</span> step;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    step = 30;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = y_min; y &lt; y_min + step; y++){</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols; x++){</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255){</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) = 0;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">//下部の切り取り</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = y_border; y &lt;= y_max; y++){</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols; x++){</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255){</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) = 0;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">//showImage(&quot;TEST&quot;, input_binimage);</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">return</span> input_binimage;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">return</span> closing_image;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_image_processing.html#a36d146288e958736fd803fde49c064af">  156</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#a36d146288e958736fd803fde49c064af">ImageProcessing::openCVSettingTrackbar</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> trackbar_name)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//タイヤも含めて前面の点群を取得する</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    namedWindow(trackbar_name, CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    createTrackbar(<span class="stringliteral">&quot;Threshold&quot;</span>, trackbar_name, &amp;<a class="code" href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">th</a>, 255);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    createTrackbar(<span class="stringliteral">&quot;Median&quot;</span>, trackbar_name, &amp;<a class="code" href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">neighborhood</a>, 15);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    createTrackbar(<span class="stringliteral">&quot;Closing&quot;</span>, trackbar_name, &amp;<a class="code" href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">closing_times</a>, 15);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">  171</a></span>&#160;Mat <a class="code" href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">ImageProcessing::getUnitMask</a>(Mat&amp; input_binimage)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">int</span> x_min;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">int</span> x_border1;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">int</span> x_border2;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordtype">int</span> x_max;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">int</span> y_min;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">int</span> y_border;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">int</span> y_max;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">bool</span> ymin_check = <span class="keyword">false</span>; <span class="comment">//y_minが見つかっていないとき</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="comment">//xの最大値と最小値の計測</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    x_min = input_binimage.cols;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    x_max = 0;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="comment">//yの最大値と最小値の計測</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    y_min = 0;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    y_max = 0;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">//xとyの最大値と最小値を探す</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input_binimage.rows;y++){</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols;x++){</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255) <span class="comment">//白ピクセルなら特定の処理を行う</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">if</span> (x_min &gt; x){</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    x_min = x;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">if</span> (x_max &lt; x){</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    x_max = x;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">if</span> (ymin_check == <span class="keyword">false</span>){ <span class="comment">//y_minがみつかっていなければ．一度しか実行されない</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    y_min = y; <span class="comment">//そのときのyを保存</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    ymin_check = <span class="keyword">true</span>; <span class="comment">//フラグをtrueにする</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordflow">if</span> (y_max &lt; y){ <span class="comment">//現代の最大より新しいyが大きければ</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    y_max = y; <span class="comment">//新しいyを最大値とする</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;x_min =&gt; &quot; &lt;&lt; x_min &lt;&lt; &quot;, x_max =&gt; &quot; &lt;&lt; x_max &lt;&lt; &quot;, y_min =&gt; &quot; &lt;&lt; y_min &lt;&lt; &quot;, y_max =&gt; &quot; &lt;&lt; y_max &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">//x方向の切り取り</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    x_border1 = (x_min + x_max) * <span class="comment">/*0.18*/</span>0.17;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    x_border2 = (x_min + x_max) * <span class="comment">/*0.82*/</span>0.83;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">//左部を白にする</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">/*for (int y = 0; y &lt; input_binimage.rows; y++){</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">        for (int x = x_min; x &lt; x_border1; x++){</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">            if (input_binimage.at&lt;unsigned char&gt;(y, x) == 255){</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">                input_binimage.at&lt;unsigned char&gt;(y, x) = 0;</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">    //右部を白にする</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">    for (int y = 0; y &lt; input_binimage.rows; y++){</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">        for (int x = x_border2; x &lt; x_max; x++){</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">            if (input_binimage.at&lt;unsigned char&gt;(y, x) == 255){</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">                input_binimage.at&lt;unsigned char&gt;(y, x) = 0;</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">//imwrite(&quot;before_cut.jpg&quot;, input_binimage);</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">//上限と下限からカットするボーダーを決定する</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    y_border = (y_max + y_min) * 0.47; <span class="comment">//影の影響でy_maxが増えるため少し大きめに設定するのが良い </span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">//下部を白にする</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">int</span> step;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    step = 10;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = y_min; y &lt; y_min + step; y++){</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols; x++){</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255){</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) = 0;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">//下部の切り取り</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = y_border; y &lt;= y_max; y++){</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input_binimage.cols; x++){</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span> (input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) == 255){</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                input_binimage.at&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>&gt;(y, x) = 0;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">//showImage(&quot;TEST&quot;, input_binimage);</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> input_binimage;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_image_processing.html#ac2a3a10ecc09a2be23b2cc673cee1e0c">  266</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_image_processing.html#ac2a3a10ecc09a2be23b2cc673cee1e0c">ImageProcessing::outputImageSelectDirectory</a>(<span class="keywordtype">int</span> save_count, <span class="keywordtype">char</span>* original_dirpath, <span class="keywordtype">char</span>* save_filename, Mat&amp; output_image)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordtype">char</span> output_path[<a class="code" href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a>];</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    sprintf_s(output_path, <span class="stringliteral">&quot;%s/%s-%02d.jpg&quot;</span>, original_dirpath, save_filename, save_count);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    imwrite(output_path, output_image);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
 <div class="ttc" id="class_image_processing_html_a77b6912e1d1182d29a7c8a8c639bb685"><div class="ttname"><a href="class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685">ImageProcessing::showImage</a></div><div class="ttdeci">void showImage(string windowName, Mat &amp;input_image)</div><div class="ttdoc">ウインドウの名前を引数に追加(c31)．Matの表示(c17) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00036">ImageProcessing.cpp:36</a></div></div>
-<div class="ttc" id="class_image_processing_html_a0090ffe36a912d6df5d7a1f507f6252e"><div class="ttname"><a href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">ImageProcessing::ImageProcessing</a></div><div class="ttdeci">ImageProcessing()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00016">ImageProcessing.cpp:16</a></div></div>
-<div class="ttc" id="class_image_processing_html_ab2722ccf525edb1d42a45b7f6f530051"><div class="ttname"><a href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">ImageProcessing::closing_times</a></div><div class="ttdeci">int closing_times</div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00041">ImageProcessing.hpp:41</a></div></div>
-<div class="ttc" id="class_image_processing_html_a4047a0099a07190f555c5c99d311ee42"><div class="ttname"><a href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">ImageProcessing::neighborhood</a></div><div class="ttdeci">int neighborhood</div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00040">ImageProcessing.hpp:40</a></div></div>
-<div class="ttc" id="class_image_processing_html_ae7dc0c506adedb62687e15f0a1b1c7f0"><div class="ttname"><a href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">ImageProcessing::getBackgroundSubstractionBinImage</a></div><div class="ttdeci">Mat getBackgroundSubstractionBinImage(Mat &amp;current_image, Mat &amp;backgound_gray_image)</div><div class="ttdoc">背景差分によって得られた二値画像(c75) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00126">ImageProcessing.cpp:126</a></div></div>
-<div class="ttc" id="class_image_processing_html_a691c472c29caaab27924bd469a2ea1f1"><div class="ttname"><a href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">ImageProcessing::getUnitMask</a></div><div class="ttdeci">Mat getUnitMask(Mat &amp;input_binimage)</div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00160">ImageProcessing.cpp:160</a></div></div>
-<div class="ttc" id="class_image_processing_html_aece5b6cebfe47d9f65ce589168686189"><div class="ttname"><a href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a></div><div class="ttdeci">void showImageTogether(Mat &amp;image1, Mat &amp;image2)</div><div class="ttdoc">2つの画像を一緒に表示(c36) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00047">ImageProcessing.cpp:47</a></div></div>
+<div class="ttc" id="class_image_processing_html_a0090ffe36a912d6df5d7a1f507f6252e"><div class="ttname"><a href="class_image_processing.html#a0090ffe36a912d6df5d7a1f507f6252e">ImageProcessing::ImageProcessing</a></div><div class="ttdeci">ImageProcessing()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00015">ImageProcessing.cpp:15</a></div></div>
+<div class="ttc" id="class_image_processing_html_ac2a3a10ecc09a2be23b2cc673cee1e0c"><div class="ttname"><a href="class_image_processing.html#ac2a3a10ecc09a2be23b2cc673cee1e0c">ImageProcessing::outputImageSelectDirectory</a></div><div class="ttdeci">void outputImageSelectDirectory(int save_count, char *original_dirpath, char *save_filename, Mat &amp;output_image)</div><div class="ttdoc">メソッドImageProcessing::outputImageSelectDirectory()．出力したディレクトリにファイルを出力するメソッド </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00266">ImageProcessing.cpp:266</a></div></div>
+<div class="ttc" id="class_image_processing_html_ab2722ccf525edb1d42a45b7f6f530051"><div class="ttname"><a href="class_image_processing.html#ab2722ccf525edb1d42a45b7f6f530051">ImageProcessing::closing_times</a></div><div class="ttdeci">int closing_times</div><div class="ttdoc">クロージングを行う回数 </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00042">ImageProcessing.hpp:42</a></div></div>
+<div class="ttc" id="class_image_processing_html_a4047a0099a07190f555c5c99d311ee42"><div class="ttname"><a href="class_image_processing.html#a4047a0099a07190f555c5c99d311ee42">ImageProcessing::neighborhood</a></div><div class="ttdeci">int neighborhood</div><div class="ttdoc">平滑化を行うときの近傍 </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00041">ImageProcessing.hpp:41</a></div></div>
+<div class="ttc" id="class_image_processing_html_ae7dc0c506adedb62687e15f0a1b1c7f0"><div class="ttname"><a href="class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0">ImageProcessing::getBackgroundSubstractionBinImage</a></div><div class="ttdeci">Mat getBackgroundSubstractionBinImage(Mat &amp;current_image, Mat &amp;backgound_gray_image)</div><div class="ttdoc">背景差分によって得られた二値画像(c75) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00130">ImageProcessing.cpp:130</a></div></div>
+<div class="ttc" id="class_image_processing_html_a691c472c29caaab27924bd469a2ea1f1"><div class="ttname"><a href="class_image_processing.html#a691c472c29caaab27924bd469a2ea1f1">ImageProcessing::getUnitMask</a></div><div class="ttdeci">Mat getUnitMask(Mat &amp;input_binimage)</div><div class="ttdoc">EV3のユニット部のみのマスク画像を取得するメソッド </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00171">ImageProcessing.cpp:171</a></div></div>
+<div class="ttc" id="class_image_processing_html_aece5b6cebfe47d9f65ce589168686189"><div class="ttname"><a href="class_image_processing.html#aece5b6cebfe47d9f65ce589168686189">ImageProcessing::showImageTogether</a></div><div class="ttdeci">void showImageTogether(Mat &amp;image1, Mat &amp;image2)</div><div class="ttdoc">2つの画像を一緒に表示(c36) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00048">ImageProcessing.cpp:48</a></div></div>
 <div class="ttc" id="_image_processing_8hpp_html"><div class="ttname"><a href="_image_processing_8hpp.html">ImageProcessing.hpp</a></div></div>
 <div class="ttc" id="_path_tracking_and_induction_of_the_robot_8hpp_html"><div class="ttname"><a href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a></div></div>
-<div class="ttc" id="class_image_processing_html_a3b07a07726eed8b5e1da00017713068d"><div class="ttname"><a href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">ImageProcessing::th</a></div><div class="ttdeci">int th</div><div class="ttdoc">二値化するときの閾値(c82) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00039">ImageProcessing.hpp:39</a></div></div>
-<div class="ttc" id="class_image_processing_html_a5fa5bf016a9d7f946919d0a34a47031c"><div class="ttname"><a href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">ImageProcessing::getUndistortionImage</a></div><div class="ttdeci">Mat getUndistortionImage(Mat &amp;inputOriginalImage)</div><div class="ttdoc">キャリブレーションデータを用いてKinectから取得した画像を補正する(c71) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00112">ImageProcessing.cpp:112</a></div></div>
-<div class="ttc" id="class_image_processing_html_a1d4bd00ec1862112552c663034cebabc"><div class="ttname"><a href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">ImageProcessing::~ImageProcessing</a></div><div class="ttdeci">~ImageProcessing()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00027">ImageProcessing.cpp:27</a></div></div>
-<div class="ttc" id="class_image_processing_html_a58862a0cb31373a4d1a9d6a89fdd8e6c"><div class="ttname"><a href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">ImageProcessing::loadInternalCameraParameter</a></div><div class="ttdeci">void loadInternalCameraParameter(const string cameraParamFile)</div><div class="ttdoc">カメラキャリブレーションによって得られたパラメータを適用する(c54) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00095">ImageProcessing.cpp:95</a></div></div>
+<div class="ttc" id="class_image_processing_html_a3b07a07726eed8b5e1da00017713068d"><div class="ttname"><a href="class_image_processing.html#a3b07a07726eed8b5e1da00017713068d">ImageProcessing::th</a></div><div class="ttdeci">int th</div><div class="ttdoc">二値化するときの閾値(c82) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8hpp_source.html#l00040">ImageProcessing.hpp:40</a></div></div>
+<div class="ttc" id="class_image_processing_html_a5fa5bf016a9d7f946919d0a34a47031c"><div class="ttname"><a href="class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c">ImageProcessing::getUndistortionImage</a></div><div class="ttdeci">Mat getUndistortionImage(Mat &amp;inputOriginalImage)</div><div class="ttdoc">キャリブレーションデータを用いてKinectから取得した画像を補正する(c71) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00115">ImageProcessing.cpp:115</a></div></div>
+<div class="ttc" id="class_image_processing_html_a1d4bd00ec1862112552c663034cebabc"><div class="ttname"><a href="class_image_processing.html#a1d4bd00ec1862112552c663034cebabc">ImageProcessing::~ImageProcessing</a></div><div class="ttdeci">~ImageProcessing()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00026">ImageProcessing.cpp:26</a></div></div>
+<div class="ttc" id="stdafx_8h_html_a5d8ba032e2fdf7b2561f508164124f3e"><div class="ttname"><a href="stdafx_8h.html#a5d8ba032e2fdf7b2561f508164124f3e">NOC</a></div><div class="ttdeci">#define NOC</div><div class="ttdoc">Number of Characters．(ファイルの名前を付けるときの文字数制限) </div><div class="ttdef"><b>Definition:</b> <a href="stdafx_8h_source.html#l00081">stdafx.h:81</a></div></div>
+<div class="ttc" id="class_image_processing_html_a58862a0cb31373a4d1a9d6a89fdd8e6c"><div class="ttname"><a href="class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c">ImageProcessing::loadInternalCameraParameter</a></div><div class="ttdeci">void loadInternalCameraParameter(const string cameraParamFile)</div><div class="ttdoc">カメラキャリブレーションによって得られたパラメータを適用する(c54) </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00098">ImageProcessing.cpp:98</a></div></div>
+<div class="ttc" id="class_image_processing_html_a36d146288e958736fd803fde49c064af"><div class="ttname"><a href="class_image_processing.html#a36d146288e958736fd803fde49c064af">ImageProcessing::openCVSettingTrackbar</a></div><div class="ttdeci">void openCVSettingTrackbar(const string trackbar_name)</div><div class="ttdoc">画像処理関連のトラックバーを表示するメソッド </div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8cpp_source.html#l00156">ImageProcessing.cpp:156</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="_image_processing_8cpp.html">ImageProcessing.cpp</a></li>
-    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <li class="navelem"><a class="el" href="dir_45aeffd6702719c5f3cbf0d005461816.html">SkyDrive</a></li><li class="navelem"><a class="el" href="dir_a0d9d77de56eed61b71feb2adefbb47d.html">ShigeLab</a></li><li class="navelem"><a class="el" href="dir_89d32e4e26b9b93c85c915e3b07e88b7.html">Programming</a></li><li class="navelem"><a class="el" href="dir_f222f4b39d8b1349931d836df5dbea5a.html">Master</a></li><li class="navelem"><a class="el" href="dir_3890cccb326c0ee1b484a4cf99bcc311.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="dir_d2cbe6861c52eb610edd18736eb43ce0.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="_image_processing_8cpp.html">ImageProcessing.cpp</a></li>
+    <li class="footer">2016年01月25日(月) 12時00分32秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -13,69 +13,73 @@
 \begin{DoxyCompactItemize}
 \item 
 {\bf Point\-Cloud\-Library} ()
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::\-Point\-Cloud\-Library().コンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
 {\bf Point\-Cloud\-Library} (bool passthroughflag, bool downsamplingflag, bool statisticaloutlierremovalflag, bool mlsflag, bool extractplaneflag)
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::\-Point\-Cloud\-Library().コンストラクタ(c64) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em コンストラクタ(c64) \end{DoxyCompactList}\item 
 {\bf $\sim$\-Point\-Cloud\-Library} ()
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::$\sim$\-Point\-Cloud\-Library().デストラクタ \end{DoxyCompactList}\item 
-void {\bf initialize\-Point\-Cloud\-Viewer} (string cloudviewer\-\_\-name)
-\begin{DoxyCompactList}\small\item\em ポイントクラウドビューアーを初期化 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
 void {\bf initialize\-P\-C\-L\-Visualizer} (string pclvisualizer\-\_\-name)
-\item 
+\begin{DoxyCompactList}\small\item\em P\-C\-L Visualizerの初期化 \end{DoxyCompactList}\item 
 void {\bf load\-P\-L\-Y} (char $\ast$ply\-\_\-name)
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::load\-P\-L\-Y()．plyファイルを読み込む \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em .plyファイルの読み込み \end{DoxyCompactList}\item 
 void {\bf flag\-Checker} ()
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::flag\-Checker().P\-C\-L処理に関する処理の有無を判定するフラグ変数を反転させるメソッド(c64) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em フラグを判定するメソッド(c64) \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf pass\-Through\-Filter} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, char $\ast$axis, float min, float max)
 \begin{DoxyCompactList}\small\item\em パススルーフィルタ．zの値の距離に応じてカット可能 \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf remove\-Outlier} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::remove\-Outlier()．外れ値を除去するメソッド(c59) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em 外れ値を除去するメソッド \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf radius\-Outlier\-Removal} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
-\begin{DoxyCompactList}\small\item\em メソッド\-Point\-Cloud\-Library\-::radius\-Outlier\-Removal()．外れ値を除去するメソッド(c60) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em 外れ値を除去するメソッド \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf down\-Sampling\-Using\-Voxel\-Grid\-Filter} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, float leaf\-Size\-X, float leaf\-Size\-Y, float leaf\-Size\-Z)
-\begin{DoxyCompactList}\small\item\em ダウンサンプリングの \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em ダウンサンプリングを行うメソッド \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf smoothing\-Using\-Moving\-Least\-Square} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, bool compute\-\_\-normals, bool polynomial\-\_\-fit, double radius)
-\begin{DoxyCompactList}\small\item\em スムージング \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em スムージングを行うメソッド \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud\\*
-$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf get\-Extract\-Plane\-And\-Clustering} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, bool optimize, int max\-Iterations, double threshold, bool negative1, bool negative2, double tolerance, int min\-Cluster\-Size, int max\-Cluster\-Size)
+$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf get\-Extract\-Plane\-And\-Clustering} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud, bool optimize, int max\-Iterations, bool negative1, bool negative2, int min\-Cluster\-Size, int max\-Cluster\-Size)
 \begin{DoxyCompactList}\small\item\em 平面検出とクラスタリング \end{DoxyCompactList}\item 
 Point3d {\bf get\-Centroid\-Coordinate3d} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
-\begin{DoxyCompactList}\small\item\em メソッドget\-Centroid\-Coordinate \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em 取得した点群の平均座標を取得するメソッド \end{DoxyCompactList}\item 
 pcl\-::\-Point\-Cloud$<$ pcl\-::\-Normal $>$\-::Ptr {\bf get\-Surface\-Normals} (pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&input\-Point\-Cloud)
-\begin{DoxyCompactList}\small\item\em 法線を計算する \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 法線を計算する \end{DoxyCompactList}\item 
+void {\bf output\-Point\-Cloud} (int save\-\_\-count, char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename, pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&output\-Point\-Cloud)
+\begin{DoxyCompactList}\small\item\em 点群を出力するメソッド \end{DoxyCompactList}\item 
+void {\bf output\-Point\-Cloud\-P\-L\-Y} (int save\-\_\-count, char $\ast$original\-\_\-dirpath, char $\ast$output\-\_\-filename, pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&{\bf output\-Point\-Cloud})
+\begin{DoxyCompactList}\small\item\em 点群をply形式で保存するメソッド \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{公開変数類}
 \begin{DoxyCompactItemize}
 \item 
 pcl\-::\-Point\-Cloud\\*
 $<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr {\bf model}
-\item 
+\begin{DoxyCompactList}\small\item\em .plyファイルの点群(モデル) \end{DoxyCompactList}\item 
 Point3d {\bf centroid}
 \begin{DoxyCompactList}\small\item\em 平均座標 \end{DoxyCompactList}\item 
-pcl\-::visualization\-::\-Cloud\-Viewer $\ast$ {\bf viewer}
-\item 
 pcl\-::visualization\-::\-P\-C\-L\-Visualizer $\ast$ {\bf visualizer}
-\item 
+\begin{DoxyCompactList}\small\item\em P\-C\-L Visualizer. \end{DoxyCompactList}\item 
+int {\bf th}
+\begin{DoxyCompactList}\small\item\em 平面検出とクラスタリング時用の閾値スライダー変数 \end{DoxyCompactList}\item 
+int {\bf tor}
+\begin{DoxyCompactList}\small\item\em 平面検出とクラスタリング時用のスライダー変数 \end{DoxyCompactList}\item 
 bool {\bf passthrough\-\_\-flag}
-\item 
+\begin{DoxyCompactList}\small\item\em パススルーフィルターを用いるかどうかのフラグ \end{DoxyCompactList}\item 
 bool {\bf downsampling\-\_\-flag}
-\item 
+\begin{DoxyCompactList}\small\item\em ダウンサンプリングを行うかどうかのフラグ \end{DoxyCompactList}\item 
 bool {\bf statisticaloutlierremoval\-\_\-flag}
-\item 
+\begin{DoxyCompactList}\small\item\em 外れ値を除去するかどうかのフラグ \end{DoxyCompactList}\item 
 bool {\bf mls\-\_\-flag}
-\item 
+\begin{DoxyCompactList}\small\item\em スムージングを行うかどうかのフラグ \end{DoxyCompactList}\item 
 bool {\bf extractplane\-\_\-flag}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 平面検出とクラスタリングを行うかどうかのフラグ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
 点群処理を行うクラス 
 
- Point\-Cloud\-Library.\-hpp の 20 行目に定義があります。
+ Point\-Cloud\-Library.\-hpp の 19 行目に定義があります。
 
 
 
@@ -89,18 +93,12 @@ bool {\bf extractplane\-\_\-flag}
 )}\label{class_point_cloud_library_afade3ec02d4cdcf848e2ab972292f0c4}
 
 
+コンストラクタ 
+
 メソッド\-Point\-Cloud\-Library\-::\-Point\-Cloud\-Library().コンストラクタ 
 
+ Point\-Cloud\-Library.\-cpp の 15 行目に定義があります。
 
-
- Point\-Cloud\-Library.\-cpp の 16 行目に定義があります。
-
-
-\begin{DoxyCode}
-17 \{
-18     \textcolor{comment}{//繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ}
-19 \}
-\end{DoxyCode}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!Point\-Cloud\-Library@{Point\-Cloud\-Library}}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{Point\-Cloud\-Library}]{\setlength{\rightskip}{0pt plus 5cm}Point\-Cloud\-Library\-::\-Point\-Cloud\-Library (
@@ -114,32 +112,29 @@ bool {\bf extractplane\-\_\-flag}
 )}\label{class_point_cloud_library_ae9975b76a6035d433bcabd076be4c3ee}
 
 
-メソッド\-Point\-Cloud\-Library\-::\-Point\-Cloud\-Library().コンストラクタ(c64) 
+コンストラクタ(c64) 
+
+メソッド\-Point\-Cloud\-Library\-::\-Point\-Cloud\-Library().コンストラクタ(c64)
 
 
 \begin{DoxyParams}{引数}
-{\em bool} & flag\-\_\-remove\-Outlier, bool flag\-\_\-downsampling, bool flag\-\_\-\-M\-L\-S, bool flag\-\_\-extract\-Plane \\
+{\em flag\-\_\-remove\-Outlier} & bool型．外れ値除去のためのフラグ変数 \\
+\hline
+{\em flag\-\_\-downsampling} & bool型．ダウンサンプリングのためのフラグ変数 \\
+\hline
+{\em flag\-\_\-\-M\-L\-S} & bool型．\-M\-L\-Sのためのフラグ変数 \\
+\hline
+{\em flag\-\_\-extract\-Plane} & bool型．平面検出のためのフラグ変数 \\
 \hline
 \end{DoxyParams}
 
 
- Point\-Cloud\-Library.\-cpp の 25 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 27 行目に定義があります。
 
 
 
-参照先 downsampling\-\_\-flag, extractplane\-\_\-flag, mls\-\_\-flag, passthrough\-\_\-flag, statisticaloutlierremoval\-\_\-flag.
+参照先 downsampling\-\_\-flag, extractplane\-\_\-flag, mls\-\_\-flag, passthrough\-\_\-flag, statisticaloutlierremoval\-\_\-flag, th, tor.
 
-
-\begin{DoxyCode}
-26 \{
-27     \textcolor{comment}{//繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ}
-28     passthrough_flag = passthroughflag;
-29     downsampling_flag = downsamplingflag;
-30     statisticaloutlierremoval_flag = statisticaloutlierremovalflag;
-31     mls_flag = mlsflag;
-32     extractplane_flag= extractplaneflag;
-33 \}
-\end{DoxyCode}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!$\sim$\-Point\-Cloud\-Library@{$\sim$\-Point\-Cloud\-Library}}
 \index{$\sim$\-Point\-Cloud\-Library@{$\sim$\-Point\-Cloud\-Library}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{$\sim$\-Point\-Cloud\-Library}]{\setlength{\rightskip}{0pt plus 5cm}Point\-Cloud\-Library\-::$\sim$\-Point\-Cloud\-Library (
@@ -149,18 +144,12 @@ bool {\bf extractplane\-\_\-flag}
 )}\label{class_point_cloud_library_ab592f569c2ac402971f0b176af8b8c1e}
 
 
+デストラクタ 
+
 メソッド\-Point\-Cloud\-Library\-::$\sim$\-Point\-Cloud\-Library().デストラクタ 
 
+ Point\-Cloud\-Library.\-cpp の 43 行目に定義があります。
 
-
- Point\-Cloud\-Library.\-cpp の 38 行目に定義があります。
-
-
-\begin{DoxyCode}
-39 \{
-40     \textcolor{comment}{//デストラクタ}
-41 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
@@ -176,45 +165,43 @@ bool {\bf extractplane\-\_\-flag}
 )}\label{class_point_cloud_library_abf4a5840ba484d07a775c2c0c9e41a99}
 
 
-ダウンサンプリングの 
+ダウンサンプリングを行うメソッド 
 
 メソッド\-Point\-Cloud\-Library\-::down\-Sampling\-Using\-Voxel\-Grid\-Filter()．ダウンサンプリング処理を行うメソッド(c59)
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+{\em leaf\-Size\-X} & float型．xのリーフサイズ \\
+\hline
+{\em leaf\-Size\-Y} & float型．yのリーフサイズ \\
+\hline
+{\em leaf\-Size\-Z} & float型．zのリーフサイズ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 167 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 173 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-168 \{
-169     cout << \textcolor{stringliteral}{"before\(\backslash\)tVoxel Grid Filter\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-170 
-171     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      フィルタリング後用のポイントクラウドを宣言}
-172     pcl::VoxelGrid<pcl::PointXYZRGB> vg;
-173 
-174     vg.setInputCloud(inputPointCloud);
-175     \textcolor{comment}{//sor.setLeafSize()でダウンサンプリングの程度を変更}
-176     vg.setLeafSize(leafSizeX, leafSizeY, leafSizeZ);
-177     vg.filter(*filtered);
-178 
-179     \textcolor{comment}{//ポイントクラウドをしっかり保持できているかサイズを確認}
-180     cout << \textcolor{stringliteral}{"after\(\backslash\)tVoxel Grid Filter\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl; \textcolor{comment}{//出力されるポイントクラウドのサイズ}
-181     \textcolor{keywordflow}{return} filtered;
-182 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{class_point_cloud_library_abf4a5840ba484d07a775c2c0c9e41a99_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!flag\-Checker@{flag\-Checker}}
 \index{flag\-Checker@{flag\-Checker}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{flag\-Checker}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::flag\-Checker (
@@ -224,9 +211,9 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 )}\label{class_point_cloud_library_a1ee163b625dc199c44149db55c84bafd}
 
 
+フラグを判定するメソッド(c64) 
+
 メソッド\-Point\-Cloud\-Library\-::flag\-Checker().P\-C\-L処理に関する処理の有無を判定するフラグ変数を反転させるメソッド(c64) 
-
-
 
  Point\-Cloud\-Library.\-cpp の 77 行目に定義があります。
 
@@ -239,30 +226,16 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 参照元 main().
 
 
-\begin{DoxyCode}
-78 \{
-79     \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'X'}))\{ \textcolor{comment}{//Xが入力されたので、パススルーフィルターのフラグを反転}
-80         passthrough_flag = !passthrough_flag;
-81     \}
-82     \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'C'}))\{ \textcolor{comment}{//Cが入力されたので、ダウンサンプリング処理のフラグを反転}
-83         downsampling_flag = !downsampling_flag;
-84     \}
-85     \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'V'}))\{ \textcolor{comment}{//Vが入力されたので、統計的な外れ値除去処理のフラグを反転}
-86         statisticaloutlierremoval_flag = !statisticaloutlierremoval_flag;
-87     \}
-88     \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'B'}))\{  \textcolor{comment}{//Nが入力されたので、MLS処理のフラグを反転}
-89         mls_flag = !mls_flag;
-90     \}
-91     \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'N'}))\{ \textcolor{comment}{//Mが入力されたので、平面検出のフラグを反転}
-92         extractplane_flag = !extractplane_flag;
-93     \}
-94 
-95     cout << \textcolor{stringliteral}{"範囲外除去(X) => "} << passthrough_flag << \textcolor{stringliteral}{" ダウンサンプリング(C) => "} << 
-      downsampling_flag << \textcolor{stringliteral}{" 外れ値(V) => "} << statisticaloutlierremoval_flag << \textcolor{stringliteral}{" MLS(B) => "} << 
-      mls_flag << \textcolor{stringliteral}{" 平面検出(N) => "} << extractplane_flag << endl;
-96     \textcolor{keywordflow}{return};
-97 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_point_cloud_library_a1ee163b625dc199c44149db55c84bafd_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!get\-Centroid\-Coordinate3d@{get\-Centroid\-Coordinate3d}}
 \index{get\-Centroid\-Coordinate3d@{get\-Centroid\-Coordinate3d}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{get\-Centroid\-Coordinate3d}]{\setlength{\rightskip}{0pt plus 5cm}Point3d Point\-Cloud\-Library\-::get\-Centroid\-Coordinate3d (
@@ -272,71 +245,37 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 )}\label{class_point_cloud_library_ad6ce847f97bd8bc4621a4c6a2c380b78}
 
 
-メソッドget\-Centroid\-Coordinate 
+取得した点群の平均座標を取得するメソッド 
+
+メソッドget\-Centroid\-Coordinate
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr型．入力するポイントクラウド \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-Point3f centroid 
+centroid Point3f型．抽出した範囲の重心 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 316 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 331 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-317 \{
-318     \textcolor{comment}{//cout << "inputPointCloud => " << inputPointCloud->size() << endl; //最大のクラスタを受け取れているか確認(c76)}
-319     \textcolor{comment}{//FILE *pointcloud; //最終1フレーム分．gnuplotで表示するために点群をファイルに出力する用}
-320     \textcolor{comment}{//FILE *centroid; //最終1フレーム分．gnuplotで表示するために平均座標(重心)をファイルに出力する用}
-321     Point3d centroid\_coordinate = 0; \textcolor{comment}{//重心座標}
-322     Point3d sum\_pointcloud = 0; \textcolor{comment}{//座標の合計}
-323 
-324     \textcolor{comment}{//char filepath\_pointcloud[NOC];}
-325     \textcolor{comment}{//char filepath\_centroid[NOC];}
-326     \textcolor{comment}{//sprintf\_s(filepath\_pointcloud, "data/%s/pointcloud.dat", directoryName);}
-327     \textcolor{comment}{//sprintf\_s(filepath\_centroid, "data/%s/centroid.dat", directoryName);}
-328 
-329     \textcolor{comment}{//ファイルオープンgnuplotの確認用}
-330     \textcolor{comment}{//fopen\_s(&pointcloud, filepath\_pointcloud, "w"); //}
-331     \textcolor{comment}{//fopen\_s(&centroid, filepath\_centroid, "w");}
-332 
-333     \textcolor{comment}{//summention coordinate. ※inputPointCloud->width == inputPointCloud->size().}
-334     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < inputPointCloud->size(); i++)\{
-335         \textcolor{comment}{//cout << i << " : " << "[x, y, z] => [ " << inputPointCloud->points[i].x << ", " <<
-       inputPointCloud->points[i].y << ", " << inputPointCloud->points[i].z << " ] " << endl;}
-336         \textcolor{comment}{//fprintf\_s(pointcloud, "%f %f %f\(\backslash\)n", inputPointCloud->points[i].x, inputPointCloud->points[i].y,
-       inputPointCloud->points[i].z); //ファイルに出力}
-337         sum\_pointcloud.x = sum\_pointcloud.x + inputPointCloud->points[i].x; \textcolor{comment}{//点群のx座標を足し合わせていく}
-338         sum\_pointcloud.y = sum\_pointcloud.y + inputPointCloud->points[i].y; \textcolor{comment}{//点群のy座標を足し合わせていく}
-339         sum\_pointcloud.z = sum\_pointcloud.z + inputPointCloud->points[i].z; \textcolor{comment}{//点群のz座標を足し合わせていく}
-340         \textcolor{comment}{//cout << i << " : " << "sum\_x => " << sum\_pointcloud.x << ", sum\_y => " << sum\_pointcloud.y << ",
-       sum\_z => " << sum\_pointcloud.z << endl;}
-341         \textcolor{comment}{//cout << sum\_pointcloud << endl; //確認用}
-342     \}
-343     \textcolor{comment}{//cout << "SUM => " << sum\_pointcloud << endl; //合計の確認用}
-344     centroid\_coordinate.x = sum\_pointcloud.x / inputPointCloud->size(); \textcolor{comment}{//x座標の平均(重心)}
-345     centroid\_coordinate.y = sum\_pointcloud.y / inputPointCloud->size(); \textcolor{comment}{//y座標の平均(重心)}
-346     centroid\_coordinate.z = sum\_pointcloud.z / inputPointCloud->size(); \textcolor{comment}{//z座標の平均(重心)}
-347     \textcolor{comment}{//cout << "Centroid" << centroid\_coordinate << endl; //確認用}
-348     
-349     \textcolor{comment}{//平均座標(重心)をファイルに出力(確認用)}
-350     \textcolor{comment}{//fprintf\_s(centroid, "%f %f %f\(\backslash\)n",centroid\_coordinate.x,centroid\_coordinate.y,centroid\_coordinate.z);}
-351 
-352     \textcolor{comment}{//ファイルを閉じる(核に尿)}
-353     \textcolor{comment}{//fclose(pointcloud);}
-354     \textcolor{comment}{//fclose(centroid);}
-355 
-356     \textcolor{keywordflow}{return} centroid\_coordinate;
-357 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_point_cloud_library_ad6ce847f97bd8bc4621a4c6a2c380b78_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!get\-Extract\-Plane\-And\-Clustering@{get\-Extract\-Plane\-And\-Clustering}}
 \index{get\-Extract\-Plane\-And\-Clustering@{get\-Extract\-Plane\-And\-Clustering}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{get\-Extract\-Plane\-And\-Clustering}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr Point\-Cloud\-Library\-::get\-Extract\-Plane\-And\-Clustering (
@@ -344,14 +283,12 @@ Point3f centroid
 \item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{input\-Point\-Cloud, }
 \item[{bool}]{optimize, }
 \item[{int}]{max\-Iterations, }
-\item[{double}]{threshold, }
 \item[{bool}]{negative1, }
 \item[{bool}]{negative2, }
-\item[{double}]{tolerance, }
 \item[{int}]{min\-Cluster\-Size, }
 \item[{int}]{max\-Cluster\-Size}
 \end{DoxyParamCaption}
-)}\label{class_point_cloud_library_a02bfccb26f68ce7498f0054f7bdd5517}
+)}\label{class_point_cloud_library_a222d6644e01b9925d923d58eb7ea1522}
 
 
 平面検出とクラスタリング 
@@ -360,124 +297,47 @@ Point3f centroid
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+{\em optimize} & bool型．最適化するかどうかのフラグ \\
+\hline
+{\em max\-Iterations} & int型．最大繰り返し回数 \\
+\hline
+{\em negative1} & bool型．抽出範囲を除くか保持するかのフラグ \\
+\hline
+{\em negative2} & bool型．抽出範囲を除くか保持するかのフラグ \\
+\hline
+{\em min\-Cluster\-Size} & int型．クラスタの最小サイズ \\
+\hline
+{\em max\-Cluster\-Sizer} & int型．クラスタの最大サイズ \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 214 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 229 行目に定義があります。
+
+
+
+参照先 th, tor.
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-215 \{
-216     cout << \textcolor{stringliteral}{"before\(\backslash\)tExtract Plane\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-217 
-218     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud\_plane(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>());
-219     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>());
-220     pcl::ModelCoefficients::Ptr coefficients(\textcolor{keyword}{new} pcl::ModelCoefficients);
-221     pcl::PointIndices::Ptr inliers(\textcolor{keyword}{new} pcl::PointIndices);
-222 
-223     \textcolor{comment}{//セグメンテーションオブジェクトの生成}
-224     pcl::SACSegmentation<pcl::PointXYZRGB> seg;
-225 
-226     \textcolor{comment}{//オプション}
-227     seg.setOptimizeCoefficients(optimize);
-228 
-229     \textcolor{comment}{//Mandatory}
-230     seg.setModelType(pcl::SACMODEL\_PLANE);
-231     seg.setMethodType(pcl::SAC\_RANSAC);
-232 
-233     \textcolor{comment}{//クラスタリング}
-234     seg.setMaxIterations(maxIterations); \textcolor{comment}{//Default->100}
-235     \textcolor{comment}{//}
-236 
-237     seg.setDistanceThreshold(threshold);
-238 
-239     \textcolor{keywordtype}{int} i = 0, nr\_points = (int)inputPointCloud->points.size();
-240     \textcolor{keywordflow}{while} (inputPointCloud->points.size() > 0.3*nr\_points)
-241     \{
-242         seg.setInputCloud(inputPointCloud);
-243         seg.segment(*inliers, *coefficients);
-244         \textcolor{keywordflow}{if} (inliers->indices.size() == 0)
-245         \{
-246             cout << \textcolor{stringliteral}{"Could not estimate a planar model for the given dataset."} << endl;
-247             \textcolor{keywordflow}{break};
-248         \}
-249         pcl::ExtractIndices<pcl::PointXYZRGB> extract;
-250         extract.setInputCloud(inputPointCloud);
-251         extract.setIndices(inliers);
-252         extract.setNegative(negative1); \textcolor{comment}{//true:平面以外を残す．false:平面を残す}
-253 
-254         extract.filter(*cloud\_plane);
-255         \textcolor{comment}{//cout << "PointCloud representing the planar component: " << cloud\_plane->points.size() << endl;
-       //平面のサイズ}
-256 
-257         extract.setNegative(negative2);
-258         extract.filter(*filtered);
-259         pcl::copyPointCloud(*filtered, *inputPointCloud);
-260     \}
-261 
-262     pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(\textcolor{keyword}{new} pcl::search::KdTree<pcl::PointXYZRGB>);
-263     tree->setInputCloud(inputPointCloud);
-264 
-265     std::vector<pcl::PointIndices> cluster\_indices;
-266     pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
-267     ec.setClusterTolerance(tolerance); \textcolor{comment}{//単位[m]}
-268     ec.setMinClusterSize(minClusterSize); \textcolor{comment}{//最小クラスタの値}
-269     ec.setMaxClusterSize(maxClusterSize); \textcolor{comment}{//最大クラスタの値}
-270     ec.setSearchMethod(tree); \textcolor{comment}{//検索手法}
-271     ec.setInputCloud(inputPointCloud); \textcolor{comment}{//点群を入力}
-272     ec.extract(cluster\_indices); \textcolor{comment}{//クラスタ情報を出力}
-273 
-274     \textcolor{keywordtype}{int} j = 0; \textcolor{comment}{//クラスタのカウント}
-275     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud\_cluster(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>); \textcolor{comment}{//
-      クラスタに色付後の点群用}
-276     pcl::PointCloud<pcl::PointXYZRGB>::Ptr max\_cluster(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>); \textcolor{comment}{//
-      最大のクラスタを探す(c76)}
-277     max\_cluster = cloud\_cluster; \textcolor{comment}{//最初のクラスタを最大クラスタとする(c76)}
-278 
-279     \textcolor{keywordtype}{float} colors[6][3] = \{ \{ 255, 0, 0 \}, \{ 0, 255, 0 \}, \{ 0, 0, 255 \}, \{ 255, 255, 0 \}, \{ 0, 255, 255 \}, \{
-       255, 0, 255 \} \}; \textcolor{comment}{//クラスタに色を付ける用}
-280     \textcolor{keywordflow}{for} (std::vector<pcl::PointIndices>::const\_iterator it = cluster\_indices.begin(); it != cluster\_indices
-      .end(); ++it) \textcolor{comment}{//クラスタを1塊ごとに出力}
-281     \{
-282         \textcolor{keywordflow}{for} (std::vector<int>::const\_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit)\{
-283             inputPointCloud->points[*pit].r = colors[j % 6][0];
-284             inputPointCloud->points[*pit].g = colors[j % 6][1];
-285             inputPointCloud->points[*pit].b = colors[j % 6][2];
-286             cloud\_cluster->points.push\_back(inputPointCloud->points[*pit]);
-287         \}
-288 
-289         \textcolor{comment}{//最大のクラスタを探す．元のmac\_clusterより新しいクラスタの方が大きければ新しいクラスタをmax\_clusterとする(c76)}
-290         \textcolor{keywordflow}{if} (max\_cluster->size() < cloud\_cluster->size())\{
-291             pcl::copyPointCloud(*cloud\_cluster, *max\_cluster);
-292         \}
-293 
-294         \textcolor{comment}{//cloud\_cluster->width = cloud\_cluster->points.size();}
-295         \textcolor{comment}{//cloud\_cluster->height = 1;}
-296         cloud\_cluster->is\_dense = \textcolor{keyword}{true};
-297         cout << \textcolor{stringliteral}{"Cluster "} << j << \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << cloud\_cluster->size() << endl;
-298 
-299         j++;
-300     \}
-301 
-302     \textcolor{comment}{//cout << "width => " << max\_cluster->width << " height => " << max\_cluster->height << endl;}
-303 
-304     \textcolor{comment}{//cout << "cloud\_cluster => " << cloud\_cluster->size() << ", max\_cluster => " << max\_cluster->size() <<
-       endl;}
-305     \textcolor{comment}{//pcl::copyPointCloud(*cloud\_cluster, *filtered); //カラーリングしたクラスタ全てを出力}
-306     pcl::copyPointCloud(*max\_cluster, *filtered); \textcolor{comment}{//最大のクラスタのみ出力(c76)}
-307     cout << \textcolor{stringliteral}{"after\(\backslash\)tExtract Plane\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl;
-308     \textcolor{keywordflow}{return} filtered;
-309 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{class_point_cloud_library_a222d6644e01b9925d923d58eb7ea1522_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!get\-Surface\-Normals@{get\-Surface\-Normals}}
 \index{get\-Surface\-Normals@{get\-Surface\-Normals}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{get\-Surface\-Normals}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Normal $>$\-::Ptr Point\-Cloud\-Library\-::get\-Surface\-Normals (
@@ -493,30 +353,16 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr型．入力するポイントクラウド \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals 
+cloud\-\_\-normals pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 364 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 379 行目に定義があります。
 
-
-\begin{DoxyCode}
-365 \{
-366     pcl::NormalEstimation<pcl::PointXYZRGB, pcl::Normal> ne;
-367     ne.setInputCloud(inputPointCloud); \textcolor{comment}{//入力された点群の法線を計算する}
-368     pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(\textcolor{keyword}{new} pcl::search::KdTree<pcl::PointXYZRGB>());
-369     ne.setSearchMethod(tree);
-370     pcl::PointCloud<pcl::Normal>::Ptr cloud\_normals(\textcolor{keyword}{new} pcl::PointCloud<pcl::Normal>);
-371     ne.setRadiusSearch(0.005);
-372     ne.compute(*cloud\_normals);
-373 
-374     cout << *cloud\_normals << endl;
-375     \textcolor{keywordflow}{return} cloud\_normals;
-376 \}\end{DoxyCode}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!initialize\-P\-C\-L\-Visualizer@{initialize\-P\-C\-L\-Visualizer}}
 \index{initialize\-P\-C\-L\-Visualizer@{initialize\-P\-C\-L\-Visualizer}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{initialize\-P\-C\-L\-Visualizer}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::initialize\-P\-C\-L\-Visualizer (
@@ -526,7 +372,18 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals
 )}\label{class_point_cloud_library_a7c0232fc05e878dd58f64c1e6ed8e0b4}
 
 
- Point\-Cloud\-Library.\-cpp の 53 行目に定義があります。
+P\-C\-L Visualizerの初期化 
+
+メソッド\-Point\-Cloud\-Library\-::initialize\-P\-C\-L\-Visualizer()．\-P\-C\-L Visualizerの初期化を行うメソッド
+
+
+\begin{DoxyParams}{引数}
+{\em pclvisualizer\-\_\-name} & string型．\-P\-C\-L Visualizerの名前 \\
+\hline
+\end{DoxyParams}
+
+
+ Point\-Cloud\-Library.\-cpp の 52 行目に定義があります。
 
 
 
@@ -537,50 +394,16 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals
 参照元 main().
 
 
-\begin{DoxyCode}
-54 \{
-55     visualizer = \textcolor{keyword}{new} pcl::visualization::PCLVisualizer(pclvisualizer\_name); \textcolor{comment}{//PCLVisualizerのウインドウ名}
-56     visualizer->setBackgroundColor(0, 0, 0); \textcolor{comment}{//PCLVisualizerの背景色}
-57     \textcolor{comment}{//visualizer->setPointCloudRenderingProperties(pcl::visualization::PCL\_VISUALIZER\_POINT\_SIZE, 1, "show
-       cloud");}
-58     visualizer->addCoordinateSystem(1.0);
-59     visualizer->initCameraParameters();
-60     \textcolor{keywordflow}{return};
-61 \}
-\end{DoxyCode}
-\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!initialize\-Point\-Cloud\-Viewer@{initialize\-Point\-Cloud\-Viewer}}
-\index{initialize\-Point\-Cloud\-Viewer@{initialize\-Point\-Cloud\-Viewer}!PointCloudLibrary@{Point\-Cloud\-Library}}
-\subsubsection[{initialize\-Point\-Cloud\-Viewer}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::initialize\-Point\-Cloud\-Viewer (
-\begin{DoxyParamCaption}
-\item[{string}]{cloudviewer\-\_\-name}
-\end{DoxyParamCaption}
-)}\label{class_point_cloud_library_a7539694c0625f14897552f4536008757}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_point_cloud_library_a7c0232fc05e878dd58f64c1e6ed8e0b4_icgraph}
+\end{center}
+\end{figure}
 
 
-ポイントクラウドビューアーを初期化 
-
-メソッド\-Point\-Cloud\-Library\-::initialize\-Point\-Cloud\-Viewer().ポイントクラウドビューアーを初期化するメソッド(c57)
-
-
-\begin{DoxyParams}{引数}
-{\em string} & cloudviewer\-\_\-name \\
-\hline
-\end{DoxyParams}
-
-
- Point\-Cloud\-Library.\-cpp の 47 行目に定義があります。
-
-
-
-参照先 viewer.
-
-
-\begin{DoxyCode}
-48 \{
-49     viewer = \textcolor{keyword}{new} pcl::visualization::CloudViewer(cloudviewer\_name);
-50     \textcolor{keywordflow}{return};
-51 \}
-\end{DoxyCode}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!load\-P\-L\-Y@{load\-P\-L\-Y}}
 \index{load\-P\-L\-Y@{load\-P\-L\-Y}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{load\-P\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::load\-P\-L\-Y (
@@ -590,11 +413,13 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals
 )}\label{class_point_cloud_library_a4cbedddc1feb21c4653d128de7dcd690}
 
 
-メソッド\-Point\-Cloud\-Library\-::load\-P\-L\-Y()．plyファイルを読み込む 
+.plyファイルの読み込み 
+
+メソッド\-Point\-Cloud\-Library\-::load\-P\-L\-Y()．plyファイルを読み込む
 
 
 \begin{DoxyParams}{引数}
-{\em char$\ast$} & ply\-\_\-name \\
+{\em ply\-\_\-name} & char$\ast$型．読み込みたい.plyファイルの名前 \\
 \hline
 \end{DoxyParams}
 
@@ -605,14 +430,106 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals
 
 参照先 model.
 
+\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!output\-Point\-Cloud@{output\-Point\-Cloud}}
+\index{output\-Point\-Cloud@{output\-Point\-Cloud}!PointCloudLibrary@{Point\-Cloud\-Library}}
+\subsubsection[{output\-Point\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::output\-Point\-Cloud (
+\begin{DoxyParamCaption}
+\item[{int}]{save\-\_\-count, }
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename, }
+\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{output\-Point\-Cloud}
+\end{DoxyParamCaption}
+)}\label{class_point_cloud_library_ac46bf4f8f9f819b8418e989fcb88f2e8}
 
-\begin{DoxyCode}
-68 \{
-69     pcl::io::loadPLYFile(ply\_name, *model); \textcolor{comment}{//plyファイルを読み込みmodelに格納する}
-70     cout << \textcolor{stringliteral}{"load "} << ply\_name << \textcolor{stringliteral}{". "} << endl;
-71     \textcolor{keywordflow}{return};
-72 \}
-\end{DoxyCode}
+
+点群を出力するメソッド 
+
+メソッド\-Point\-Cloud\-Library\-::output\-Point\-Cloud()．時間と速度のプロット
+
+
+\begin{DoxyParams}{引数}
+{\em save\-\_\-count} & int型．保存数のカウント \\
+\hline
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+{\em \&output\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+\end{DoxyParams}
+
+
+ Point\-Cloud\-Library.\-cpp の 404 行目に定義があります。
+
+
+
+参照先 N\-O\-C.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_point_cloud_library_ac46bf4f8f9f819b8418e989fcb88f2e8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!output\-Point\-Cloud\-P\-L\-Y@{output\-Point\-Cloud\-P\-L\-Y}}
+\index{output\-Point\-Cloud\-P\-L\-Y@{output\-Point\-Cloud\-P\-L\-Y}!PointCloudLibrary@{Point\-Cloud\-Library}}
+\subsubsection[{output\-Point\-Cloud\-P\-L\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Cloud\-Library\-::output\-Point\-Cloud\-P\-L\-Y (
+\begin{DoxyParamCaption}
+\item[{int}]{save\-\_\-count, }
+\item[{char $\ast$}]{original\-\_\-dirpath, }
+\item[{char $\ast$}]{output\-\_\-filename, }
+\item[{pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr \&}]{output\-Point\-Cloud}
+\end{DoxyParamCaption}
+)}\label{class_point_cloud_library_a450a5b18fa99c06b091fc68fe57bbea7}
+
+
+点群をply形式で保存するメソッド 
+
+メソッド\-Point\-Cloud\-Library\-::output\-Point\-Cloud\-P\-L\-Y()．時間とヨー角のプロット
+
+
+\begin{DoxyParams}{引数}
+{\em save\-\_\-count} & int型．保存数のカウント \\
+\hline
+{\em original\-\_\-dirpath} & char$\ast$型．基となるディレクトリ名 \\
+\hline
+{\em output\-\_\-filename} & char$\ast$型．出力するファイル名 \\
+\hline
+{\em \&output\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::\-Ptr型．出力するポイントクラウド \\
+\hline
+\end{DoxyParams}
+
+
+ Point\-Cloud\-Library.\-cpp の 425 行目に定義があります。
+
+
+
+参照先 N\-O\-C.
+
+
+
+参照元 main().
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_point_cloud_library_a450a5b18fa99c06b091fc68fe57bbea7_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!pass\-Through\-Filter@{pass\-Through\-Filter}}
 \index{pass\-Through\-Filter@{pass\-Through\-Filter}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{pass\-Through\-Filter}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr Point\-Cloud\-Library\-::pass\-Through\-Filter (
@@ -631,38 +548,37 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Normal$>$\-::\-Ptr cloud\-\_\-normals
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+{\em axis} & char$\ast$型．フィルタをかけたい軸の名前 \\
+\hline
+{\em min} & float型．フィルターの調整用の最小変数 \\
+\hline
+{\em max} & float型．フィルターの調整用の最大変数 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．フィルタ処理後のポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 103 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 106 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-104 \{
-105     cout << \textcolor{stringliteral}{"before\(\backslash\)tPassThroughFilter\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-106 
-107     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      フィルター後用のポイントクラウド}
-108     pcl::PassThrough<pcl::PointXYZRGB> pass;
-109     pass.setInputCloud(inputPointCloud);
-110     pass.setFilterFieldName(axis);
-111     pass.setFilterLimitsNegative(\textcolor{keyword}{false}); \textcolor{comment}{//setFilterLimits(float min, float max)で指定した範囲以外を削除(c69)}
-112     pass.setFilterLimits(min, max);
-113     pass.filter(*filtered);
-114     
-115     cout << \textcolor{stringliteral}{"after\(\backslash\)tPassThroughFilter\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl;
-116     \textcolor{keywordflow}{return} filtered;
-117 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_point_cloud_library_a1381846354368f5925e3b4e7d649c902_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!radius\-Outlier\-Removal@{radius\-Outlier\-Removal}}
 \index{radius\-Outlier\-Removal@{radius\-Outlier\-Removal}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{radius\-Outlier\-Removal}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr Point\-Cloud\-Library\-::radius\-Outlier\-Removal (
@@ -672,38 +588,22 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 )}\label{class_point_cloud_library_a3731df64289fac15009df853c94bc537}
 
 
-メソッド\-Point\-Cloud\-Library\-::radius\-Outlier\-Removal()．外れ値を除去するメソッド(c60) 
+外れ値を除去するメソッド 
+
+メソッド\-Point\-Cloud\-Library\-::radius\-Outlier\-Removal()．外れ値を除去するメソッド(c60)
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 146 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 149 行目に定義があります。
 
-
-\begin{DoxyCode}
-147 \{
-148     cout << \textcolor{stringliteral}{"before\(\backslash\)tRadiusOutlierRemoval\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-149 
-150     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      フィルタリング後用のポイントクラウドを宣言}
-151     pcl::RadiusOutlierRemoval<pcl::PointXYZRGB> ror;
-152 
-153     ror.setInputCloud(inputPointCloud);
-154     ror.setRadiusSearch(0.8);
-155     ror.setMinNeighborsInRadius(2);
-156     ror.filter(*filtered);
-157 
-158     cout << \textcolor{stringliteral}{"after\(\backslash\)tRadiusOutlierRemoval\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl;
-159     \textcolor{keywordflow}{return} filtered;
-160 \}
-\end{DoxyCode}
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!remove\-Outlier@{remove\-Outlier}}
 \index{remove\-Outlier@{remove\-Outlier}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{remove\-Outlier}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr Point\-Cloud\-Library\-::remove\-Outlier (
@@ -713,43 +613,37 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 )}\label{class_point_cloud_library_a4f27c0dfaae2be0174d733e295d1bf36}
 
 
-メソッド\-Point\-Cloud\-Library\-::remove\-Outlier()．外れ値を除去するメソッド(c59) 
+外れ値を除去するメソッド 
+
+メソッド\-Point\-Cloud\-Library\-::remove\-Outlier()．外れ値を除去するメソッド(c59)
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 124 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 127 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-125 \{
-126     cout << \textcolor{stringliteral}{"before\(\backslash\)tRemove Outlier\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-127 
-128     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      フィルタリング後用のポイントクラウドを宣言}
-129     pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> fl;
-130     
-131     fl.setInputCloud(inputPointCloud);
-132     fl.setMeanK(10);
-133     fl.setStddevMulThresh(0.1);
-134     fl.filter(*filtered);
-135     fl.setNegative(\textcolor{keyword}{true});
-136 
-137     cout << \textcolor{stringliteral}{"after\(\backslash\)tRemove Outlier\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl;
-138     \textcolor{keywordflow}{return} filtered;
-139 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_point_cloud_library_a4f27c0dfaae2be0174d733e295d1bf36_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!smoothing\-Using\-Moving\-Least\-Square@{smoothing\-Using\-Moving\-Least\-Square}}
 \index{smoothing\-Using\-Moving\-Least\-Square@{smoothing\-Using\-Moving\-Least\-Square}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{smoothing\-Using\-Moving\-Least\-Square}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$ pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B $>$\-::Ptr Point\-Cloud\-Library\-::smoothing\-Using\-Moving\-Least\-Square (
@@ -762,49 +656,43 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 )}\label{class_point_cloud_library_a2899ca3f4f6b2f8bce39524fba686e74}
 
 
-スムージング 
+スムージングを行うメソッド 
 
 メソッド\-Point\-Cloud\-Library\-::smoothing\-Using\-Moving\-Least\-Square()．スムージングを行うメソッド(c60)
 
 
 \begin{DoxyParams}{引数}
-{\em pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr} & \&input\-Point\-Cloud \\
+{\em \&input\-Point\-Cloud} & pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．入力するポイントクラウド \\
+\hline
+{\em compute\-\_\-normals} & bool型．法線を計算するかどうか \\
+\hline
+{\em polynominal\-\_\-fit} & bool型．チェックするためのフラグ \\
+\hline
+{\em radius} & double型．半径 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered 
+filtered pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr型．出力するポイントクラウド 
 \end{DoxyReturn}
 
 
- Point\-Cloud\-Library.\-cpp の 189 行目に定義があります。
+ Point\-Cloud\-Library.\-cpp の 198 行目に定義があります。
 
 
 
 参照元 main().
 
 
-\begin{DoxyCode}
-190 \{
-191     cout << \textcolor{stringliteral}{"before\(\backslash\)tMLS\(\backslash\)t\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << inputPointCloud->size() << endl;
-192 
-193     pcl::PointCloud<pcl::PointXYZRGB>::Ptr filtered(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      フィルタリング処理後用のポイントクラウド}
-194     pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(\textcolor{keyword}{new} pcl::search::KdTree<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      KdTreeの作成}
-195     pcl::MovingLeastSquares<pcl::PointXYZRGB, pcl::PointXYZRGB> mls; \textcolor{comment}{//スムージング処理}
-196 
-197     mls.setComputeNormals(compute\_normals); \textcolor{comment}{//法線の計算}
-198     \textcolor{comment}{//各パラメータの設定}
-199     mls.setInputCloud(inputPointCloud);
-200     mls.setPolynomialFit(polynomial\_fit);
-201     mls.setSearchMethod(tree);
-202     mls.setSearchRadius(radius);
-203     mls.process(*filtered); \textcolor{comment}{// 出力}
-204 
-205     cout << \textcolor{stringliteral}{"after\(\backslash\)tMLS\(\backslash\)t\(\backslash\)t\(\backslash\)t=>\(\backslash\)t"} << filtered->size() << endl;
-206     \textcolor{keywordflow}{return} filtered;
-207 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{class_point_cloud_library_a2899ca3f4f6b2f8bce39524fba686e74_icgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{メンバ詳解}
@@ -817,7 +705,7 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 
 
 
- Point\-Cloud\-Library.\-hpp の 44 行目に定義があります。
+ Point\-Cloud\-Library.\-hpp の 42 行目に定義があります。
 
 
 
@@ -828,7 +716,11 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{downsampling\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Point\-Cloud\-Library\-::downsampling\-\_\-flag}\label{class_point_cloud_library_a6bb70f323f325576a505c45edd1f2ebe}
 
 
- Point\-Cloud\-Library.\-hpp の 57 行目に定義があります。
+ダウンサンプリングを行うかどうかのフラグ 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 55 行目に定義があります。
 
 
 
@@ -839,7 +731,11 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{extractplane\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Point\-Cloud\-Library\-::extractplane\-\_\-flag}\label{class_point_cloud_library_a76c829d2feea3efcb84449a0c360ec43}
 
 
- Point\-Cloud\-Library.\-hpp の 60 行目に定義があります。
+平面検出とクラスタリングを行うかどうかのフラグ 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 58 行目に定義があります。
 
 
 
@@ -850,7 +746,11 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{mls\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Point\-Cloud\-Library\-::mls\-\_\-flag}\label{class_point_cloud_library_a0745fdcbdae44048793a4dce33dfeb4f}
 
 
- Point\-Cloud\-Library.\-hpp の 59 行目に定義があります。
+スムージングを行うかどうかのフラグ 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 57 行目に定義があります。
 
 
 
@@ -861,7 +761,11 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{model}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z\-R\-G\-B$>$\-::Ptr Point\-Cloud\-Library\-::model}\label{class_point_cloud_library_a9353ff5d5de9f4d0cc755c3f6bff8417}
 
 
- Point\-Cloud\-Library.\-hpp の 32 行目に定義があります。
+.plyファイルの点群(モデル) 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 30 行目に定義があります。
 
 
 
@@ -872,7 +776,11 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{passthrough\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Point\-Cloud\-Library\-::passthrough\-\_\-flag}\label{class_point_cloud_library_a29aa3ebced9106bfc070d557efdbdbcf}
 
 
- Point\-Cloud\-Library.\-hpp の 56 行目に定義があります。
+パススルーフィルターを用いるかどうかのフラグ 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 54 行目に定義があります。
 
 
 
@@ -883,29 +791,56 @@ pcl\-::\-Point\-Cloud$<$pcl\-::\-Point\-X\-Y\-Z$>$\-::\-Ptr filtered
 \subsubsection[{statisticaloutlierremoval\-\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Point\-Cloud\-Library\-::statisticaloutlierremoval\-\_\-flag}\label{class_point_cloud_library_a25f7509ec80771a394266cc98c117a9b}
 
 
- Point\-Cloud\-Library.\-hpp の 58 行目に定義があります。
+外れ値を除去するかどうかのフラグ 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 56 行目に定義があります。
 
 
 
 参照元 flag\-Checker(), main(), Point\-Cloud\-Library().
 
-\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!viewer@{viewer}}
-\index{viewer@{viewer}!PointCloudLibrary@{Point\-Cloud\-Library}}
-\subsubsection[{viewer}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::visualization\-::\-Cloud\-Viewer$\ast$ Point\-Cloud\-Library\-::viewer}\label{class_point_cloud_library_a43d9e8806ab9f7e52782604020922339}
+\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!th@{th}}
+\index{th@{th}!PointCloudLibrary@{Point\-Cloud\-Library}}
+\subsubsection[{th}]{\setlength{\rightskip}{0pt plus 5cm}int Point\-Cloud\-Library\-::th}\label{class_point_cloud_library_a57b46fb5c545028d0dcdab0808f169fb}
+
+
+平面検出とクラスタリング時用の閾値スライダー変数 
+
 
 
  Point\-Cloud\-Library.\-hpp の 50 行目に定義があります。
 
 
 
-参照元 initialize\-Point\-Cloud\-Viewer().
+参照元 get\-Extract\-Plane\-And\-Clustering(), Point\-Cloud\-Library().
+
+\index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!tor@{tor}}
+\index{tor@{tor}!PointCloudLibrary@{Point\-Cloud\-Library}}
+\subsubsection[{tor}]{\setlength{\rightskip}{0pt plus 5cm}int Point\-Cloud\-Library\-::tor}\label{class_point_cloud_library_ab5309a4bc712ded75c797a40e565d829}
+
+
+平面検出とクラスタリング時用のスライダー変数 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 51 行目に定義があります。
+
+
+
+参照元 get\-Extract\-Plane\-And\-Clustering(), Point\-Cloud\-Library().
 
 \index{Point\-Cloud\-Library@{Point\-Cloud\-Library}!visualizer@{visualizer}}
 \index{visualizer@{visualizer}!PointCloudLibrary@{Point\-Cloud\-Library}}
 \subsubsection[{visualizer}]{\setlength{\rightskip}{0pt plus 5cm}pcl\-::visualization\-::\-P\-C\-L\-Visualizer$\ast$ Point\-Cloud\-Library\-::visualizer}\label{class_point_cloud_library_a00af6b104220e288f26c2d6f890ccd86}
 
 
- Point\-Cloud\-Library.\-hpp の 53 行目に定義があります。
+P\-C\-L Visualizer. 
+
+
+
+ Point\-Cloud\-Library.\-hpp の 48 行目に定義があります。
 
 
 

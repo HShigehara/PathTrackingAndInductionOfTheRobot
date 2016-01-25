@@ -1,11 +1,9 @@
 ﻿/*
  * @file System.hpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief kinect処理のクラスのヘッダ
  * @date 2014.12.19
  * @author H.Shigehara
  */
-
 
 /* インクルードガード */
 #ifndef __SYSTEM_HPP__
@@ -14,15 +12,19 @@
 /* ヘッダファイルのインクルード */
 #include "PathTrackingAndInductionOfTheRobot.hpp"
 
+/*!
+ * @class System
+ * @brief システム関連の処理を行うクラス
+ */
 class System
 {
 private:
 	//タイマー系の変数(c65)
 	bool FlagStartTimer; //!<スタート用のタイマーが実行されたかのフラグ.初期値はfalse(c65)
 	bool FlagEndTimer; //!<終了用のタイマーが実行されたかのフラグ.諸お基地はfalse(c65) 
-	int64 start; //スタート時のタイマー変数
-	double f;
-	int64 end; //終了時のタイマー変数
+	int64 start; //!<スタート時のタイマー変数
+	double f; //!<時間計算用の変数
+	int64 end; //!<終了時のタイマー変数
 
 public:
 	System(); //!<コンストラクタ

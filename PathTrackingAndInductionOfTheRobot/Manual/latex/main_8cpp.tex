@@ -8,6 +8,13 @@
 {\ttfamily \#include \char`\"{}Least\-Square\-Method.\-hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Point\-Cloud\-Library.\-hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}E\-V3\-Control.\-hpp\char`\"{}}\\*
+main.\-cpp の依存先関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
 \subsection*{関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,9 +36,7 @@ int {\bf track\-Object} = 0
 Point {\bf origin}
 \begin{DoxyCompactList}\small\item\em オリジナルの座標 \end{DoxyCompactList}\item 
 Rect {\bf selection}
-\begin{DoxyCompactList}\small\item\em 選択 \end{DoxyCompactList}\item 
-int {\bf save\-\_\-count} = 0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 選択 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{関数詳解}
@@ -46,297 +51,32 @@ int {\bf save\-\_\-count} = 0
 
 関数main() 
 
-
-\begin{DoxyParams}{引数}
-{\em なし} & \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-なし 
+0 正常終了 
+
+-\/1 異常終了 
 \end{DoxyReturn}
-$<$システム的なメソッドをまとめているクラス
+pointcloudlibrary.\-viewer-\/$>$was\-Stopped() \&\&
 
-$<$drawingクラスのインスタンスを生成
+$<$平均座標を確認するための球 
 
-$<$最小二乗法を行うクラスのインスタンスを生成(c49)
-
-$<$E\-V3を制御する用のクラスを作成(c80)
-
-$<$E\-V3の軌道を保存するためのフラグ(c82)
-
-$<$背景画像(c75)
-
-pointcloudlibrary.\-viewer-\/$>$was\-Stopped() \&\& 
-
- main.\-cpp の 39 行目に定義があります。
+ main.\-cpp の 36 行目に定義があります。
 
 
 
-参照先 System\-::alternatives(), Least\-Square\-Method\-::calc\-Yaw\-Roll\-Pitch(), Point\-Cloud\-Library\-::centroid, System\-::check\-Directory(), Image\-Processing\-::closing\-\_\-times, System\-::countdown\-Timer(), Point\-Cloud\-Library\-::downsampling\-\_\-flag, Point\-Cloud\-Library\-::down\-Sampling\-Using\-Voxel\-Grid\-Filter(), Kinect\-::draw\-R\-G\-B\-Image(), System\-::end\-Message(), System\-::end\-Timer(), E\-V3\-Control\-::ev3\-\_\-6dof, Point\-Cloud\-Library\-::extractplane\-\_\-flag, Point\-Cloud\-Library\-::flag\-Checker(), Image\-Processing\-::get\-Background\-Substraction\-Bin\-Image(), Point\-Cloud\-Library\-::get\-Centroid\-Coordinate3d(), Least\-Square\-Method\-::get\-Coefficient(), Point\-Cloud\-Library\-::get\-Extract\-Plane\-And\-Clustering(), System\-::get\-Frame\-Rate(), Kinect\-::get\-Point\-Cloud(), System\-::get\-Process\-Timein\-Miliseconds(), Image\-Processing\-::get\-Undistortion\-Image(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), image, Kinect\-::initialize(), Point\-Cloud\-Library\-::initialize\-P\-C\-L\-Visualizer(), Kinect\-::key, Image\-Processing\-::load\-Internal\-Camera\-Parameter(), System\-::make\-Directory(), Point\-Cloud\-Library\-::mls\-\_\-flag, Image\-Processing\-::neighborhood, Point\-Cloud\-Library\-::passthrough\-\_\-flag, Point\-Cloud\-Library\-::pass\-Through\-Filter(), System\-::remove\-Directory(), Point\-Cloud\-Library\-::remove\-Outlier(), save\-\_\-count, System\-::save\-\_\-flag, System\-::save\-Data\-Continuously(), System\-::save\-Data\-Every\-Enter\-Key(), E\-V3\-Control\-::set6\-Do\-F\-E\-V3(), Image\-Processing\-::show\-Image(), Point\-Cloud\-Library\-::smoothing\-Using\-Moving\-Least\-Square(), System\-::start\-Message(), System\-::start\-Timer(), Point\-Cloud\-Library\-::statisticaloutlierremoval\-\_\-flag, Kinect\-::stream\-Event, Image\-Processing\-::th, Point\-Cloud\-Library\-::visualizer (計49項目).
+参照先 System\-::alternatives(), Least\-Square\-Method\-::attitude\-\_\-angle, Least\-Square\-Method\-::calc\-Yaw\-Roll\-Pitch(), Point\-Cloud\-Library\-::centroid, System\-::check\-Directory(), Least\-Square\-Method\-::coefficient\-\_\-plane, System\-::countdown\-Timer(), directory\-Name, Point\-Cloud\-Library\-::downsampling\-\_\-flag, Point\-Cloud\-Library\-::down\-Sampling\-Using\-Voxel\-Grid\-Filter(), Kinect\-::draw\-R\-G\-B\-Image(), System\-::end\-Message(), System\-::end\-Timer(), Point\-Cloud\-Library\-::extractplane\-\_\-flag, Point\-Cloud\-Library\-::flag\-Checker(), E\-V3\-Control\-::get\-Average\-Velocity\-And\-Yaw(), Image\-Processing\-::get\-Background\-Substraction\-Bin\-Image(), Point\-Cloud\-Library\-::get\-Centroid\-Coordinate3d(), Least\-Square\-Method\-::get\-Coefficient(), Point\-Cloud\-Library\-::get\-Extract\-Plane\-And\-Clustering(), System\-::get\-Frame\-Rate(), Kinect\-::get\-Point\-Cloud(), System\-::get\-Process\-Timein\-Miliseconds(), Image\-Processing\-::get\-Undistortion\-Image(), E\-V3\-Control\-::get\-Velocityin\-Sec(), Drawing\-::gnuplot\-Script\-E\-V3(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-Time2\-V(), Drawing\-::gnuplot\-Script\-Time2\-Yaw(), image, Kinect\-::initialize(), Point\-Cloud\-Library\-::initialize\-P\-C\-L\-Visualizer(), Kinect\-::key, Image\-Processing\-::load\-Internal\-Camera\-Parameter(), System\-::make\-Directory(), System\-::make\-Directory\-Based\-Date(), Point\-Cloud\-Library\-::mls\-\_\-flag, N\-O\-C, Image\-Processing\-::open\-C\-V\-Setting\-Trackbar(), E\-V3\-Control\-::output6\-Do\-F(), E\-V3\-Control\-::output6\-Do\-F\-Continuous(), E\-V3\-Control\-::output\-Control\-Information(), E\-V3\-Control\-::output\-E\-V3\-Route\-Continuous(), Image\-Processing\-::output\-Image\-Select\-Directory(), Point\-Cloud\-Library\-::output\-Point\-Cloud(), Point\-Cloud\-Library\-::output\-Point\-Cloud\-P\-L\-Y(), Point\-Cloud\-Library\-::passthrough\-\_\-flag, Point\-Cloud\-Library\-::pass\-Through\-Filter(), System\-::remove\-Directory(), Point\-Cloud\-Library\-::remove\-Outlier(), E\-V3\-Control\-::save\-\_\-flag, E\-V3\-Control\-::set6\-Do\-F\-E\-V3(), System\-::show\-Help\-Message(), Image\-Processing\-::show\-Image(), Point\-Cloud\-Library\-::smoothing\-Using\-Moving\-Least\-Square(), System\-::start\-Message(), System\-::start\-Timer(), Point\-Cloud\-Library\-::statisticaloutlierremoval\-\_\-flag, Kinect\-::stream\-Event, System\-::sum\-\_\-time, Point\-Cloud\-Library\-::visualizer (計61項目).
 
 
-\begin{DoxyCode}
-40 \{
-41     RETRY: \textcolor{comment}{//goto文．再計測をやり直す場合}
-42     \textcolor{comment}{//インスタンスの生成}
-43     Kinect kinect; \textcolor{comment}{//Kinectクラスのインスタンスを生成}
-44     System sys; 
-45     ImageProcessing imgproc; \textcolor{comment}{//Imageprocessingクラスのインスタンスを生成}
-46     Drawing draw; 
-47     LeastSquareMethod lsm; 
-48     PointCloudLibrary pointcloudlibrary(\textcolor{comment}{/*false*/}\textcolor{keyword}{true}, \textcolor{comment}{/*false*/}\textcolor{keyword}{true}, \textcolor{comment}{/*false*/}\textcolor{keyword}{true}, \textcolor{keyword}{false}, \textcolor{keyword}{false}\textcolor{comment}{/*true*/});
-       \textcolor{comment}{//PointCloudLibraryクラスのインスタンスを生成(c57)}
-49     EV3Control ev3control; 
-50 
-51     \textcolor{comment}{//変数の宣言}
-52     \textcolor{keywordtype}{bool} saveev3route\_flag = \textcolor{keyword}{false}; 
-53 
-54     \textcolor{comment}{//画像関係の変数}
-55     Mat flip\_image; \textcolor{comment}{//確認用に反転した画像}
-56     Mat current\_image; \textcolor{comment}{//現在のフレームの画像(c75)}
-57     Mat bin\_image; \textcolor{comment}{//背景差分によって得られた二値画像(c75)}
-58     Mat background\_image; 
-59     Mat background\_gray\_image;
-60 
-61     \textcolor{comment}{//ポイントクラウド関係の変数(c57)}
-62     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud; \textcolor{comment}{//処理を受け取る点群}
-63 
-64     \textcolor{comment}{//EV3ユニットの平面の係数(c78)}
-65     Eigen::Vector3f coefficient\_plane; \textcolor{comment}{//平面の係数}
-66     AttitudeAngle3d attitude\_angle; \textcolor{comment}{//姿勢角(c78)}
-67 
-68     \textcolor{comment}{//CloudVisualizermの初期設定(c83)}
-69 
-70 
-71     \textcolor{comment}{//メインの処理}
-72     \textcolor{keywordflow}{try}\{
-73         sys.startMessage(); \textcolor{comment}{//プログラム開始時のメッセージを表示}
-74         \textcolor{comment}{//初期設定(利用する場合はコメントを外す)}
-75         \textcolor{comment}{//pointcloudlibrary.loadPLY("EV3COLOR.ply"); //.plyファイルの読み込み．動作しない}
-76         \textcolor{comment}{//VideoWriter writer; //動画保存用 }
-77 
-78         \textcolor{comment}{//ウインドウ名とファイル名の定義}
-79         \textcolor{keyword}{const} \textcolor{keywordtype}{string} main\_windowname = \textcolor{stringliteral}{"Current Image"}; \textcolor{comment}{//メインウインドウの名前をつけておく．(c31)}
-80         \textcolor{keyword}{const} \textcolor{keywordtype}{string} backgroundimage\_windowname = \textcolor{stringliteral}{"Background Image"}; \textcolor{comment}{//背景画像を表示するためのウインドウ名}
-81         \textcolor{keyword}{const} \textcolor{keywordtype}{string} maskbinimage\_windowname = \textcolor{stringliteral}{"Mask Image"}; \textcolor{comment}{//マスク画像を表示するためのウインドウ名}
-82         \textcolor{comment}{//const string outputVideoName = "video.avi"; //計測中の動画ファイル名(c39)}
-83         \textcolor{keyword}{const} \textcolor{keywordtype}{string} cameraparameter\_name = \textcolor{stringliteral}{"sourcedata/cameraParam.xml"}; \textcolor{comment}{//
-      xmlファイル名の定義．カメラキャリブレーションによって得られたファイル名(c54)}
-84         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* basedirectory\_name = \textcolor{stringliteral}{"data"}; \textcolor{comment}{//データ保存先のディレクトリ名}
-85         \textcolor{keyword}{const} \textcolor{keywordtype}{string} cloudviewer\_windowname = \textcolor{stringliteral}{"Cloud Viewer"}; \textcolor{comment}{//クラウドビューアーの名前の定義(c81)}
-86         \textcolor{keyword}{const} \textcolor{keywordtype}{string} pclvisualizer\_windowname = \textcolor{stringliteral}{"3D Viewer"};
-87         \textcolor{keyword}{const} \textcolor{keywordtype}{string} param\_windowname = \textcolor{stringliteral}{"OpenCV Parameter Setting Window"}; \textcolor{comment}{//パラメータ調整用のウインドウ(c82)}
-88 
-89         kinect.initialize(); \textcolor{comment}{//Kinectの初期化}
-90         sys.checkDirectory(basedirectory\_name); \textcolor{comment}{//base\_directoryが存在するか確認し，存在しなければ作成(c81)}
-91         sys.makeDirectory(); \textcolor{comment}{//起動時刻をフォルダ名にしてフォルダを作成}
-92         
-93         \textcolor{comment}{//動画を保存するために利用する(c40)}
-94         \textcolor{comment}{//writer = sys.outputVideo(&outputVideoName); //動画を保存したいときはコメントをはずす．while文内のwriter << imageのコメントも}
-95 
-96         imgproc.loadInternalCameraParameter(cameraparameter\_name); \textcolor{comment}{//キャリブレーションを行うためのパラメータを取得(c79)}
-97 
-98         \textcolor{comment}{//背景用に一度撮影(c75)}
-99         cout << \textcolor{stringliteral}{"Take a Background Image in "} << endl;
-100         sys.countdownTimer(3);
-101         system(\textcolor{stringliteral}{"cls"});
-102         DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); \textcolor{comment}{//フレーム更新をイベントとして待つ}
-103         ::ResetEvent(kinect.streamEvent); \textcolor{comment}{//イベントが発生したら次のイベントに備えてリセット}
-104         \textcolor{comment}{//Kinectから画像を取得し，背景画像とする}
-105         PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/shutter.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-106         background\_image = kinect.drawRGBImage(image); \textcolor{comment}{//RGBカメラの処理}
-107         background\_image = imgproc.getUndistortionImage(background\_image); \textcolor{comment}{//キャリブレーション後の画像を今の背景画像とする}
-108         imgproc.showImage(backgroundimage\_windowname, background\_image); \textcolor{comment}{//背景画像を表示する}
-109         cvtColor(background\_image, background\_gray\_image, CV\_BGR2GRAY); \textcolor{comment}{//グレースケールに変換}
-110         
-111         Sleep(1000);
-112 
-113         \textcolor{comment}{//プログラム開始の通知}
-114         cout << \textcolor{stringliteral}{"Process will Start in "} << endl;
-115         sys.countdownTimer(2); 
-116         PlaySound(TEXT(\textcolor{stringliteral}{"sourcedata/shutter.wav"}), NULL, (SND\_ASYNC | SND\_FILENAME)); \textcolor{comment}{//音声ファイルを再生}
-117         system(\textcolor{stringliteral}{"cls"}); \textcolor{comment}{//コンソール内の表示をリセット(c64)}
-118 
-119         \textcolor{comment}{//pointcloudlibrary.initializePointCloudViewer(cloudviewer\_windowname); //クラウドビューアーの初期化}
-120         pointcloudlibrary.initializePCLVisualizer(pclvisualizer\_windowname);
-121 
-122         \textcolor{comment}{//namedWindow("閾値", 1);}
-123         \textcolor{keywordflow}{while} (!pointcloudlibrary.visualizer->wasStopped() && kinect.key != \textcolor{charliteral}{'q'} && !GetAsyncKeyState(\textcolor{charliteral}{'Q'}))\{
-       \textcolor{comment}{//(c3).メインループ．1フレームごとの処理を繰り返し行う．(c63)CloudViewerが終了処理('q'キーを入力)したらプログラムが終了する}
-124             \textcolor{comment}{//タイマー開始(c65)}
-125             sys.startTimer();
-126 
-127             \textcolor{comment}{//setMouseCallback(mainwindow\_name, onMouse, 0); //(c25)．マウスコールバック関数をセット(c31)}
-128 
-129             DWORD ret = ::WaitForSingleObject(kinect.streamEvent, INFINITE); \textcolor{comment}{//フレーム更新をイベントとして待つ}
-130             ::ResetEvent(kinect.streamEvent); \textcolor{comment}{//イベントが発生したら次のイベントに備えてリセット}
-131 
-132             \textcolor{comment}{//Kinectから画像を取得し，画像処理を行う}
-133             current\_image = kinect.drawRGBImage(image); \textcolor{comment}{//RGBカメラの処理}
-134             current\_image = imgproc.getUndistortionImage(current\_image); \textcolor{comment}{//
-      Kinectのキャリブレーションを行い，キャリブレーション結果を適用する(c71)}
-135             imgproc.showImage(main\_windowname, current\_image);
-136             \textcolor{comment}{//flip(current\_image, flip\_image, 1);}
-137             \textcolor{comment}{//imgproc.showImage("Original - Flip", flip\_image); //Kinectから取得した画像を表示}
-138             
-139             \textcolor{comment}{//タイヤも含めて前面の点群を取得する}
-140             namedWindow(param\_windowname, CV\_WINDOW\_KEEPRATIO);
-141             createTrackbar(\textcolor{stringliteral}{"Threshold(0-255)"}, param\_windowname, &imgproc.th, 255);
-142             createTrackbar(\textcolor{stringliteral}{"Neighborhood Level(0-10)"}, param\_windowname, &imgproc.
-      neighborhood, 10);
-143             createTrackbar(\textcolor{stringliteral}{"Closing Times Level(0-10)"}, param\_windowname, &imgproc.
-      closing_times, 10);
-144             bin\_image = imgproc.getBackgroundSubstractionBinImage(current\_image, background\_gray\_image\textcolor{comment}{/*,
-       imgproc.th, imgproc.med, imgproc.cnt*/});
-145             \textcolor{comment}{//ユニット部だけ切り取る(c77)}
-146             \textcolor{comment}{//bin\_image = imgproc.getUnitMask(bin\_image);}
-147             imgproc.showImage(maskbinimage\_windowname, bin\_image); \textcolor{comment}{//確認用に切り取った画像を表示する}
-148             
-149             \textcolor{comment}{//ポイントクラウドの取得(c57)}
-150             cloud = kinect.getPointCloud(bin\_image); \textcolor{comment}{//ポイントクラウドの取得(c57)．切り取った画像をもとにする}
-151             pointcloudlibrary.flagChecker(); \textcolor{comment}{//各点群処理のフラグをチェックするメソッド(c64)}
-152             cout << \textcolor{stringliteral}{"
-      =========================================================================================="} << endl;
-153             cout << \textcolor{stringliteral}{"Original PointCloud Size\(\backslash\)t=>\(\backslash\)t"} << cloud->size() << endl;
-154 
-155             \textcolor{comment}{//PCLの処理}
-156             \textcolor{keywordflow}{if} (pointcloudlibrary.passthrough\_flag == \textcolor{keyword}{true})\{  \textcolor{comment}{//外れ値除去(c59)}
-157                 cloud = pointcloudlibrary.passThroughFilter(cloud, \textcolor{stringliteral}{"z"}, 400, 30000); \textcolor{comment}{//
-      Kinectから取得した外れ値を除去(c60)．与えた軸の中で自分が取得したい範囲の下限と上限を与えることでそれ以外を省く(c81)}
-158                 \textcolor{comment}{//cloud = pointcloudlibrary.radiusOutlierRemoval(cloud); //半径を指定して外れ値を除去(c60)}
-159             \}
-160 
-161             \textcolor{keywordflow}{if} (pointcloudlibrary.downsampling\_flag == \textcolor{keyword}{true})\{   \textcolor{comment}{//ダウンサンプリング処理(c59)}
-162                 \textcolor{comment}{//cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 2.0f,
-       2.0f, 2.0f); //Default=all 0.003}
-163                 cloud = pointcloudlibrary.downSamplingUsingVoxelGridFilter(cloud, 2.5f, 2.5f, 2.5f); \textcolor{comment}{//
-      Default=all 0.003}
-164                 \textcolor{comment}{//pointcloudlibrary.cloud =
-       pointcloudlibrary.downSamplingUsingVoxelGridFilter(pointcloudlibrary.cloud, 0.001, 0.001, 0.001); //Default=all 0.003}
-165             \}
-166 
-167             \textcolor{keywordflow}{if} (pointcloudlibrary.statisticaloutlierremoval\_flag == \textcolor{keyword}{true})\{
-168                 cloud = pointcloudlibrary.removeOutlier(cloud); \textcolor{comment}{//統計的な外れ値除去(c60)}
-169             \}
-170 
-171             \textcolor{keywordflow}{if} (pointcloudlibrary.downsampling\_flag == \textcolor{keyword}{true} && pointcloudlibrary.mls\_flag == \textcolor{keyword}{true})\{  \textcolor{comment}{//
-      スムージング処理(c60)}
-172                 cloud = pointcloudlibrary.smoothingUsingMovingLeastSquare(cloud, \textcolor{keyword}{true}, \textcolor{keyword}{true}, 2.5); \textcolor{comment}{//0.002
-       < radius < ◯．小さいほど除去される}
-173 
-174             \}
-175             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pointcloudlibrary.downsampling\_flag == \textcolor{keyword}{false} && pointcloudlibrary.mls\_flag == \textcolor{keyword}{true})\{
-176                 cout << \textcolor{stringliteral}{"MLSを有効にするためには，ダウンサンプリングを有効にしてください"} << endl;
-177             \}
-178 
-179             \textcolor{keywordflow}{if} (pointcloudlibrary.extractplane\_flag == \textcolor{keyword}{true})\{   \textcolor{comment}{//平面検出とクラスタリング(c61)}
-180                 cloud = pointcloudlibrary.getExtractPlaneAndClustering(cloud, \textcolor{keyword}{true}, 100, 5, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 0.
-      02, \textcolor{comment}{/*350*/}150, \textcolor{comment}{/*25000*/}\textcolor{comment}{/*20000*/}200000); \textcolor{comment}{//Default=0.03(前処理なしの場合)}
-181             \}
-182 
-183             pointcloudlibrary.centroid = pointcloudlibrary.getCentroidCoordinate3d(cloud); \textcolor{comment}{//重心座標の計算}
-184             
-185             
-186             coefficient\_plane = lsm.getCoefficient(cloud); \textcolor{comment}{//最小二乗法を行い平面の係数[a b c]'を取得する(c78)}
-187             attitude\_angle = lsm.calcYawRollPitch(coefficient\_plane); \textcolor{comment}{//姿勢角を取得(c78)}
-188             \textcolor{comment}{//cout << "[Yaw, Roll, Pitch]" << attitude\_angle.yaw << " , " << attitude\_angle.roll << " , "
-       << attitude\_angle.pitch << endl;}
-189             
-190             ev3control.set6DoFEV3(cloud, pointcloudlibrary.centroid, attitude\_angle); \textcolor{comment}{//6DoFをまとめる}
-191             
-192             \textcolor{comment}{//平均座標に球を描画する(c83)}
-193             pcl::PointXYZ sphere;
-194             sphere.x = pointcloudlibrary.centroid.x; \textcolor{comment}{//平均座標のx座標}
-195             sphere.y = pointcloudlibrary.centroid.y; \textcolor{comment}{//平均座標のy座標}
-196             sphere.z = pointcloudlibrary.centroid.z; \textcolor{comment}{//平均座標のz座標}
-197             pointcloudlibrary.visualizer->addSphere(sphere, 10, 0.5, 0.0, 0.0, \textcolor{stringliteral}{"sphere"}); \textcolor{comment}{//平均座標に球を描画}
-198 
-199             \textcolor{comment}{//Kinectから取得した点群を描画}
-200             pointcloudlibrary.visualizer->addPointCloud(cloud, \textcolor{stringliteral}{"show cloud"}); \textcolor{comment}{//点群を描画}
-201             \textcolor{comment}{//visualizer->updatePointCloud<pcl::PointXYZRGB>(cloud, "show cloud");}
-202             cout << \textcolor{stringliteral}{"
-      =========================================================================================="} << endl;
-203 
-204             \textcolor{comment}{//pointcloudlibrary.viewer->showCloud(cloud); //処理後の点群を表示}
-205             pointcloudlibrary.visualizer->spinOnce(); \textcolor{comment}{//PCLVisualizerを描画}
-206             \textcolor{comment}{//終了のためのキー入力チェック兼表示のためのウェイトタイム}
-207             kinect.key = waitKey(1); \textcolor{comment}{//OpenCVのウインドウを表示し続ける}
-208 
-209             \textcolor{comment}{//PCLのフレームレートを計算する用(c61)}
-210             sys.endTimer(); \textcolor{comment}{//タイマーを終了(c65)}
-211             cout << sys.getProcessTimeinMiliseconds() << \textcolor{stringliteral}{"[ms], "} << sys.
-      getFrameRate() << \textcolor{stringliteral}{" fps"} << \textcolor{stringliteral}{"\(\backslash\)n"} << endl;
-212 
-213             \textcolor{comment}{//キーが入力されていれば以下を実行する．GetAsyncKeyStateを利用することで}
-214             \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'R'}))\{
-215                 system(\textcolor{stringliteral}{"cls"});
-216                 destroyAllWindows(); \textcolor{comment}{//PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)}
-217                 \textcolor{comment}{//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除}
-218                 sys.removeDirectory(); \textcolor{comment}{//再計測を行う場合は，現在のデータは必要ないため削除}
-219                 cout << \textcolor{stringliteral}{"Data Removed."} << endl;
-220                 save_count = 0;
-221                 system(\textcolor{stringliteral}{"cls"}); \textcolor{comment}{//cmdをクリア}
-222                 cout << \textcolor{stringliteral}{"RETRY"} << endl;
-223                 \textcolor{keywordflow}{goto} RETRY;
-224             \}
-225             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'P'}))\{ \textcolor{comment}{//その時点のデータを保存する．複数回データを計測する際はプログラムを起動しなおす手間が省ける}
-226                 cout << \textcolor{stringliteral}{"Save the Current Data."} << endl;
-227                 sys.saveDataEveryEnterKey(current\_image,bin\_image,ev3control.
-      ev3_6dof, cloud);
-228                 draw.gnuplotScriptEV3Unit(coefficient\_plane); \textcolor{comment}{//gnuplot用のスクリプト}
-229                 sys.save_flag = \textcolor{keyword}{true}; \textcolor{comment}{//6DoF情報を出力するフラグをオンにする(c82)}
-230                 save_count++;
-231             \}
-232             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (GetAsyncKeyState(\textcolor{charliteral}{'L'}))\{ \textcolor{comment}{//'l'が入力されたら．EV3軌道が欲しい時に入力する}
-233                 saveev3route\_flag = \textcolor{keyword}{true}; \textcolor{comment}{//フラグをtrueにする}
-234             \}
-235 
-236             \textcolor{comment}{//'l'キーが入力されていれば，平均座標の軌道を追跡し続ける(c82)}
-237             \textcolor{keywordflow}{if} (saveev3route\_flag == \textcolor{keyword}{true})\{ \textcolor{comment}{//フラグがtrueであれば，平均座標の軌道を保存する(c82)}
-238                 sys.saveDataContinuously(ev3control.ev3_6dof);
-239             \}
-240 
-241             \textcolor{comment}{//PCLVisualizerに描画した点群を削除する}
-242             pointcloudlibrary.visualizer->removePointCloud(\textcolor{stringliteral}{"show cloud"});
-243             pointcloudlibrary.visualizer->removeShape(\textcolor{stringliteral}{"sphere"});
-244 
-245             system(\textcolor{stringliteral}{"cls"}); \textcolor{comment}{//コンソール内の表示をリセット(c64)}
-246         \}
-247 
-248         \textcolor{comment}{//計測が終了したところ(PCL上, OpenCVウインドウ上, コンソール上で'q'が押されてたとき)}
-249         destroyAllWindows(); \textcolor{comment}{//PCLまたは，OpenCV画面上で'q'キーが入力されたらOpenCVのウインドウを閉じて処理を終了(c66)}
-250         \textcolor{comment}{//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除}
-251         pointcloudlibrary.visualizer->~PCLVisualizer(); \textcolor{comment}{//PCLVisualizerの削除}
-252         \textcolor{keywordflow}{if} (saveev3route\_flag == \textcolor{keyword}{true})\{ \textcolor{comment}{//一度でもデータを保存していれば，どちらかのフラグはtrueになる}
-253             draw.gnuplotScriptEV3Route(); \textcolor{comment}{//軌道をプロットするスクリプトを保存する}
-254         \}
-255 
-256         \textcolor{comment}{//データを保存するかの確認}
-257         \textcolor{keywordflow}{if} (saveev3route\_flag == \textcolor{keyword}{true} || sys.save_flag == \textcolor{keyword}{true})\{ \textcolor{comment}{//
-      データを保存するフラグがtrue(=データが保存されている)なら保存するかどうか確認する}
-258             cout << \textcolor{stringliteral}{"Save Data?"} << endl;
-259             \textcolor{keywordtype}{int} checkNum = sys.alternatives(); \textcolor{comment}{//'1'なら保存，'0'なら削除}
-260             \textcolor{keywordflow}{if} (checkNum == 1)\{
-261                 sys.endMessage(checkNum);
-262             \}
-263         \}
-264         \textcolor{keywordflow}{else}\{
-265             sys.removeDirectory(); \textcolor{comment}{//ディレクトリの削除}
-266             sys.endMessage();
-267         \}
-268     \}
-269     \textcolor{keywordflow}{catch} (exception& ex)\{ \textcolor{comment}{//例外処理}
-270         cout << ex.what() << endl;
-271         destroyAllWindows(); \textcolor{comment}{//OpenCVで作成したウインドウを全て削除する(c35)}
-272         \textcolor{comment}{//pointcloudlibrary.viewer->~CloudViewer(); //クラウドビューアーの削除}
-273         pointcloudlibrary.visualizer->~PCLVisualizer(); \textcolor{comment}{//PCLVisualizerの削除}
-274         \textcolor{comment}{//異常終了した時はデータを保存する必要がないので削除}
-275         sys.removeDirectory();
-276         cout << \textcolor{stringliteral}{"Data Removed."} << endl;
-277         \textcolor{keywordflow}{return} -1;
-278     \}
-279     \textcolor{keywordflow}{return} 0;
-280 \}\end{DoxyCode}
+
+呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+
+
 \index{main.\-cpp@{main.\-cpp}!on\-Mouse@{on\-Mouse}}
 \index{on\-Mouse@{on\-Mouse}!main.cpp@{main.\-cpp}}
 \subsubsection[{on\-Mouse}]{\setlength{\rightskip}{0pt plus 5cm}void on\-Mouse (
@@ -352,40 +92,25 @@ pointcloudlibrary.\-viewer-\/$>$was\-Stopped() \&\&
 
 マウス操作 
 
+マウス操作
 
 
- Mouse.\-cpp の 12 行目に定義があります。
+\begin{DoxyParams}{引数}
+{\em event} & int 型．イベント \\
+\hline
+{\em x} & int型．x座標 \\
+\hline
+{\em y} & int型．y座標 \\
+\hline
+{\em flags} & int型．フラグ \\
+\hline
+{\em param} & void$\ast$型．その他パラメータ \\
+\hline
+\end{DoxyParams}
 
 
-\begin{DoxyCode}
-13 \{
-14     \textcolor{keywordflow}{if} (selectObject)
-15     \{
-16         selection.x = MIN(x, origin.x);
-17         selection.y = MIN(y, origin.y);
-18         selection.width = abs(x - origin.x);
-19         selection.height = abs(y - origin.y);
-20         selection &= Rect(0, 0, image.cols, image.rows);
-21     \}
-22 
-23     \textcolor{keywordflow}{switch} (event)
-24     \{
-25     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONDOWN:
-26         origin = Point(x, y);
-27         selection = Rect(x, y, 0, 0);
-28         selectObject = \textcolor{keyword}{true};
-29         \textcolor{keywordflow}{break};
-30     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONUP:
-31         selectObject = \textcolor{keyword}{false};
-32         \textcolor{keywordflow}{if} (selection.width > 0 && selection.height > 0)
-33         \{
-34             trackObject = -1;
-35         \}
-36         \textcolor{keywordflow}{break};
-37     \}
-38 
-39     \textcolor{keywordflow}{return};
-40 \}\end{DoxyCode}
+ Mouse.\-cpp の 19 行目に定義があります。
+
 
 
 \subsection{変数詳解}
@@ -398,11 +123,11 @@ pointcloudlibrary.\-viewer-\/$>$was\-Stopped() \&\&
 
 
 
- main.\-cpp の 23 行目に定義があります。
+ main.\-cpp の 22 行目に定義があります。
 
 
 
-参照元 System\-::end\-Message(), Drawing\-::gnuplot\-Script(), Drawing\-::gnuplot\-Script\-Co\-G(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), System\-::make\-Directory(), System\-::open\-Directory(), System\-::output\-All\-Data(), System\-::output\-Video(), Drawing\-::plot3\-D(), Drawing\-::plot3\-D\-Real\-Time(), System\-::remove\-Directory(), System\-::save\-Data\-Continuously(), System\-::save\-Data\-Every\-Enter\-Key().
+参照元 System\-::end\-Message(), Drawing\-::gnuplot\-Script\-Time2\-V(), Drawing\-::gnuplot\-Script\-Time2\-Yaw(), main(), System\-::make\-Directory\-Based\-Date(), System\-::open\-Directory(), System\-::output\-Video(), System\-::remove\-Directory().
 
 \index{main.\-cpp@{main.\-cpp}!image@{image}}
 \index{image@{image}!main.cpp@{main.\-cpp}}
@@ -413,7 +138,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 21 行目に定義があります。
+ main.\-cpp の 20 行目に定義があります。
 
 
 
@@ -428,22 +153,11 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 28 行目に定義があります。
+ main.\-cpp の 27 行目に定義があります。
 
 
 
 参照元 on\-Mouse().
-
-\index{main.\-cpp@{main.\-cpp}!save\-\_\-count@{save\-\_\-count}}
-\index{save\-\_\-count@{save\-\_\-count}!main.cpp@{main.\-cpp}}
-\subsubsection[{save\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int save\-\_\-count = 0}\label{main_8cpp_aacae5d304dcef5f6bbf0fe5030e50626}
-
-
- main.\-cpp の 32 行目に定義があります。
-
-
-
-参照元 Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), main(), System\-::save\-Data\-Every\-Enter\-Key().
 
 \index{main.\-cpp@{main.\-cpp}!selection@{selection}}
 \index{selection@{selection}!main.cpp@{main.\-cpp}}
@@ -454,7 +168,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 29 行目に定義があります。
+ main.\-cpp の 28 行目に定義があります。
 
 
 
@@ -469,7 +183,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 26 行目に定義があります。
+ main.\-cpp の 25 行目に定義があります。
 
 
 
@@ -484,7 +198,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 27 行目に定義があります。
+ main.\-cpp の 26 行目に定義があります。
 
 
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imageprocessing',['ImageProcessing',['../class_image_processing.html',1,'']]]
+  ['ev3control',['EV3Control',['../class_e_v3_control.html',1,'']]]
 ];

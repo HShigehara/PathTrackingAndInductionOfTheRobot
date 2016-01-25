@@ -1,6 +1,5 @@
 ﻿/*
  * @file ImageProcessing.hpp 
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 画像処理関連のクラスのヘッダ
  * @date 2014.12.10
  * @author H.Shigehara

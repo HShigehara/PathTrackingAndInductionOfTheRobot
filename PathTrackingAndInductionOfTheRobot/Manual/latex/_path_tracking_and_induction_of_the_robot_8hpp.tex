@@ -1,16 +1,27 @@
 \section{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp ファイル}
 \label{_path_tracking_and_induction_of_the_robot_8hpp}\index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
+被依存関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_path_tracking_and_induction_of_the_robot_8hpp__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{クラス}
 \begin{DoxyCompactItemize}
 \item 
 struct {\bf Point3}
-\item 
+\begin{DoxyCompactList}\small\item\em 抽出された座標を保存する構造体(c37) \end{DoxyCompactList}\item 
 struct {\bf output\-Data}
-\item 
-struct {\bf Do\-F}
-\item 
+\begin{DoxyCompactList}\small\item\em ファイルに出力するデータ群(c41) \end{DoxyCompactList}\item 
+struct {\bf Do\-F6d}
+\begin{DoxyCompactList}\small\item\em 姿勢構造体の定義(c78)．doule型 \end{DoxyCompactList}\item 
+struct {\bf Do\-F6i}
+\begin{DoxyCompactList}\small\item\em 姿勢構造体の定義．int型 \end{DoxyCompactList}\item 
 struct {\bf Attitude\-Angle}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 姿勢角 \end{DoxyCompactList}\item 
+struct {\bf Control\-Paramd}
+\begin{DoxyCompactList}\small\item\em 走行制御用構造体．double型 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{型定義}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,9 +29,13 @@ typedef struct {\bf Point3} {\bf Point3ius}
 \item 
 typedef struct {\bf output\-Data} {\bf output\-Data}
 \item 
-typedef struct {\bf Do\-F} {\bf Do\-F6d}
+typedef struct {\bf Do\-F6d} {\bf Do\-F6d}
+\item 
+typedef struct {\bf Do\-F6i} {\bf Do\-F6i}
 \item 
 typedef struct {\bf Attitude\-Angle} {\bf Attitude\-Angle3d}
+\item 
+typedef struct {\bf Control\-Paramd} {\bf Control\-Paramd}
 \end{DoxyCompactItemize}
 \subsection*{関数}
 \begin{DoxyCompactItemize}
@@ -41,18 +56,22 @@ int {\bf track\-Object}
 Point {\bf origin}
 \begin{DoxyCompactList}\small\item\em オリジナルの座標 \end{DoxyCompactList}\item 
 Rect {\bf selection}
-\begin{DoxyCompactList}\small\item\em 選択 \end{DoxyCompactList}\item 
-int {\bf save\-\_\-count}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 選択 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{型定義詳解}
 \index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!Attitude\-Angle3d@{Attitude\-Angle3d}}
 \index{Attitude\-Angle3d@{Attitude\-Angle3d}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
 \subsubsection[{Attitude\-Angle3d}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Attitude\-Angle} {\bf Attitude\-Angle3d}}\label{_path_tracking_and_induction_of_the_robot_8hpp_a4860903646946a52474a935518d26b08}
+\index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!Control\-Paramd@{Control\-Paramd}}
+\index{Control\-Paramd@{Control\-Paramd}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
+\subsubsection[{Control\-Paramd}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Control\-Paramd} {\bf Control\-Paramd}}\label{_path_tracking_and_induction_of_the_robot_8hpp_a16a3db7552076594e4ee138cb4c4e78e}
 \index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!Do\-F6d@{Do\-F6d}}
 \index{Do\-F6d@{Do\-F6d}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
-\subsubsection[{Do\-F6d}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Do\-F} {\bf Do\-F6d}}\label{_path_tracking_and_induction_of_the_robot_8hpp_a33b77e4ea1c0ec898f240665aba2a93c}
+\subsubsection[{Do\-F6d}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Do\-F6d} {\bf Do\-F6d}}\label{_path_tracking_and_induction_of_the_robot_8hpp_a608e4a4060a4103cf873589760899c58}
+\index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!Do\-F6i@{Do\-F6i}}
+\index{Do\-F6i@{Do\-F6i}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
+\subsubsection[{Do\-F6i}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Do\-F6i} {\bf Do\-F6i}}\label{_path_tracking_and_induction_of_the_robot_8hpp_aa28654a9c31353e880f337592327be7a}
 \index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!output\-Data@{output\-Data}}
 \index{output\-Data@{output\-Data}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
 \subsubsection[{output\-Data}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf output\-Data} {\bf output\-Data}}\label{_path_tracking_and_induction_of_the_robot_8hpp_a9618d6d926e1cc639647588117793210}
@@ -69,52 +88,37 @@ int {\bf save\-\_\-count}
 \item[{int}]{event, }
 \item[{int}]{x, }
 \item[{int}]{y, }
-\item[{int}]{, }
-\item[{void $\ast$}]{}
+\item[{int}]{flags, }
+\item[{void $\ast$}]{param}
 \end{DoxyParamCaption}
 )}\label{_path_tracking_and_induction_of_the_robot_8hpp_a6c81aa00b4dcf0cbae98a14c37683ed9}
 
 
 マウス操作 
 
+マウス操作
 
 
- Mouse.\-cpp の 12 行目に定義があります。
+\begin{DoxyParams}{引数}
+{\em event} & int 型．イベント \\
+\hline
+{\em x} & int型．x座標 \\
+\hline
+{\em y} & int型．y座標 \\
+\hline
+{\em flags} & int型．フラグ \\
+\hline
+{\em param} & void$\ast$型．その他パラメータ \\
+\hline
+\end{DoxyParams}
+
+
+ Mouse.\-cpp の 19 行目に定義があります。
 
 
 
 参照先 image, origin, selection, select\-Object, track\-Object.
 
-
-\begin{DoxyCode}
-13 \{
-14     \textcolor{keywordflow}{if} (selectObject)
-15     \{
-16         selection.x = MIN(x, origin.x);
-17         selection.y = MIN(y, origin.y);
-18         selection.width = abs(x - origin.x);
-19         selection.height = abs(y - origin.y);
-20         selection &= Rect(0, 0, image.cols, image.rows);
-21     \}
-22 
-23     \textcolor{keywordflow}{switch} (event)
-24     \{
-25     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONDOWN:
-26         origin = Point(x, y);
-27         selection = Rect(x, y, 0, 0);
-28         selectObject = \textcolor{keyword}{true};
-29         \textcolor{keywordflow}{break};
-30     \textcolor{keywordflow}{case} CV\_EVENT\_LBUTTONUP:
-31         selectObject = \textcolor{keyword}{false};
-32         \textcolor{keywordflow}{if} (selection.width > 0 && selection.height > 0)
-33         \{
-34             trackObject = -1;
-35         \}
-36         \textcolor{keywordflow}{break};
-37     \}
-38 
-39     \textcolor{keywordflow}{return};
-40 \}\end{DoxyCode}
 
 
 \subsection{変数詳解}
@@ -127,11 +131,11 @@ int {\bf save\-\_\-count}
 
 
 
- main.\-cpp の 23 行目に定義があります。
+ main.\-cpp の 22 行目に定義があります。
 
 
 
-参照元 System\-::end\-Message(), Drawing\-::gnuplot\-Script(), Drawing\-::gnuplot\-Script\-Co\-G(), Drawing\-::gnuplot\-Script\-E\-V3\-Route(), Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), System\-::make\-Directory(), System\-::open\-Directory(), System\-::output\-All\-Data(), System\-::output\-Video(), Drawing\-::plot3\-D(), Drawing\-::plot3\-D\-Real\-Time(), System\-::remove\-Directory(), System\-::save\-Data\-Continuously(), System\-::save\-Data\-Every\-Enter\-Key().
+参照元 System\-::end\-Message(), Drawing\-::gnuplot\-Script\-Time2\-V(), Drawing\-::gnuplot\-Script\-Time2\-Yaw(), main(), System\-::make\-Directory\-Based\-Date(), System\-::open\-Directory(), System\-::output\-Video(), System\-::remove\-Directory().
 
 \index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!image@{image}}
 \index{image@{image}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
@@ -142,7 +146,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 21 行目に定義があります。
+ main.\-cpp の 20 行目に定義があります。
 
 
 
@@ -157,22 +161,11 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 28 行目に定義があります。
+ main.\-cpp の 27 行目に定義があります。
 
 
 
 参照元 on\-Mouse().
-
-\index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!save\-\_\-count@{save\-\_\-count}}
-\index{save\-\_\-count@{save\-\_\-count}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
-\subsubsection[{save\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int save\-\_\-count}\label{_path_tracking_and_induction_of_the_robot_8hpp_aacae5d304dcef5f6bbf0fe5030e50626}
-
-
- main.\-cpp の 32 行目に定義があります。
-
-
-
-参照元 Drawing\-::gnuplot\-Script\-E\-V3\-Unit(), main(), System\-::save\-Data\-Every\-Enter\-Key().
 
 \index{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}!selection@{selection}}
 \index{selection@{selection}!PathTrackingAndInductionOfTheRobot.hpp@{Path\-Tracking\-And\-Induction\-Of\-The\-Robot.\-hpp}}
@@ -183,7 +176,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 29 行目に定義があります。
+ main.\-cpp の 28 行目に定義があります。
 
 
 
@@ -198,7 +191,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 26 行目に定義があります。
+ main.\-cpp の 25 行目に定義があります。
 
 
 
@@ -213,7 +206,7 @@ R\-G\-B画像格納用の変数
 
 
 
- main.\-cpp の 27 行目に定義があります。
+ main.\-cpp の 26 行目に定義があります。
 
 
 

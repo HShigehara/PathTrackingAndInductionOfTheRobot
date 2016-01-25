@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['origin',['origin',['../main_8cpp.html#a903d0d8820c696aaa1170c50deb3633f',1,'origin():&#160;main.cpp'],['../_path_tracking_and_induction_of_the_robot_8hpp.html#a903d0d8820c696aaa1170c50deb3633f',1,'origin():&#160;main.cpp']]]
+  ['mls_5fflag',['mls_flag',['../class_point_cloud_library.html#a0745fdcbdae44048793a4dce33dfeb4f',1,'PointCloudLibrary']]],
+  ['model',['model',['../class_point_cloud_library.html#a9353ff5d5de9f4d0cc755c3f6bff8417',1,'PointCloudLibrary']]]
 ];

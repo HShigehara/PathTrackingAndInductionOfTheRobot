@@ -35,13 +35,13 @@ H\-A\-N\-D\-L\-E {\bf stream\-Event}
 int {\bf key}
 \begin{DoxyCompactList}\small\item\em ウィンドウ表示のウェイトタイム格納変数 \end{DoxyCompactList}\item 
 int {\bf actual\-Extracted\-Num}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 実際に距離が抽出された数(0以外だった数)(c31) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{詳解}
 Kinect操作用のクラス 
 
- Kinect.\-hpp の 31 行目に定義があります。
+ Kinect.\-hpp の 30 行目に定義があります。
 
 
 
@@ -59,14 +59,8 @@ Kinect操作用のクラス
 
 メソッド\-Kinect\-::\-Kinect().コンストラクタ 
 
- Kinect.\-cpp の 16 行目に定義があります。
+ Kinect.\-cpp の 15 行目に定義があります。
 
-
-\begin{DoxyCode}
-17 \{
-18     countKinect = 0; \textcolor{comment}{//Kinectの数を初期化}
-19 \}
-\end{DoxyCode}
 \index{Kinect@{Kinect}!$\sim$\-Kinect@{$\sim$\-Kinect}}
 \index{$\sim$\-Kinect@{$\sim$\-Kinect}!Kinect@{Kinect}}
 \subsubsection[{$\sim$\-Kinect}]{\setlength{\rightskip}{0pt plus 5cm}Kinect\-::$\sim$\-Kinect (
@@ -80,18 +74,8 @@ Kinect操作用のクラス
 
 メソッド\-Kinect\-::$\sim$\-Kinect().デストラクタ 
 
- Kinect.\-cpp の 24 行目に定義があります。
+ Kinect.\-cpp の 23 行目に定義があります。
 
-
-\begin{DoxyCode}
-25 \{
-26     \textcolor{comment}{//終了処理}
-27     \textcolor{keywordflow}{if} (kinect != 0)\{
-28         kinect->NuiShutdown();
-29         kinect->Release();
-30     \}
-31 \}
-\end{DoxyCode}
 
 
 \subsection{関数詳解}
@@ -108,7 +92,7 @@ Kinect操作用のクラス
 
 メソッド\-Kinect\-::create\-Instance().インスタンスの生成 
 
- Kinect.\-cpp の 36 行目に定義があります。
+ Kinect.\-cpp の 35 行目に定義があります。
 
 
 
@@ -119,26 +103,16 @@ Kinect操作用のクラス
 参照元 initialize().
 
 
-\begin{DoxyCode}
-37 \{
-38     \textcolor{comment}{//接続されているKinectの数を取得する}
-39     ERROR_CHECK(::NuiGetSensorCount(&countKinect));
-40     \textcolor{keywordflow}{if} (countKinect == 0)\{
-41         \textcolor{keywordflow}{throw} runtime\_error(\textcolor{stringliteral}{"Please Connect the Kinect."});
-42     \}
-43 
-44     ERROR_CHECK(::NuiCreateSensorByIndex(0, &kinect)); \textcolor{comment}{//最初のKinectのインスタンスを生成する}
-45 
-46     \textcolor{comment}{//Kinectの状態を取得する}
-47     HRESULT status = kinect->NuiStatus();
-48     \textcolor{keywordflow}{if} (status != S\_OK)\{
-49         \textcolor{keywordflow}{throw} runtime\_error(\textcolor{stringliteral}{"You Cannot Use the Kinect."});
-50 
-51     \}
-52 
-53     \textcolor{keywordflow}{return};
-54 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{class_kinect_a90ebe68a239488b745a09213f88b4080_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Kinect@{Kinect}!draw\-R\-G\-B\-Image@{draw\-R\-G\-B\-Image}}
 \index{draw\-R\-G\-B\-Image@{draw\-R\-G\-B\-Image}!Kinect@{Kinect}}
 \subsubsection[{draw\-R\-G\-B\-Image}]{\setlength{\rightskip}{0pt plus 5cm}Mat Kinect\-::draw\-R\-G\-B\-Image (
@@ -150,19 +124,19 @@ Kinect操作用のクラス
 
 R\-G\-Bカメラの処理 
 
-メソッド\-Kinect\-::draw\-R\-G\-B\-Image(\-Mat\& image).R\-G\-Bカメラの処理
+メソッド\-Kinect\-::draw\-R\-G\-B\-Image().R\-G\-Bカメラの処理
 
 
 \begin{DoxyParams}{引数}
-{\em cv\-::\-Mat\&} & image \\
+{\em image} & cv\-::\-Mat\&．入力画像 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-cv\-::\-Mat image 
+image cv\-::\-Mat．出力画像 
 \end{DoxyReturn}
 
 
- Kinect.\-cpp の 82 行目に定義があります。
+ Kinect.\-cpp の 81 行目に定義があります。
 
 
 
@@ -173,29 +147,16 @@ cv\-::\-Mat image
 参照元 main().
 
 
-\begin{DoxyCode}
-83 \{
-84     \textcolor{keywordflow}{try}\{
-85         \textcolor{comment}{//RGBカメラのフレームデータを取得する}
-86         NUI\_IMAGE\_FRAME imageFrame = \{ 0 \};
-87         ERROR_CHECK(kinect->NuiImageStreamGetNextFrame(imageStreamHandle, 0, &imageFrame));
-88 
-89         \textcolor{comment}{//画像データの取得}
-90         NUI\_LOCKED\_RECT colorData;
-91         imageFrame.pFrameTexture->LockRect(0, &colorData, 0, 0);
-92 
-93         \textcolor{comment}{//画像データのコピー}
-94         image = Mat(height, width, CV\_8UC4, colorData.pBits);
-95 
-96         \textcolor{comment}{//フレームデータの解放}
-97         ERROR_CHECK(kinect->NuiImageStreamReleaseFrame(imageStreamHandle, &imageFrame));
-98     \}
-99     \textcolor{keywordflow}{catch} (exception& ex)\{ \textcolor{comment}{//例外処理(c57)}
-100         cout << ex.what() << endl;
-101     \}
-102     \textcolor{keywordflow}{return} (image); \textcolor{comment}{//RGBカメラから画像を取得し返す(c30)}
-103 \}
-\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_kinect_a00f185eb803cc53eb6273000913d9892_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Kinect@{Kinect}!get\-Distance@{get\-Distance}}
 \index{get\-Distance@{get\-Distance}!Kinect@{Kinect}}
 \subsubsection[{get\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}int Kinect\-::get\-Distance (
@@ -220,7 +181,7 @@ Depthカメラの処理(c57)
 
 
 
- Kinect.\-cpp の 110 行目に定義があります。
+ Kinect.\-cpp の 109 行目に定義があります。
 
 
 
@@ -231,65 +192,16 @@ Depthカメラの処理(c57)
 参照元 main().
 
 
-\begin{DoxyCode}
-111 \{
-112     \textcolor{keywordflow}{try}\{
-113         pcl::PointCloud<pcl::PointXYZRGB>::Ptr points(\textcolor{keyword}{new} pcl::PointCloud<pcl::PointXYZRGB>()); \textcolor{comment}{//
-      ポイントクラウド保存用(c57)}
-114         points->width = width;
-115         points->height = height;
-116 
-117         \textcolor{comment}{//距離カメラのフレームデータを取得}
-118         NUI\_IMAGE\_FRAME depthFrame = \{ 0 \};
-119         ERROR_CHECK(kinect->NuiImageStreamGetNextFrame(depthStreamHandle, 0, &depthFrame));
-120 
-121         \textcolor{comment}{//距離データを取得する}
-122         NUI\_LOCKED\_RECT depthData = \{ 0 \};
-123         depthFrame.pFrameTexture->LockRect(0, &depthData, 0, 0);
-124 
-125         USHORT* depth = (USHORT*)depthData.pBits;
-126         for (\textcolor{keywordtype}{int} i = 0; i < (depthData.size / \textcolor{keyword}{sizeof}(USHORT)); ++i)\{
-127 
-128             USHORT distance = ::NuiDepthPixelToDepth(depth[i]);
-129 
-130             \textcolor{comment}{//USHORT player = ::NuiDepthPixelToPlayerIndex(depth[i]);}
-131             LONG depthX = i % width;
-132             LONG depthY = i / width;
-133             LONG colorX = depthX;
-134             LONG colorY = depthY;
-135 
-136             \textcolor{comment}{// 距離カメラの座標を、RGBカメラの座標に変換する}
-137             kinect->NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution(
-      CAMERA_RESOLUTION, CAMERA_RESOLUTION, 0, depthX, depthY, 0\textcolor{comment}{/*depth[i]*/}, &colorX, &colorY);
-138 
-139             \textcolor{comment}{//点群取得処理．渡された差分画像に応じて条件を入れ替える}
-140             \textcolor{comment}{//Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance, CAMERA\_RESOLUTION);}
-141             Vector4 real = NuiTransformDepthImageToSkeleton(depthX, depthY, distance << 3, 
-      CAMERA_RESOLUTION); \textcolor{comment}{//左に3ビットすることでプレーヤー情報を含む深度データを渡し，座標を変換する}
-142             \textcolor{keywordflow}{if} (Mat\_image.at<UCHAR>(colorY, colorX) == 255)\{ \textcolor{comment}{//二値画像に対して点群を抽出する際はこっち(白色の点群を抽出)(c70)}
-143                 pcl::PointXYZRGB point; \textcolor{comment}{//点群用の変数を確保}
-144                 point.x = real.x*1000.0f; \textcolor{comment}{//ポイントクラウドのx座標を格納[mm]}
-145                 point.y = real.y*1000.0f; \textcolor{comment}{//ポイントクラウドのy座標を格納[mm]}
-146                 point.z = real.z*1000.0f; \textcolor{comment}{//ポイントクラウドのz座標を格納[mm]}
-147 
-148                 \textcolor{comment}{//cout << point << endl;}
-149                 \textcolor{comment}{//テクスチャ(その座標の色を格納していく)}
-150                 Vec4b color = image.at<Vec4b>(colorY, colorX); \textcolor{comment}{//色格納用の変数}
-151                 point.r = color[2]; \textcolor{comment}{//赤要素}
-152                 point.g = color[1]; \textcolor{comment}{//緑要素}
-153                 point.b = color[0]; \textcolor{comment}{//青要素}
-154                 points->push\_back(point); \textcolor{comment}{//点群を出力}
-155             \}
-156         \}
-157         cloud = points; \textcolor{comment}{//点群をコピー}
-158         \textcolor{comment}{//フレームデータを開放する(c58)}
-159         ERROR_CHECK(kinect->NuiImageStreamReleaseFrame(depthStreamHandle, &depthFrame));
-160     \}
-161     \textcolor{keywordflow}{catch} (exception& ex)\{
-162         cout << ex.what() << endl;
-163     \}
-164     \textcolor{keywordflow}{return} cloud;
-165 \}\end{DoxyCode}
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_kinect_a26f88eae66c74699487869d10adb0945_icgraph}
+\end{center}
+\end{figure}
+
+
 \index{Kinect@{Kinect}!initialize@{initialize}}
 \index{initialize@{initialize}!Kinect@{Kinect}}
 \subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}void Kinect\-::initialize (
@@ -303,7 +215,7 @@ Kinectの初期化
 
 メソッド\-Kinect\-::initialize().Kinectの初期化 
 
- Kinect.\-cpp の 59 行目に定義があります。
+ Kinect.\-cpp の 58 行目に定義があります。
 
 
 
@@ -314,28 +226,27 @@ Kinectの初期化
 参照元 main().
 
 
-\begin{DoxyCode}
-60 \{
-61     createInstance(); \textcolor{comment}{//createInstance()の処理へ以降}
-62 
-63     ERROR_CHECK(kinect->NuiInitialize(NUI\_INITIALIZE\_FLAG\_USES\_COLOR | NUI\_INITIALIZE\_FLAG\_USES\_DEPTH)); \textcolor{comment}{//
-      Kinectの設定を初期化}
-64     ERROR_CHECK(kinect->NuiImageStreamOpen(NUI\_IMAGE\_TYPE\_COLOR, 
-      CAMERA_RESOLUTION, 0, 2, 0, &imageStreamHandle)); \textcolor{comment}{//RGBカメラを初期化}
-65     ERROR_CHECK(kinect->NuiImageStreamOpen(NUI\_IMAGE\_TYPE\_DEPTH, 
-      CAMERA_RESOLUTION, 0, 2, 0, &depthStreamHandle)); \textcolor{comment}{//Depthカメラを初期化}
-66     ERROR_CHECK(kinect->NuiImageStreamSetImageFrameFlags(depthStreamHandle, 
-      NUI\_IMAGE\_STREAM\_FLAG\_ENABLE\_NEAR\_MODE)); \textcolor{comment}{//Nearモード}
-67 
-68     \textcolor{comment}{//フレーム更新のイベントハンドルを作成}
-69     streamEvent = ::CreateEvent(0, TRUE, FALSE, 0);
-70     ERROR_CHECK(kinect->NuiSetFrameEndEvent(streamEvent, 0));
-71 
-72     ::NuiImageResolutionToSize(CAMERA_RESOLUTION, width, height); \textcolor{comment}{//指定した解像度の画面サイズを取得する}
-73 
-74     \textcolor{keywordflow}{return};
-75 \}
-\end{DoxyCode}
+
+呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{class_kinect_a79f66d96dc810bf09a9d3cfe4f1f2671_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+被呼び出し関係図\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{class_kinect_a79f66d96dc810bf09a9d3cfe4f1f2671_icgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{メンバ詳解}
@@ -344,7 +255,11 @@ Kinectの初期化
 \subsubsection[{actual\-Extracted\-Num}]{\setlength{\rightskip}{0pt plus 5cm}int Kinect\-::actual\-Extracted\-Num}\label{class_kinect_a0ca66b49a986c739058afb116f87a257}
 
 
- Kinect.\-hpp の 55 行目に定義があります。
+実際に距離が抽出された数(0以外だった数)(c31) 
+
+
+
+ Kinect.\-hpp の 54 行目に定義があります。
 
 \index{Kinect@{Kinect}!key@{key}}
 \index{key@{key}!Kinect@{Kinect}}
@@ -355,7 +270,7 @@ Kinectの初期化
 
 
 
- Kinect.\-hpp の 54 行目に定義があります。
+ Kinect.\-hpp の 53 行目に定義があります。
 
 
 
@@ -370,7 +285,7 @@ R\-G\-B,Depthカメラのフレーム更新イベントを待つためのイベ�
 
 
 
- Kinect.\-hpp の 53 行目に定義があります。
+ Kinect.\-hpp の 52 行目に定義があります。
 
 
 

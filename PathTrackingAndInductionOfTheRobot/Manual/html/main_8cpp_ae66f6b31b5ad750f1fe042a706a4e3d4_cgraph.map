@@ -1,0 +1,49 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$class_system.html#ae6d222fb43f36cb2db3fb7d0bbed1c20" title="数字の入力をチェックする " alt="" coords="111,5,179,25"/>
+<area shape="rect" id="node3" href="$class_least_square_method.html#adf062bbbd7b380abc5f24d3a09d39e47" title="最小二乗法によって求めた[a b c]&#39;を用いて平面の姿勢を計算する " alt="" coords="110,49,181,72"/>
+<area shape="rect" id="node4" href="$class_system.html#a2f2eb72dffbb596c530ca149fd8830cd" title="引数に与えたファイルやディレクトリが存在するかチェックし，無ければ作成する(c81) " alt="" coords="106,96,185,116"/>
+<area shape="rect" id="node5" href="$class_system.html#afce9f814824cbcb337abe755883f764c" title="引数の時間[sec]に応じてカウントダウンを開始する(c75) " alt="" coords="105,140,185,160"/>
+<area shape="rect" id="node6" href="$class_point_cloud_library.html#abf4a5840ba484d07a775c2c0c9e41a99" title="ダウンサンプリングを行うメソッド " alt="" coords="99,184,192,212"/>
+<area shape="rect" id="node7" href="$class_kinect.html#a00f185eb803cc53eb6273000913d9892" title="RGBカメラの処理 " alt="" coords="108,236,183,256"/>
+<area shape="rect" id="node8" href="$class_system.html#aba9d00b32578f2ea574bf67078db4aa7" title="プログラム終了時のメッセージを表示(c38) " alt="" coords="109,280,181,300"/>
+<area shape="rect" id="node10" href="$class_system.html#a178a7a315866961f208b6cab6c2d7e88" title="タイマーを終了(c65) " alt="" coords="114,324,177,344"/>
+<area shape="rect" id="node11" href="$class_point_cloud_library.html#a1ee163b625dc199c44149db55c84bafd" title="フラグを判定するメソッド(c64) " alt="" coords="112,368,179,391"/>
+<area shape="rect" id="node12" href="$class_e_v3_control.html#a2231f75bbba634cbb018ec9bf2de75a0" title="平均の速度とヨー角を計算する " alt="" coords="98,415,193,437"/>
+<area shape="rect" id="node13" href="$class_image_processing.html#ae7dc0c506adedb62687e15f0a1b1c7f0" title="背景差分によって得られた二値画像(c75) " alt="" coords="95,461,196,484"/>
+<area shape="rect" id="node14" href="$class_point_cloud_library.html#ad6ce847f97bd8bc4621a4c6a2c380b78" title="取得した点群の平均座標を取得するメソッド " alt="" coords="105,508,186,531"/>
+<area shape="rect" id="node15" href="$class_least_square_method.html#a19559c76884063927045732a38fe043b" title="最小二乗法によって平面ax+by+c=0の係数[a b c]&#39;を求めるメソッド " alt="" coords="110,555,181,577"/>
+<area shape="rect" id="node16" href="$class_point_cloud_library.html#a222d6644e01b9925d923d58eb7ea1522" title="平面検出とクラスタリング " alt="" coords="100,601,191,624"/>
+<area shape="rect" id="node17" href="$class_system.html#a584a2b655a935ea404937cf8f11ab43c" title="フレームレートを取得.startTimer()とendTimer()が実行されていることが前提(c65) " alt="" coords="108,648,183,668"/>
+<area shape="rect" id="node18" href="$class_kinect.html#a26f88eae66c74699487869d10adb0945" title="Depthカメラの処理(c57) " alt="" coords="110,692,181,712"/>
+<area shape="rect" id="node19" href="$class_system.html#a5f235cfc9736103d150e9dbeee82e543" title="計測した時間をミリ秒単位で取得.startTimer()とendTimer()が実行されていることが前提(c65) " alt="" coords="104,736,187,759"/>
+<area shape="rect" id="node20" href="$class_image_processing.html#a5fa5bf016a9d7f946919d0a34a47031c" title="キャリブレーションデータを用いてKinectから取得した画像を補正する(c71) " alt="" coords="95,783,195,805"/>
+<area shape="rect" id="node21" href="$class_e_v3_control.html#a206f5da82bb48c5ddae1906b9206d773" title="EV3の速度を計算する(c85) " alt="" coords="101,829,189,849"/>
+<area shape="rect" id="node22" href="$class_drawing.html#a98e39cb40a24d5909954c17fc1eaaa4f" title="EV3の点群をプロットするためのスクリプト(c78) " alt="" coords="104,873,187,893"/>
+<area shape="rect" id="node23" href="$class_drawing.html#ac6357919dea1fea41ae447837abcd16b" title="EV3の軌道をプロットするためのスクリプト " alt="" coords="104,917,187,940"/>
+<area shape="rect" id="node24" href="$class_drawing.html#aa1da1f33436ebf7bfc05cf7453a6395e" title="時間と速度のプロット " alt="" coords="100,964,191,984"/>
+<area shape="rect" id="node25" href="$class_drawing.html#a4f7e39ba7325c4311761db832d680407" title="時間とヨー角のプロット " alt="" coords="96,1008,195,1028"/>
+<area shape="rect" id="node26" href="$class_kinect.html#a79f66d96dc810bf09a9d3cfe4f1f2671" title="Kinectの初期化 " alt="" coords="117,1052,173,1072"/>
+<area shape="rect" id="node28" href="$class_point_cloud_library.html#a7c0232fc05e878dd58f64c1e6ed8e0b4" title="PCL Visualizerの初期化 " alt="" coords="109,1096,182,1119"/>
+<area shape="rect" id="node29" href="$class_image_processing.html#a58862a0cb31373a4d1a9d6a89fdd8e6c" title="カメラキャリブレーションによって得られたパラメータを適用する(c54) " alt="" coords="99,1143,191,1165"/>
+<area shape="rect" id="node30" href="$class_system.html#a4e8e357a7875f40a86cee5cfdad6b6ed" title="指定したディレクトリ以下に新しいディレクトリを作成する( " alt="" coords="107,1189,183,1209"/>
+<area shape="rect" id="node31" href="$class_system.html#a6353709a74c9a12a3b1c8e365db5f51e" title="日付に基づいたディレクトリの作成 " alt="" coords="94,1233,197,1253"/>
+<area shape="rect" id="node32" href="$class_image_processing.html#a36d146288e958736fd803fde49c064af" title="画像処理関連のトラックバーを表示するメソッド " alt="" coords="96,1277,195,1300"/>
+<area shape="rect" id="node33" href="$class_e_v3_control.html#afce936155dcdef2787d31741b2bb1868" title="現フレームの6DoF情報をファイルに出力する " alt="" coords="107,1324,184,1344"/>
+<area shape="rect" id="node34" href="$class_e_v3_control.html#a8308b078e6fce216a0b5e8e6a502e7ab" title="キーを入力したときの6DoF情報を連続してcsv形式で保存する " alt="" coords="93,1368,197,1388"/>
+<area shape="rect" id="node35" href="$class_e_v3_control.html#a6bec8596128f406b0a90a6b206e1fd67" title="EV3の制御情報を出力する " alt="" coords="105,1412,186,1435"/>
+<area shape="rect" id="node36" href="$class_e_v3_control.html#a03d5b0e6707c302de24db329116f2142" title="EV3の走行軌道を保存する " alt="" coords="102,1459,189,1481"/>
+<area shape="rect" id="node37" href="$class_image_processing.html#ac2a3a10ecc09a2be23b2cc673cee1e0c" title="メソッドImageProcessing::outputImageSelectDirectory()．出力したディレクトリにファイルを出力するメソッド " alt="" coords="99,1505,192,1528"/>
+<area shape="rect" id="node38" href="$class_point_cloud_library.html#ac46bf4f8f9f819b8418e989fcb88f2e8" title="点群を出力するメソッド " alt="" coords="112,1552,179,1575"/>
+<area shape="rect" id="node39" href="$class_point_cloud_library.html#a450a5b18fa99c06b091fc68fe57bbea7" title="点群をply形式で保存するメソッド " alt="" coords="110,1599,181,1621"/>
+<area shape="rect" id="node40" href="$class_point_cloud_library.html#a1381846354368f5925e3b4e7d649c902" title="パススルーフィルタ．zの値の距離に応じてカット可能 " alt="" coords="112,1645,179,1668"/>
+<area shape="rect" id="node41" href="$class_system.html#a3523df6c59162a85350b41a065efa3dd" title="取得したデータが不要だった場合ディレクトリを削除する " alt="" coords="105,1692,186,1712"/>
+<area shape="rect" id="node42" href="$class_point_cloud_library.html#a4f27c0dfaae2be0174d733e295d1bf36" title="外れ値を除去するメソッド " alt="" coords="112,1736,179,1759"/>
+<area shape="rect" id="node43" href="$class_e_v3_control.html#a8ef402279dc736292ae0cf780dd3aed8" title="最小二乗法によって求めた平均座標と位置をEV3の制御のために構造体に格納する(c80) " alt="" coords="106,1783,185,1803"/>
+<area shape="rect" id="node44" href="$class_system.html#af0fc7b12dc7342e2109a9aa3894b9bbe" title="キー入力に関するヘルプを表示(c86) " alt="" coords="102,1827,189,1847"/>
+<area shape="rect" id="node45" href="$class_image_processing.html#a77b6912e1d1182d29a7c8a8c639bb685" title="ウインドウの名前を引数に追加(c31)．Matの表示(c17) " alt="" coords="99,1871,191,1891"/>
+<area shape="rect" id="node46" href="$class_point_cloud_library.html#a2899ca3f4f6b2f8bce39524fba686e74" title="スムージングを行うメソッド " alt="" coords="92,1915,199,1937"/>
+<area shape="rect" id="node47" href="$class_system.html#a15325f6b106b804af8432d102945535c" title="プログラム開始時のメッセージを表示(c26) " alt="" coords="109,1961,182,1981"/>
+<area shape="rect" id="node48" href="$class_system.html#ac62488af6f94b96aa37988c54e19074f" title="タイマーを開始(c65) " alt="" coords="113,2005,177,2025"/>
+<area shape="rect" id="node9" href="$class_system.html#a9016157380cb3dfe6637731daf2e3b4b" title="ディレクトリを開く(c38) " alt="" coords="247,280,321,300"/>
+<area shape="rect" id="node27" href="$class_kinect.html#a90ebe68a239488b745a09213f88b4080" title="インスタンスの生成 " alt="" coords="247,1052,321,1072"/>
+</map>

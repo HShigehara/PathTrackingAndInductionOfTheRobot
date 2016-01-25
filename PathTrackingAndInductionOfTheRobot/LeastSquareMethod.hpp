@@ -1,6 +1,5 @@
 ﻿/*
  * @file LeastSquareMethod.hpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief 最小二乗法を行うクラスのヘッダ
  * @date 2015.07.16
  * @author H.Shigehara

@@ -106,48 +106,51 @@ $(document).ready(function(){initNavTree('_least_square_method_8hpp_source.html'
 <div class="contents">
 <a href="_least_square_method_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file LeastSquareMethod.hpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @brief 最小二乗法を行うクラスのヘッダ</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @date 2015.07.16</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* インクルードガード */</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __LEASTSQUAREMETHOD_HPP__</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __LEASTSQUAREMETHOD_HPP__</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/* インクルード */</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_least_square_method.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_least_square_method.html">LeastSquareMethod</a></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_least_square_method.html#a15a1de9d76f1b0f476760297e0c98fd1">LeastSquareMethod</a>(); </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_least_square_method.html#a66e80e4ea9baa065f0bdbc9da48fb077">~LeastSquareMethod</a>(); </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//最小二乗法</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    Eigen::Vector3f <a class="code" href="class_least_square_method.html#a19559c76884063927045732a38fe043b">getCoefficient</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud); </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="struct_attitude_angle.html">AttitudeAngle3d</a> <a class="code" href="class_least_square_method.html#adf062bbbd7b380abc5f24d3a09d39e47">calcYawRollPitch</a>(Eigen::Vector3f coefficient_plane); </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* インクルードガードの終了 */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __LEASTSQUAREMETHOD_HPP__ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_least_square_method_html"><div class="ttname"><a href="class_least_square_method.html">LeastSquareMethod</a></div><div class="ttdoc">最小二乗法を行うクラス </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8hpp_source.html#l00020">LeastSquareMethod.hpp:20</a></div></div>
-<div class="ttc" id="class_least_square_method_html_a15a1de9d76f1b0f476760297e0c98fd1"><div class="ttname"><a href="class_least_square_method.html#a15a1de9d76f1b0f476760297e0c98fd1">LeastSquareMethod::LeastSquareMethod</a></div><div class="ttdeci">LeastSquareMethod()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00016">LeastSquareMethod.cpp:16</a></div></div>
-<div class="ttc" id="class_least_square_method_html_a19559c76884063927045732a38fe043b"><div class="ttname"><a href="class_least_square_method.html#a19559c76884063927045732a38fe043b">LeastSquareMethod::getCoefficient</a></div><div class="ttdeci">Eigen::Vector3f getCoefficient(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">最小二乗法によって平面ax+by+c=0の係数[a b c]&#39;を求めるメソッド </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00034">LeastSquareMethod.cpp:34</a></div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @brief 最小二乗法を行うクラスのヘッダ</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @date 2015.07.16</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @author H.Shigehara</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/* インクルードガード */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef __LEASTSQUAREMETHOD_HPP__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __LEASTSQUAREMETHOD_HPP__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/* インクルード */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_least_square_method.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_least_square_method.html">LeastSquareMethod</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_least_square_method.html#a15a1de9d76f1b0f476760297e0c98fd1">LeastSquareMethod</a>(); </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_least_square_method.html#a66e80e4ea9baa065f0bdbc9da48fb077">~LeastSquareMethod</a>(); </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">//最小二乗法</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    Eigen::Vector3f <a class="code" href="class_least_square_method.html#a19559c76884063927045732a38fe043b">getCoefficient</a>(pcl::PointCloud&lt;pcl::PointXYZRGB&gt;::Ptr &amp;inputPointCloud); </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_least_square_method.html#a3b3f2a5f264c576367c3fb3e5d70dcf2">   29</a></span>&#160;    Eigen::Vector3f <a class="code" href="class_least_square_method.html#a3b3f2a5f264c576367c3fb3e5d70dcf2">coefficient_plane</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="struct_attitude_angle.html">AttitudeAngle3d</a> <a class="code" href="class_least_square_method.html#adf062bbbd7b380abc5f24d3a09d39e47">calcYawRollPitch</a>(Eigen::Vector3f <a class="code" href="class_least_square_method.html#a3b3f2a5f264c576367c3fb3e5d70dcf2">coefficient_plane</a>); </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_least_square_method.html#a1ceee2394280e7d14411644de171782c">   31</a></span>&#160;    <a class="code" href="struct_attitude_angle.html">AttitudeAngle3d</a> <a class="code" href="class_least_square_method.html#a1ceee2394280e7d14411644de171782c">attitude_angle</a>; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* インクルードガードの終了 */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __LEASTSQUAREMETHOD_HPP__ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_least_square_method_html"><div class="ttname"><a href="class_least_square_method.html">LeastSquareMethod</a></div><div class="ttdoc">最小二乗法を行うクラス </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8hpp_source.html#l00019">LeastSquareMethod.hpp:19</a></div></div>
+<div class="ttc" id="class_least_square_method_html_a15a1de9d76f1b0f476760297e0c98fd1"><div class="ttname"><a href="class_least_square_method.html#a15a1de9d76f1b0f476760297e0c98fd1">LeastSquareMethod::LeastSquareMethod</a></div><div class="ttdeci">LeastSquareMethod()</div><div class="ttdoc">コンストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00015">LeastSquareMethod.cpp:15</a></div></div>
+<div class="ttc" id="class_least_square_method_html_a19559c76884063927045732a38fe043b"><div class="ttname"><a href="class_least_square_method.html#a19559c76884063927045732a38fe043b">LeastSquareMethod::getCoefficient</a></div><div class="ttdeci">Eigen::Vector3f getCoefficient(pcl::PointCloud&lt; pcl::PointXYZRGB &gt;::Ptr &amp;inputPointCloud)</div><div class="ttdoc">最小二乗法によって平面ax+by+c=0の係数[a b c]&#39;を求めるメソッド </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00033">LeastSquareMethod.cpp:33</a></div></div>
 <div class="ttc" id="_path_tracking_and_induction_of_the_robot_8hpp_html"><div class="ttname"><a href="_path_tracking_and_induction_of_the_robot_8hpp.html">PathTrackingAndInductionOfTheRobot.hpp</a></div></div>
 <div class="ttc" id="class_least_square_method_html_adf062bbbd7b380abc5f24d3a09d39e47"><div class="ttname"><a href="class_least_square_method.html#adf062bbbd7b380abc5f24d3a09d39e47">LeastSquareMethod::calcYawRollPitch</a></div><div class="ttdeci">AttitudeAngle3d calcYawRollPitch(Eigen::Vector3f coefficient_plane)</div><div class="ttdoc">最小二乗法によって求めた[a b c]&#39;を用いて平面の姿勢を計算する </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00077">LeastSquareMethod.cpp:77</a></div></div>
-<div class="ttc" id="struct_attitude_angle_html"><div class="ttname"><a href="struct_attitude_angle.html">AttitudeAngle</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00038">PathTrackingAndInductionOfTheRobot.hpp:38</a></div></div>
-<div class="ttc" id="class_least_square_method_html_a66e80e4ea9baa065f0bdbc9da48fb077"><div class="ttname"><a href="class_least_square_method.html#a66e80e4ea9baa065f0bdbc9da48fb077">LeastSquareMethod::~LeastSquareMethod</a></div><div class="ttdeci">~LeastSquareMethod()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00024">LeastSquareMethod.cpp:24</a></div></div>
+<div class="ttc" id="class_least_square_method_html_a3b3f2a5f264c576367c3fb3e5d70dcf2"><div class="ttname"><a href="class_least_square_method.html#a3b3f2a5f264c576367c3fb3e5d70dcf2">LeastSquareMethod::coefficient_plane</a></div><div class="ttdeci">Eigen::Vector3f coefficient_plane</div><div class="ttdoc">平面の係数 </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8hpp_source.html#l00029">LeastSquareMethod.hpp:29</a></div></div>
+<div class="ttc" id="class_least_square_method_html_a1ceee2394280e7d14411644de171782c"><div class="ttname"><a href="class_least_square_method.html#a1ceee2394280e7d14411644de171782c">LeastSquareMethod::attitude_angle</a></div><div class="ttdeci">AttitudeAngle3d attitude_angle</div><div class="ttdoc">姿勢角(c78) </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8hpp_source.html#l00031">LeastSquareMethod.hpp:31</a></div></div>
+<div class="ttc" id="struct_attitude_angle_html"><div class="ttname"><a href="struct_attitude_angle.html">AttitudeAngle</a></div><div class="ttdoc">姿勢角 </div><div class="ttdef"><b>Definition:</b> <a href="_path_tracking_and_induction_of_the_robot_8hpp_source.html#l00065">PathTrackingAndInductionOfTheRobot.hpp:65</a></div></div>
+<div class="ttc" id="class_least_square_method_html_a66e80e4ea9baa065f0bdbc9da48fb077"><div class="ttname"><a href="class_least_square_method.html#a66e80e4ea9baa065f0bdbc9da48fb077">LeastSquareMethod::~LeastSquareMethod</a></div><div class="ttdeci">~LeastSquareMethod()</div><div class="ttdoc">デストラクタ </div><div class="ttdef"><b>Definition:</b> <a href="_least_square_method_8cpp_source.html#l00023">LeastSquareMethod.cpp:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_1ba24d86c0986604341e243b7dac5f64.html">test</a></li><li class="navelem"><a class="el" href="_least_square_method_8hpp.html">LeastSquareMethod.hpp</a></li>
-    <li class="footer">2015年12月19日(土) 20時25分30秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
+    <li class="navelem"><a class="el" href="dir_45aeffd6702719c5f3cbf0d005461816.html">SkyDrive</a></li><li class="navelem"><a class="el" href="dir_a0d9d77de56eed61b71feb2adefbb47d.html">ShigeLab</a></li><li class="navelem"><a class="el" href="dir_89d32e4e26b9b93c85c915e3b07e88b7.html">Programming</a></li><li class="navelem"><a class="el" href="dir_f222f4b39d8b1349931d836df5dbea5a.html">Master</a></li><li class="navelem"><a class="el" href="dir_3890cccb326c0ee1b484a4cf99bcc311.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="dir_d2cbe6861c52eb610edd18736eb43ce0.html">PathTrackingAndInductionOfTheRobot</a></li><li class="navelem"><a class="el" href="_least_square_method_8hpp.html">LeastSquareMethod.hpp</a></li>
+    <li class="footer">2016年01月25日(月) 12時00分32秒作成 - PathTrackingAndInductionOfTheRobot / 構成: 
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

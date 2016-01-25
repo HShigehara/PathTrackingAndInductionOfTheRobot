@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outputdata',['outputData',['../structoutput_data.html',1,'']]]
+  ['leastsquaremethod',['LeastSquareMethod',['../class_least_square_method.html',1,'']]]
 ];

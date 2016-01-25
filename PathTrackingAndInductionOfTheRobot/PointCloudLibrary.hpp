@@ -1,6 +1,5 @@
 ﻿/*
  * @file PointCloudLibrary.hpp
- * @link https://github.com/HShigehara/PathTrackingAndInductionOfTheRobot.git
  * @brief PCL関連の処理を行うクラスのヘッダ
  * @date 2015.10.30
  * @author H.Shigehara
@@ -46,7 +45,7 @@ public:
 	pcl::PointCloud<pcl::Normal>::Ptr getSurfaceNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &inputPointCloud); //!<法線を計算する
 	
 	//PCLVisualizer用
-	pcl::visualization::PCLVisualizer *visualizer; //PCL Visualizer
+	pcl::visualization::PCLVisualizer *visualizer; //!<PCL Visualizer
 
 	int th; //!<平面検出とクラスタリング時用の閾値スライダー変数
 	int tor; //!<平面検出とクラスタリング時用のスライダー変数
