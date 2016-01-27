@@ -5,7 +5,6 @@
  * @author H.Shigehara
  */
 
-
 #pragma once
 
 #define _CRT_SECURE_NO_WARNINGS //fopen等昔の関数の警告を非表示にする

@@ -135,7 +135,7 @@ int main()
 			imgproc.openCVSettingTrackbar(maskbinimage_windowname);
 			bin_image = imgproc.getBackgroundSubstractionBinImage(current_image, background_gray_image/*, imgproc.th, imgproc.med, imgproc.cnt*/);
 			//ユニット部だけ切り取る(c77)
-			//bin_image = imgproc.getUnitMask(bin_image);
+			bin_image = imgproc.getUnitMask(bin_image);
 			imgproc.showImage(maskbinimage_windowname, bin_image); //確認用に切り取った画像を表示する
 			//===================================== 画像処理終了 =====================================
 
